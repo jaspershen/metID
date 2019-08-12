@@ -166,7 +166,7 @@
 <a class="sourceLine" id="cb3-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files">file.copy</a></span>(<span class="dt">from =</span> path, <span class="dt">to =</span> <span class="st">"."</span>, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb3-5" title="5">new.path &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(<span class="st">"./database_construction"</span>)</a>
 <a class="sourceLine" id="cb3-6" title="6"></a>
-<a class="sourceLine" id="cb3-7" title="7">test.database &lt;-<span class="st"> </span><span class="kw">databaseConstruction</span>(<span class="dt">path =</span> new.path, </a>
+<a class="sourceLine" id="cb3-7" title="7">test.database &lt;-<span class="st"> </span><span class="kw"><a href="../reference/databaseConstruction.html">databaseConstruction</a></span>(<span class="dt">path =</span> new.path, </a>
 <a class="sourceLine" id="cb3-8" title="8">                                      <span class="dt">version =</span> <span class="st">"0.0.1"</span>,</a>
 <a class="sourceLine" id="cb3-9" title="9">                                      <span class="dt">metabolite.info.name =</span> <span class="st">"metabolite.info_RPLC.csv"</span>, </a>
 <a class="sourceLine" id="cb3-10" title="10">                                      <span class="dt">source =</span> <span class="st">"Michael Snyder lab"</span>, </a>
@@ -177,7 +177,7 @@
 <a class="sourceLine" id="cb3-15" title="15">                                      <span class="dt">mz.tol =</span> <span class="dv">15</span>,</a>
 <a class="sourceLine" id="cb3-16" title="16">                                      <span class="dt">rt.tol =</span> <span class="dv">30</span>,</a>
 <a class="sourceLine" id="cb3-17" title="17">                                      <span class="dt">threads =</span> <span class="dv">3</span>)</a></code></pre></div>
-<p>The arguments of <code>databaseConstruction</code> can be found using <code>?databaseConstruction</code>.</p>
+<p>The arguments of <code>databaseConstruction</code> can be found using <code><a href="../reference/databaseConstruction.html">?databaseConstruction</a></code>.</p>
 <p>test.database is a <code>databaseClass</code> object, you can print it to see its information.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">test.database</a></code></pre></div>
 <blockquote>
@@ -203,7 +203,7 @@
 <h3 class="hasAnchor">
 <a href="#run-rtcor4database-function" class="anchor"></a><strong>Run <code>rtCor4database</code> function</strong>
 </h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">test.database2 &lt;-<span class="st"> </span><span class="kw">rtCor4database</span>(<span class="dt">experiment.is.table =</span> <span class="st">"experiment.is.table.xlsx"</span>, </a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">test.database2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/rtCor4database.html">rtCor4database</a></span>(<span class="dt">experiment.is.table =</span> <span class="st">"experiment.is.table.xlsx"</span>, </a>
 <a class="sourceLine" id="cb5-2" title="2">                                 <span class="dt">database.is.table =</span> <span class="st">"database.is.table.xlsx"</span>, </a>
 <a class="sourceLine" id="cb5-3" title="3">                                 <span class="dt">database =</span> test.database, </a>
 <a class="sourceLine" id="cb5-4" title="4">                                 <span class="dt">path =</span> new.path)</a></code></pre></div>
@@ -251,7 +251,7 @@
 <a class="sourceLine" id="cb6-7" title="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/save">save</a></span>(msDatabase_rplc0.<span class="fl">0.1</span>, <span class="dt">file =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(new.path, <span class="st">"msDatabase_rplc0.0.1"</span>))</a>
 <a class="sourceLine" id="cb6-8" title="8">ms2.data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grep</a></span>(<span class="dt">pattern =</span> <span class="st">"mgf"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list.files">dir</a></span>(new.path), <span class="dt">value =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb6-9" title="9"></a>
-<a class="sourceLine" id="cb6-10" title="10">result &lt;-<span class="st"> </span><span class="kw">metIdentify</span>(<span class="dt">ms1.data =</span> <span class="st">"ms1.peak.table.csv"</span>, <span class="co">##csv format</span></a>
+<a class="sourceLine" id="cb6-10" title="10">result &lt;-<span class="st"> </span><span class="kw"><a href="../reference/metIdentify.html">metIdentify</a></span>(<span class="dt">ms1.data =</span> <span class="st">"ms1.peak.table.csv"</span>, <span class="co">##csv format</span></a>
 <a class="sourceLine" id="cb6-11" title="11">           <span class="dt">ms2.data =</span> ms2.data,<span class="co">##only msp and mgf and mz(X)ML are supported</span></a>
 <a class="sourceLine" id="cb6-12" title="12">           <span class="dt">ms1.ms2.match.mz.tol =</span> <span class="dv">25</span>,</a>
 <a class="sourceLine" id="cb6-13" title="13">           <span class="dt">ms1.ms2.match.rt.tol =</span> <span class="dv">10</span>,</a>
@@ -272,7 +272,7 @@
 <a class="sourceLine" id="cb6-28" title="28">           <span class="dt">candidate.num =</span> <span class="dv">3</span>,</a>
 <a class="sourceLine" id="cb6-29" title="29">           <span class="dt">database =</span> <span class="st">"msDatabase_rplc0.0.1"</span>,</a>
 <a class="sourceLine" id="cb6-30" title="30">           <span class="dt">threads =</span> <span class="dv">3</span>)</a></code></pre></div>
-<p>The argument of <code>metIdentify</code> can be found using <code>?metIdentify</code>.</p>
+<p>The argument of <code>metIdentify</code> can be found using <code><a href="../reference/metIdentify.html">?metIdentify</a></code>.</p>
 <ul>
 <li><p>ms1.data: The MS1 peak table name. It must be the “csv” format.</p></li>
 <li><p>ms2.data: The MS2 data name. It can be msp, mgf or mzXML format.</p></li>
@@ -299,10 +299,10 @@
 <p>In-house database The in-house database in our lab were provided, with RPLC and HILIC mode RT information. They were acquired using Thermo Fisher QE-plus. However, the LC system may be different with your experiments, so if you want to use our in-house database for metabolite identification, please set <code>rt.match.tol</code> as 100000000(no limitation). The in-house database can be downloaded in my <a href="https://github.com/jaspershen/metID/tree/master/data">github</a>.</p>
 </blockquote>
 <p>You can get processsing parameters from it.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">parameters &lt;-<span class="st"> </span><span class="kw">getParams</span>(<span class="dt">object =</span> result)</a>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">parameters &lt;-<span class="st"> </span><span class="kw"><a href="../reference/getParams.html">getParams</a></span>(<span class="dt">object =</span> result)</a>
 <a class="sourceLine" id="cb8-2" title="2">tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/deprecated.html">as.tibble</a></span>(parameters)</a></code></pre></div>
 <p>You can also get the identification table from it.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">identification.table1 &lt;-<span class="st"> </span><span class="kw">getIdentificationTable</span>(<span class="dt">object =</span> result)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">identification.table1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/getIdentificationTable.html">getIdentificationTable</a></span>(<span class="dt">object =</span> result)</a></code></pre></div>
 </div>
 </div>
 <div id="filter" class="section level3">
@@ -310,7 +310,7 @@
 <a href="#filter" class="anchor"></a><strong>Filter</strong>
 </h3>
 <p>You can use <code>filterIden</code> function to filer identification results from the <code>metIdentifyClass</code> object according to m/z error, rt error, MS2 spectra similarity and total score.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">result.new &lt;-<span class="st"> </span><span class="kw">filterIden</span>(<span class="dt">object =</span> result, <span class="dt">ms1.match.ppm =</span> <span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">result.new &lt;-<span class="st"> </span><span class="kw"><a href="../reference/filterIden.html">filterIden</a></span>(<span class="dt">object =</span> result, <span class="dt">ms1.match.ppm =</span> <span class="dv">10</span>)</a></code></pre></div>
 </div>
 <div id="ms2-spectra-match-plot-output" class="section level3">
 <h3 class="hasAnchor">
@@ -321,22 +321,22 @@
 <p>Output one MS2 spectra match plot.</p>
 </blockquote>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co">##which peaks have identification</span></a>
-<a class="sourceLine" id="cb11-2" title="2">peak.name &lt;-<span class="st"> </span><span class="kw">whichHasIden</span>(<span class="dt">object =</span> result)</a>
+<a class="sourceLine" id="cb11-2" title="2">peak.name &lt;-<span class="st"> </span><span class="kw"><a href="../reference/whichHasIden.html">whichHasIden</a></span>(<span class="dt">object =</span> result)</a>
 <a class="sourceLine" id="cb11-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(peak.name)</a>
-<a class="sourceLine" id="cb11-4" title="4">ms2.plot1 &lt;-<span class="st"> </span><span class="kw">ms2plot</span>(<span class="dt">object =</span> result, <span class="dt">database =</span> msDatabase_rplc0.<span class="fl">0.1</span>, </a>
+<a class="sourceLine" id="cb11-4" title="4">ms2.plot1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ms2plot.html">ms2plot</a></span>(<span class="dt">object =</span> result, <span class="dt">database =</span> msDatabase_rplc0.<span class="fl">0.1</span>, </a>
 <a class="sourceLine" id="cb11-5" title="5">                     <span class="dt">which.peak =</span> peak.name[<span class="dv">1</span>,<span class="dv">1</span>])</a>
 <a class="sourceLine" id="cb11-6" title="6">ms2.plot1</a></code></pre></div>
 <blockquote>
 <p>You can also output interactive MS2 spectra match plot by setting <code>interaction.plot</code> as TRUE.</p>
 </blockquote>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co">##which peaks have identification</span></a>
-<a class="sourceLine" id="cb12-2" title="2">ms2.plot2 &lt;-<span class="st"> </span><span class="kw">ms2plot</span>(<span class="dt">object =</span> result, <span class="dt">database =</span> msDatabase_rplc0.<span class="fl">0.1</span>, </a>
+<a class="sourceLine" id="cb12-2" title="2">ms2.plot2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ms2plot.html">ms2plot</a></span>(<span class="dt">object =</span> result, <span class="dt">database =</span> msDatabase_rplc0.<span class="fl">0.1</span>, </a>
 <a class="sourceLine" id="cb12-3" title="3">                     <span class="dt">which.peak =</span> peak.name[<span class="dv">1</span>,<span class="dv">1</span>], <span class="dt">interaction.plot =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb12-4" title="4">ms2.plot2</a></code></pre></div>
 <blockquote>
 <p>You can output all MS2 spectra match plots by setting <code>which.peak</code> as “all”.</p>
 </blockquote>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">ms2plot</span>(<span class="dt">object =</span> result, <span class="dt">database =</span> msDatabase_rplc0.<span class="fl">0.1</span>, </a>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw"><a href="../reference/ms2plot.html">ms2plot</a></span>(<span class="dt">object =</span> result, <span class="dt">database =</span> msDatabase_rplc0.<span class="fl">0.1</span>, </a>
 <a class="sourceLine" id="cb13-2" title="2">                     <span class="dt">which.peak =</span> <span class="st">"all"</span>, <span class="dt">path =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(new.path, <span class="st">"inhouse"</span>))</a></code></pre></div>
 <p>Then all the MS2 spectra match plots will be output in the “inhouse” folder.</p>
 </div>
@@ -369,13 +369,13 @@
 <h3 class="hasAnchor">
 <a href="#prepare-parameter-list-for-each-database" class="anchor"></a>Prepare parameter list for each database</h3>
 <p>We can use <code>metIdentifyParam</code> and <code>mzIdentifyParam</code> to get parameter list for different databases.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">parameter.list1 &lt;-<span class="st"> </span><span class="kw">metIdentifyParam</span>(<span class="dt">polarity =</span> <span class="st">"positive"</span>, </a>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">parameter.list1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/metIdentifyParam.html">metIdentifyParam</a></span>(<span class="dt">polarity =</span> <span class="st">"positive"</span>, </a>
 <a class="sourceLine" id="cb15-2" title="2">                                    <span class="dt">candidate.num =</span> <span class="dv">3</span>, </a>
 <a class="sourceLine" id="cb15-3" title="3">                                    <span class="dt">column =</span> <span class="st">"rp"</span>, <span class="dt">ce =</span> <span class="st">"all"</span>, </a>
 <a class="sourceLine" id="cb15-4" title="4">                                    <span class="dt">database =</span> <span class="st">"orbitrapDatabase0.0.1"</span>, </a>
 <a class="sourceLine" id="cb15-5" title="5">                                    <span class="dt">threads =</span> <span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb15-6" title="6"></a>
-<a class="sourceLine" id="cb15-7" title="7">parameter.list2 &lt;-<span class="st"> </span><span class="kw">metIdentifyParam</span>(<span class="dt">polarity =</span> <span class="st">"positive"</span>, </a>
+<a class="sourceLine" id="cb15-7" title="7">parameter.list2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/metIdentifyParam.html">metIdentifyParam</a></span>(<span class="dt">polarity =</span> <span class="st">"positive"</span>, </a>
 <a class="sourceLine" id="cb15-8" title="8">                                    <span class="dt">candidate.num =</span> <span class="dv">3</span>, </a>
 <a class="sourceLine" id="cb15-9" title="9">                                    <span class="dt">column =</span> <span class="st">"rp"</span>, <span class="dt">ce =</span> <span class="st">"all"</span>, </a>
 <a class="sourceLine" id="cb15-10" title="10">                                    <span class="dt">database =</span> <span class="st">"hmdbDatabase0.0.1"</span>, </a>
@@ -384,7 +384,7 @@
 <div id="run-metidentify4all-function" class="section level3">
 <h3 class="hasAnchor">
 <a href="#run-metidentify4all-function" class="anchor"></a>Run <code>metIdentify4all</code> function</h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">result2 &lt;-<span class="st"> </span><span class="kw">metIdentify4all</span>(<span class="dt">ms1.data =</span> <span class="st">"ms1.peak.table.csv"</span>, <span class="co">##csv format  </span></a>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">result2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/metIdentify4all.html">metIdentify4all</a></span>(<span class="dt">ms1.data =</span> <span class="st">"ms1.peak.table.csv"</span>, <span class="co">##csv format  </span></a>
 <a class="sourceLine" id="cb16-2" title="2">                           <span class="dt">ms2.data =</span> ms2.data, <span class="dt">parameter.list =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(parameter.list1, parameter.list2), </a>
 <a class="sourceLine" id="cb16-3" title="3">                           <span class="dt">path =</span> new.path)</a></code></pre></div>
 <p>It will return a list of objects of identification results.</p>
@@ -397,7 +397,7 @@
 <a class="sourceLine" id="cb18-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files">file.copy</a></span>(<span class="dt">from =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(path, <span class="st">"HMDB.metabolite.data"</span>), </a>
 <a class="sourceLine" id="cb18-5" title="5">          <span class="dt">to =</span> new.path, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb18-6" title="6"></a>
-<a class="sourceLine" id="cb18-7" title="7">result3 &lt;-<span class="st"> </span><span class="kw">mzIdentify</span>(<span class="dt">ms1.data =</span> <span class="st">"ms1.peak.table.csv"</span>, <span class="co">##csv format </span></a>
+<a class="sourceLine" id="cb18-7" title="7">result3 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/mzIdentify.html">mzIdentify</a></span>(<span class="dt">ms1.data =</span> <span class="st">"ms1.peak.table.csv"</span>, <span class="co">##csv format </span></a>
 <a class="sourceLine" id="cb18-8" title="8">           <span class="dt">ms1.match.ppm =</span> <span class="dv">25</span>,</a>
 <a class="sourceLine" id="cb18-9" title="9">           <span class="dt">polarity =</span> <span class="st">"positive"</span>, </a>
 <a class="sourceLine" id="cb18-10" title="10">           <span class="dt">column =</span> <span class="st">"rp"</span>,</a>
@@ -406,14 +406,14 @@
 <a class="sourceLine" id="cb18-13" title="13">           <span class="dt">database =</span> <span class="st">"HMDB.metabolite.data"</span>,</a>
 <a class="sourceLine" id="cb18-14" title="14">           <span class="dt">threads =</span> <span class="dv">3</span>)</a></code></pre></div>
 <p>For result1 using in-hosue database (m/z, RT and MS2 spectra), they are level 1 identifications. For result2 using public MS2 spectra database (m/z and MS2 spectra), they are level 2 identifications. For result3 using HMDB metabolite database (only m/z), they are level 3 identifications according to MSI. So you can integrate those three results together.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">identification.table1 &lt;-<span class="st"> </span><span class="kw">getIdentificationTable</span>(<span class="dt">object =</span> result, <span class="dt">candidate.num =</span> <span class="dv">1</span>, <span class="dt">type =</span> <span class="st">"new"</span>)</a>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">identification.table1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/getIdentificationTable.html">getIdentificationTable</a></span>(<span class="dt">object =</span> result, <span class="dt">candidate.num =</span> <span class="dv">1</span>, <span class="dt">type =</span> <span class="st">"new"</span>)</a>
 <a class="sourceLine" id="cb19-2" title="2">identification.table1 &lt;-<span class="st"> </span>identification.table1[<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(identification.table1<span class="op">$</span>Compound.name),,drop =<span class="st"> </span><span class="ot">FALSE</span>]</a>
 <a class="sourceLine" id="cb19-3" title="3"></a>
-<a class="sourceLine" id="cb19-4" title="4">identification.table2 &lt;-<span class="st"> </span><span class="kw">getIdentificationTable</span>(<span class="dt">object =</span> result2, <span class="dt">candidate.num =</span> <span class="dv">1</span>, <span class="dt">type =</span> <span class="st">"new"</span>)</a>
+<a class="sourceLine" id="cb19-4" title="4">identification.table2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/getIdentificationTable.html">getIdentificationTable</a></span>(<span class="dt">object =</span> result2, <span class="dt">candidate.num =</span> <span class="dv">1</span>, <span class="dt">type =</span> <span class="st">"new"</span>)</a>
 <a class="sourceLine" id="cb19-5" title="5">identification.table2 &lt;-<span class="st"> </span>identification.table2[<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(identification.table2<span class="op">$</span>Compound.name),,drop =<span class="st"> </span><span class="ot">FALSE</span>]</a>
 <a class="sourceLine" id="cb19-6" title="6">identification.table2 &lt;-<span class="st"> </span>identification.table2[<span class="op">!</span>(identification.table2<span class="op">$</span>name <span class="op">%in%</span><span class="st"> </span>identification.table1<span class="op">$</span>name),,drop =<span class="st"> </span><span class="ot">FALSE</span>]</a>
 <a class="sourceLine" id="cb19-7" title="7"></a>
-<a class="sourceLine" id="cb19-8" title="8">identification.table3 &lt;-<span class="st"> </span><span class="kw">getIdentificationTable2</span>(<span class="dt">object =</span> result3, <span class="dt">candidate.num =</span> <span class="dv">1</span>, <span class="dt">type =</span> <span class="st">"new"</span>)</a>
+<a class="sourceLine" id="cb19-8" title="8">identification.table3 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/getIdentificationTable2.html">getIdentificationTable2</a></span>(<span class="dt">object =</span> result3, <span class="dt">candidate.num =</span> <span class="dv">1</span>, <span class="dt">type =</span> <span class="st">"new"</span>)</a>
 <a class="sourceLine" id="cb19-9" title="9">identification.table3 &lt;-<span class="st"> </span>identification.table3[<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(identification.table3<span class="op">$</span>Compound.name),,drop =<span class="st"> </span><span class="ot">FALSE</span>]</a>
 <a class="sourceLine" id="cb19-10" title="10">identification.table3 &lt;-<span class="st"> </span>identification.table3[<span class="op">!</span>(identification.table3<span class="op">$</span>name <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(identification.table1<span class="op">$</span>name,identification.table1<span class="op">$</span>name)),,drop =<span class="st"> </span><span class="ot">FALSE</span>]</a>
 <a class="sourceLine" id="cb19-11" title="11"></a>
