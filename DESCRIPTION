@@ -1,0 +1,40 @@
+Package: metID
+Type: Package
+Title: Metabolite identification based on MS1 and MS2 spectra
+Version: 0.2.0
+Date: 2019-08-11
+Authors@R: c(
+    person("Xiaotao", "Shen", , "shenxt1990@163.com", role = c("aut", "cre"), 
+      comment = c(ORCID = "0000-0002-9608-9964")
+    )
+    )
+Maintainer: Xiaotao Shen<shenxt1990@163.com>
+Description: Metabolite identification using MS1 and MS2 spectra.
+LazyData: true
+Depends: R (>= 3.5.0)
+Imports:
+    BiocParallel,
+    dplyr,
+    ggplot2,
+    pbapply,
+    methods,
+    graphics,
+    grDevices,
+    utils,
+    stats,
+    readr,
+    readxl,
+    RColorBrewer,
+    stringr
+License: GPL-2 | file LICENSE
+URL: https://github.com/jaspershen/metID
+RoxygenNote: 6.1.1
+Suggests: knitr,
+    rmarkdown,
+    BiocStyle,
+    RUnit,
+    BiocGenerics
+VignetteBuilder: knitr
+biocViews: Metabolomics, MassSpectrometry, Data processing, Data analysis.
+Encoding: UTF-8
+BugReports: https://github.com/jaspershen/metID/issues
