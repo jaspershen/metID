@@ -4,6 +4,6 @@ pkgdown_sha: ~
 articles:
   metID: metID.html
 urls:
-  reference: https://jaspershen.github.io/metIdentify//reference
-  article: https://jaspershen.github.io/metIdentify//articles
+  reference: https://jaspershen.github.io/metID//reference
+  article: https://jaspershen.github.io/metID//articles
 
