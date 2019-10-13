@@ -60,7 +60,7 @@
              if(missing(database)){
                stop("No database is provided.\n")
              }
-             
+
              ##parameter specification
              polarity <- match.arg(polarity)
              column <- match.arg(column)
@@ -237,7 +237,6 @@
                
                ###if one peak matches multiple peaks, select the more relibale MS2 spectrum
                cat("Selecting the most intense MS2 spectrum for each peak...\n")
-               
                temp.idx <- unique(match.result[,1])
                
                match.result <- lapply(temp.idx, function(idx){
@@ -260,7 +259,7 @@
                match.result <- as.data.frame(match.result)
                colnames(match.result) <- c("Index1", "Index2")
                match.result <- data.frame(match.result, 
-                                          ms1.data$name[match.result$Index2],
+                                          ms1.data$name[match.result$Index1],
                ms1.info$name[match.result$Index2], stringsAsFactors = FALSE)
                colnames(match.result) <- c("Index1.ms1.data", "Index.ms2.spectra", 
                                            "MS1.peak.name", "MS2.spectra.name")
@@ -334,7 +333,7 @@ If you use metID in you publication, please cite this publication:
 Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics.
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.2.1 (20191012)")
+Version 0.2.1 (20191013)")
 }
 
 packageStartupMessage("metIdentify,
@@ -343,4 +342,4 @@ If you use metID in you publication, please cite this publication:
 Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics.
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.2.1 (20191012)")
+Version 0.2.1 (20191013)")
