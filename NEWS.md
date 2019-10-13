@@ -26,4 +26,8 @@
 
 * The package name is changed to metID.
 
+## Version 0.2.1 (20191012)
+--------------
+* Fix a small bug.
+
 

@@ -258,8 +258,9 @@
                
                match.result <- do.call(rbind, match.result)
                match.result <- as.data.frame(match.result)
+               colnames(match.result) <- c("Index1", "Index2")
                match.result <- data.frame(match.result, 
-                                          ms1.data$name[match.result$V1],
+                                          ms1.data$name[match.result$Index2],
                ms1.info$name[match.result$Index2], stringsAsFactors = FALSE)
                colnames(match.result) <- c("Index1.ms1.data", "Index.ms2.spectra", 
                                            "MS1.peak.name", "MS2.spectra.name")
@@ -333,7 +334,7 @@ If you use metID in you publication, please cite this publication:
 Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics.
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.2.0 (20190811)")
+Version 0.2.1 (20191012)")
 }
 
 packageStartupMessage("metIdentify,
@@ -342,4 +343,4 @@ If you use metID in you publication, please cite this publication:
 Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics.
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.2.0 (20190811)")
+Version 0.2.1 (20191012)")

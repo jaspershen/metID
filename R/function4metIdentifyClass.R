@@ -31,7 +31,7 @@ setClass(Class = "metIdentifyClass",
 setMethod(f = "show",
           signature = "metIdentifyClass",
           definition = function(object){
-            version <- try(object@version)
+            version <- try(object@version, silent = TRUE)
             if(class(version) != "try-error"){
             cat("--------------metID version-----------\n")
             cat(object@version, "\n")
@@ -547,13 +547,6 @@ setGeneric(name = "getMS2spectrum2Object",
              if(missing(peak.name)) stop('Please provide peak name.\n')
              object@ms2.info[[which(object@match.result$MS2.spectra.name[match(peak.name, object@match.result$MS1.peak.name)] == names(object@ms2.info))]]
            })
-
-
-
-
-
-
-
 
 
 
