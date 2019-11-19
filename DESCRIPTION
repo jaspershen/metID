@@ -2,7 +2,7 @@ Package: metID
 Type: Package
 Title: Metabolite identification based on MS1 and MS2 spectra
 Version: 0.2.1
-Date: 2019-10-12
+Date: 2019-11-19
 Authors@R: c(
     person("Xiaotao", "Shen", , "shenxt1990@163.com", role = c("aut", "cre"), 
       comment = c(ORCID = "0000-0002-9608-9964")

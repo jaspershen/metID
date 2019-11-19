@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>hilic.pos — hilic.pos • metID</title>
+<title>identifySinglePeak — identifySinglePeak • metID</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
 
 
 
-<meta property="og:title" content="hilic.pos — hilic.pos" />
-<meta property="og:description" content="HILIC positive mode adduct table." />
+<meta property="og:title" content="identifySinglePeak — identifySinglePeak" />
+<meta property="og:description" content="Identify metabolites based on MS/MS database for one or several peaks with MS2." />
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -131,27 +131,128 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>hilic.pos</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>hilic.pos.Rd</code></div>
+    <h1>identifySinglePeak</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/singlePeakIdentification.R'><code>R/singlePeakIdentification.R</code></a></small>
+    <div class="hidden name"><code>identifySinglePeak.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>HILIC positive mode adduct table.</p>
+    <p>Identify metabolites based on MS/MS database for one or several peaks with MS2.</p>
     </div>
 
-    <pre class="usage"><span class='no'>hilic.pos</span></pre>
+    <pre class="usage"><span class='fu'>identifySinglePeak</span>(<span class='no'>ms1.mz</span>, <span class='no'>ms1.rt</span>, <span class='no'>ms2</span>, <span class='kw'>ms1.match.ppm</span> <span class='kw'>=</span> <span class='fl'>25</span>,
+  <span class='kw'>ms2.match.ppm</span> <span class='kw'>=</span> <span class='fl'>30</span>, <span class='kw'>mz.ppm.thr</span> <span class='kw'>=</span> <span class='fl'>400</span>, <span class='kw'>ms2.match.tol</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>fraction.weight</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>dp.forward.weight</span> <span class='kw'>=</span> <span class='fl'>0.6</span>,
+  <span class='kw'>dp.reverse.weight</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>rt.match.tol</span> <span class='kw'>=</span> <span class='fl'>30</span>,
+  <span class='kw'>polarity</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"positive"</span>, <span class='st'>"negative"</span>), <span class='kw'>ce</span> <span class='kw'>=</span> <span class='st'>"all"</span>,
+  <span class='kw'>column</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hilic"</span>, <span class='st'>"rp"</span>), <span class='kw'>ms1.match.weight</span> <span class='kw'>=</span> <span class='fl'>0.25</span>,
+  <span class='kw'>rt.match.weight</span> <span class='kw'>=</span> <span class='fl'>0.25</span>, <span class='kw'>ms2.match.weight</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"."</span>,
+  <span class='kw'>total.score.tol</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='no'>database</span>, <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>ms1.mz</th>
+      <td><p>m/z value of the peaks</p></td>
+    </tr>
+    <tr>
+      <th>ms1.rt</th>
+      <td><p>rt value of the peaks</p></td>
+    </tr>
+    <tr>
+      <th>ms2</th>
+      <td><p>MS2 spectra of the peaks. It must be a two column data frame, the 
+first column is m/z and the second column is the intensity.</p></td>
+    </tr>
+    <tr>
+      <th>ms1.match.ppm</th>
+      <td><p>Precursor match ppm tolerance.</p></td>
+    </tr>
+    <tr>
+      <th>ms2.match.ppm</th>
+      <td><p>Fragment ion match ppm tolerance.</p></td>
+    </tr>
+    <tr>
+      <th>mz.ppm.thr</th>
+      <td><p>Accurate mass tolerance for m/z error calculation.</p></td>
+    </tr>
+    <tr>
+      <th>ms2.match.tol</th>
+      <td><p>MS2 match (MS2 similarity) tolerance.</p></td>
+    </tr>
+    <tr>
+      <th>fraction.weight</th>
+      <td><p>The weight for matched fragments.</p></td>
+    </tr>
+    <tr>
+      <th>dp.forward.weight</th>
+      <td><p>Forward dot product weight.</p></td>
+    </tr>
+    <tr>
+      <th>dp.reverse.weight</th>
+      <td><p>Reverse dot product weight.</p></td>
+    </tr>
+    <tr>
+      <th>rt.match.tol</th>
+      <td><p>RT match tolerance.</p></td>
+    </tr>
+    <tr>
+      <th>polarity</th>
+      <td><p>The polarity of data, "positive"or "negative".</p></td>
+    </tr>
+    <tr>
+      <th>ce</th>
+      <td><p>Collision energy. Please confirm the CE values in your database. Default is "all".</p></td>
+    </tr>
+    <tr>
+      <th>column</th>
+      <td><p>"hilic" (HILIC column) or "rp" (reverse phase).</p></td>
+    </tr>
+    <tr>
+      <th>ms1.match.weight</th>
+      <td><p>The weight of MS1 match for total score calculation.</p></td>
+    </tr>
+    <tr>
+      <th>rt.match.weight</th>
+      <td><p>The weight of RT match for total score calculation.</p></td>
+    </tr>
+    <tr>
+      <th>ms2.match.weight</th>
+      <td><p>The weight of MS2 match for total score calculation.</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>Work directory.</p></td>
+    </tr>
+    <tr>
+      <th>total.score.tol</th>
+      <td><p>Total score tolerance. The total score are refering to MS-DIAL.</p></td>
+    </tr>
+    <tr>
+      <th>candidate.num</th>
+      <td><p>The number of candidate.</p></td>
+    </tr>
+    <tr>
+      <th>database</th>
+      <td><p>MS2 database name.</p></td>
+    </tr>
+    <tr>
+      <th>threads</th>
+      <td><p>Number of threads</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame.</p>
+    <p>A metIdentifyClass object.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
 
     <h2>Author</h2>

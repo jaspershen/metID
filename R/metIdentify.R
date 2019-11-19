@@ -46,7 +46,7 @@
                           dp.reverse.weight = 0.1,
                           rt.match.tol = 30,
                           polarity = c("positive", "negative"),
-                          ce = "30",
+                          ce = "all",
                           column = c("hilic", "rp"),
                           ms1.match.weight = 0.25,
                           rt.match.weight = 0.25,

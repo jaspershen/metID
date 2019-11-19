@@ -1,5 +1,5 @@
 ---
-title: "metID version0.2.0"
+title: "metID version0.2.1"
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)
 - affiliation: School of Medicine, Stanford University
