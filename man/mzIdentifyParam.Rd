@@ -4,9 +4,14 @@
 \alias{mzIdentifyParam}
 \title{mzIdentify}
 \usage{
-mzIdentifyParam(ms1.match.ppm = 25, polarity = c("positive",
-  "negative"), column = c("hilic", "rp"), candidate.num = 3, database,
-  threads = 3)
+mzIdentifyParam(
+  ms1.match.ppm = 25,
+  polarity = c("positive", "negative"),
+  column = c("hilic", "rp"),
+  candidate.num = 3,
+  database,
+  threads = 3
+)
 }
 \arguments{
 \item{ms1.match.ppm}{Precursor match ppm tolerance.}

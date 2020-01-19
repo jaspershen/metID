@@ -4,14 +4,31 @@
 \alias{ms2plot}
 \title{ms2plot}
 \usage{
-ms2plot(object, database, which.peak = "all", ppm.tol = 30,
-  mz.ppm.thr = 400, path = ".", width = 20, height = 8,
-  interaction.plot = FALSE, range.mz, range.int = c(-1, 1),
-  xlab = "Mass to charge ratio (m/z)", ylab = "Relative intensity",
-  col.lib = "red", col.exp = "black", title.size = 15,
-  lab.size = 12, axis.text.size = 12, legend.title.size = 12,
-  legend.text.size = 10, figure.type = c("png", "pdf"), threads = 3,
-  one.folder = TRUE)
+ms2plot(
+  object,
+  database,
+  which.peak = "all",
+  ppm.tol = 30,
+  mz.ppm.thr = 400,
+  path = ".",
+  width = 20,
+  height = 8,
+  interaction.plot = FALSE,
+  range.mz,
+  range.int = c(-1, 1),
+  xlab = "Mass to charge ratio (m/z)",
+  ylab = "Relative intensity",
+  col.lib = "red",
+  col.exp = "black",
+  title.size = 15,
+  lab.size = 12,
+  axis.text.size = 12,
+  legend.title.size = 12,
+  legend.text.size = 10,
+  figure.type = c("png", "pdf"),
+  threads = 3,
+  one.folder = TRUE
+)
 }
 \arguments{
 \item{object}{A metIdentifyClass object.}

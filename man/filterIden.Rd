@@ -4,8 +4,13 @@
 \alias{filterIden}
 \title{filterIden}
 \usage{
-filterIden(object, ms1.match.ppm = 25, rt.match.tol = 30,
-  ms2.match.tol = 0.5, total.score.tol = 0.5)
+filterIden(
+  object,
+  ms1.match.ppm = 25,
+  rt.match.tol = 30,
+  ms2.match.tol = 0.5,
+  total.score.tol = 0.5
+)
 }
 \arguments{
 \item{object}{A metIdentifyClass object.}

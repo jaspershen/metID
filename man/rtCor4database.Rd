@@ -4,9 +4,15 @@
 \alias{rtCor4database}
 \title{rtCor4database}
 \usage{
-rtCor4database(experiment.is.table, database.is.table, database,
-  method = c("polyline", "loess"), poly = c(1, 2, 3, 4, 5),
-  degree = c(1, 2), path = ".")
+rtCor4database(
+  experiment.is.table,
+  database.is.table,
+  database,
+  method = c("polyline", "loess"),
+  poly = c(1, 2, 3, 4, 5),
+  degree = c(1, 2),
+  path = "."
+)
 }
 \arguments{
 \item{experiment.is.table}{Experiment internal standard table.}

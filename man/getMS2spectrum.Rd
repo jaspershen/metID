@@ -4,8 +4,12 @@
 \alias{getMS2spectrum}
 \title{getMS2spectrum}
 \usage{
-getMS2spectrum(lab.id, database, polarity = c("positive", "negative"),
-  ce = "30")
+getMS2spectrum(
+  lab.id,
+  database,
+  polarity = c("positive", "negative"),
+  ce = "30"
+)
 }
 \arguments{
 \item{lab.id}{The lab ID of metabolite.}

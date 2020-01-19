@@ -4,14 +4,30 @@
 \alias{identifySinglePeak}
 \title{identifySinglePeak}
 \usage{
-identifySinglePeak(ms1.mz, ms1.rt, ms2, ms1.match.ppm = 25,
-  ms2.match.ppm = 30, mz.ppm.thr = 400, ms2.match.tol = 0.5,
-  fraction.weight = 0.3, dp.forward.weight = 0.6,
-  dp.reverse.weight = 0.1, rt.match.tol = 30,
-  polarity = c("positive", "negative"), ce = "all",
-  column = c("hilic", "rp"), ms1.match.weight = 0.25,
-  rt.match.weight = 0.25, ms2.match.weight = 0.5, path = ".",
-  total.score.tol = 0.5, candidate.num = 3, database, threads = 3)
+identifySinglePeak(
+  ms1.mz,
+  ms1.rt,
+  ms2,
+  ms1.match.ppm = 25,
+  ms2.match.ppm = 30,
+  mz.ppm.thr = 400,
+  ms2.match.tol = 0.5,
+  fraction.weight = 0.3,
+  dp.forward.weight = 0.6,
+  dp.reverse.weight = 0.1,
+  rt.match.tol = 30,
+  polarity = c("positive", "negative"),
+  ce = "all",
+  column = c("hilic", "rp"),
+  ms1.match.weight = 0.25,
+  rt.match.weight = 0.25,
+  ms2.match.weight = 0.5,
+  path = ".",
+  total.score.tol = 0.5,
+  candidate.num = 3,
+  database,
+  threads = 3
+)
 }
 \arguments{
 \item{ms1.mz}{m/z value of the peaks}

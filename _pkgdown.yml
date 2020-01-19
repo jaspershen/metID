@@ -1,0 +1,49 @@
+url: https://jaspershen.github.io/metID/
+
+authors:
+  Xiaotao Shen:
+    href: http://shenxt.sxl.cn/
+
+template:
+  params:
+    docsearch:
+      api_key: 2f09495997a50f5008bc92fa73c5552d
+      index_name: metidentify
+    bootswatch: slate
+    ganalytics: UA-000000-01
+
+development:
+  mode: auto
+
+reference:
+  - title: Database construction
+    desc: Construct in-house MS2 spectra database.
+    contents:
+    - getMS2spectrum
+    - databaseConstruction
+    
+  - title: Metabolite identification
+    desc: Metabolite identification based on MS1 and MS2 library.
+    contents:
+    - metIdentify
+    - filterIden
+    - getIdenInfo
+    - getIdentificationTable
+    - getIdentificationTable2
+    - getMS2spectrum2Object
+    - getParams
+    - getParams2
+    - ms2plot
+    - mzIdentify
+    - rtCor4database
+    - whichHasIden
+
+  - title: Other function
+    desc: Other functions
+    contents:
+    - readMGF
+    - readMSP
+    - readMSP_MoNA
+    - readMZXML
+
+

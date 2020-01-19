@@ -4,14 +4,28 @@
 \alias{metIdentifyParam}
 \title{metIdentifyParam}
 \usage{
-metIdentifyParam(ms1.ms2.match.mz.tol = 25, ms1.ms2.match.rt.tol = 10,
-  ms1.match.ppm = 25, ms2.match.ppm = 30, mz.ppm.thr = 400,
-  ms2.match.tol = 0.5, fraction.weight = 0.3,
-  dp.forward.weight = 0.6, dp.reverse.weight = 0.1,
-  rt.match.tol = 30, polarity = c("positive", "negative"),
-  ce = "all", column = c("hilic", "rp"), ms1.match.weight = 0.25,
-  rt.match.weight = 0.25, ms2.match.weight = 0.5,
-  total.score.tol = 0.5, candidate.num = 3, database, threads = 3)
+metIdentifyParam(
+  ms1.ms2.match.mz.tol = 25,
+  ms1.ms2.match.rt.tol = 10,
+  ms1.match.ppm = 25,
+  ms2.match.ppm = 30,
+  mz.ppm.thr = 400,
+  ms2.match.tol = 0.5,
+  fraction.weight = 0.3,
+  dp.forward.weight = 0.6,
+  dp.reverse.weight = 0.1,
+  rt.match.tol = 30,
+  polarity = c("positive", "negative"),
+  ce = "all",
+  column = c("hilic", "rp"),
+  ms1.match.weight = 0.25,
+  rt.match.weight = 0.25,
+  ms2.match.weight = 0.5,
+  total.score.tol = 0.5,
+  candidate.num = 3,
+  database,
+  threads = 3
+)
 }
 \arguments{
 \item{ms1.ms2.match.mz.tol}{MS1 peak and MS2 spectrum matching m/z tolerance. Default is 25 pm.}

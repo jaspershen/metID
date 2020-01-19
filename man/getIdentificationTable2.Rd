@@ -4,8 +4,7 @@
 \alias{getIdentificationTable2}
 \title{getIdentificationTable2}
 \usage{
-getIdentificationTable2(object, candidate.num = 3, type = c("old",
-  "new"))
+getIdentificationTable2(object, candidate.num = 3, type = c("old", "new"))
 }
 \arguments{
 \item{object}{mzIdentifyClass object.}

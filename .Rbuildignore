@@ -1,2 +1,12 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+LICENSE.md
+NEWS.md
+test_data
+_pkgdown.yml
+ms2_database
+pkgdown
+docs
+vignettes\metID_cache
+vignettes\metabolite_identification.png
+vignettes\database_construction.png

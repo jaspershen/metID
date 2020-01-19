@@ -4,9 +4,16 @@
 \alias{mzIdentify}
 \title{mzIdentify}
 \usage{
-mzIdentify(ms1.data, ms1.match.ppm = 25, polarity = c("positive",
-  "negative"), column = c("hilic", "rp"), path = ".",
-  candidate.num = 3, database, threads = 3)
+mzIdentify(
+  ms1.data,
+  ms1.match.ppm = 25,
+  polarity = c("positive", "negative"),
+  column = c("hilic", "rp"),
+  path = ".",
+  candidate.num = 3,
+  database,
+  threads = 3
+)
 }
 \arguments{
 \item{ms1.data}{The name of ms1 peak table (csv format). Column 1 is "name", column 2 is

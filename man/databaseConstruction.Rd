@@ -4,12 +4,19 @@
 \alias{databaseConstruction}
 \title{databaseConstruction}
 \usage{
-databaseConstruction(path = ".", version = "0.0.1",
+databaseConstruction(
+  path = ".",
+  version = "0.0.1",
   metabolite.info.name = "metabolite.info.csv",
   source = "Michael Snyder Lab",
-  link = "http://snyderlab.stanford.edu/", creater = "Xiaotao Shen",
-  email = "shenxt1990@163.com", rt = TRUE, mz.tol = 15,
-  rt.tol = 30, threads = 3)
+  link = "http://snyderlab.stanford.edu/",
+  creater = "Xiaotao Shen",
+  email = "shenxt1990@163.com",
+  rt = TRUE,
+  mz.tol = 15,
+  rt.tol = 30,
+  threads = 3
+)
 }
 \arguments{
 \item{path}{Work directory.}
