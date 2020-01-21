@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 
 *metID* is a R package which can be used for database construction, and metabolite identification based on in-house and public database.
 
-![](../man/figures/workflow_metIdentify.png)
+![](../man/figures/workflow_metid.jpg)
 
 Please install it via [github](https://github.com/jaspershen/metID).
 

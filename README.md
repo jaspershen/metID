@@ -7,7 +7,7 @@
 
 `metID` is a R packge which is used for metabolite identification based on in-house database and public database based on accurate mass, rentention time and/or MS2 spectra.
 
-<img src="man/figures/workflow_metIdentify.png" align="middle" alt="" width = "80%"/>
+<img src="man/figures/workflow_metid.jpg" align="middle" alt="" width = "80%"/>
 
 ## Installation
 
