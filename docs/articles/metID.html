@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/slate/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/darkly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -35,7 +35,7 @@
 </head>
 <body>
     <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metID</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">0.2.1</span>
       </span>
     </div>
 
@@ -58,20 +58,76 @@
      
   </a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li class="dropdown-header">Category A</li>
+    <li>
+      <a href="../articles/metID.html">Instruction of metflow2</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Category B</li>
+    <li>
+      <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/">Test</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    News
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li class="dropdown-header">Blog posts</li>
+    <li>
+      <a href="../articles/metID.html">Version 0.0.1</a>
+    </li>
+    <li class="divider">
+    <li>
+      <a href="../news/index.html">Change log</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Links
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
 <li>
-  <a href="../articles/metID.html">Get started</a>
+      <a href="http://snyderlab.stanford.edu/">Snyder lab</a>
+    </li>
+    <li>
+      <a href="https://www.shenxt.info/">Shen blog</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="../articles/contact_us.html">Contact us</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../articles/metID.html">Get started</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/jaspershen/metID">
     <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/JasperShen1990">
+    <span class="fab fa fab fa-twitter fa-lg"></span>
      
   </a>
 </li>
@@ -98,7 +154,7 @@
                         <h4 class="author">Xiaotao Shen (<a href="https://www.shenxt.info/" class="uri">https://www.shenxt.info/</a>)</h4>
                                     <h4 class="author">Si Wu</h4>
             <address class="author_afil">
-      School of Medicine, Stanford University<br><h4 class="date">2020-01-18</h4>
+      School of Medicine, Stanford University<br><h4 class="date">2020-01-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jaspershen/metID/blob/master/vignettes/metID.Rmd"><code>vignettes/metID.Rmd</code></a></small>
       <div class="hidden name"><code>metID.Rmd</code></div>
@@ -447,10 +503,33 @@
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction-installation"><strong>Introduction &amp; Installation</strong></a></li>
-      <li><a href="#database-construction"><strong>Database construction</strong></a></li>
-      <li><a href="#retention-time-correction"><strong>Retention time correction</strong></a></li>
-      <li><a href="#metabolite-identification"><strong>Metabolite identification</strong></a></li>
-      <li><a href="#result-integration-and-output"><strong>Result integration and output</strong></a></li>
+      <li>
+<a href="#database-construction"><strong>Database construction</strong></a><ul class="nav nav-pills nav-stacked">
+<li><a href="#data-preparation"><strong>Data preparation</strong></a></li>
+      <li><a href="#data-organization"><strong>Data organization</strong></a></li>
+      <li><a href="#run-databaseconstruction-function"><strong>Run <code>databaseConstruction</code> function</strong></a></li>
+      </ul>
+</li>
+      <li>
+<a href="#retention-time-correction"><strong>Retention time correction</strong></a><ul class="nav nav-pills nav-stacked">
+<li><a href="#data-preparation-1"><strong>Data preparation</strong></a></li>
+      <li><a href="#run-rtcor4database-function"><strong>Run <code>rtCor4database</code> function</strong></a></li>
+      </ul>
+</li>
+      <li>
+<a href="#metabolite-identification"><strong>Metabolite identification</strong></a><ul class="nav nav-pills nav-stacked">
+<li><a href="#identify-metabolites-based-on-ms2-library"><strong>Identify metabolites based on MS2 library</strong></a></li>
+      <li><a href="#filter"><strong>Filter</strong></a></li>
+      <li><a href="#ms2-spectra-match-plot-output"><strong>MS2 spectra match plot output</strong></a></li>
+      </ul>
+</li>
+      <li>
+<a href="#result-integration-and-output"><strong>Result integration and output</strong></a><ul class="nav nav-pills nav-stacked">
+<li><a href="#prepare-demo-data">Prepare demo data</a></li>
+      <li><a href="#prepare-parameter-list-for-each-database">Prepare parameter list for each database</a></li>
+      <li><a href="#run-metidentify4all-function">Run <code>metIdentify4all</code> function</a></li>
+      </ul>
+</li>
       </ul>
 </div>
       </div>
@@ -460,7 +539,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://shenxt.sxl.cn/">Xiaotao Shen</a>.</p>
+  <p>Developed by Xiaotao Shen.</p>
 </div>
 
 <div class="pkgdown">

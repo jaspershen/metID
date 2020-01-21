@@ -34,7 +34,7 @@ identifySinglePeak(
 
 \item{ms1.rt}{rt value of the peaks}
 
-\item{ms2}{MS2 spectra of the peaks. It must be a two column data frame, the 
+\item{ms2}{MS2 spectra of the peaks. It must be a two column data frame, the
 first column is m/z and the second column is the intensity.}
 
 \item{ms1.match.ppm}{Precursor match ppm tolerance.}

@@ -610,135 +610,142 @@ setGeneric(name = "rtCor",
 
 
 ###parameters optimization
-bestpoly <- function(x, y,
-                     poly = c(1, 2, 3, 4),
-                     path = "."
-) {
-  pre.all <- list()
-  for (i in 1:length(poly)) {
-    # cat(i, " ")
-    ##LOO
-    pre <- NULL
-    for(j in 1:length(x)) {
-      # cat(j, " ")
-      y1 <- y[-j]
-      x1 <- x[-j]
-      model <- lm(y1 ~ poly(x1, poly[i]))
-      pre[j] <- predict(object = model,
-                        newdata = data.frame(x1 = x[j]))
+setGeneric(
+  name = "bestpoly",
+  def = function(x,
+                 y,
+                 poly = c(1, 2, 3, 4),
+                 path = ".") {
+    pre.all <- list()
+    for (i in 1:length(poly)) {
+      # cat(i, " ")
+      ##LOO
+      pre <- NULL
+      for(j in 1:length(x)) {
+        # cat(j, " ")
+        y1 <- y[-j]
+        x1 <- x[-j]
+        model <- lm(y1 ~ poly(x1, poly[i]))
+        pre[j] <- predict(object = model,
+                          newdata = data.frame(x1 = x[j]))
+      }
+      pre.all[[i]] <- pre
     }
-    pre.all[[i]] <- pre
-  }
-  
-  mse <- unlist(lapply(pre.all, function(x) {sum((y -x)^2)/length(y) }))
-  
-  # y.lim1 <- 0.8*min(c(y, unlist(lapply(pre.all, min))))
-  # y.lim2 <- 1.2*max(c(y, unlist(lapply(pre.all, max))))
-  
-  temp.data1 <- do.call(c, pre.all)
-  temp.data1 <- data.frame(Cor.RT = rep(x, length(pre.all)),
-                          Ref.RT = temp.data1,
-                          Poly.MSE = as.character(rep(paste(poly, round(mse, 3), sep = ": "), each = length(x))),
-                          stringsAsFactors = FALSE)
-  
-  temp.data2 <- data.frame(Cor.RT = x, 
-                           Ref.RT = y, 
-                          stringsAsFactors = FALSE)
-  
-  plot <-
-    ggplot2::ggplot(data = temp.data2, 
-                          ggplot2::aes(x = Cor.RT, y = Ref.RT)) +
-    ggplot2::geom_point(color = "black") +
-    ggplot2::geom_line() + 
+    
+    mse <- unlist(lapply(pre.all, function(x) {sum((y -x)^2)/length(y) }))
+    
+    # y.lim1 <- 0.8*min(c(y, unlist(lapply(pre.all, min))))
+    # y.lim2 <- 1.2*max(c(y, unlist(lapply(pre.all, max))))
+    
+    temp.data1 <- do.call(c, pre.all)
+    temp.data1 <- data.frame(Cor.RT = rep(x, length(pre.all)),
+                             Ref.RT = temp.data1,
+                             Poly.MSE = as.character(rep(paste(poly, round(mse, 3), sep = ": "), each = length(x))),
+                             stringsAsFactors = FALSE)
+    
+    temp.data2 <- data.frame(Cor.RT = x, 
+                             Ref.RT = y, 
+                             stringsAsFactors = FALSE)
+    
+    plot <-
+      ggplot2::ggplot(data = temp.data2, 
+                      ggplot2::aes(x = Cor.RT, y = Ref.RT)) +
+      ggplot2::geom_point(color = "black") +
+      ggplot2::geom_line() + 
       ggplot2::geom_smooth(method = "loess", color = "black", fill = "gray") +
       ggplot2::geom_point(data = temp.data1, 
                           mapping = ggplot2::aes(x = Cor.RT, y = Ref.RT, color = Poly.MSE)) + 
       ggplot2::geom_line(data = temp.data1, 
-                          mapping = ggplot2::aes(x = Cor.RT, y = Ref.RT, color = Poly.MSE)) + 
+                         mapping = ggplot2::aes(x = Cor.RT, y = Ref.RT, color = Poly.MSE)) + 
       ggplot2::geom_smooth(data = temp.data1, 
                            mapping = ggplot2::aes(x = Cor.RT, y = Ref.RT, 
                                                   color = Poly.MSE, fill = Poly.MSE),
-                             method = "loess") +
-    # ggthemes::theme_pander() +
+                           method = "loess") +
+      # ggthemes::theme_pander() +
       ggplot2::theme_bw()
-     ggplot2::ggsave(filename = file.path(path, "MSE.plot.pdf"), 
-                     plot = plot, width = 8, height = 6)  
-
-  return(mse)
-}
-
-
-
-bestloess <- function(x,
-                      y,
-                      span.begin = 0.5,
-                      span.end = 1,
-                      span.step = 0.1,
-                      degree = c(1,2),
-                      path = ".") {
-  
-  span <- seq(span.begin, span.end, span.step)
-  para <- NULL
-  for(i in 1:length(degree)){
-    para <- rbind(para, cbind(degree[i], span))
+    ggplot2::ggsave(filename = file.path(path, "MSE.plot.pdf"), 
+                    plot = plot, width = 8, height = 6)  
+    
+    return(mse)
+    
   }
-  colnames(para) <- c("degree", "span")
-  
-  y <- y[order(x)]
-  x <- sort(x)
-  
-  pre.all <- list()
-  
-  for(i in 1:nrow(para)){
-    temp.degree <- para[i,1]
-    temp.span <- para[i,2]
-    pre <- NULL
-    # for(j in 2:(length(x) - 1)) {
-      for(j in 1:(length(x))) {
-      y1 <- y
-      x1 <- x
-      # y1 <- y[-j]
-      # x1 <- x[-j]
-      model <- loess(y1 ~ x1, span = temp.span, degree = temp.degree)
-      pre[j] <- predict(object = model,
-                        newdata = data.frame(x1 = x[j]))
+)
+
+
+setGeneric(
+  name = "bestloess",
+  def = function(
+    x,
+    y,
+    span.begin = 0.5,
+    span.end = 1,
+    span.step = 0.1,
+    degree = c(1,2),
+    path = "."
+  ) {
+    span <- seq(span.begin, span.end, span.step)
+    para <- NULL
+    for(i in 1:length(degree)){
+      para <- rbind(para, cbind(degree[i], span))
     }
-    pre.all[[i]] <- pre[!is.na(pre)]
+    colnames(para) <- c("degree", "span")
+    
+    y <- y[order(x)]
+    x <- sort(x)
+    
+    pre.all <- list()
+    
+    for(i in 1:nrow(para)){
+      temp.degree <- para[i,1]
+      temp.span <- para[i,2]
+      pre <- NULL
+      # for(j in 2:(length(x) - 1)) {
+      for(j in 1:(length(x))) {
+        y1 <- y
+        x1 <- x
+        # y1 <- y[-j]
+        # x1 <- x[-j]
+        model <- loess(y1 ~ x1, span = temp.span, degree = temp.degree)
+        pre[j] <- predict(object = model,
+                          newdata = data.frame(x1 = x[j]))
+      }
+      pre.all[[i]] <- pre[!is.na(pre)]
+    }
+    
+    mse <- unlist(lapply(pre.all, function(x) {sum((y[2:(length(y)-1)] - x)^2)/length(y) }))
+    result <- data.frame(para, mse, stringsAsFactors = FALSE)
+    
+    
+    temp.data1 <- do.call(c, pre.all)
+    para <- paste(para[,1], para[,2], sep = ";")
+    
+    temp.data1 <- data.frame(Cor.RT = rep(x, length(pre.all)),
+                             Ref.RT = temp.data1,
+                             Degree.Span.MSE = as.character(rep(paste(para, round(mse, 3), sep = ": "), each = length(x))),
+                             stringsAsFactors = FALSE)
+    
+    
+    temp.data2 <- data.frame(Cor.RT = x, 
+                             Ref.RT = y, 
+                             stringsAsFactors = FALSE)
+    
+    plot <-
+      ggplot2::ggplot(data = temp.data2, 
+                      ggplot2::aes(x = Cor.RT, y = Ref.RT)) +
+      ggplot2::geom_point(color = "black") +
+      ggplot2::geom_line() + 
+      ggplot2::geom_smooth(method = "loess", color = "black", fill = "gray") +
+      ggplot2::geom_point(data = temp.data1, 
+                          mapping = ggplot2::aes(x = Cor.RT, y = Ref.RT, color = Degree.Span.MSE)) + 
+      ggplot2::geom_line(data = temp.data1, 
+                         mapping = ggplot2::aes(x = Cor.RT, y = Ref.RT, color = Degree.Span.MSE)) + 
+      ggplot2::geom_smooth(data = temp.data1, 
+                           mapping = ggplot2::aes(x = Cor.RT, y = Ref.RT, 
+                                                  color = Degree.Span.MSE, fill = Degree.Span.MSE),
+                           method = "loess") +
+      ggplot2::theme_bw()
+    
+    ggplot2::ggsave(filename = file.path(path, "MSE.plot.pdf"), plot = plot, width = 8, height = 6)  
+    return(result)
   }
-  
-  mse <- unlist(lapply(pre.all, function(x) {sum((y[2:(length(y)-1)] - x)^2)/length(y) }))
-  result <- data.frame(para, mse, stringsAsFactors = FALSE)
-  
-  
-  temp.data1 <- do.call(c, pre.all)
-  para <- paste(para[,1], para[,2], sep = ";")
-  
-  temp.data1 <- data.frame(Cor.RT = rep(x, length(pre.all)),
-                           Ref.RT = temp.data1,
-                           Degree.Span.MSE = as.character(rep(paste(para, round(mse, 3), sep = ": "), each = length(x))),
-                           stringsAsFactors = FALSE)
-  
-  
-  temp.data2 <- data.frame(Cor.RT = x, 
-                           Ref.RT = y, 
-                           stringsAsFactors = FALSE)
-  
-  plot <-
-    ggplot2::ggplot(data = temp.data2, 
-                    ggplot2::aes(x = Cor.RT, y = Ref.RT)) +
-    ggplot2::geom_point(color = "black") +
-    ggplot2::geom_line() + 
-    ggplot2::geom_smooth(method = "loess", color = "black", fill = "gray") +
-    ggplot2::geom_point(data = temp.data1, 
-                        mapping = ggplot2::aes(x = Cor.RT, y = Ref.RT, color = Degree.Span.MSE)) + 
-    ggplot2::geom_line(data = temp.data1, 
-                       mapping = ggplot2::aes(x = Cor.RT, y = Ref.RT, color = Degree.Span.MSE)) + 
-    ggplot2::geom_smooth(data = temp.data1, 
-                         mapping = ggplot2::aes(x = Cor.RT, y = Ref.RT, 
-                                                color = Degree.Span.MSE, fill = Degree.Span.MSE),
-                         method = "loess") +
-    ggplot2::theme_bw()
-  
-  ggplot2::ggsave(filename = file.path(path, "MSE.plot.pdf"), plot = plot, width = 8, height = 6)  
-  return(result)
-}
+)
