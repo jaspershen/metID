@@ -3,7 +3,7 @@ destination: docs
 url: https://jaspershen.github.io/metID/
 
 home:
-  strip_header: true
+  strip_header: false
   title: metID
   links:
   - text: Find me
@@ -57,7 +57,7 @@ reference:
 navbar:
   type: inverse
   structure:
-    left: [home, references, articles, news, links, contact]
+    left: [home, references, articles, news, contact]
     right: [github, twitter]
   components:
     articles:
@@ -76,13 +76,6 @@ navbar:
     contact:
       text: Contact us
       href: articles/contact_us.html
-    links:
-      text: Links
-      menu:
-      - text: "Snyder lab"
-        href: http://snyderlab.stanford.edu/
-      - text: "Shen blog"
-        href: https://www.shenxt.info/
     news:
       text: News
       menu:

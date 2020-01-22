@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 LICENSE.md
 NEWS.md
+README.Rmd
 test_data
 _pkgdown.yml
 ms2_database
