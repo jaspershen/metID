@@ -33,32 +33,34 @@ setMethod(f = "show",
           definition = function(object){
             version <- try(object@version, silent = TRUE)
             if(class(version) != "try-error"){
-            cat("--------------metID version-----------\n")
-            cat(object@version, "\n")
+            cat(crayon::green("--------------metID version-----------\n"))
+            cat(crayon::green(object@version, "\n"))
             }
-            cat("-----------Identifications------------\n")
-            cat("(Use getIdentificationTable to get identification table)\n")
-            cat("There are", nrow(object@ms1.data), "peaks\n")
-            cat(nrow(object@match.result), "peaks have MS2 spectra\n")
-            cat("There are",
-                length(unique(unlist(lapply(object@identification.result, function(x){
-                  x$Compound.name
-                })))),
-                "metabolites are identified\n"
+            cat(crayon::green("-----------Identifications------------\n"))
+            cat(crayon::yellow("(Use getIdentificationTable to get identification table)\n"))
+            cat(crayon::green("There are", nrow(object@ms1.data), "peaks\n"))
+            cat(crayon::green(nrow(object@match.result), "peaks have MS2 spectra\n"))
+            cat(crayon::green(
+              "There are",
+              length(unique(unlist(lapply(object@identification.result, function(x){
+                x$Compound.name
+              })))),
+              "metabolites are identified\n"
+            )
             )
             if(!is.null(object@identification.result[[1]])){
-              cat("There are", length(object@identification.result), "peaks with identification\n")
+              cat(crayon::green("There are", length(object@identification.result), "peaks with identification\n"))
             }
             
-            cat("-----------Parameters------------\n")
-            cat("(Use getParam to get all the parameters of this processing)\n")
-            cat("Polarity:", object@polarity, "\n")
-            cat("Collision energy:", object@ce, "\n")
-            cat("database:", object@database, "\n")
-            cat("Total score cutoff:", object@total.score.tol, "\n")
-            cat("Column:", object@column, "\n")
-            cat("Adduct table:\n")
-            cat(paste(object@adduct.table$adduct, collapse = ";"))
+            cat(crayon::green("-----------Parameters------------\n"))
+            cat(crayon::yellow("(Use getParam to get all the parameters of this processing)\n"))
+            cat(crayon::green("Polarity:", object@polarity, "\n"))
+            cat(crayon::green("Collision energy:", object@ce, "\n"))
+            cat(crayon::green("database:", object@database, "\n"))
+            cat(crayon::green("Total score cutoff:", object@total.score.tol, "\n"))
+            cat(crayon::green("Column:", object@column, "\n"))
+            cat(crayon::green("Adduct table:\n"))
+            cat(crayon::green(paste(object@adduct.table$adduct, collapse = ";")))
             # print(head(tibble::as_tibble(object@adduct.table, 5)))
           }
 )
@@ -163,13 +165,13 @@ setGeneric(name = "getIdenInfo",
              }
              
              if(is.na(match(which.peak, object@match.result$MS1.peak.name))){
-               cat("The peak has no MS2 spectrum.\n")
+               cat(crayon::green("The peak has no MS2 spectrum.\n"))
                return()
              }
              
              if(is.na(match(object@match.result$MS2.spectra.name[match(which.peak, object@match.result$MS1.peak.name)],
                             names(identification.result)))){
-               cat("The peak hsa no identification result.\n")
+               cat(crayon::green("The peak hsa no identification result.\n"))
                return()
              }
              
@@ -211,6 +213,7 @@ setGeneric(name = "getIdenInfo",
 #' @param figure.type "pdf" or "png".
 #' @param threads The number of threads
 #' @param one.folder Output all figure in one folder or not.
+#' @param show.plot Show plot or just save them.
 #' @return A or all ms2 match plot(s).
 #' @export 
 #' @seealso The example and demo data of this function can be found 
@@ -239,7 +242,8 @@ setGeneric(name = "ms2plot",
                           legend.text.size = 10,
                           figure.type = c("png", "pdf"),
                           threads = 3,
-                          one.folder = TRUE
+                          one.folder = TRUE,
+                          show.plot = TRUE
            ){
              # 
              if(class(object) != "metIdentifyClass") stop("Only for metIdentifyClass\n")
@@ -251,27 +255,27 @@ setGeneric(name = "ms2plot",
              figure.type <- match.arg(figure.type)
              ##-------------------------------------------------------------------
              ##only for one peak
-             if(all(which.peak != "all") & length(which.peak) == 1){
+             if(all(which.peak != "all") & length(which.peak) == 1 & show.plot){
                which.peak <- as.character(which.peak)
                if(!which.peak %in% object@ms1.data$name)
                  stop(which.peak, " is not in peak table, please check it.\n")
                ms2.spectra.name <- object@match.result$MS2.spectra.name[match(which.peak, 
                                                                               object@match.result$MS1.peak.name)]
                if(is.na(ms2.spectra.name)){
-                 cat(which.peak, "hsa no MS2 spectrum.\n")
+                 cat(crayon::red(which.peak, "hsa no MS2 spectrum.\n"))
                  return()
                }
                temp.idx <- which(names(identification.result) == ms2.spectra.name)
                if(length(temp.idx) == 0){
-                 cat(which.peak, "hsa no identification.\n")
+                 cat(crayon::red(which.peak, "hsa no identification.\n"))
                  return()
                }
                matched.info <- identification.result[[temp.idx]]
                
                if(nrow(matched.info) > 1){
-                 cat("There are", nrow(matched.info), "identifications.\n")
-                 cat(paste(paste(c(1:nrow(matched.info)), as.character(matched.info[,1]), sep = ":"), 
-                           collapse = "\n"))
+                 cat(crayon::green("There are", nrow(matched.info), "identifications.\n"))
+                 cat(crayon::green(paste(paste(c(1:nrow(matched.info)), as.character(matched.info[,1]), sep = ":"), 
+                                         collapse = "\n")))
                  cat("\n")
                  which.identification <- "test"
                  while(is.na(which.identification) | !which.identification %in% c(1:length(matched.info))){
@@ -316,9 +320,9 @@ setGeneric(name = "ms2plot",
                plot
              }else{
                ##output all MS2 match
-               dir.create(path)
+               dir.create(path, showWarnings = FALSE)
                path <- file.path(path, "ms2_match_plot")
-               dir.create(path)
+               dir.create(path, showWarnings = FALSE)
                
                if(all(which.peak != "all")){
                  if(!all(which.peak %in% object@ms1.data$name)){
@@ -328,11 +332,13 @@ setGeneric(name = "ms2plot",
                  which.peak <- which.peak[!is.na(ms2.spectra.name)]
                  ms2.spectra.name <- ms2.spectra.name[!is.na(ms2.spectra.name)]
                  if(length(ms2.spectra.name) == 0){
-                   stop("All peaks have no MS2 spectra.\n")
+                   cat(crayon::red("All peaks have no MS2 spectra.\n"))
+                   return(NULL)
                  }
                  anno.idx <- match(ms2.spectra.name, names(object@identification.result))  
                  if(all(is.na(anno.idx))){
-                   stop("All peaks have no identifications.\n")
+                   cat(crayon::red("All peaks have no identifications.\n"))
+                   return(NULL)
                  }
                  
                  which.peak <- which.peak[!is.na(anno.idx)]
@@ -374,7 +380,7 @@ setGeneric(name = "ms2plot",
                    temp.path <- file.path(path, 
                                           stringr::str_replace_all(string = temp.peak.name, 
                                                                    pattern = "/", replacement = "_"))
-                   dir.create(temp.path)
+                   dir.create(temp.path, showWarnings = FALSE)
                  }
                  
                  matched.info <- apply(matched.info, 1, list)
@@ -454,7 +460,7 @@ setGeneric(name = "ms2plot",
                                       plotMS2match = plotMS2match,
                                       getMS2spectrum = getMS2spectrum
                )
-               cat("All is done.\n")
+               cat(crayon::bgYellow("All done.\n"))
              }
            })
 

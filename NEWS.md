@@ -27,8 +27,14 @@
 * The package name is changed to metID.
 
 ## Version 0.2.1 (20191119)
---------------
+
 * Fix a small bug.
 * Add a new function, identifySinglePeak, which can be used to identify a or several peaks with MS2 spectra. You can use ?identifySinglePeak to learn how to use it.
+
+
+## Version 0.2.2 (20200121)
+
+* Optimize message.
+* Add Formula to output results.
 
 

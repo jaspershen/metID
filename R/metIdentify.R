@@ -27,6 +27,7 @@
 #' @param database MS2 database name.
 #' @param threads Number of threads
 #' @return A metIdentifyClass object.
+#' @import crayon
 #' @export
 #' @seealso The example and demo data of this function can be found 
 #' https://jaspershen.github.io/metID/articles/metID.html
@@ -333,7 +334,7 @@ If you use metID in you publication, please cite this publication:
 Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics.
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.2.1 (20191013)")
+Version 0.2.2 (20200125)")
 }
 
 packageStartupMessage("metIdentify,
@@ -342,4 +343,4 @@ If you use metID in you publication, please cite this publication:
 Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics.
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.2.1 (20191013)")
+Version 0.2.2 (20200125)")

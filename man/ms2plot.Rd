@@ -27,7 +27,8 @@ ms2plot(
   legend.text.size = 10,
   figure.type = c("png", "pdf"),
   threads = 3,
-  one.folder = TRUE
+  one.folder = TRUE,
+  show.plot = TRUE
 )
 }
 \arguments{
@@ -76,6 +77,8 @@ ms2plot(
 \item{threads}{The number of threads}
 
 \item{one.folder}{Output all figure in one folder or not.}
+
+\item{show.plot}{Show plot or just save them.}
 }
 \value{
 A or all ms2 match plot(s).

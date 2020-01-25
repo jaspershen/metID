@@ -237,7 +237,7 @@ setGeneric(
       candidate.num = candidate.num,
       database = database.name,
       threads = threads,
-      version = "0.2.1"
+      version = "0.2.2"
     )
     cat("All is done.\n")
     return(return.result)
