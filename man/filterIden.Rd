@@ -30,7 +30,7 @@ A new metIdentifyClass.
 Filter identifications according to m/z error, RT error, MS similarity and total score.
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{

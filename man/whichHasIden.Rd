@@ -16,7 +16,7 @@ Peak names with identifications.
 Get the peak names which have identifications.
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{

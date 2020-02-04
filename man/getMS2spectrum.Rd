@@ -21,13 +21,13 @@ getMS2spectrum(
 \item{ce}{Collision value.}
 }
 \value{
-A MS2 spectrum.
+A MS2 spectrum (data.frame).
 }
 \description{
-Get Ms2 spectra of peaks from databaseClass.
+Get MS2 spectra of peaks from databaseClass object.
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{

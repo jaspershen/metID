@@ -23,8 +23,8 @@ databaseConstruction(
 
 \item{version}{The version of you database. Default is 0.0.1.}
 
-\item{metabolite.info.name}{The metabolite information table name, it must be csv format. 
-The demo data can be got from the `demoData` package. 
+\item{metabolite.info.name}{The metabolite information table name, it must be csv format.
+The demo data can be got from the `demoData` package.
 Please see https://jaspershen.github.io/metID/articles/metID.html}
 
 \item{source}{The source of your database.}
@@ -50,7 +50,7 @@ A databaseClass object.
 Construct MS2 spectra database according to mzXML data and compound information table (csv format).
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{

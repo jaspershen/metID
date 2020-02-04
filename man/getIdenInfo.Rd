@@ -20,7 +20,7 @@ A identification table (data.frame).
 Get identification information from a metIdentifyClass object.
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{
