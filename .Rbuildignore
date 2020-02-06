@@ -12,6 +12,8 @@ vignettes
 vignettes\metID_cache
 vignettes\metabolite_identification.png
 vignettes\database_construction.png
+vignettes/database_construction
+test_data
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$

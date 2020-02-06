@@ -649,11 +649,11 @@ setGeneric(
                  poly = c(1, 2, 3, 4),
                  path = ".") {
     pre.all <- list()
-    for (i in 1:length(poly)) {
+    for (i in seq_along(poly)) {
       # cat(i, " ")
       ##LOO
       pre <- NULL
-      for (j in 1:length(x)) {
+      for (j in seq_along(x)) {
         # cat(j, " ")
         y1 <- y[-j]
         x1 <- x[-j]
@@ -734,7 +734,7 @@ setGeneric(
                  path = ".") {
     span <- seq(span.begin, span.end, span.step)
     para <- NULL
-    for (i in 1:length(degree)) {
+    for (i in seq_along(degree)) {
       para <- rbind(para, cbind(degree[i], span))
     }
     colnames(para) <- c("degree", "span")
@@ -749,7 +749,7 @@ setGeneric(
       temp.span <- para[i, 2]
       pre <- NULL
       # for(j in 2:(length(x) - 1)) {
-      for (j in 1:(length(x))) {
+      for (j in seq_along(x)) {
         y1 <- y
         x1 <- x
         # y1 <- y[-j]

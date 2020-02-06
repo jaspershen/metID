@@ -29,6 +29,19 @@
 #' @param threads Number of threads
 #' @return A metIdentifyClass object.
 #' @import crayon
+#' @import BiocParallel
+#' @import ggplot2
+#' @import pbapply
+#' @import methods
+#' @import graphics
+#' @import grDevices
+#' @import utils
+#' @import stats
+#' @import readr
+#' @import readxl
+#' @import RColorBrewer
+#' @import stringr
+#' @import lifecycle
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html

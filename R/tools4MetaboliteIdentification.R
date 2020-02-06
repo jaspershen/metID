@@ -348,7 +348,7 @@ setGeneric(
     nl.rec.new <- 1
     idx.rec <- 1
     rec.list <- list()
-    for (nl in 1:length(mgf.data))
+    for (nl in seq_along(mgf.data))
     {
       if (mgf.data[nl] == "END IONS")
       {
@@ -985,7 +985,7 @@ setGeneric(
     nl.rec.new <- 1
     idx.rec <- 1
     rec.list <- list()
-    for (nl in 1:length(mgf.data))
+    for (nl in seq_along(mgf.data))
     {
       if (mgf.data[nl] == "END IONS")
       {
