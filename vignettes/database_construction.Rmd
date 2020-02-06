@@ -56,7 +56,7 @@ Then creat a folder and put you mzXML format datasets (positive mode in 'POS' fo
 ## **Run `databaseConstruction()` function**
 
 
-```{r,eval = FALSE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 library(demoData)
 library(metID)
 path <- system.file("database_construction", package = "demoData")
@@ -80,7 +80,7 @@ The arguments of `databaseConstruction()` can be found here `databaseConstructio
 
 test.database is a `databaseClass` object, you can print it to see its information.
 
-```{r,eval = FALSE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 test.database
 ```
 
@@ -103,7 +103,7 @@ The IS table for database should be named as "database.is.table.xlsx" and the IS
 ## **Run `rtCor4database()` function**
 
 
-```{r,eval=FALSE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+```{r,eval=TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 test.database2 <- rtCor4database(experiment.is.table = "experiment.is.table.xlsx", 
                                  database.is.table = "database.is.table.xlsx", 
                                  database = test.database, 

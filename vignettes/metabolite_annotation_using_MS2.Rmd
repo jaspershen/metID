@@ -44,7 +44,7 @@ We can use the demo data from `demoData` package to show how to use it. Here, we
 
 ### **Demo data preparation**
 
-```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 library(tidyverse)
 library(metID)
 path <- system.file("ms2_identification_demo_data1", package = "demoData")
@@ -60,7 +60,7 @@ save(msDatabase_rplc0.0.1, file = file.path(new.path, "msDatabase_rplc0.0.1"))
 
 ### **Annotation**
 
-```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 ms2.data <- grep(pattern = "mgf", dir(new.path), value = TRUE)
 
 result <- metIdentify2(ms1.data = "ms1.peak.table.csv", ##csv format
@@ -119,7 +119,7 @@ $$Dot\;product = \dfrac{\sum(wA_{act.}wA_{lib})^2}{\sum(wA_{act.})^2\sum(wA_{lib
 
 `result` is `metIdentifyClass` object. You can print it out to see the identificaiton information.
 
-```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 result
 ```
 
@@ -130,7 +130,7 @@ The in-house database in our lab were provided, with RPLC and HILIC mode RT info
 
 You can get processsing parameters from the annotation result (metIdentifyClass object).
 
-```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 parameters <- getParams(object = result)
 parameters
 ```
@@ -139,7 +139,7 @@ parameters
 
 You can also get the identification table from it.
 
-```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 identification.table1 <- getIdentificationTable(object = result, 
                                                 candidate.num = 3, 
                                                 type = "old")
@@ -149,7 +149,7 @@ identification.table1 %>%
 
 You can also set the `type` as "new" to get the different type of identification table.
 
-```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 identification.table1 <- getIdentificationTable(object = result, 
                                                 candidate.num = 3, 
                                                 type = "new")
@@ -163,7 +163,7 @@ identification.table1 %>%
 
 You can use `filterIden()` function to filer identification results from the `metIdentifyClass` object according to m/z error, rt error, MS2 spectra similarity and total score.
 
-```{r, eval=FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval=TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 result.new <- 
   filterIden(object = result, ms1.match.ppm = 10)
 result.new
@@ -176,7 +176,7 @@ You can also use `ms2plot()` function to output the MS2 specra match plot for on
 
 > Output one MS2 spectra match plot.
 
-```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 ##which peaks have identification
 peak.name <- whichHasIden(object = result)
 head(peak.name)
@@ -188,7 +188,7 @@ ms2.plot1
 
 > You can also output interactive MS2 spectra match plot by setting `interaction.plot` as TRUE.
 
-```{r, eval = FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 ##which peaks have identification
 ms2.plot2 <- ms2plot(object = result, 
                      database = msDatabase_rplc0.0.1, 
