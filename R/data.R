@@ -1,4 +1,4 @@
-#' @title hilic.neg
+#' @title HILIC negative mode adduct table
 #' @description HILIC negative mode adduct table.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
@@ -6,7 +6,7 @@
 "hilic.neg"
 
 ##------------------------------------------------------------------------------
-#' @title hilic.pos
+#' @title HILIC positive mode adduct table
 #' @description HILIC positive mode adduct table.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
@@ -15,7 +15,7 @@
 
 
 ##------------------------------------------------------------------------------
-#' @title rp.neg
+#' @title Reverse phase negative mode adduct table
 #' @description Reverse phase negative mode adduct table.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
@@ -23,7 +23,7 @@
 "rp.neg"
 
 ##------------------------------------------------------------------------------
-#' @title rp.pos
+#' @title Reverse phase positive mode adduct table
 #' @description Reverse phase positive mode adduct table.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
@@ -31,7 +31,7 @@
 "rp.pos"
 
 ##------------------------------------------------------------------------------
-#' @title msDatabase_rplc0.0.1
+#' @title Michael Snyder lab RPLC database
 #' @description Michael Snyder lab RPLC database
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
@@ -39,7 +39,7 @@
 "msDatabase_rplc0.0.1"
 
 ##------------------------------------------------------------------------------
-#' @title msDatabase_hilic0.0.1
+#' @title Michael Snyder lab RPLC database
 #' @description Michael Snyder lab RPLC database
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}

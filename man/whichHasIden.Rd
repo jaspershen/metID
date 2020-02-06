@@ -2,7 +2,7 @@
 % Please edit documentation in R/function4metIdentifyClass.R
 \name{whichHasIden}
 \alias{whichHasIden}
-\title{whichHasIden}
+\title{Get the peak names which have identifications}
 \usage{
 whichHasIden(object)
 }
@@ -14,6 +14,7 @@ Peak names with identifications.
 }
 \description{
 Get the peak names which have identifications.
+\lifecycle{maturing}
 }
 \seealso{
 The example and demo data of this function can be found

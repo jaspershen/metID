@@ -2,7 +2,7 @@
 % Please edit documentation in R/databaseConstruction.R
 \name{databaseConstruction}
 \alias{databaseConstruction}
-\title{databaseConstruction}
+\title{Construct in-house or public MS2 database for metID.}
 \usage{
 databaseConstruction(
   path = ".",

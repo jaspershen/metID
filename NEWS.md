@@ -37,4 +37,8 @@
 * Optimize message.
 * Add Formula to output results.
 
+## Version 0.3.0 (2020205)
+
+* A log of improvement of metID.
+
 

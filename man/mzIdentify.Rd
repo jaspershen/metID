@@ -2,7 +2,7 @@
 % Please edit documentation in R/mzIdentify.R
 \name{mzIdentify}
 \alias{mzIdentify}
-\title{mzIdentify}
+\title{Identify peaks based on MS1 database}
 \usage{
 mzIdentify(
   ms1.data,
@@ -37,10 +37,11 @@ mzIdentify(
 A mzIdentifyClass object.
 }
 \description{
-Identify peaks based on mz database.
+Identify peaks based on MS1 database.
+\lifecycle{deprecated}
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/mzIdentify.R
 \name{getParams2}
 \alias{getParams2}
-\title{getParams2}
+\title{Get parameters from a mzIdentifyClass object}
 \usage{
 getParams2(object)
 }
@@ -16,7 +16,7 @@ A data frame contains all the parameters of this metIdentifiyClass object.
 Get parameters from a mzIdentifyClass object.
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{

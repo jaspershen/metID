@@ -2,7 +2,7 @@
 % Please edit documentation in R/mzIdentify.R
 \name{getIdentificationTable2}
 \alias{getIdentificationTable2}
-\title{getIdentificationTable2}
+\title{Get identification table from a mzIdentifyClass object}
 \usage{
 getIdentificationTable2(object, candidate.num = 3, type = c("old", "new"))
 }
@@ -20,7 +20,7 @@ A identification table (data.frame).
 Get identification table from a mzIdentifyClass object.
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{

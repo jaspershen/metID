@@ -2,7 +2,7 @@
 % Please edit documentation in R/function4metIdentifyClass.R
 \name{ms2plot}
 \alias{ms2plot}
-\title{ms2plot}
+\title{Get MS2 match plots from a metIdentifyClass object}
 \usage{
 ms2plot(
   object,
@@ -85,6 +85,7 @@ A or all ms2 match plot(s).
 }
 \description{
 Get MS2 match plots from a metIdentifyClass object.
+\lifecycle{maturing}
 }
 \seealso{
 The example and demo data of this function can be found

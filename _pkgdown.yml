@@ -17,14 +17,14 @@ development:
 template:
   params:
     docsearch:
-      api_key: 2f09495997a50f5008bc92fa73c5552d
-      index_name: metidentify
+      api_key: 21ff2860978c5d2ceb7d4150364070ff
+      index_name: metid
     bootswatch: darkly
     ganalytics: UA-000000-01
 
 reference:
   - title: Database construction
-    desc: Construct in-house MS2 spectra database.
+    desc: Construct in-house or public MS2 spectra database.
     contents:
     - getMS2spectrum
     - databaseConstruction
@@ -44,6 +44,16 @@ reference:
     - mzIdentify
     - rtCor4database
     - whichHasIden
+    
+  - title: Data
+    desc: Some data embed in metID
+    contents:
+    - hilic.pos
+    - hilic.neg
+    - rp.pos
+    - rp.neg
+    - msDatabase_rplc0.0.1
+    - msDatabase_hilic0.0.1
 
   - title: Other function
     desc: Other functions
@@ -66,6 +76,16 @@ navbar:
       - text: Category A
       - text: Instruction of metID
         href: articles/metID.html
+      - text: Database construction
+        href: articles/database_construction.html
+      - text: Metabolite identification using MS2 database
+        href: articles/metabolite_annotation_using_MS2.html
+      - text: Metabolite identification using MS1 database
+        href: articles/metabolite_annotation_using_MS1.html
+      - text: Metabolite identification using multiple databases
+        href: articles/multiple_databases.html
+      - text: Other usefull tools in metID
+        href: articles/other_tools.html
       - text: -------
       - text: "Category B"
       - text: Test

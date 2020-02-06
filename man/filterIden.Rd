@@ -2,7 +2,7 @@
 % Please edit documentation in R/function4metIdentifyClass.R
 \name{filterIden}
 \alias{filterIden}
-\title{filterIden}
+\title{Filter identifications according to m/z error, RT error, MS similarity and total score}
 \usage{
 filterIden(
   object,
@@ -28,6 +28,7 @@ A new metIdentifyClass.
 }
 \description{
 Filter identifications according to m/z error, RT error, MS similarity and total score.
+\lifecycle{maturing}
 }
 \seealso{
 The example and demo data of this function can be found

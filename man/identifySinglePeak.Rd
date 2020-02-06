@@ -2,7 +2,7 @@
 % Please edit documentation in R/singlePeakIdentification.R
 \name{identifySinglePeak}
 \alias{identifySinglePeak}
-\title{identifySinglePeak}
+\title{Identify metabolites based on MS/MS database for one or several peaks with MS2}
 \usage{
 identifySinglePeak(
   ms1.mz,
@@ -80,6 +80,7 @@ A metIdentifyClass object.
 }
 \description{
 Identify metabolites based on MS/MS database for one or several peaks with MS2.
+\lifecycle{experimental}
 }
 \author{
 Xiaotao Shen

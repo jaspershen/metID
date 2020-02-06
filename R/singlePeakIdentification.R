@@ -1,5 +1,6 @@
-#' @title identifySinglePeak
+#' @title Identify metabolites based on MS/MS database for one or several peaks with MS2
 #' @description Identify metabolites based on MS/MS database for one or several peaks with MS2.
+#' \lifecycle{experimental}
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param ms1.mz m/z value of the peaks
@@ -60,8 +61,6 @@ setGeneric(
     if (missing(ms1.mz) | missing(ms1.rt) | missing(ms2)) {
       stop("ms1.mz, ms1.rt or ms2 is not provided.\n")
     }
-    
-    
     
     ##parameter specification
     polarity <- match.arg(polarity)
@@ -124,7 +123,7 @@ setGeneric(
     
     ##RT in database or not
     if (!database@database.info$RT) {
-      cat("No RT information in database. The weight of RT have been set as 0.\n")
+      cat(crayon::yellow("No RT information in database.\nThe weight of RT have been set as 0.\n"))
     }
     #------------------------------------------------------------------
     ##load adduct table
@@ -237,9 +236,9 @@ setGeneric(
       candidate.num = candidate.num,
       database = database.name,
       threads = threads,
-      version = "0.2.2"
+      version = "0.3.0"
     )
-    cat("All is done.\n")
+    cat(crayon::bgYellow("All done.\n"))
     return(return.result)
     
   }

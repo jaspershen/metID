@@ -2,7 +2,7 @@
 % Please edit documentation in R/metIdentify4all.R
 \name{mzIdentifyParam}
 \alias{mzIdentifyParam}
-\title{mzIdentify}
+\title{Generate the mzIdentify parameter list}
 \usage{
 mzIdentifyParam(
   ms1.match.ppm = 25,
@@ -31,9 +31,10 @@ A mzIdentifyClass object.
 }
 \description{
 Generate the mzIdentify parameter list.
+\lifecycle{deprecated}
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{

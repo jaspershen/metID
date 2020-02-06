@@ -2,7 +2,7 @@
 % Please edit documentation in R/metIdentify4all.R
 \name{metIdentifyParam}
 \alias{metIdentifyParam}
-\title{metIdentifyParam}
+\title{Generate the parameter list for metIdentify function}
 \usage{
 metIdentifyParam(
   ms1.ms2.match.mz.tol = 25,
@@ -73,9 +73,10 @@ A metIdentifyClass object.
 }
 \description{
 Generate the parameter list for metIdentify function.
+\lifecycle{maturing}
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{

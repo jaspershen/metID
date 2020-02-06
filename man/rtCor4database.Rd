@@ -2,7 +2,7 @@
 % Please edit documentation in R/rtCorrection.R
 \name{rtCor4database}
 \alias{rtCor4database}
-\title{rtCor4database}
+\title{Correct RTs of metabolites in database using internal standard list}
 \usage{
 rtCor4database(
   experiment.is.table,
@@ -34,6 +34,7 @@ A metIdentifyClass object.
 }
 \description{
 Correct RTs of metabolites in database using internal standard list.
+\lifecycle{experimental}
 }
 \author{
 Xiaotao Shen

@@ -2,7 +2,7 @@
 % Please edit documentation in R/metIdentify4all.R
 \name{metIdentify4all}
 \alias{metIdentify4all}
-\title{metIdentify4all}
+\title{Identify metabolites using multiple databases one time}
 \usage{
 metIdentify4all(ms1.data, ms2.data, parameter.list, path = ".")
 }
@@ -12,7 +12,7 @@ metIdentify4all(ms1.data, ms2.data, parameter.list, path = ".")
 
 \item{ms2.data}{MS2 data, must be mgf, msp or mzXML format. For example, ms2.data = c("test.mgf", "test2.msp").}
 
-\item{parameter.list}{A list contains paramters for each processing. 
+\item{parameter.list}{A list contains paramters for each processing.
 The parameter must get using metIdentifyParam or mzIdentifyParam.}
 
 \item{path}{Work directory.}
@@ -22,9 +22,10 @@ A list containing mzIdentifyClass object.
 }
 \description{
 Identify metabolites using multiple databases one time.
+\lifecycle{maturing}
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{

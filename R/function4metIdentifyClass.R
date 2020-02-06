@@ -1,5 +1,4 @@
 
-
 ###S4 class for function metIdentification
 setClass(
   Class = "metIdentifyClass",
@@ -28,6 +27,32 @@ setClass(
     database = "character",
     threads = "numeric",
     version = "character"
+  ), 
+  prototype = list(
+    ms1.data = data.frame(matrix(nrow = 0, ncol = 0), stringsAsFactors = FALSE),
+    ms1.info = data.frame(matrix(nrow = 0, ncol = 0), stringsAsFactors = FALSE),
+    ms2.info = list(),
+    identification.result = list(),
+    match.result = data.frame(matrix(nrow = 0, ncol = 0), stringsAsFactors = FALSE),
+    adduct.table = data.frame(matrix(nrow = 0, ncol = 0), stringsAsFactors = FALSE),
+    ms1.ms2.match.mz.tol = 25,
+    ms1.ms2.match.rt.tol = 10,
+    ms1.match.ppm = 25,
+    ms2.match.ppm = 30,
+    ms2.match.tol = 0.5,
+    rt.match.tol = 30,
+    polarity = "positive",
+    ce = "all",
+    column = "rp",
+    ms1.match.weight = 0.25,
+    rt.match.weight = 0.25,
+    ms2.match.weight = 0.5,
+    path = ".",
+    total.score.tol = 0.5,
+    candidate.num = 3,
+    database = "HMDB",
+    threads = 0,
+    version = "0.3.0"
   )
 )
 
@@ -61,7 +86,7 @@ setMethod(
     }
     
     cat(crayon::green("-----------Parameters------------\n"))
-    cat(crayon::yellow("(Use getParam to get all the parameters of this processing)\n"))
+    cat(crayon::yellow("(Use getParams to get all the parameters of this processing)\n"))
     cat(crayon::green("Polarity:", object@polarity, "\n"))
     cat(crayon::green("Collision energy:", object@ce, "\n"))
     cat(crayon::green("database:", object@database, "\n"))
@@ -74,13 +99,16 @@ setMethod(
 )
 
 #------------------------------------------------------------------------------
-#' @title getParams
+#' @title Get parameters from a metIdentifyClass object
 #' @description Get parameters from a metIdentifyClass object.
+#' \lifecycle{maturing}
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param object A metIdentifyClass object.
 #' @return A data frame contains all the parameters of this metIdentifiyClass object.
 #' @export
+#' @import magrittr
+#' @import dplyr
 setGeneric(
   name = "getParams",
   def = function(object) {
@@ -145,15 +173,17 @@ setGeneric(
         object@threads
       ),
       stringsAsFactors = FALSE
-    )
+    ) %>% 
+      tibble::as_tibble()
   }
 )
 
 
 
 ##------------------------------------------------------------------------------
-#' @title getIdenInfo
+#' @title Get identification information from a metIdentifyClass object
 #' @description Get identification information from a metIdentifyClass object.
+#' \lifecycle{maturing}
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param object A metIdentifyClass object.
@@ -211,8 +241,9 @@ setGeneric(
 )
 
 ##------------------------------------------------------------------------------
-#' @title ms2plot
+#' @title Get MS2 match plots from a metIdentifyClass object
 #' @description Get MS2 match plots from a metIdentifyClass object.
+#' \lifecycle{maturing}
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param object A metIdentifyClass object.
@@ -544,8 +575,9 @@ setGeneric(
 )
 
 #------------------------------------------------------------------------------
-#' @title whichHasIden
+#' @title Get the peak names which have identifications
 #' @description Get the peak names which have identifications.
+#' \lifecycle{maturing}
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param object A metIdentifyClass object.
@@ -568,8 +600,9 @@ setGeneric(
 )
 
 #------------------------------------------------------------------------------
-#' @title filterIden
+#' @title Filter identifications according to m/z error, RT error, MS similarity and total score
 #' @description Filter identifications according to m/z error, RT error, MS similarity and total score.
+#' \lifecycle{maturing}
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param object A metIdentifyClass object.
@@ -627,8 +660,9 @@ setGeneric(
 )
 
 #------------------------------------------------------------------------------
-#' @title getMS2spectrum2Object
+#' @title Get spectra of peaks from metIdentifyClass object
 #' @description Get spectra of peaks from metIdentifyClass object.
+#' \lifecycle{maturing}
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param peak.name Peak name.

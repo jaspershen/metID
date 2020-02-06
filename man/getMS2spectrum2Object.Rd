@@ -2,7 +2,7 @@
 % Please edit documentation in R/function4metIdentifyClass.R
 \name{getMS2spectrum2Object}
 \alias{getMS2spectrum2Object}
-\title{getMS2spectrum2Object}
+\title{Get spectra of peaks from metIdentifyClass object}
 \usage{
 getMS2spectrum2Object(peak.name, object)
 }
@@ -16,6 +16,7 @@ A MS2 spectrum.
 }
 \description{
 Get spectra of peaks from metIdentifyClass object.
+\lifecycle{maturing}
 }
 \seealso{
 The example and demo data of this function can be found

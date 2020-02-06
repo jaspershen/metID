@@ -57,7 +57,7 @@ setGeneric(
     
     ##get the MS2 spectra within the CE values
     if (any(ce == "all")) {
-      cat("You use all CE values.\n")
+      cat(crayon::yellow("You use all CE values.\n"))
       ce <- unique(unlist(lapply(spectra.data, function(x) {
         names(x)
       })))
@@ -85,7 +85,7 @@ setGeneric(
     
     rm(list = c("database"))
     cat("\n")
-    cat('Identifing metabolites with MS/MS database...\n')
+    cat(crayon::green('Identifing metabolites with MS/MS database...\n'))
     
     identification.result <-
       BiocParallel::bplapply(
@@ -365,6 +365,7 @@ setGeneric(
 #---------------------------------------------------------------------------
 #'@title readMSP
 #'@description Read MSP data.
+#'\lifecycle{experimental}
 #'@author Xiaotao Shen
 #'\email{shenxt1990@@163.com}
 #'@param file The vector of names of ms2 files. MS2 file must be msp format.
@@ -436,7 +437,7 @@ setGeneric('readMSP', function(file) {
   
   ##fix bug in msp data from metAnalyzer
   if (length(rt.idx) == 0) {
-    cat("The msp data are from MetAnalyzer software.\n")
+    cat(crayon::yellow("The msp data are from MetAnalyzer software.\n"))
     rt.idx <- grep("NAME|Name|name", rownames(info.spec[[1]][[1]]))
     ##rt.idx is the name of peak
     info.spec <- lapply(info.spec, function(x) {
@@ -473,13 +474,14 @@ setGeneric('readMSP', function(file) {
 #---------------------------------------------------------------------------
 #'@title readMSP_MoNA
 #'@description Read MSP data from MoNA.
+#'\lifecycle{experimental}
 #'@author Xiaotao Shen
 #'\email{shenxt1990@@163.com}
 #'@param file The vector of names of ms2 files. MS2 file must be msp. The msp data must from MoNA.
 #'@return Return ms2 data. This is a list.
 #'@export
 setGeneric('readMSP_MoNA', function(file) {
-  cat("Read MSP data.\n")
+  cat(crayon::green("Reading MSP data...\n"))
   msp.data <- readr::read_lines(file)
   n.null <- which(msp.data == '')
   temp.idx1 <- c(1, n.null[-length(n.null)])
@@ -504,7 +506,7 @@ setGeneric('readMSP_MoNA', function(file) {
   # cat(idx, " ")
   # idx <- temp.idx[[idx]]
   
-  cat("Transforming...\n")
+  cat(crayon::yellow("Transforming...\n"))
   info.spec <- pbapply::pblapply(temp.idx, function(idx) {
     if (idx[1] == idx[2])
       return(NULL)
@@ -609,6 +611,7 @@ setGeneric(
 
 #'@title readMZXML
 #'@description Read mzXML data.
+#'\lifecycle{experimental}
 #'@author Xiaotao Shen
 #'\email{shenxt1990@@163.com}
 #'@param file The vector of names of ms2 files. MS2 file must be mzXML or mzML.
@@ -621,13 +624,13 @@ setGeneric(
   def = function(file,
                  threads = 3) {
     # pbapply::pboptions(style = 1)
-    cat("Reading MS2 data...\n")
+    cat(crayon::green("Reading MS2 data...\n"))
     # mzxml.data.list <- pbapply::pblapply(file, ListMGF)
     ms2 <-
       MSnbase::readMSData(files = file,
                           msLevel. = 2,
                           mode = "onDisk")
-    cat("Processing...\n")
+    cat(crayon::green("Processing...\n"))
     
     new.ms2 <- ProtGenerics::spectra(object = ms2)
     rm(list = c("ms2"))
@@ -869,6 +872,7 @@ setGeneric(
 
 #'@title readMGF
 #'@description Read MGF data.
+#'\lifecycle{experimental}
 #'@author Xiaotao Shen
 #'\email{shenxt1990@@163.com}
 #'@param file The vector of names of ms2 files. MS2 file must be mgf.
@@ -879,7 +883,7 @@ setGeneric(
   name = "readMGF",
   def = function(file) {
     pbapply::pboptions(style = 1)
-    cat("Reading MS2 data\n")
+    cat(crayon::green("Reading MS2 data...\n"))
     # mgf.data.list <- pbapply::pblapply(file, ListMGF)
     ms2 <- pbapply::pblapply(file, function(mgf.data) {
       mgf.data <- ListMGF(mgf.data)

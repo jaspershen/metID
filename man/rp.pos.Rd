@@ -3,7 +3,7 @@
 \docType{data}
 \name{rp.pos}
 \alias{rp.pos}
-\title{rp.pos}
+\title{Reverse phase positive mode adduct table}
 \format{A data frame.}
 \usage{
 rp.pos

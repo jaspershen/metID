@@ -2,7 +2,7 @@
 % Please edit documentation in R/databaseConstruction.R
 \name{getMS2spectrum}
 \alias{getMS2spectrum}
-\title{getMS2spectrum}
+\title{Get MS2 spectra of peaks from databaseClass object}
 \usage{
 getMS2spectrum(
   lab.id,

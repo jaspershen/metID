@@ -3,7 +3,7 @@
 \docType{data}
 \name{rp.neg}
 \alias{rp.neg}
-\title{rp.neg}
+\title{Reverse phase negative mode adduct table}
 \format{A data frame.}
 \usage{
 rp.neg

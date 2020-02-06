@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>metIdentify4all — metIdentify4all • metID</title>
+<title>Identify metabolites using multiple databases one time — metIdentify4all • metID</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,9 @@
 
 
 
-<meta property="og:title" content="metIdentify4all — metIdentify4all" />
-<meta property="og:description" content="Identify metabolites using multiple databases one time." />
+<meta property="og:title" content="Identify metabolites using multiple databases one time — metIdentify4all" />
+<meta property="og:description" content="Identify metabolites using multiple databases one time.
+" />
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -93,7 +94,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metID</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">0.2.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">0.3.0</span>
       </span>
     </div>
 
@@ -115,6 +116,21 @@
     <li class="dropdown-header">Category A</li>
     <li>
       <a href="../articles/metID.html">Instruction of metID</a>
+    </li>
+    <li>
+      <a href="../articles/database_construction.html">Database construction</a>
+    </li>
+    <li>
+      <a href="../articles/metabolite_annotation_using_MS2.html">Metabolite identification using MS2 database</a>
+    </li>
+    <li>
+      <a href="../articles/metabolite_annotation_using_MS1.html">Metabolite identification using MS1 database</a>
+    </li>
+    <li>
+      <a href="../articles/multiple_databases.html">Metabolite identification using multiple databases</a>
+    </li>
+    <li>
+      <a href="../articles/other_tools.html">Other usefull tools in metID</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Category B</li>
@@ -182,13 +198,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>metIdentify4all</h1>
+    <h1>Identify metabolites using multiple databases one time</h1>
     <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/metIdentify4all.R'><code>R/metIdentify4all.R</code></a></small>
     <div class="hidden name"><code>metIdentify4all.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Identify metabolites using multiple databases one time.</p>
+    <p>Identify metabolites using multiple databases one time.
+<a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
     </div>
 
     <pre class="usage"><span class='fu'>metIdentify4all</span>(<span class='no'>ms1.data</span>, <span class='no'>ms2.data</span>, <span class='no'>parameter.list</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"."</span>)</pre>
@@ -207,7 +224,7 @@
     </tr>
     <tr>
       <th>parameter.list</th>
-      <td><p>A list contains paramters for each processing. 
+      <td><p>A list contains paramters for each processing.
 The parameter must get using metIdentifyParam or mzIdentifyParam.</p></td>
     </tr>
     <tr>
@@ -221,7 +238,7 @@ The parameter must get using metIdentifyParam or mzIdentifyParam.</p></td>
     <p>A list containing mzIdentifyClass object.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>The example and demo data of this function can be found 
+    <div class='dont-index'><p>The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html</p></div>
 
   </div>
@@ -258,8 +275,8 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
   docsearch({
     
     
-    apiKey: '2f09495997a50f5008bc92fa73c5552d',
-    indexName: 'metidentify',
+    apiKey: '21ff2860978c5d2ceb7d4150364070ff',
+    indexName: 'metid',
     inputSelector: 'input#search-input.form-control',
     transformData: function(hits) {
       return hits.map(function (hit) {

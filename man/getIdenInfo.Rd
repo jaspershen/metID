@@ -2,7 +2,7 @@
 % Please edit documentation in R/function4metIdentifyClass.R
 \name{getIdenInfo}
 \alias{getIdenInfo}
-\title{getIdenInfo}
+\title{Get identification information from a metIdentifyClass object}
 \usage{
 getIdenInfo(object, which.peak, database)
 }
@@ -18,6 +18,7 @@ A identification table (data.frame).
 }
 \description{
 Get identification information from a metIdentifyClass object.
+\lifecycle{maturing}
 }
 \seealso{
 The example and demo data of this function can be found

@@ -2,7 +2,7 @@
 % Please edit documentation in R/getIdentificationTable.R
 \name{trans2newStyle}
 \alias{trans2newStyle}
-\title{trans2newStyle}
+\title{Transform old style identification table to new style}
 \usage{
 trans2newStyle(identification.table)
 }
@@ -13,10 +13,11 @@ trans2newStyle(identification.table)
 A identification table (data.frame).
 }
 \description{
-Transform old style identification table to new style..
+Transform old style identification table to new style.
+\lifecycle{maturing}
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{

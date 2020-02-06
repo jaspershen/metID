@@ -2,11 +2,11 @@
 % Please edit documentation in R/metIdentify.R
 \name{metIdentify}
 \alias{metIdentify}
-\title{metIdentify}
+\title{Identify metabolites based on MS/MS database.}
 \usage{
 metIdentify(
   ms1.data,
-  ms2.data,
+  ms2.data = NULL,
   ms1.ms2.match.mz.tol = 25,
   ms1.ms2.match.rt.tol = 10,
   ms1.match.ppm = 25,
@@ -83,9 +83,10 @@ A metIdentifyClass object.
 }
 \description{
 Identify metabolites based on MS/MS database.
+\lifecycle{deprecated}
 }
 \seealso{
-The example and demo data of this function can be found 
+The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html
 }
 \author{

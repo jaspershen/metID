@@ -73,7 +73,7 @@
 
 # databaseConstruction(path = ".")
 ##------------------------------------------------------------------------------
-#' @title databaseConstruction
+#' @title Construct in-house or public MS2 database for metID.
 #' @description Construct MS2 spectra database according to mzXML data and compound information table (csv format).
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
@@ -419,7 +419,7 @@ setMethod(
   }
 )
 
-#' @title getMS2spectrum
+#' @title Get MS2 spectra of peaks from databaseClass object
 #' @description Get MS2 spectra of peaks from databaseClass object.
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}

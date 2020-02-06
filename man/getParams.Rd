@@ -2,7 +2,7 @@
 % Please edit documentation in R/function4metIdentifyClass.R
 \name{getParams}
 \alias{getParams}
-\title{getParams}
+\title{Get parameters from a metIdentifyClass object}
 \usage{
 getParams(object)
 }
@@ -14,6 +14,7 @@ A data frame contains all the parameters of this metIdentifiyClass object.
 }
 \description{
 Get parameters from a metIdentifyClass object.
+\lifecycle{maturing}
 }
 \author{
 Xiaotao Shen

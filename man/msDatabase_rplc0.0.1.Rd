@@ -3,7 +3,7 @@
 \docType{data}
 \name{msDatabase_rplc0.0.1}
 \alias{msDatabase_rplc0.0.1}
-\title{msDatabase_rplc0.0.1}
+\title{Michael Snyder lab RPLC database}
 \format{A databaseClass object.}
 \usage{
 msDatabase_rplc0.0.1

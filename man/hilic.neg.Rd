@@ -3,7 +3,7 @@
 \docType{data}
 \name{hilic.neg}
 \alias{hilic.neg}
-\title{hilic.neg}
+\title{HILIC negative mode adduct table}
 \format{A data frame.}
 \usage{
 hilic.neg

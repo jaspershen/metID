@@ -19,7 +19,8 @@
 <script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="metID">
-<meta property="og:description" content="Metabolite identification using MS1 and MS2 spectra.">
+<meta property="og:description" content="Metabolite identification using MS1 and MS2
+    spectra.">
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -46,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">metID</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">0.2.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">0.3.0</span>
       </span>
     </div>
 
@@ -68,6 +69,21 @@
 <li class="dropdown-header">Category A</li>
     <li>
       <a href="articles/metID.html">Instruction of metID</a>
+    </li>
+    <li>
+      <a href="articles/database_construction.html">Database construction</a>
+    </li>
+    <li>
+      <a href="articles/metabolite_annotation_using_MS2.html">Metabolite identification using MS2 database</a>
+    </li>
+    <li>
+      <a href="articles/metabolite_annotation_using_MS1.html">Metabolite identification using MS1 database</a>
+    </li>
+    <li>
+      <a href="articles/multiple_databases.html">Metabolite identification using multiple databases</a>
+    </li>
+    <li>
+      <a href="articles/other_tools.html">Other usefull tools in metID</a>
     </li>
     <li class="divider">
     <li class="dropdown-header">Category B</li>
@@ -234,8 +250,8 @@
   docsearch({
     
     
-    apiKey: '2f09495997a50f5008bc92fa73c5552d',
-    indexName: 'metidentify',
+    apiKey: '21ff2860978c5d2ceb7d4150364070ff',
+    indexName: 'metid',
     inputSelector: 'input#search-input.form-control',
     transformData: function(hits) {
       return hits.map(function (hit) {

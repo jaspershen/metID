@@ -3,7 +3,7 @@
 \docType{data}
 \name{hilic.pos}
 \alias{hilic.pos}
-\title{hilic.pos}
+\title{HILIC positive mode adduct table}
 \format{A data frame.}
 \usage{
 hilic.pos
