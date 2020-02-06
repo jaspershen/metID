@@ -1,5 +1,5 @@
 ---
-title: "Instruction of metID"
+title: "Other tools in metID"
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)
 - affiliation: School of Medicine, Stanford University

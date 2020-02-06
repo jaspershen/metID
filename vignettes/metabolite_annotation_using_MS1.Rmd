@@ -1,5 +1,5 @@
 ---
-title: "Annotate metabolites according to MS2 database using metID"
+title: "Annotate metabolites according to MS1 database using metID"
 author:
 - name: Xiaotao Shen (https://www.shenxt.info/)
 - affiliation: School of Medicine, Stanford University
