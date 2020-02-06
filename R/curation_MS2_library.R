@@ -1235,3 +1235,33 @@
 #   `[` (hmdbDatabase0.0.1@spectra.info$HMDB.ID, .) %>%
 #   unique(.) %>%
 #   length
+
+
+
+
+##
+# sxtTools::setwd_project()
+# setwd("ms2_database/")
+# dir()
+# load("hmdbDatabase0.0.1")
+# hmdbDatabase0.0.1
+# 
+# hmdbDatabase0.0.2 <- new(Class = "databaseClass",
+#                          database.info = hmdbDatabase0.0.1@database.info,
+#                          spectra.info = hmdbDatabase0.0.1@spectra.info,
+#                          spectra.data = hmdbDatabase0.0.1@spectra.data
+#                          )
+# 
+# 
+# hmdbDatabase0.0.2@database.info$Version <- "0.0.2"
+# 
+# save(hmdbDatabase0.0.2, file = "hmdbDatabase0.0.2", compress = "xz")
+# 
+# 
+# 
+
+
+
+
+
+

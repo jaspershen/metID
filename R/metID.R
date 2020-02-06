@@ -3,6 +3,7 @@
 #' \lifecycle{maturing}
 #' @author Xiaotao Shen
 #' \email{shenxt@@stanford.edu}
+#' @return A ASCII log of metID
 #' @export
 
 metID <- function(){

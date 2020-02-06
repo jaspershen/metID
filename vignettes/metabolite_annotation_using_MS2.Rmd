@@ -40,7 +40,7 @@ Place the MS1 peak table, MS2 data and database which you want to use in one fol
 
 ## **Run `metIdentify2()` function**
 
-We can use the demo data from `demoData` package to show how to use it. Here, we use the in-house database from Michael Snyder lab (`msDatabase_rplc0.0.1`).
+We can use the demo data from `demoData` package to show how to use it. Here, we use the in-house database from Michael Snyder lab (`msDatabase_rplc0.0.2`).
 
 ### **Demo data preparation**
 
@@ -51,8 +51,8 @@ path <- system.file("ms2_identification_demo_data1", package = "demoData")
 file.copy(from = path, to = ".", overwrite = TRUE, recursive = TRUE)
 new.path <- file.path("./ms2_identification_demo_data1")
 
-data("msDatabase_rplc0.0.1", package = "metID")
-save(msDatabase_rplc0.0.1, file = file.path(new.path, "msDatabase_rplc0.0.1"))
+data("msDatabase_rplc0.0.2", package = "metID")
+save(msDatabase_rplc0.0.2, file = file.path(new.path, "msDatabase_rplc0.0.2"))
 ```
 
 > You must put the database in the same folder with MS1 peak table and MS2 data.
@@ -82,7 +82,7 @@ result <- metIdentify2(ms1.data = "ms1.peak.table.csv", ##csv format
            path = new.path,
            total.score.tol = 0,
            candidate.num = 3,
-           database = "msDatabase_rplc0.0.1",
+           database = "msDatabase_rplc0.0.2",
            threads = 3)
 ```
 
@@ -181,7 +181,7 @@ You can also use `ms2plot()` function to output the MS2 specra match plot for on
 peak.name <- whichHasIden(object = result)
 head(peak.name)
 ms2.plot1 <- ms2plot(object = result, 
-                     database = msDatabase_rplc0.0.1, 
+                     database = msDatabase_rplc0.0.2, 
                      which.peak = peak.name[1,1])
 ms2.plot1
 ```
@@ -191,7 +191,7 @@ ms2.plot1
 ```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 ##which peaks have identification
 ms2.plot2 <- ms2plot(object = result, 
-                     database = msDatabase_rplc0.0.1, 
+                     database = msDatabase_rplc0.0.2, 
                      which.peak = peak.name[1,1], 
                      interaction.plot = TRUE)
 ms2.plot2
@@ -202,7 +202,7 @@ ms2.plot2
 ```{r, eval=FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
 ms2plot(
   object = result,
-  database = msDatabase_rplc0.0.1,
+  database = msDatabase_rplc0.0.2,
   which.peak = "all",
   path = file.path(new.path, "inhouse"), 
   threads = 4

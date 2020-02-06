@@ -52,8 +52,8 @@ reference:
     - hilic.neg
     - rp.pos
     - rp.neg
-    - msDatabase_rplc0.0.1
-    - msDatabase_hilic0.0.1
+    - msDatabase_rplc0.0.2
+    - msDatabase_hilic0.0.2
 
   - title: Other function
     desc: Other functions

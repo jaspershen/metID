@@ -6,6 +6,9 @@
 \usage{
 metID()
 }
+\value{
+A ASCII log of metID
+}
 \description{
 Show the base information of metID pacakge.
 \lifecycle{maturing}
