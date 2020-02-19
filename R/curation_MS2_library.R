@@ -1265,3 +1265,212 @@
 
 
 
+
+# ###########---------------------------------------------------------------------
+# #
+# sxtTools::setwd_project()
+# setwd("ms2_database/")
+# rm(list = ls())
+# 
+# #-------------------------------------------------
+# ##msDatabase_hilic0.0.1 to msDatabase_hilic0.0.2
+# load("msDatabase_hilic0.0.1")
+# msDatabase_hilic0.0.1
+# 
+# names(msDatabase_hilic0.0.1)
+# database.info <- 
+#   msDatabase_hilic0.0.1@database.info
+# spectra.info <- 
+#   msDatabase_hilic0.0.1@spectra.info
+# spectra.data <- 
+#   msDatabase_hilic0.0.1@spectra.data
+# 
+# 
+# spectra.info$Compound.name
+# 
+# 
+# remove_idx <- 
+#   which(is.na(spectra.info$Compound.name))
+# 
+# if(length(remove_idx) > 0){
+#   spectra.info <- 
+#     spectra.info[-remove_idx,]
+# }
+# 
+# 
+# ##--------------------------------------------------------------------------
+# ###change the name with like (1) 
+# temp_str <- 
+#   "\\([0-9]\\){1,2}$"
+# 
+#   spectra.info$Compound.name %>% 
+#   stringr::str_subset(temp_str)
+# 
+# 
+#   spectra.info$Compound.name <- 
+#     spectra.info$Compound.name %>% 
+#     stringr::str_replace(temp_str, "")
+# 
+# 
+#   ##--------------------------------------------------------------------------
+#   ###remove another name
+#   spectra.info$Compound.name[spectra.info$Compound.name == "NMMA (Tilarginine)"] <-
+#     "Tilarginine"
+#   
+#   temp_str <- 
+#     " \\(.{3,60}\\)$"
+#   
+#   spectra.info$Compound.name %>% 
+#     stringr::str_subset(temp_str)
+#   
+#   spectra.info$Compound.name <- 
+#     spectra.info$Compound.name %>% 
+#     stringr::str_replace(temp_str, "") %>% 
+#     stringr::str_trim()
+# 
+#   
+#   ##remove the "|" names
+#   temp_str <- 
+#     "\\|"
+#   
+#   spectra.info$Compound.name %>% 
+#     stringr::str_subset(temp_str)
+#   
+#   
+#   spectra.info$Compound.name <- 
+#     spectra.info$Compound.name %>% 
+#     stringr::str_split(temp_str) %>% 
+#     lapply(function(x){
+#       x[1]
+#     }) %>% 
+#     unlist()
+# 
+#   ##change all the names are capital
+#   temp_name <- spectra.info$Compound.name %>% 
+#     str_extract_all("[[:alpha:]]+") %>% 
+#     lapply(function(x) paste(x, collapse = "")) %>% 
+#     unlist() %>% 
+#     str_extract_all("[[:lower:]]+") %>% 
+#     lapply(function(x) paste(x, collapse = "")) %>% 
+#     unlist()
+#   
+#   
+#   temp_idx <- 
+#     which(temp_name == "" &
+#             !stringr::str_detect(spectra.info$Compound.name, "\\:")&
+#             nchar(spectra.info$Compound.name) >= 5
+#           )
+#   spectra.info$Compound.name[temp_idx] <- 
+#   spectra.info$Compound.name[temp_idx] %>% 
+#     stringr::str_to_title()
+#   
+#   spectra.info$Compound.name <- 
+#     spectra.info$Compound.name %>% 
+#     stringr:::str_trim()
+# 
+#   
+#   
+#   spectra.info$Compound.name
+#   
+#   
+#   ###
+#   ##get KEGG and HMDB using metID::tran_ID
+#   kegg.id <- 
+#     pbapply::pblapply(spectra.info$Compound.name, function(x){
+#       metflow2::transID(query = x, from = "Chemical name", to = "KEGG", top = 1)
+#     }) %>% 
+#     do.call(rbind, .)
+#   
+#   
+#   hmdb.id <- 
+#     pbapply::pblapply(spectra.info$Compound.name, function(x){
+#       metflow2::transID(query = x, from = "Chemical name",
+#                         to = "Human Metabolome Database", top = 1)
+#     }) %>% 
+#     do.call(rbind, .)
+#   
+#   ID_trans <-
+#     data.frame(
+#       KEGG = kegg.id$KEGG,
+#       HMDB = hmdb.id$`Human Metabolome Database`,
+#       stringsAsFactors = FALSE
+#     )
+#   
+#   idx1 <- grep("C", spectra.info$HMDB.ID)
+#   kegg1 <- spectra.info$HMDB.ID[idx1]
+#   
+#   idx2 <- grep("HMDB", spectra.info$KEGG.ID)
+#   hmdb2 <- spectra.info$KEGG.ID[idx2]
+#   
+#   spectra.info$KEGG.ID[idx1] <- kegg1
+#   
+#   spectra.info$HMDB.ID[idx2] <- hmdb2
+#   
+#   
+#   
+#   
+#   
+#   hmdb_kegg <- 
+#     spectra.info %>% 
+#     select(KEGG.ID, HMDB.ID) %>% 
+#     data.frame(ID_trans, stringsAsFactors = FALSE)
+#   
+#   hmdb_kegg <-
+#     apply(hmdb_kegg, 1, function(x){
+#       hmdb <- x[c(2,4)] 
+#       hmdb <- hmdb[!is.na(hmdb)]
+#       kegg <- x[c(1,3)]
+#       kegg <- kegg[!is.na(kegg)]
+#       
+#       hmdb <- ifelse(length(hmdb) == 0, NA, hmdb[1])
+#       kegg <- ifelse(length(kegg) == 0, NA, kegg[1])
+#       
+#       c(hmdb, kegg)
+#       
+#     }) %>% 
+#     t() %>% 
+#     as_tibble()
+#   
+#   
+#   colnames(hmdb_kegg) <- 
+#     c("HMDB.ID", "KEGG.ID")
+#   
+#   hmdb_kegg$HMDB.ID <- 
+#     hmdb_kegg$HMDB.ID %>% 
+#     sapply(function(x) {
+#       if(is.na(x)) {
+#         return(NA) 
+#       }
+#       if(nchar(x) == 9){
+#         pre <- stringr::str_extract(x, "[A-Za-z]{1,}")
+#         end <- stringr::str_extract(x, "[0-9]{1,}")
+#         end <- paste("00", end, sep = "")
+#         x <- paste(pre, end, sep = "")
+#       }
+#       x 
+#     }
+#     ) %>% 
+#     unname()
+#   
+#   cbind(variable_info$HMDB.ID, hmdb_kegg[,1])
+#   
+#   variable_info[,c("HMDB.ID", 'KEGG.ID')] <-
+#     hmdb_kegg
+#   
+#   
+#   
+#   
+#   
+#   database.info$Version <- "0.0.2"
+#   
+#   msDatabase_hilic0.0.2 <- new(
+#     Class = "databaseClass",
+#     database.info = database.info,
+#     spectra.info = spectra.info,
+#     spectra.data = spectra.data
+#   )
+#   
+#   save(msDatabase_hilic0.0.2, file = "msDatabase_hilic0.0.2", compress = "xz")
+#   
+#   
+#    
