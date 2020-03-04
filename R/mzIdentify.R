@@ -4,7 +4,7 @@
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param ms1.data The name of ms1 peak table (csv format). Column 1 is "name", column 2 is
-#' "mz" and column 3 is "rt" (second).
+#' "mz" and column 3 is "rt" (retention time, second).
 #' @param ms1.match.ppm Precursor match ppm tolerance.
 #' @param polarity The polarity of data, "positive"or "negative".
 #' @param column "hilic" (HILIC column) or "rp" (reverse phase).
