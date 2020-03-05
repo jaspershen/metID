@@ -56,3 +56,6 @@
 # # dbSendQuery(conn = conn, statement = 'drop table if exists t_demo')
 # # dbRemoveTable(conn = conn, name = "t_demo", overwrite = TRUE)
 # dbListTables(shendatabase)
+
+##tests
+
