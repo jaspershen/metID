@@ -115,3 +115,4 @@ The `database` should be the database (`databaseClass` object) which you want to
 > Note:
 `test.database2` is only a demo database (metIdentifyClass object). We will don't use it for next metabolite identification.
 
+Test from win10 shenxt github account.
