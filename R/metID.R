@@ -6,37 +6,49 @@
 #' @return A ASCII log of metID
 #' @export
 
-metID <- function(){
+metID <- function() {
   cat(crayon::green("Thank you for using metID!\n"))
   cat(crayon::green("Version 0.4.0 (20200328)\n"))
-  cat(crayon::green("More information can be found at https://jaspershen.github.io/metID/\n"))
+  cat(
+    crayon::green(
+      "More information can be found at https://jaspershen.github.io/metID/\n"
+    )
+  )
   cat(crayon::green(
-    c("                _    _____  ___ ", " _ __ ___   ___| |_  \\_   \\/   \\", 
-      "| '_ ` _ \\ / _ \\ __|  / /\\/ /\\ /", "| | | | | |  __/ |_/\\/ /_/ /_// ", 
-      "|_| |_| |_|\\___|\\__\\____/___,'  ", "                                "
+    c(
+      "                _    _____  ___ ",
+      " _ __ ___   ___| |_  \\_   \\/   \\",
+      "| '_ ` _ \\ / _ \\ __|  / /\\/ /\\ /",
+      "| | | | | |  __/ |_/\\/ /_/ /_// ",
+      "|_| |_| |_|\\___|\\__\\____/___,'  ",
+      "                                "
     )
     
   ), sep = "\n")
 }
 
 
-.onAttach <- function(libname, pkgname){
-  packageStartupMessage(crayon::green(
-    "metID,
+.onAttach <- function(libname, pkgname) {
+  packageStartupMessage(
+    crayon::green(
+      "metID,
 More information can be found at https://jaspershen.github.io/metID/
 If you use metID in you publication, please cite this publication:
 Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics.
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
 Version 0.4.0 (20200328)"
-  ),
-  cat(crayon::green(
-    c("                _    _____  ___ ", " _ __ ___   ___| |_  \\_   \\/   \\", 
-      "| '_ ` _ \\ / _ \\ __|  / /\\/ /\\ /", "| | | | | |  __/ |_/\\/ /_/ /_// ", 
-      "|_| |_| |_|\\___|\\__\\____/___,'  ", "                                "
-    )
-    
-  ), sep = "\n")
+    ),
+    cat(crayon::green(
+      c(
+        "                _    _____  ___ ",
+        " _ __ ___   ___| |_  \\_   \\/   \\",
+        "| '_ ` _ \\ / _ \\ __|  / /\\/ /\\ /",
+        "| | | | | |  __/ |_/\\/ /_/ /_// ",
+        "|_| |_| |_|\\___|\\__\\____/___,'  ",
+        "                                "
+      )
+    ), sep = "\n")
   )
 }
 
@@ -63,8 +75,8 @@ Version 0.4.0 (20200328)"
 # art <- readLines("logo.txt")
 # dput(art)
 # metid_logo <-
-#   c("                _    _____  ___ ", " _ __ ___   ___| |_  \\_   \\/   \\", 
-#     "| '_ ` _ \\ / _ \\ __|  / /\\/ /\\ /", "| | | | | |  __/ |_/\\/ /_/ /_// ", 
+#   c("                _    _____  ___ ", " _ __ ___   ___| |_  \\_   \\/   \\",
+#     "| '_ ` _ \\ / _ \\ __|  / /\\/ /\\ /", "| | | | | |  __/ |_/\\/ /_/ /_// ",
 #     "|_| |_| |_|\\___|\\__\\____/___,'  ", "                                "
 #   )
 # cat(metid_logo, sep = "\n")

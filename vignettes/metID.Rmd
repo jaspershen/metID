@@ -19,7 +19,8 @@ vignette: "%\\VignetteIndexEntry{Vignette Title} \n%\\VignetteEncoding{UTF-8}\n%
 ```{r, include=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  out.width = "100%"
 )
 ```
 

@@ -14,7 +14,8 @@ knitr::opts_chunk$set(
   # fig.height = 5,
   warning = FALSE,
   message = TRUE,
-  fig.path = "man/figures/"
+  fig.path = "man/figures/",
+  out.width = "100%"
 )
 ```
 

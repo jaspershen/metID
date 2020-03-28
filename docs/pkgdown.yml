@@ -1,12 +1,12 @@
-pandoc: 2.7.2
+pandoc: 2.3.1
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
   contact_us: contact_us.html
   database_construction: database_construction.html
+  metID: metID.html
   metabolite_annotation_using_MS1: metabolite_annotation_using_MS1.html
   metabolite_annotation_using_MS2: metabolite_annotation_using_MS2.html
-  metID: metID.html
   multiple_databases: multiple_databases.html
   other_tools: other_tools.html
 urls:

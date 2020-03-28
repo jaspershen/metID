@@ -1,11 +1,11 @@
 ---
-title: "Annotate metabolites according to MS1 database using metID"
+title: "Annotate metabolites according to MS1 database using metID package"
 author:
-- name: Xiaotao Shen (https://www.shenxt.info/)
+- name: Xiaotao Shen PhD (https://www.shenxt.info/)
 - affiliation: School of Medicine, Stanford University
-  name: Si Wu
+  name: Si Wu PhD
   url: http://shenxt.info/
-date: "`r Sys.Date()`"
+date: "Created on 2020-03-28 and updated on `r Sys.Date()`"
 output:
   html_document:
     df_print: paged
@@ -19,38 +19,13 @@ vignette: "%\\VignetteIndexEntry{Vignette Title} \n%\\VignetteEncoding{UTF-8}\n%
 ```{r, include=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  out.width = "100%"
 )
 ```
 
-## **Introduction & Installation**
-******************************************
+## **Data preparation**
 
-*metID* is a R package which can be used for in-hosue MS2 database construction, and metabolite identification based on in-house and public MS1 and MS2 database.
-
-![](../man/figures/workflow_metid.jpg)
-
-Please install it via [github](https://github.com/jaspershen/metID).
-
-```{r,eval=FALSE,warning=FALSE, R.options=""}
-if(!require(devtools)){
-  install.packages("devtools")
-}
-devtools::install_github("jaspershen/metID")
-##tinyTools is a dependent package for metID
-devtools::install_github("jaspershen/tinyTools")
-```
-
-## **Database construction**
-******************************************
-
-If you have in-house standards which have been acquired with MS2 spectra data, then you can construct the in-house MS2 spectra databases using `metID` package. 
-
-### **Data preparation**
-
-Firstly, please transform your raw standard MS data (positive and negative modes) to mzXML format using [ProteoWizard](http://proteowizard.sourceforge.net/). The parameter setting is shown like figure below:
-
-![](../man/figures/parameter_setting_MS_conventer.png)
 
 ### **Data organization**
 

@@ -19,7 +19,8 @@ vignette: "%\\VignetteIndexEntry{Vignette Title} \n%\\VignetteEncoding{UTF-8}\n%
 ```{r, include=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>", 
+  out.width = "100%"
 )
 ```
 
@@ -49,7 +50,9 @@ From column 1 to 11, the columns are "Lab.ID", "mz", "RT", "CAS.ID", "HMDB.ID", 
 
 ![](../man/figures/compound_information.png)
 
-Then create a folder and put your mzXML format datasets (positive mode in 'POS' folder and negative mode in 'NEG' folder) and compound information in it.
+Then create a folder and put your mzXML format datasets (positive mode in 'POS' folder and negative mode in 'NEG' folder) and compound information in it. The mzXML file should have the collision energy in the name of each file. For example, `test_NCE25.mzXML`.
+
+The names of the mzXML files should be like this: `xxx_NCE25.mzXML`.
 
 ![](../man/figures/database_construction.png)
 

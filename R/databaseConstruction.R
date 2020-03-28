@@ -99,6 +99,21 @@
 # setwd("test_data/database/")
 
 
+# path = "."
+# version = "0.0.1"
+# metabolite.info.name = "metabolite.info_RPLC.csv"
+# source = "Michael Snyder Lab"
+# link = "http://snyderlab.stanford.edu/"
+# creater = "Xiaotao Shen"
+# email = "shenxt1990@163.com"
+# rt = TRUE
+# mz.tol = 15
+# rt.tol = 30
+# threads = 3
+
+# database <-
+#   databaseConstruction(metabolite.info.name = "metabolite.info_RPLC.csv")
+
 setGeneric(
   name = "databaseConstruction",
   def = function(path = ".",
@@ -112,18 +127,59 @@ setGeneric(
                  mz.tol = 15,
                  rt.tol = 30,
                  threads = 3) {
+    ##check data first
+    file <- dir(path)
+    if (all(file != metabolite.info.name)) {
+      cat(crayon::red("No", metabolite.info.name, "in your", path, "\n"))
+      return(NULL)
+    }
+    
+    if (all(file != "POS")) {
+      cat(crayon::red("No POS file in your", path, "\n"))
+    } else{
+      file_pos <- dir(file.path(path, "POS"))
+      if (length(file_pos) == 0) {
+        cat(crayon::red("No mzXML files in POS folder\n"))
+      } else{
+        if (sum(stringr::str_detect(file_pos, "mzXML")) == 0) {
+          cat(crayon::red("No mzXML files in POS folder\n"))
+        }
+      }
+    }
+    
+    if (all(file != "NEG")) {
+      cat(crayon::red("No NEG file in your", path, "\n"))
+    } else{
+      file_neg <- dir(file.path(path, "NEG"))
+      if (length(file_neg) == 0) {
+        cat(crayon::red("No mzXML files in NEG folder\n"))
+      } else{
+        if (sum(stringr::str_detect(file_neg, "mzXML")) == 0) {
+          cat(crayon::red("No mzXML files in NEG folder\n"))
+        }
+      }
+    }
+    
+    ##read metabolite information
+    cat(crayon::green("Reading metabolite information...\n"))
     metabolite.info <-
-      readr::read_csv(file.path(path, metabolite.info.name))
+      readTable(file = file.path(path, metabolite.info.name),
+                col_types = readr::cols())
+    
     cat(crayon::green("Reading positive MS2 data...\n"))
+    
     file.pos <-
       dir(file.path(path, 'POS'), full.names = TRUE)
+    
     ms2.data.pos <-
       readMZXML(file = file.pos, threads = threads)
     
     ms1.info.pos <- lapply(ms2.data.pos, function(x) {
       x[[1]]
     })
+    
     ms1.info.pos <- do.call(rbind, ms1.info.pos)
+    
     ms1.info.pos$file <- basename(ms1.info.pos$file)
     
     ms2.info.pos <- lapply(ms2.data.pos, function(x) {
@@ -131,18 +187,23 @@ setGeneric(
     })
     
     rm(list = "ms2.data.pos")
+    
     cat(crayon::red("OK\n"))
     
     cat(crayon::green("Reading negative MS2 data...\n"))
+    
     file.neg <-
       dir(file.path(path, 'NEG'), full.names = TRUE)
+    
     ms2.data.neg <-
       readMZXML(file = file.neg, threads = threads)
     
     ms1.info.neg <- lapply(ms2.data.neg, function(x) {
       x[[1]]
     })
+    
     ms1.info.neg <- do.call(rbind, ms1.info.neg)
+    
     ms1.info.neg$file <- basename(ms1.info.neg$file)
     
     ms2.info.neg <- lapply(ms2.data.neg, function(x) {
@@ -150,10 +211,12 @@ setGeneric(
     })
     
     rm(list = "ms2.data.neg")
+    
     cat(crayon::red("OK\n"))
     
     ###---------------------------------------------------------------------------
     cat(crayon::green("Matching metabolites with MS2 spectra (positive)...\n"))
+    
     match.result.pos <-
       SXTMTmatch(
         data1 = as.data.frame(metabolite.info[, c("mz.pos", "RT")]),
@@ -213,11 +276,14 @@ setGeneric(
     
     names(spectra.pos) <-
       metabolite.info$Lab.ID[unique.idx1]
+    
     spectra.pos <-
       spectra.pos[which(!unlist(lapply(spectra.pos, is.null)))]
+    
     cat(crayon::red("OK\n"))
     ###---------------------------------------------------------------------------
     cat(crayon::green("Matching metabolites with MS2 spectra (negative)...\n"))
+    
     match.result.neg <-
       SXTMTmatch(
         data1 = as.data.frame(metabolite.info[, c("mz.neg", "RT")]),
@@ -275,6 +341,7 @@ setGeneric(
     
     names(spectra.neg) <-
       metabolite.info$Lab.ID[unique.idx1]
+    
     spectra.neg <-
       spectra.neg[which(!unlist(lapply(spectra.neg, is.null)))]
     
@@ -302,51 +369,13 @@ setGeneric(
       spectra.data = Spectra
     )
     
-    # save(msDatabase0.0.1, file = file.path(path, 'msDatabase0.0.1'), compress = "xz")
-    cat(crayon::bgYellow("All done!\n"))
+    msDatabase0.0.1@database.info$RT <-
+      ifelse(all(is.na(msDatabase0.0.1@spectra.info$RT)), FALSE, TRUE)
+    cat(crayon::bgRed("All done!\n"))
     return(msDatabase0.0.1)
-    
   }
 )
 
-
-#
-# ### RP negative
-# file <- dir(path = "D:/study/database and library/inhouse/Metabolite database/Zorbax SB aq_neg",
-#             pattern = "\\.raw", recursive = TRUE, full.names = TRUE)
-#
-# for(temp.file in file){
-#   cat(basename(temp.file))
-#   cat("\n")
-#   file.copy(from = temp.file,
-#             to = "D:/study/database and library/inhouse/Metabolite database/Zorbax SB aq_neg/mzXML_data",
-#             overwrite = TRUE)
-# }
-#
-# ### HILIC positive
-# file <- dir(path = "D:/study/database and library/inhouse/Metabolite database/ZIC-HILIC_pos",
-#             pattern = "\\.raw", recursive = TRUE, full.names = TRUE)
-#
-# for(temp.file in file){
-#   cat(basename(temp.file))
-#   cat("\n")
-#   file.copy(from = temp.file,
-#             to = "D:/study/database and library/inhouse/Metabolite database/ZIC-HILIC_pos",
-#             overwrite = TRUE)
-# }
-#
-#
-# ### HILIC negative
-# file <- dir(path = "D:/study/database and library/inhouse/Metabolite database/ZIC-HILIC_neg",
-#             pattern = "\\.raw", recursive = TRUE, full.names = TRUE)
-#
-# for(temp.file in file){
-#   cat(basename(temp.file))
-#   cat("\n")
-#   file.copy(from = temp.file,
-#             to = "D:/study/database and library/inhouse/Metabolite database/ZIC-HILIC_neg",
-#             overwrite = TRUE)
-# }
 
 ###S4 class for function metIdentification
 setClass(
@@ -355,6 +384,11 @@ setClass(
     database.info = "list",
     spectra.info = "data.frame",
     spectra.data = "list"
+  ),
+  prototype = list(
+    database.info = list(),
+    spectra.info = data.frame(matrix(nrow = 0, ncol = 0), stringsAsFactors = FALSE),
+    spectra.data = list()
   )
 )
 
@@ -366,44 +400,44 @@ setMethod(
     cat(crayon::green("Version:", object@database.info$Version, "\n"))
     cat(crayon::green("Source:", object@database.info$Source, "\n"))
     cat(crayon::green("Link:", object@database.info$Link, "\n"))
-    cat(crayon::green(
-      "Creater:",
-      object@database.info$Creater,
-      "(",
-      object@database.info$Email,
-      ")\n"
-    ))
     cat(
       crayon::green(
-        ifelse(
-          object@database.info$RT,
-          "With RT information\n",
-          "Without RT informtaion\n"
-        ) 
+        "Creater:",
+        object@database.info$Creater,
+        "(",
+        object@database.info$Email,
+        ")\n"
       )
     )
+    cat(crayon::green(
+      ifelse(
+        object@database.info$RT,
+        "With RT information\n",
+        "Without RT informtaion\n"
+      )
+    ))
     cat(crayon::yellow("-----------Spectral information------------\n"))
     cat(crayon::green(
       "There are",
       ncol(object@spectra.info),
-      "items of metabolites in database:\n" 
-    )
-    )
-    cat(crayon::green(paste(colnames(object@spectra.info), collapse = "; "), "\n"))
-    cat(crayon::green("There are", length(unique(object@spectra.info$Compound.name)), "metabolites in total\n"))
+      "items of metabolites in database:\n"
+    ))
+    cat(crayon::green(paste(
+      colnames(object@spectra.info), collapse = "; "
+    ), "\n"))
+    cat(crayon::green("There are", length(
+      unique(object@spectra.info$Compound.name)
+    ), "metabolites in total\n"))
     cat(crayon::green(
       "There are",
       length(object@spectra.data$Spectra.positive),
-      "metabolites in positive mode\n" 
-    )
-    )
-    cat(
-      crayon::green(
-        "There are",
-        length(object@spectra.data$Spectra.negative),
-        "metabolites in negative mode\n"  
-      )
-    )
+      "metabolites in positive mode\n"
+    ))
+    cat(crayon::green(
+      "There are",
+      length(object@spectra.data$Spectra.negative),
+      "metabolites in negative mode\n"
+    ))
     ce.pos <-
       unique(unlist(lapply(
         object@spectra.data$Spectra.positive, names
@@ -438,10 +472,40 @@ setGeneric(
                  database,
                  polarity = c("positive", "negative"),
                  ce = "30") {
-    # cat(crayon::yellow(
-    # "`getMS2spectrum()` is deprecated, use `get_ms2_spectrum()` (but mind the new semantics)."  
-    # ))
-    
+    cat(crayon::yellow(
+    "`getMS2spectrum()` is deprecated, use `get_ms2_spectrum()`."
+    ))
+    polarity <- match.arg(polarity)
+    if (class(database) != "databaseClass") {
+      stop("The database must be databaseClass object.\n")
+    }
+    pol <- ifelse(polarity == "positive", 1, 2)
+    temp <-
+      database@spectra.data[[pol]][[match(lab.id, names(database@spectra.data[[pol]]))]]
+    temp[[match(ce, names(temp))]]
+  }
+)
+
+
+#' @title Get MS2 spectra of peaks from databaseClass object
+#' @description Get MS2 spectra of peaks from databaseClass object.
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@163.com}
+#' @param lab.id The lab ID of metabolite.
+#' @param database Database (databaseClass object).
+#' @param polarity positive or negative.
+#' @param ce Collision value.
+#' @return A MS2 spectrum (data.frame).
+#' @export
+#' @seealso The example and demo data of this function can be found
+#' https://jaspershen.github.io/metID/articles/metID.html
+
+setGeneric(
+  name = "get_ms2_spectrum",
+  def = function(lab.id,
+                 database,
+                 polarity = c("positive", "negative"),
+                 ce = "30") {
     polarity <- match.arg(polarity)
     if (class(database) != "databaseClass") {
       stop("The database must be databaseClass object.\n")
@@ -455,8 +519,7 @@ setGeneric(
 
 
 
-
-#' 
+#'
 #' #' setGeneric(
 #' #'   name = "get_ms2_spectrum",
 #' #'   def = function(object,
@@ -467,7 +530,7 @@ setGeneric(
 #' #'
 #' #' )
 #' #'
-#' 
+#'
 #' #' setMethod(
 #' #'   f = "get_ms2_spectrum",
 #' #'   signature = "databaseClass",

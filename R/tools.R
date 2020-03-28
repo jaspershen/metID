@@ -78,7 +78,7 @@ setGeneric(
 setGeneric(
   name = "readTable",
   def = function(file, ...) {
-    extension <- getExtension(file = file, ...)
+    extension <- getExtension(file = file)
     if (extension == "csv") {
       return(readr::read_csv(file = file, ...))
     }
@@ -90,5 +90,12 @@ setGeneric(
     if (extension == "xls") {
       return(readxl::read_xls(path = file, ...))
     }
+    
+    if (extenstion != "csv" &
+        extenstion != "xlsx" &
+        extenstion != "xls") {
+      cat(crayon::red("file are not csv, xlsx or xls.\n"))
+    }
+    
   }
 )
