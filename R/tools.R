@@ -77,18 +77,18 @@ setGeneric(
 
 setGeneric(
   name = "readTable",
-  def = function(file) {
-    extension <- getExtension(file = file)
+  def = function(file, ...) {
+    extension <- getExtension(file = file, ...)
     if (extension == "csv") {
-      return(readr::read_csv(file = file))
+      return(readr::read_csv(file = file, ...))
     }
     
     if (extension == 'xlsx') {
-      return(readxl::read_xlsx(path = file))
+      return(readxl::read_xlsx(path = file, ...))
     }
     
     if (extension == "xls") {
-      return(readxl::read_xls(path = file))
+      return(readxl::read_xls(path = file, ...))
     }
   }
 )
