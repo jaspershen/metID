@@ -52,7 +52,7 @@ setClass(
     candidate.num = 3,
     database = "HMDB",
     threads = 0,
-    version = "0.3.0"
+    version = "0.4.0"
   )
 )
 

@@ -402,7 +402,7 @@ setGeneric(
       candidate.num = candidate.num,
       database = database.name,
       threads = threads,
-      version = "0.3.0"
+      version = "0.4.0"
     )
     cat(crayon::bgYellow("All done.\n"))
     return(return.result)
