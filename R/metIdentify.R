@@ -493,8 +493,8 @@ setGeneric(
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
 
-# sxtTools::setwd_project()
-# setwd("test_data/ms2_identification_demo_data1/")
+sxtTools::setwd_project()
+setwd("test_data/ms2_identification_demo_data1/")
 
 # result1 <- metIdentify2(ms1.data = "ms1.peak.table2.csv",
 #                         ms2.data = "QC1_MSMS_NCE25.mgf",
