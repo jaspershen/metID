@@ -46,6 +46,41 @@
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
 
+
+# sxtTools::setwd_project()
+# setwd("test_data/ms2_identification_demo_data1/")
+# ms1.data = "ms1.peak.table2.csv"
+# ##csv format
+# ms2.data = "QC1_MSMS_NCE25.mgf"
+# ##only msp and mgf and mz(X)ML are supported
+# ms1.ms2.match.mz.tol = 25
+# ms1.ms2.match.rt.tol = 10
+# ms1.match.ppm = 25
+# ms2.match.ppm = 30
+# mz.ppm.thr = 400
+# ms2.match.tol = 0.5
+# fraction.weight = 0.3
+# dp.forward.weight = 0.6
+# dp.reverse.weight = 0.1
+# rt.match.tol = 30
+# polarity = "positive"
+# ce = "all"
+# column = "rp"
+# ms1.match.weight = 0.25
+# rt.match.weight = 0.25
+# ms2.match.weight = 0.5
+# path = "."
+# total.score.tol = 0.5
+# candidate.num = 3
+# database = "msDatabase_rplc0.0.1"
+# threads = 3
+# 
+# result <- metIdentify(ms1.data = ms1.data, 
+#                       ms2.data = ms2.data, 
+#                       database = database,
+#                       polarity = polarity, 
+#                       column = column)
+
 setGeneric(
   name = "metIdentify",
   def = function(ms1.data,
@@ -81,13 +116,16 @@ setGeneric(
     if (missing(ms1.data)) {
       stop("Please provide MS1 data name.\n")
     }
+    
     ##parameter specification
     polarity <- match.arg(polarity)
     column <- match.arg(column)
+    
     ##check ms1.file and ms2.file
     file <- dir(path)
     intermediate_path <- file.path(path, "intermediate_data")
     dir.create(intermediate_path, showWarnings = FALSE)
+    
     if (!all(ms1.data %in% file)) {
       stop("MS1 data is not in the directory, please check it.\n")
     }
@@ -106,6 +144,7 @@ setGeneric(
     database.name <- database
     load(file.path(path, database.name))
     database <- get(database.name)
+    
     if (class(database) != "databaseClass") {
       stop("database must be databaseClass object\n")
     }
@@ -114,16 +153,20 @@ setGeneric(
       unique(unlist(lapply(
         database@spectra.data$Spectra.positive, names
       )))
+    
     ce.list.neg <-
       unique(unlist(lapply(
         database@spectra.data$Spectra.negative, names
       )))
+    
     ce.list <-
       ifelse(polarity == "positive", ce.list.pos, ce.list.neg)
+    
     if (all(ce %in% ce.list) & ce != "all") {
       stop("All ce values you set are not in database. Please check it.\n")
       ce <- ce[ce %in% ce.list]
     }
+    
     rm(list = c("ce.list.pos", "ce.list.neg", "ce.list"))
     
     ##ce values
@@ -161,6 +204,7 @@ setGeneric(
     if (!database@database.info$RT) {
       cat(crayon::yellow("No RT information in database.\nThe weight of RT have been set as 0.\n"))
     }
+    
     #------------------------------------------------------------------
     ##load adduct table
     if (polarity == "positive" & column == "hilic") {
@@ -189,7 +233,7 @@ setGeneric(
       load(file.path(intermediate_path, "ms2.info"))
     } else{
       ##read MS2 data
-      cat(crayon::green("Reading MS2 data...\n"))
+      # cat(crayon::green("Reading MS2 data...\n"))
       ms2.data.name <- ms2.data
       temp.ms2.type <-
         stringr::str_split(string = ms2.data.name,
@@ -263,6 +307,7 @@ setGeneric(
       
       duplicated.name <-
         unique(ms1.info$name[duplicated(ms1.info$name)])
+      
       if (length(duplicated.name) > 0) {
         lapply(duplicated.name, function(x) {
           ms1.info$name[which(ms1.info$name == x)] <-
@@ -271,16 +316,17 @@ setGeneric(
       }
       
       names(ms2.info) <- ms1.info$name
+      
       ##save intermediate data
       save(ms1.info,
            file = file.path(intermediate_path, "ms1.info"),
            compress = "xz")
+      
       save(ms2.info,
            file = file.path(intermediate_path, "ms2.info"),
            compress = "xz")
       cat(crayon::red("OK\n"))
     }
-    
     
     if (!missing(ms1.data)) {
       cat(crayon::green("Matching peak table with MS2 spectrum...\n"))
@@ -340,10 +386,12 @@ setGeneric(
           "MS2.spectra.name")
       ms1.info <-
         ms1.info[unique(match.result[, 2]), , drop = FALSE]
+      
       ms2.info <- ms2.info[unique(match.result[, 2])]
       
       match.result$Index.ms2.spectra <-
         match(match.result$MS2.spectra.name, ms1.info$name)
+      
       save(match.result,
            file = file.path(intermediate_path, "match.result"),
            compress = "xz")
@@ -404,7 +452,7 @@ setGeneric(
       threads = threads,
       version = "0.4.0"
     )
-    cat(crayon::bgYellow("All done.\n"))
+    cat(crayon::bgRed("All done.\n"))
     return(return.result)
   }
 )
@@ -445,16 +493,28 @@ setGeneric(
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
 
-# result1 <- metIdentify2(ms1.data = "ms1.peak.table2.csv", 
+# sxtTools::setwd_project()
+# setwd("test_data/ms2_identification_demo_data1/")
+
+# result1 <- metIdentify2(ms1.data = "ms1.peak.table2.csv",
 #                         ms2.data = "QC1_MSMS_NCE25.mgf",
 #                        database = "msDatabase_rplc0.0.1",
 #                        column = "rp")
-# 
+
 # result2 <- metIdentify2(ms1.data = "ms1.peak.table2.csv",
 #                         # ms2.data = "QC1_MSMS_NCE25.mgf",
 #                         database = "hmdbMS1Database0.0.1",
-#                         column = "rp", path = "test_data/ms2_identification_demo_data1/")
-# result3 <- mzIdentify(ms1.data = "ms1.peak.table2.csv", column = "rp", database = "HMDB.metabolite.data")
+#                         column = "rp", 
+#                         path = ".")
+# 
+# result3 <- mzIdentify(ms1.data = "ms1.peak.table2.csv", 
+#                       column = "rp", 
+#                       database = "HMDB.metabolite.data")
+# 
+# result4 <- mzIdentify(ms1.data = "ms1.peak.table2.csv", 
+#                       column = "rp", 
+#                       database = "msDatabase_rplc0.0.1")
+
 setGeneric(
   name = "metIdentify2",
   def = function(ms1.data,

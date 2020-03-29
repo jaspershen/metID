@@ -1,5 +1,5 @@
-#' @title Identify metabolites based on MS/MS database for one or several peaks with MS2
-#' @description Identify metabolites based on MS/MS database for one or several peaks with MS2.
+#' @title Identify single peak based on database.
+#' @description We can use this function to identify single peak, you can just provide m/z or rt, or you can also provide MS2 spectrum for this peak.
 #' \lifecycle{experimental}
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
@@ -28,6 +28,31 @@
 #' @param threads Number of threads
 #' @return A metIdentifyClass object.
 #' @export
+
+
+# ms1.mz
+# ms1.rt
+# ms2
+# ms1.match.ppm = 25
+# ms2.match.ppm = 30
+# mz.ppm.thr = 400
+# ms2.match.tol = 0.5
+# fraction.weight = 0.3
+# dp.forward.weight = 0.6
+# dp.reverse.weight = 0.1
+# rt.match.tol = 30
+# polarity = "positive"
+# ce = "all"
+# column = "hilic"
+# ms1.match.weight = 0.25
+# rt.match.weight = 0.25
+# ms2.match.weight = 0.5
+# path = "."
+# total.score.tol = 0.5
+# candidate.num = 3
+# database
+# threads = 3
+
 
 setGeneric(
   name = "identifySinglePeak",
