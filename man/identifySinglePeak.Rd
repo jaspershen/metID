@@ -2,7 +2,7 @@
 % Please edit documentation in R/singlePeakIdentification.R
 \name{identifySinglePeak}
 \alias{identifySinglePeak}
-\title{Identify metabolites based on MS/MS database for one or several peaks with MS2}
+\title{Identify single peak based on database.}
 \usage{
 identifySinglePeak(
   ms1.mz,
@@ -79,7 +79,7 @@ first column is m/z and the second column is the intensity.}
 A metIdentifyClass object.
 }
 \description{
-Identify metabolites based on MS/MS database for one or several peaks with MS2.
+We can use this function to identify single peak, you can just provide m/z or rt, or you can also provide MS2 spectrum for this peak.
 \lifecycle{experimental}
 }
 \author{

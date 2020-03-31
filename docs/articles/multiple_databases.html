@@ -65,18 +65,17 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li class="dropdown-header">Category A</li>
-    <li>
-      <a href="../articles/metID.html">Instruction of metID</a>
-    </li>
+<li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
     </li>
-    <li>
-      <a href="../articles/metabolite_annotation_using_MS2.html">Metabolite identification using MS2 database</a>
-    </li>
+    <li class="divider">
+    <li class="dropdown-header">Metabolite identification</li>
     <li>
       <a href="../articles/metabolite_annotation_using_MS1.html">Metabolite identification using MS1 database</a>
+    </li>
+    <li>
+      <a href="../articles/metabolite_annotation_using_MS2.html">Metabolite identification using MS2 database</a>
     </li>
     <li>
       <a href="../articles/multiple_databases.html">Metabolite identification using multiple databases</a>
@@ -85,7 +84,7 @@
       <a href="../articles/other_tools.html">Other usefull tools in metID</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Category B</li>
+    <li class="dropdown-header">Other links</li>
     <li>
       <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/">Test</a>
     </li>
@@ -154,7 +153,7 @@
                         <h4 class="author">Xiaotao Shen (<a href="https://www.shenxt.info/" class="uri">https://www.shenxt.info/</a>)</h4>
                                     <h4 class="author">Si Wu</h4>
             <address class="author_afil">
-      School of Medicine, Stanford University<br><h4 class="date">2020-03-28</h4>
+      School of Medicine, Stanford University<br><h4 class="date">2020-03-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jaspershen/metID/blob/master/vignettes/multiple_databases.Rmd"><code>vignettes/multiple_databases.Rmd</code></a></small>
       <div class="hidden name"><code>multiple_databases.Rmd</code></div>
@@ -308,7 +307,7 @@
 <a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/save.html">save</a></span>(msDatabase_rplc0.<span class="fl">0.2</span>, <span class="dt">file =</span> <span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(new.path, <span class="st">"msDatabase_rplc0.0.2"</span>))</a>
 <a class="sourceLine" id="cb6-9" data-line-number="9">ms2.data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="dt">pattern =</span> <span class="st">"mgf"</span>, <span class="kw"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span>(new.path), <span class="dt">value =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb6-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11">result &lt;-<span class="st"> </span><span class="kw"><a href="../reference/metIdentify2.html">metIdentify2</a></span>(<span class="dt">ms1.data =</span> <span class="st">"ms1.peak.table.csv"</span>, <span class="co">##csv format</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">result &lt;-<span class="st"> </span><span class="kw">metIdentify2</span>(<span class="dt">ms1.data =</span> <span class="st">"ms1.peak.table.csv"</span>, <span class="co">##csv format</span></a>
 <a class="sourceLine" id="cb6-12" data-line-number="12">           <span class="dt">ms2.data =</span> ms2.data,<span class="co">##only msp and mgf and mz(X)ML are supported</span></a>
 <a class="sourceLine" id="cb6-13" data-line-number="13">           <span class="dt">ms1.ms2.match.mz.tol =</span> <span class="dv">25</span>,</a>
 <a class="sourceLine" id="cb6-14" data-line-number="14">           <span class="dt">ms1.ms2.match.rt.tol =</span> <span class="dv">10</span>,</a>

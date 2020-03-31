@@ -1,4 +1,5 @@
 
+
 ###S4 class for function metIdentification
 setClass(
   Class = "metIdentifyClass",
@@ -27,7 +28,7 @@ setClass(
     database = "character",
     threads = "numeric",
     version = "character"
-  ), 
+  ),
   prototype = list(
     ms1.data = data.frame(matrix(nrow = 0, ncol = 0), stringsAsFactors = FALSE),
     ms1.info = data.frame(matrix(nrow = 0, ncol = 0), stringsAsFactors = FALSE),
@@ -67,7 +68,7 @@ setMethod(
       cat(crayon::green(object@version, "\n"))
     }
     cat(crayon::green("-----------Identifications------------\n"))
-    cat(crayon::yellow("(Use getIdentificationTable to get identification table)\n"))
+    cat(crayon::yellow("(Use get_identification_table() to get identification table)\n"))
     cat(crayon::green("There are", nrow(object@ms1.data), "peaks\n"))
     cat(crayon::green(nrow(object@match.result), "peaks have MS2 spectra\n"))
     cat(crayon::green("There are",
@@ -86,7 +87,7 @@ setMethod(
     }
     
     cat(crayon::green("-----------Parameters------------\n"))
-    cat(crayon::yellow("(Use getParams to get all the parameters of this processing)\n"))
+    cat(crayon::yellow("(Use get_parameters() to get all the parameters of this processing)\n"))
     cat(crayon::green("Polarity:", object@polarity, "\n"))
     cat(crayon::green("Collision energy:", object@ce, "\n"))
     cat(crayon::green("database:", object@database, "\n"))
@@ -110,10 +111,13 @@ setMethod(
 #' @import magrittr
 #' @import dplyr
 setGeneric(
-  name = "getParams",
+  name = "get_parameters",
   def = function(object) {
+    if (class(object) == "mzIdentifyClass"){
+      stop(crayon::red('Please use getParams2 to get the parameters for mzIdentifyClass object.\n'))
+    }
     if (class(object) != "metIdentifyClass")
-      stop("Only for metIdentifyClass\n")
+      stop(crayon::red("Only for metIdentifyClass\n"))
     data.frame(
       "Parameter" = c(
         "ms1.ms2.match.mz.tol",
@@ -173,7 +177,7 @@ setGeneric(
         object@threads
       ),
       stringsAsFactors = FALSE
-    ) %>% 
+    ) %>%
       tibble::as_tibble()
   }
 )
@@ -195,15 +199,18 @@ setGeneric(
 #' https://jaspershen.github.io/metID/articles/metID.html
 
 setGeneric(
-  name = "getIdenInfo",
+  name = "get_iden_info",
   def = function(object,
                  which.peak,
                  database) {
+    
     if (missing(object) | missing(which.peak) | missing(database)) {
       stop("Please provide the object, which.peak and database.\n")
     }
+    
     if (class(object) != "metIdentifyClass")
       stop("Only for metIdentifyClass\n")
+    
     if (class(database) != "databaseClass")
       stop("Only for databaseClass\n")
     
@@ -213,6 +220,25 @@ setGeneric(
     
     if (!which.peak %in% object@ms1.data$name) {
       stop(which.peak, " is not in peak table, please check it.\n")
+    }
+    
+    if(is.null(object@identification.result[[1]])) {
+      cat(crayon::red("No identification in this result.\n"))
+      return(NULL)
+    }
+    
+    #####
+    if(nrow(object@match.result) == 0){
+      temp <- match(which.peak, names(object@identification.result)) %>% 
+        `[[`(object@identification.result, .)
+      
+      temp <-
+        data.frame(temp, database@spectra.info[match(temp$Lab.ID, database@spectra.info$Lab.ID),
+                                               setdiff(colnames(database@spectra.info), colnames(temp))], 
+                   stringsAsFactors = FALSE)
+      temp <- tibble::as_tibble(temp)
+      return(temp)
+      
     }
     
     if (is.na(match(which.peak, object@match.result$MS1.peak.name))) {
@@ -225,7 +251,7 @@ setGeneric(
       names(identification.result)
     ))) {
       cat(crayon::green("The peak hsa no identification result.\n"))
-      return()
+      return(NULL)
     }
     
     temp <-
@@ -234,11 +260,15 @@ setGeneric(
     temp <- identification.result[[temp]]
     temp <-
       data.frame(temp, database@spectra.info[match(temp$Lab.ID, database@spectra.info$Lab.ID),
-                                             setdiff(colnames(database@spectra.info), colnames(temp))], stringsAsFactors = FALSE)
+                                             setdiff(colnames(database@spectra.info), colnames(temp))], 
+                 stringsAsFactors = FALSE)
     temp <- tibble::as_tibble(temp)
     temp
   }
 )
+
+
+
 
 ##------------------------------------------------------------------------------
 #' @title Get MS2 match plots from a metIdentifyClass object
@@ -248,7 +278,7 @@ setGeneric(
 #' \email{shenxt1990@@163.com}
 #' @param object A metIdentifyClass object.
 #' @param database Used database (databaseClass).
-#' @param which.peak Peak name(s) or "all". You can use whichHasIden
+#' @param which.peak Peak name(s) or "all". You can use which_has_identification functions to get what peaks have identifications.
 #' @param ppm.tol MS2 fragment match ppm.
 #' @param mz.ppm.thr The threshold for m/z error calculation.
 #' @param path Work directory.
@@ -304,9 +334,16 @@ setGeneric(
     #
     if (class(object) != "metIdentifyClass")
       stop("Only for metIdentifyClass\n")
+    
+    if(nrow(object@match.result) == 0){
+      cat(crayon::red("Only for results using MS/MS spectra identification.\n"))
+      return(NULL)
+    }
+    
     if (which.peak == "all") {
       which.peak <- object@ms1.data$name
     }
+    
     identification.result <- object@identification.result
     polarity <- object@polarity
     figure.type <- match.arg(figure.type)
@@ -354,7 +391,7 @@ setGeneric(
       }
       
       lib.spectrum <-
-        getMS2spectrum(
+        get_ms2_spectrum(
           lab.id = matched.info["Lab.ID"],
           database = database,
           polarity = polarity,
@@ -574,6 +611,7 @@ setGeneric(
   }
 )
 
+
 #------------------------------------------------------------------------------
 #' @title Get the peak names which have identifications
 #' @description Get the peak names which have identifications.
@@ -587,17 +625,33 @@ setGeneric(
 #' https://jaspershen.github.io/metID/articles/metID.html
 
 setGeneric(
-  name = "whichHasIden",
+  name = "which_has_identification",
   def = function(object) {
     if (class(object) != "metIdentifyClass")
       stop("Only for metIdentifyClass\n")
-    temp <-
-      object@match.result[match(names(object@identification.result),
-                                object@match.result$MS2.spectra.name), c(3, 4)]
+    
+    if(is.null(object@identification.result[[1]])){
+      cat(crayon::yellow("No identifications in this object.\n"))
+      return(NULL)
+    }
+    
+    if(nrow(object@match.result) != 0){
+      temp <-
+        object@match.result[match(names(object@identification.result),
+                                  object@match.result$MS2.spectra.name), c(3, 4)]  
+    }else{
+      temp <- names(object@identification.result) %>% 
+        data.frame("MS1.peak.name" = ., 
+                   MS2.spectra.name = NA, 
+                   stringsAsFactors = FALSE)
+    }
     rownames(temp) <- NULL
-    temp
+    return(temp)
   }
 )
+
+
+
 
 #------------------------------------------------------------------------------
 #' @title Filter identifications according to m/z error, RT error, MS similarity and total score
@@ -617,7 +671,7 @@ setGeneric(
 #'
 #'
 setGeneric(
-  name = "filterIden",
+  name = "filter_identification",
   def = function(object,
                  ms1.match.ppm = 25,
                  rt.match.tol = 30,
@@ -634,15 +688,17 @@ setGeneric(
     
     identification.result <- object@identification.result
     
-    
     identification.result <-
       lapply(identification.result, function(x) {
         RT.error <- x$RT.error
         RT.error[is.na(RT.error)] <- rt.match.tol - 1
+        SS <- x$SS 
+        SS[is.na(SS)] <- ms2.match.tol + 1
+        SS[SS == 0] <- ms2.match.tol + 1
         x <-
           x[which(
             x$mz.error < ms1.match.ppm & RT.error < rt.match.tol &
-              x$SS > ms2.match.tol &
+              SS > ms2.match.tol &
               x$Total.score > total.score.tol
           ), , drop = FALSE]
       })
@@ -659,6 +715,7 @@ setGeneric(
   }
 )
 
+
 #------------------------------------------------------------------------------
 #' @title Get spectra of peaks from metIdentifyClass object
 #' @description Get spectra of peaks from metIdentifyClass object.
@@ -673,13 +730,19 @@ setGeneric(
 #' https://jaspershen.github.io/metID/articles/metID.html
 
 setGeneric(
-  name = "getMS2spectrum2Object",
+  name = "get_ms2_spectrum_from_object",
   def = function(peak.name,
                  object) {
     if (class(object) != "metIdentifyClass")
       stop("Only for metIdentifyClass\n")
     if (missing(peak.name))
       stop('Please provide peak name.\n')
+    
+    if(nrow(object@match.result) == 0){
+      cat(crayon::red('No MS2 spectrum in this result.\n'))
+      return(NULL)
+    }
+    
     object@ms2.info[[which(object@match.result$MS2.spectra.name[match(peak.name, object@match.result$MS1.peak.name)] == names(object@ms2.info))]]
   }
 )

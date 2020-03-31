@@ -113,18 +113,17 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Category A</li>
-    <li>
-      <a href="../articles/metID.html">Instruction of metID</a>
-    </li>
+    <li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
     </li>
-    <li>
-      <a href="../articles/metabolite_annotation_using_MS2.html">Metabolite identification using MS2 database</a>
-    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Metabolite identification</li>
     <li>
       <a href="../articles/metabolite_annotation_using_MS1.html">Metabolite identification using MS1 database</a>
+    </li>
+    <li>
+      <a href="../articles/metabolite_annotation_using_MS2.html">Metabolite identification using MS2 database</a>
     </li>
     <li>
       <a href="../articles/multiple_databases.html">Metabolite identification using multiple databases</a>
@@ -133,7 +132,7 @@
       <a href="../articles/other_tools.html">Other usefull tools in metID</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Category B</li>
+    <li class="dropdown-header">Other links</li>
     <li>
       <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/">Test</a>
     </li>
@@ -199,7 +198,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Identify peaks based on MS1 database</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/mzIdentify.R'><code>R/mzIdentify.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/deprecated_mzIdentify.R'><code>R/deprecated_mzIdentify.R</code></a></small>
     <div class="hidden name"><code>mzIdentify.Rd</code></div>
     </div>
 
@@ -211,12 +210,14 @@
     <pre class="usage"><span class='fu'>mzIdentify</span>(
   <span class='no'>ms1.data</span>,
   <span class='kw'>ms1.match.ppm</span> <span class='kw'>=</span> <span class='fl'>25</span>,
+  <span class='kw'>rt.match.tol</span> <span class='kw'>=</span> <span class='fl'>30</span>,
   <span class='kw'>polarity</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"positive"</span>, <span class='st'>"negative"</span>),
   <span class='kw'>column</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hilic"</span>, <span class='st'>"rp"</span>),
   <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"."</span>,
   <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>,
   <span class='no'>database</span>,
-  <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>
+  <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>silence.deprecated</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -225,11 +226,15 @@
     <tr>
       <th>ms1.data</th>
       <td><p>The name of ms1 peak table (csv format). Column 1 is "name", column 2 is
-"mz" and column 3 is "rt" (second).</p></td>
+"mz" and column 3 is "rt" (retention time, second).</p></td>
     </tr>
     <tr>
       <th>ms1.match.ppm</th>
       <td><p>Precursor match ppm tolerance.</p></td>
+    </tr>
+    <tr>
+      <th>rt.match.tol</th>
+      <td><p>RT match tolerance.</p></td>
     </tr>
     <tr>
       <th>polarity</th>
@@ -255,11 +260,15 @@
       <th>threads</th>
       <td><p>Number of threads</p></td>
     </tr>
+    <tr>
+      <th>silence.deprecated</th>
+      <td><p>Silenc the deprecated information or not.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A mzIdentifyClass object.</p>
+    <p>A mzIdentifyClass or metIdentifyClass object.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>The example and demo data of this function can be found

@@ -50,6 +50,8 @@
 
 <meta property="og:title" content="Identify metabolites based on MS/MS database. — metIdentify" />
 <meta property="og:description" content="Identify metabolites based on MS/MS database.
+
+Identify metabolites based on MS/MS database.
 " />
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -113,18 +115,17 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Category A</li>
-    <li>
-      <a href="../articles/metID.html">Instruction of metID</a>
-    </li>
+    <li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
     </li>
-    <li>
-      <a href="../articles/metabolite_annotation_using_MS2.html">Metabolite identification using MS2 database</a>
-    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Metabolite identification</li>
     <li>
       <a href="../articles/metabolite_annotation_using_MS1.html">Metabolite identification using MS1 database</a>
+    </li>
+    <li>
+      <a href="../articles/metabolite_annotation_using_MS2.html">Metabolite identification using MS2 database</a>
     </li>
     <li>
       <a href="../articles/multiple_databases.html">Metabolite identification using multiple databases</a>
@@ -133,7 +134,7 @@
       <a href="../articles/other_tools.html">Other usefull tools in metID</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Category B</li>
+    <li class="dropdown-header">Other links</li>
     <li>
       <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/">Test</a>
     </li>
@@ -199,12 +200,14 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Identify metabolites based on MS/MS database.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/metIdentify.R'><code>R/metIdentify.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/deprecated_metIdentify.R'><code>R/deprecated_metIdentify.R</code></a>, <a href='https://github.com/jaspershen/metID/blob/master/R/metIdentify.R'><code>R/metIdentify.R</code></a></small>
     <div class="hidden name"><code>metIdentify.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Identify metabolites based on MS/MS database.
+<img src='figures/lifecycle-deprecated.svg' alt='Deprecated lifecycle' /></p>
+<p>Identify metabolites based on MS/MS database.
 <img src='figures/lifecycle-deprecated.svg' alt='Deprecated lifecycle' /></p>
     </div>
 
@@ -231,7 +234,35 @@
   <span class='kw'>total.score.tol</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
   <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>,
   <span class='no'>database</span>,
-  <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>
+  <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>silence.deprecated</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
+
+<span class='fu'>metIdentify</span>(
+  <span class='no'>ms1.data</span>,
+  <span class='kw'>ms2.data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ms1.ms2.match.mz.tol</span> <span class='kw'>=</span> <span class='fl'>25</span>,
+  <span class='kw'>ms1.ms2.match.rt.tol</span> <span class='kw'>=</span> <span class='fl'>10</span>,
+  <span class='kw'>ms1.match.ppm</span> <span class='kw'>=</span> <span class='fl'>25</span>,
+  <span class='kw'>ms2.match.ppm</span> <span class='kw'>=</span> <span class='fl'>30</span>,
+  <span class='kw'>mz.ppm.thr</span> <span class='kw'>=</span> <span class='fl'>400</span>,
+  <span class='kw'>ms2.match.tol</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>fraction.weight</span> <span class='kw'>=</span> <span class='fl'>0.3</span>,
+  <span class='kw'>dp.forward.weight</span> <span class='kw'>=</span> <span class='fl'>0.6</span>,
+  <span class='kw'>dp.reverse.weight</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
+  <span class='kw'>rt.match.tol</span> <span class='kw'>=</span> <span class='fl'>30</span>,
+  <span class='kw'>polarity</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"positive"</span>, <span class='st'>"negative"</span>),
+  <span class='kw'>ce</span> <span class='kw'>=</span> <span class='st'>"all"</span>,
+  <span class='kw'>column</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hilic"</span>, <span class='st'>"rp"</span>),
+  <span class='kw'>ms1.match.weight</span> <span class='kw'>=</span> <span class='fl'>0.25</span>,
+  <span class='kw'>rt.match.weight</span> <span class='kw'>=</span> <span class='fl'>0.25</span>,
+  <span class='kw'>ms2.match.weight</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"."</span>,
+  <span class='kw'>total.score.tol</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='no'>database</span>,
+  <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>silence.deprecated</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -330,14 +361,21 @@
       <th>threads</th>
       <td><p>Number of threads</p></td>
     </tr>
+    <tr>
+      <th>silence.deprecated</th>
+      <td><p>Silenc the deprecated information or not.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A metIdentifyClass object.</p>
+<p>A metIdentifyClass object.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>The example and demo data of this function can be found
+https://jaspershen.github.io/metID/articles/metID.html</p>
+<p>The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html</p></div>
 
   </div>
@@ -351,6 +389,8 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
 
     <h2>Author</h2>
     <p>Xiaotao Shen
+<a href='mailto:shenxt1990@163.com'>shenxt1990@163.com</a></p>
+<p>Xiaotao Shen
 <a href='mailto:shenxt1990@163.com'>shenxt1990@163.com</a></p>
   </div>
 </div>

@@ -4,7 +4,7 @@ url: https://jaspershen.github.io/metID/
 
 home:
   strip_header: false
-  title: metID
+  title: metID package
   links:
   - text: Find me
     href: https://shenxt.info/
@@ -73,21 +73,21 @@ navbar:
     articles:
       text: Articles
       menu:
-      - text: Category A
-      - text: Instruction of metID
-        href: articles/metID.html
+      - text: "Database construction"
       - text: Database construction
         href: articles/database_construction.html
-      - text: Metabolite identification using MS2 database
-        href: articles/metabolite_annotation_using_MS2.html
+      - text: -------
+      - text: "Metabolite identification"
       - text: Metabolite identification using MS1 database
         href: articles/metabolite_annotation_using_MS1.html
+      - text: Metabolite identification using MS2 database
+        href: articles/metabolite_annotation_using_MS2.html
       - text: Metabolite identification using multiple databases
         href: articles/multiple_databases.html
       - text: Other usefull tools in metID
         href: articles/other_tools.html
       - text: -------
-      - text: "Category B"
+      - text: "Other links"
       - text: Test
         href: https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/
     twitter:

@@ -472,9 +472,9 @@ setGeneric(
                  database,
                  polarity = c("positive", "negative"),
                  ce = "30") {
-    cat(crayon::yellow(
-    "`getMS2spectrum()` is deprecated, use `get_ms2_spectrum()`."
-    ))
+    # cat(crayon::yellow(
+    # "`getMS2spectrum()` is deprecated, use `get_ms2_spectrum()`."
+    # ))
     polarity <- match.arg(polarity)
     if (class(database) != "databaseClass") {
       stop("The database must be databaseClass object.\n")

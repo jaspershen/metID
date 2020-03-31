@@ -10,6 +10,9 @@
     <loc>https://jaspershen.github.io/metID//reference/filterIden.html</loc>
   </url>
   <url>
+    <loc>https://jaspershen.github.io/metID//reference/filter_identification.html</loc>
+  </url>
+  <url>
     <loc>https://jaspershen.github.io/metID//reference/getIdenInfo.html</loc>
   </url>
   <url>
@@ -31,6 +34,21 @@
     <loc>https://jaspershen.github.io/metID//reference/getParams2.html</loc>
   </url>
   <url>
+    <loc>https://jaspershen.github.io/metID//reference/get_iden_info.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID//reference/get_identification_table.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID//reference/get_ms2_spectrum.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID//reference/get_ms2_spectrum_from_object.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID//reference/get_parameters.html</loc>
+  </url>
+  <url>
     <loc>https://jaspershen.github.io/metID//reference/hilic.neg.html</loc>
   </url>
   <url>
@@ -40,13 +58,13 @@
     <loc>https://jaspershen.github.io/metID//reference/identifySinglePeak.html</loc>
   </url>
   <url>
+    <loc>https://jaspershen.github.io/metID//reference/identify_metabolites.html</loc>
+  </url>
+  <url>
     <loc>https://jaspershen.github.io/metID//reference/metID.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//reference/metIdentify.html</loc>
-  </url>
-  <url>
-    <loc>https://jaspershen.github.io/metID//reference/metIdentify2.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//reference/metIdentify4all.html</loc>
@@ -94,7 +112,13 @@
     <loc>https://jaspershen.github.io/metID//reference/trans2newStyle.html</loc>
   </url>
   <url>
+    <loc>https://jaspershen.github.io/metID//reference/trans_to_new_style.html</loc>
+  </url>
+  <url>
     <loc>https://jaspershen.github.io/metID//reference/whichHasIden.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID//reference/which_has_identification.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//articles/contact_us.html</loc>

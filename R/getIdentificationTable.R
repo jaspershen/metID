@@ -1,6 +1,3 @@
-
-
-
 ##------------------------------------------------------------------------------
 #' @title Get identification table from a metIdentifyClass object
 #' @description Get identification table from a metIdentifyClass object.
@@ -23,7 +20,7 @@
 # table3 <- getIdentificationTable2(result3)
 # test <- getIdentificationTable(result1, result2)
 setGeneric(
-  name = "getIdentificationTable",
+  name = "get_identification_table",
   def = function(...,
                  candidate.num = 3,
                  type = c("old", "new")) {
@@ -31,17 +28,22 @@ setGeneric(
     if (candidate.num <= 0) {
       candidate.num <- 1
     }
+    
     object <- list(...)
+    
     if (any(unique(unlist(lapply(object, class))) != "metIdentifyClass")) {
       stop("Only for metIdentifyClass\n")
     }
     
     type <- match.arg(type)
+    
     ##if object number is 1
     if (length(object) == 1) {
       object <- object[[1]]
       database <- object@database
+      
       identification.result <- object@identification.result
+      
       if (is.null(identification.result[[1]])) {
         return(NULL)
       }
@@ -52,7 +54,8 @@ setGeneric(
           getIdentificationTable2(
             object = object,
             candidate.num = candidate.num,
-            type = type
+            type = type,
+            silence.deprecated = TRUE
           )
         )
       }
@@ -307,13 +310,12 @@ setGeneric(
       identification.table <-
         data.frame(peak.table, identification.table, stringsAsFactors = FALSE)
       if(type == "new"){
-        identification.table <- trans2newStyle(identification.table = identification.table)
+        identification.table <- trans_to_new_style(identification.table = identification.table)
       }
       return(tibble::as_tibble(identification.table))
     }
   }
 )
-
 
 
 
@@ -326,14 +328,14 @@ setGeneric(
 #' \lifecycle{maturing}
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
-#' @param identification.table Identification table from getIdentificationTable or getIdentificationTable2.
+#' @param identification.table Identification table from get_identification_table.
 #' @return A identification table (data.frame).
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
 
 setGeneric(
-  name = "trans2newStyle",
+  name = "trans_to_new_style",
   def = function(identification.table) {
     if (all(colnames(identification.table) != "Identification")) {
       return(identification.table)

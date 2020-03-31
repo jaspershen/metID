@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Identify metabolites based on MS/MS database for one or several peaks with MS2 — identifySinglePeak • metID</title>
+<title>Identify single peak based on database. — identifySinglePeak • metID</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
 
 
 
-<meta property="og:title" content="Identify metabolites based on MS/MS database for one or several peaks with MS2 — identifySinglePeak" />
-<meta property="og:description" content="Identify metabolites based on MS/MS database for one or several peaks with MS2.
+<meta property="og:title" content="Identify single peak based on database. — identifySinglePeak" />
+<meta property="og:description" content="We can use this function to identify single peak, you can just provide m/z or rt, or you can also provide MS2 spectrum for this peak.
 " />
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -113,18 +113,17 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Category A</li>
-    <li>
-      <a href="../articles/metID.html">Instruction of metID</a>
-    </li>
+    <li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
     </li>
-    <li>
-      <a href="../articles/metabolite_annotation_using_MS2.html">Metabolite identification using MS2 database</a>
-    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Metabolite identification</li>
     <li>
       <a href="../articles/metabolite_annotation_using_MS1.html">Metabolite identification using MS1 database</a>
+    </li>
+    <li>
+      <a href="../articles/metabolite_annotation_using_MS2.html">Metabolite identification using MS2 database</a>
     </li>
     <li>
       <a href="../articles/multiple_databases.html">Metabolite identification using multiple databases</a>
@@ -133,7 +132,7 @@
       <a href="../articles/other_tools.html">Other usefull tools in metID</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Category B</li>
+    <li class="dropdown-header">Other links</li>
     <li>
       <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/">Test</a>
     </li>
@@ -198,13 +197,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Identify metabolites based on MS/MS database for one or several peaks with MS2</h1>
+    <h1>Identify single peak based on database.</h1>
     <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/singlePeakIdentification.R'><code>R/singlePeakIdentification.R</code></a></small>
     <div class="hidden name"><code>identifySinglePeak.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Identify metabolites based on MS/MS database for one or several peaks with MS2.
+    <p>We can use this function to identify single peak, you can just provide m/z or rt, or you can also provide MS2 spectrum for this peak.
 <a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
     </div>
 

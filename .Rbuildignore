@@ -9,12 +9,26 @@ ms2_database
 pkgdown
 docs
 vignettes
-vignettes\metID_cache
-vignettes\metabolite_identification.png
-vignettes\database_construction.png
+vignettes/metID_cache
+vignettes/metabolite_identification.png
+vignettes/database_construction.png
 vignettes/database_construction
+vignettes/*_cache
+vignettes/*.png
+
 test_data
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
 database_construction
+
+man/figures
+
+.git
+
+# RStudio files
+.Rproj.user/
+
+# History files
+.Rhistory
+.Rapp.history

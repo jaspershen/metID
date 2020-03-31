@@ -20,8 +20,10 @@
 # produced vignettes
 vignettes/*.html
 vignettes/*.pdf
+vignettes/*.png
 vignettes/database_construction
 vignettes/ms2_identification_demo_data1
+vignettes/*_cache
 
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth

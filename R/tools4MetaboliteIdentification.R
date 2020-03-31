@@ -57,7 +57,7 @@ setGeneric(
     
     ##get the MS2 spectra within the CE values
     if (any(ce == "all")) {
-      cat(crayon::yellow("You use all CE values.\n"))
+      cat(crayon::yellow("Use all CE values.\n"))
       ce <- unique(unlist(lapply(spectra.data, function(x) {
         names(x)
       })))
@@ -81,38 +81,39 @@ setGeneric(
     
     spectra.info <- database@spectra.info
     spectra.info <-
-      spectra.info[which(spectra.info$Lab.ID %in% names(spectra.data)), ]
+      spectra.info[which(spectra.info$Lab.ID %in% names(spectra.data)),]
     
     rm(list = c("database"))
     cat("\n")
     cat(crayon::green('Identifing metabolites with MS/MS database...\n'))
-    
     identification.result <-
-      BiocParallel::bplapply(
-        1:nrow(ms1.info),
-        FUN = identifyPeak,
-        BPPARAM = BiocParallel::SnowParam(workers = threads,
-                                          progressbar = TRUE),
-        ms1.info = ms1.info,
-        ms2.info = ms2.info,
-        spectra.info = spectra.info,
-        spectra.data = spectra.data,
-        ppm.ms1match = ms1.match.ppm,
-        ppm.ms2match = ms2.match.ppm,
-        mz.ppm.thr = mz.ppm.thr,
-        ms2.match.tol = ms2.match.tol,
-        rt.match.tol = rt.match.tol,
-        ms1.match.weight = ms1.match.weight,
-        rt.match.weight = rt.match.weight,
-        ms2.match.weight = ms2.match.weight,
-        total.score.tol = total.score.tol,
-        adduct.table = adduct.table,
-        candidate.num = candidate.num,
-        fraction.weight = fraction.weight,
-        dp.forward.weight = dp.forward.weight,
-        dp.reverse.weight = dp.reverse.weight
+      suppressMessages(
+        BiocParallel::bplapply(
+          1:nrow(ms1.info),
+          FUN = identifyPeak,
+          BPPARAM = BiocParallel::SnowParam(workers = threads,
+                                            progressbar = TRUE),
+          ms1.info = ms1.info,
+          ms2.info = ms2.info,
+          spectra.info = spectra.info,
+          spectra.data = spectra.data,
+          ppm.ms1match = ms1.match.ppm,
+          ppm.ms2match = ms2.match.ppm,
+          mz.ppm.thr = mz.ppm.thr,
+          ms2.match.tol = ms2.match.tol,
+          rt.match.tol = rt.match.tol,
+          ms1.match.weight = ms1.match.weight,
+          rt.match.weight = rt.match.weight,
+          ms2.match.weight = ms2.match.weight,
+          total.score.tol = total.score.tol,
+          adduct.table = adduct.table,
+          candidate.num = candidate.num,
+          fraction.weight = fraction.weight,
+          dp.forward.weight = dp.forward.weight,
+          dp.reverse.weight = dp.reverse.weight
+        )
       )
-    
+
     names(identification.result) <- ms1.info$name
     identification.result <-
       identification.result[which(!unlist(lapply(identification.result, function(x)
@@ -176,7 +177,7 @@ setGeneric(
                  dp.reverse.weight = 0.1,
                  # report top 10 satisfactories
                  ...) {
-    pk.precursor <- ms1.info[idx,]
+    pk.precursor <- ms1.info[idx, ]
     rm(list = c("ms1.info"))
     pk.mz <- pk.precursor$mz
     pk.rt <- pk.precursor$rt
@@ -204,7 +205,8 @@ setGeneric(
     
     ###mz match
     match.idx <- apply(spectra.mz, 1, function(x) {
-      temp.mz.error <- abs(x - pk.mz) * 10 ^ 6 / ifelse(pk.mz < 400, 400, pk.mz)
+      temp.mz.error <-
+        abs(x - pk.mz) * 10 ^ 6 / ifelse(pk.mz < 400, 400, pk.mz)
       temp.mz.match.score <-
         exp(-0.5 * (temp.mz.error / (ppm.ms1match)) ^ 2)
       data.frame(
@@ -323,9 +325,9 @@ setGeneric(
     }
     
     match.idx <-
-      match.idx[order(match.idx$Total.score, decreasing = TRUE), ]
+      match.idx[order(match.idx$Total.score, decreasing = TRUE),]
     if (nrow(match.idx) > candidate.num) {
-      match.idx <- match.idx[1:candidate.num, ]
+      match.idx <- match.idx[1:candidate.num,]
     }
     ##add other information
     match.idx <-
@@ -422,7 +424,7 @@ setGeneric('readMSP', function(file) {
       rownames(temp.spec) <- NULL
       temp.spec$mz <- as.numeric(as.character(temp.spec$mz))
       temp.spec$intensity <- as.numeric(temp.spec$intensity)
-      temp.spec <- temp.spec[temp.spec$intensity != 0, ]
+      temp.spec <- temp.spec[temp.spec$intensity != 0,]
     } else{
       temp.spec <- NULL
     }
@@ -532,7 +534,7 @@ setGeneric('readMSP_MoNA', function(file) {
         stringr::str_c(temp.info[stringr::str_which(string = temp.info[, 1], pattern = "Synon"), 2,
                                  drop = TRUE], collapse = ";")
       temp.info[which(temp.info[, 1] == "Synon")[1], 2] <- Synon
-      temp.info <- temp.info[!duplicated(temp.info[, 1]), ]
+      temp.info <- temp.info[!duplicated(temp.info[, 1]),]
       
     }
     
@@ -556,7 +558,7 @@ setGeneric('readMSP_MoNA', function(file) {
       rownames(temp.spec) <- NULL
       temp.spec$mz <- as.numeric(as.character(temp.spec$mz))
       temp.spec$intensity <- as.numeric(temp.spec$intensity)
-      temp.spec <- temp.spec[temp.spec$intensity != 0, ]
+      temp.spec <- temp.spec[temp.spec$intensity != 0,]
     } else{
       temp.spec <- NULL
     }
@@ -597,7 +599,7 @@ setGeneric(
           cat('PRECURSORMZ: ', mz, '\n', sep = '')
           cat('Num Peaks: ', nrow(spec), '\n', sep = '')
           for (nr in seq(nrow(spec))) {
-            cat(paste(spec[nr,], collapse = ' '), '\n', sep = '')
+            cat(paste(spec[nr, ], collapse = ' '), '\n', sep = '')
           }
           cat('\n')
         }

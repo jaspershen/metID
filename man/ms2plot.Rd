@@ -36,7 +36,7 @@ ms2plot(
 
 \item{database}{Used database (databaseClass).}
 
-\item{which.peak}{Peak name(s) or "all". You can use whichHasIden}
+\item{which.peak}{Peak name(s) or "all". You can use which_has_identification functions to get what peaks have identifications.}
 
 \item{ppm.tol}{MS2 fragment match ppm.}
 
