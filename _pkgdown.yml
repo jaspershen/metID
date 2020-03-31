@@ -26,24 +26,25 @@ reference:
   - title: Database construction
     desc: Construct in-house or public MS2 spectra database.
     contents:
-    - getMS2spectrum
     - databaseConstruction
+    - rtCor4database
+    - get_ms2_spectrum
     
   - title: Metabolite identification
-    desc: Metabolite identification based on MS1 and MS2 library.
+    desc: Metabolite identification based on MS1 and MS2 databases.
     contents:
-    - metIdentify
-    - filterIden
-    - getIdenInfo
-    - getIdentificationTable
-    - getIdentificationTable2
-    - getMS2spectrum2Object
-    - getParams
-    - getParams2
+    - which_has_identification
+    - trans_to_new_style
     - ms2plot
-    - mzIdentify
-    - rtCor4database
-    - whichHasIden
+    - identify_single_peak
+    - identify_metabolites_params
+    - identify_metabolites
+    - identify_metabolites_all
+    - get_parameters
+    - get_ms2_spectrum_from_object
+    - get_identification_table
+    - get_iden_info
+    - filter_identification
     
   - title: Data
     desc: Some data embed in metID
@@ -54,15 +55,15 @@ reference:
     - rp.neg
     - msDatabase_rplc0.0.2
     - msDatabase_hilic0.0.2
+    - annotate_result
 
-  - title: Other function
-    desc: Other functions
+  - title: Other functions
+    desc: Other usefull functions in metID
     contents:
     - readMGF
     - readMSP
-    - readMSP_MoNA
     - readMZXML
-
+    - metID
 
 navbar:
   type: inverse
@@ -71,11 +72,16 @@ navbar:
     right: [github, twitter]
   components:
     articles:
-      text: Articles
+      text: Help documents
       menu:
+      - text: "Brief introduction"
+      - text: Brief introduction
+        href: articles/metID.html
       - text: "Database construction"
       - text: Database construction
         href: articles/database_construction.html
+      - text: Public databases for metID
+        href: articles/public_databases.html
       - text: -------
       - text: "Metabolite identification"
       - text: Metabolite identification using MS1 database
@@ -84,10 +90,12 @@ navbar:
         href: articles/metabolite_annotation_using_MS2.html
       - text: Metabolite identification using multiple databases
         href: articles/multiple_databases.html
-      - text: Other usefull tools in metID
-        href: articles/other_tools.html
+      - text: Identify single peak  
+        href: articles/identify_single_peak.html
       - text: -------
-      - text: "Other links"
+      - text: "Others"
+      - text: Other usefull tools
+        href: articles/other_tools.html
       - text: Test
         href: https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/
     twitter:
@@ -100,7 +108,7 @@ navbar:
       text: News
       menu:
       - text: "Blog posts"
-      - text: "Version 0.0.1"
+      - text: "Version 0.4.0"
         href: articles/metID.html
       - text: "------------------"
       - text: "Change log"

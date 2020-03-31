@@ -1,14 +1,3 @@
-# param1 <- metIdentifyParam(database = "msDatabase_rplc0.0.1")
-# param2 <- metIdentifyParam(database = "orbitrapDatabase0.0.1")
-# param3 <- mzIdentifyParam(database = "HMDB.metabolite.data")
-#
-# ms2.data <- grep("mgf", dir(), value = TRUE)
-# result <- metIdentify4all(ms1.data = "ms1.peak.table.csv",
-#                 ms2.data = ms2.data,
-#                 parameter.list = c(param3, param2, param1),
-#                 path = ".")
-
-
 #' @title Identify metabolites using multiple databases one time
 #' @description Identify metabolites using multiple databases one time.
 #' \lifecycle{maturing}
@@ -23,10 +12,96 @@
 #' @return A list containing mzIdentifyClass object.
 #' @export
 #' @seealso The example and demo data of this function can be found
-#' https://jaspershen.github.io/metID/articles/metID.html
+#' https://jaspershen.github.io/metID/articles/multiple_databases.html
+#' @examples 
+#' \dontrun{
+#' ##creat a folder nameed as example
+#' path <- file.path(".", "example")
+#' dir.create(path = path, showWarnings = FALSE)
+#' 
+#' ##get MS1 peak table from metID
+#' ms1_peak <- system.file("ms1_peak", package = "metID")
+#' file.copy(
+#'   from = file.path(ms1_peak, "ms1.peak.table.csv"),
+#'   to = path,
+#'   overwrite = TRUE,
+#'   recursive = TRUE
+#' )
+#' 
+#' ##get MS2 data from metID
+#' ms2_data <- system.file("ms2_data", package = "metID")
+#' file.copy(
+#'   from = file.path(ms2_data, "QC1_MSMS_NCE25.mgf"),
+#'   to = path,
+#'   overwrite = TRUE,
+#'   recursive = TRUE
+#' )
+#' 
+#' ##get databases from metID
+#' database <- system.file("ms2_database", package = "metID")
+#' 
+#' file.copy(
+#'   from = file.path(
+#'     database,
+#'     c(
+#'       "msDatabase_rplc0.0.2",
+#'       "orbitrapDatabase0.0.1",
+#'       "hmdbMS1Database0.0.1"
+#'     )
+#'   ),
+#'   to = path,
+#'   overwrite = TRUE,
+#'   recursive = TRUE
+#' )
+#' param1 <-
+#' identify_metabolites_params(
+#'   ms1.match.ppm = 15,
+#'   rt.match.tol = 15,
+#'   polarity = "positive",
+#'   ce = "all",
+#'   column = "rp",
+#'   total.score.tol = 0.5,
+#'   candidate.num = 3,
+#'   threads = 3, 
+#'   database = "msDatabase_rplc0.0.2"
+#' )
+#' 
+#' param2 <- identify_metabolites_params(
+#'   ms1.match.ppm = 15,
+#'   rt.match.tol = 15,
+#'   polarity = "positive",
+#'   ce = "all",
+#'   column = "rp",
+#'   total.score.tol = 0.5,
+#'   candidate.num = 3,
+#'   threads = 3,
+#'   database = "orbitrapDatabase0.0.1"
+#' )
+#' 
+#' param3 <- identify_metabolites_params(
+#'   ms1.match.ppm = 15,
+#'   rt.match.tol = 15,
+#'   polarity = "positive",
+#'   ce = "all",
+#'   column = "rp",
+#'   total.score.tol = 0.5,
+#'   candidate.num = 3,
+#'   threads = 3,
+#'   database = "hmdbMS1Database0.0.1"
+#' )
+#' result <- identify_metabolite_all(
+#' ms1.data = "ms1.peak.table.csv",
+#' ms2.data = "QC1_MSMS_NCE25.mgf",
+#' parameter.list = c(param1, param2, param3),
+#' path = path
+#' )
+#' result[[1]]
+#' result[[2]]
+#' result[[3]]
+#' }
 
 setGeneric(
-  name = "metIdentify4all",
+  name = "identify_metabolite_all",
   def = function(ms1.data,
                  ms2.data,
                  parameter.list,
@@ -34,10 +109,13 @@ setGeneric(
     threads = parameter.list[[1]]$threads
     ms1.data.name <- ms1.data
     ms2.data.name <- ms2.data
-    file <- dir(path)
+
     intermediate_path <-
       file.path(path, "intermediate_data")
     dir.create(intermediate_path, showWarnings = FALSE)
+    
+    file <- dir(intermediate_path)
+    
     if (all(c("ms1.info", "ms2.info") %in% file)) {
       cat(crayon::yellow("Use old data\n"))
       load(file.path(intermediate_path, "ms1.info"))
@@ -149,17 +227,21 @@ setGeneric(
       )
     }
     
-    
     identification.result <-
       vector(mode = "list", length = length(database.name))
+    
     names(identification.result) <- database.name
+    
     for (i in 1:length(database.name)) {
       cat(crayon::yellow("-------------------------------\n"))
       cat(crayon::yellow('Database', i, ":", database.name[i], "\n"))
       cat(crayon::yellow("-------------------------------\n"))
+      
       new.path <-
         file.path(path, paste(database.name[i], "Result", sep =  '_'))
+      
       dir.create(new.path, showWarnings = FALSE)
+      
       if (any(dir(new.path) == "result")) {
         load(file.path(new.path, "result"))
         identification.result[[i]] <- result
@@ -167,10 +249,18 @@ setGeneric(
         next()
       }
       
-      if (length(parameter.list[[i]]) < 20) {
+      temp_database <- 
+        load(file.path(path, parameter.list[[i]]$database))
+      
+      temp_database <-
+        get(temp_database)
+      
+      if (length(temp_database@spectra.data) == 0) {
+        rm(list = parameter.list[[i]]$database)
         result <- mzIdentify(
           ms1.data = ms1.data.name,
           ms1.match.ppm = parameter.list[[i]]$ms1.match.ppm,
+          rt.match.tol = parameter.list[[i]]$rt.match.tol,
           polarity = parameter.list[[i]]$polarity,
           column = parameter.list[[i]]$column,
           path = path,
@@ -179,7 +269,8 @@ setGeneric(
           threads = parameter.list[[i]]$threads
         )
       } else{
-        result <- metIdentify2(
+        rm(list = parameter.list[[i]]$database)
+        result <- identify_metabolites(
           ms1.data = ms1.data.name,
           ms2.data = ms2.data.name,
           ms1.ms2.match.mz.tol = parameter.list[[i]]$ms1.ms2.match.mz.tol,
@@ -215,11 +306,7 @@ setGeneric(
 )
 
 
-
-
-
-
-#' @title Generate the parameter list for metIdentify function
+#' @title Generate the parameter list for identify_metabolites function
 #' @description Generate the parameter list for metIdentify function.
 #' \lifecycle{maturing}
 #' @author Xiaotao Shen
@@ -247,10 +334,24 @@ setGeneric(
 #' @return A metIdentifyClass object.
 #' @export
 #' @seealso The example and demo data of this function can be found
-#' https://jaspershen.github.io/metID/articles/metID.html
+#' https://jaspershen.github.io/metID/articles/multiple_databases.html
+#' @examples 
+#'  param1 <-
+#' identify_metabolites_params(
+#'   ms1.match.ppm = 15,
+#'   rt.match.tol = 15,
+#'   polarity = "positive",
+#'   ce = "all",
+#'   column = "rp",
+#'   total.score.tol = 0.5,
+#'   candidate.num = 3,
+#'   threads = 3, 
+#'   database = "msDatabase_rplc0.0.2"
+#' )
+#' param1
 
 setGeneric(
-  name = "metIdentifyParam",
+  name = "identify_metabolites_params",
   def = function(ms1.ms2.match.mz.tol = 25,
                  ms1.ms2.match.rt.tol = 10,
                  ms1.match.ppm = 25,
@@ -310,48 +411,3 @@ setGeneric(
 
 
 
-
-#' @title Generate the mzIdentify parameter list
-#' @description Generate the mzIdentify parameter list.
-#' \lifecycle{deprecated}
-#' @author Xiaotao Shen
-#' \email{shenxt1990@@163.com}
-#' @param ms1.match.ppm Precursor match ppm tolerance.
-#' @param polarity The polarity of data, "positive"or "negative".
-#' @param column "hilic" (HILIC column) or "rp" (reverse phase).
-#' @param candidate.num The number of candidates.
-#' @param database MS1 database name.
-#' @param threads Number of threads
-#' @return A mzIdentifyClass object.
-#' @export
-#' @seealso The example and demo data of this function can be found
-#' https://jaspershen.github.io/metID/articles/metID.html
-
-setGeneric(
-  name = "mzIdentifyParam",
-  def = function(ms1.match.ppm = 25,
-                 polarity = c("positive", "negative"),
-                 column = c("hilic", "rp"),
-                 candidate.num = 3,
-                 database,
-                 threads = 3) {
-    if (missing(database)) {
-      stop("The database name must be provided.\n")
-    }
-    if (database != "HMDB.metabolite.data") {
-      stop("database can only be HMDB.metabolite.data\n")
-    }
-    polarity <- match.arg(polarity)
-    column <- match.arg(column)
-    
-    param <- list(
-      ms1.match.ppm = ms1.match.ppm,
-      polarity = polarity,
-      column = column,
-      candidate.num = candidate.num,
-      database = database,
-      threads = threads
-    )
-    list("mzIdentifyParam" = param)
-  }
-)

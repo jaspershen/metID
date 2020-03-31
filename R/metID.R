@@ -5,6 +5,8 @@
 #' \email{shenxt@@stanford.edu}
 #' @return A ASCII log of metID
 #' @export
+#' @examples 
+#' metID()
 
 metID <- function() {
   cat(crayon::green("Thank you for using metID!\n"))

@@ -108,14 +108,21 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Help documents
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Brief introduction</li>
+    <li>
+      <a href="../articles/metID.html">Brief introduction</a>
+    </li>
     <li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
+    </li>
+    <li>
+      <a href="../articles/public_databases.html">Public databases for metID</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Metabolite identification</li>
@@ -129,10 +136,13 @@
       <a href="../articles/multiple_databases.html">Metabolite identification using multiple databases</a>
     </li>
     <li>
-      <a href="../articles/other_tools.html">Other usefull tools in metID</a>
+      <a href="../articles/identify_single_peak.html">Identify single peak</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Other links</li>
+    <li class="dropdown-header">Others</li>
+    <li>
+      <a href="../articles/other_tools.html">Other usefull tools</a>
+    </li>
     <li>
       <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/">Test</a>
     </li>
@@ -147,7 +157,7 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Blog posts</li>
     <li>
-      <a href="../articles/metID.html">Version 0.0.1</a>
+      <a href="../articles/metID.html">Version 0.4.0</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -234,6 +244,41 @@
     <div class='dont-index'><p>The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html</p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"annotate_result"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"metID"</span>)
+<span class='no'>annotation_table</span> <span class='kw'>&lt;-</span>
+<span class='fu'>get_identification_table</span>(<span class='no'>annotate_result</span>, <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"old"</span>)
+<span class='no'>annotation_table</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 100 x 6</span><span>
+#&gt;    name      mz    rt MS2.spectrum.name  Candidate.number Identification        
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                 
+#&gt; </span><span style='color: #555555;'> 1</span><span> pRPLC…  472. 773.  </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
+#&gt; </span><span style='color: #555555;'> 2</span><span> pRPLC…  466. 747.  </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
+#&gt; </span><span style='color: #555555;'> 3</span><span> pRPLC…  162.  33.7 mz162.11244215767…                1 Compound.name:L-Carni…
+#&gt; </span><span style='color: #555555;'> 4</span><span> pRPLC…  181.  36.4 </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
+#&gt; </span><span style='color: #555555;'> 5</span><span> pRPLC…  230. 158.  </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
+#&gt; </span><span style='color: #555555;'> 6</span><span> pRPLC…  181. 228.  mz181.07205030497…                1 Compound.name:Theophy…
+#&gt; </span><span style='color: #555555;'> 7</span><span> pRPLC…  289. 286.  mz289.22726440429…                0 </span><span style='color: #BB0000;'>NA</span><span>                    
+#&gt; </span><span style='color: #555555;'> 8</span><span> pRPLC…  181. 201.  mz181.07205067309…                3 Compound.name:Theophy…
+#&gt; </span><span style='color: #555555;'> 9</span><span> pRPLC…  209.  57.4 mz209.09215507704…                1 Compound.name:L-KYNUR…
+#&gt; </span><span style='color: #555555;'>10</span><span> pRPLC…  283.  40.9 </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
+#&gt; </span><span style='color: #555555;'># … with 90 more rows</span><span></div><div class='input'><span class='no'>annotation_table</span> <span class='kw'>&lt;-</span>
+<span class='fu'>get_identification_table</span>(<span class='no'>annotate_result</span>, <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"new"</span>)
+<span class='no'>annotation_table</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 115 x 17</span><span>
+#&gt;    name  mz    rt    Compound.name CAS.ID HMDB.ID KEGG.ID Lab.ID Adduct mz.error
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
+#&gt; </span><span style='color: #555555;'> 1</span><span> pRPL… </span><span style='color: #555555;'>"</span><span>472… </span><span style='color: #555555;'>"</span><span>772… </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 2</span><span> pRPL… </span><span style='color: #555555;'>"</span><span>466… </span><span style='color: #555555;'>"</span><span>746… </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 3</span><span> pRPL… </span><span style='color: #555555;'>"</span><span>162… </span><span style='color: #555555;'>"</span><span> 33… L-Carnitine   541-1… HMDB00… C00318  RPLC_… (M+H)+ 1.66789…
+#&gt; </span><span style='color: #555555;'> 4</span><span> pRPL… </span><span style='color: #555555;'>"</span><span>181… </span><span style='color: #555555;'>"</span><span> 36… </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 5</span><span> pRPL… </span><span style='color: #555555;'>"</span><span>230… </span><span style='color: #555555;'>"</span><span>158… </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 6</span><span> pRPL… </span><span style='color: #555555;'>"</span><span>181… </span><span style='color: #555555;'>"</span><span>228… Theophylline  </span><span style='color: #BB0000;'>NA</span><span>     HMDB00… </span><span style='color: #BB0000;'>NA</span><span>      RPLC_… (M+H)+ 1.68826…
+#&gt; </span><span style='color: #555555;'> 7</span><span> pRPL… </span><span style='color: #555555;'>"</span><span>289… </span><span style='color: #555555;'>"</span><span>286… </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 8</span><span> pRPL… </span><span style='color: #555555;'>"</span><span>181… </span><span style='color: #555555;'>"</span><span>201… Theophylline  611-5… HMDB01… C07130  RPLC_… (M+H)+ 2.43918…
+#&gt; </span><span style='color: #555555;'> 9</span><span> pRPL… </span><span style='color: #555555;'>""</span><span>    </span><span style='color: #555555;'>""</span><span>    Paraxanthine  611-5… HMDB01… C13747  RPLC_… (M+H)+ 1.93918…
+#&gt; </span><span style='color: #555555;'>10</span><span> pRPL… </span><span style='color: #555555;'>""</span><span>    </span><span style='color: #555555;'>""</span><span>    Theophylline  </span><span style='color: #BB0000;'>NA</span><span>     HMDB00… </span><span style='color: #BB0000;'>NA</span><span>      RPLC_… (M+H)+ 1.68918…
+#&gt; </span><span style='color: #555555;'># … with 105 more rows, and 7 more variables: mz.match.score </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,
+#&gt; #   RT.error </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, RT.match.score </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, CE </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, SS </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,
+#&gt; #   Total.score </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, Database </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -241,6 +286,7 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
     <h2>Author</h2>
@@ -252,7 +298,7 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Xiaotao Shen.</p>
+  <p>Developed by Xiaotao Shen, Si Wu.</p>
 </div>
 
 <div class="pkgdown">

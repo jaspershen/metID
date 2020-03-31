@@ -50,12 +50,12 @@ We use the demo data in `metID` package to show how to use `metID` to identify m
 
 First we load the MS1 peak and database from `metID` package and then put them in a `example` folder.
 
-```{r,eval = TRUE, warning=FALSE, message=TRUE,R.options="",cache=TRUE}
+```{r,eval = TRUE, warning=FALSE, message=TRUE,R.options="",cache=FALSE}
 library(metID)
 library(tidyverse)
 ```
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
 ##creat a folder nameed as example
 path <- file.path(".", "example")
 dir.create(path = path, showWarnings = FALSE)
@@ -78,7 +78,7 @@ Now in your `./example`, there are two files, namely `ms1.peak.table.csv` and `m
 
 First, we only use m/z for metabolite identification.
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
 annotate_result1 <- 
   identify_metabolites(ms1.data = "ms1.peak.table.csv", 
                        ms1.match.ppm = 15, 
@@ -114,7 +114,7 @@ Other parameters:
 The return result `annotate_result1` is a `metIdentifyClass` object, you can directory get the brief information by print it in console:
 
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
 annotate_result1
 ```
 
@@ -122,7 +122,7 @@ annotate_result1
 
 Here we set RT tolerance (`rt.match.tol`) as 30 s.
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
 annotate_result2 <- 
   identify_metabolites(ms1.data = "ms1.peak.table.csv", 
                        ms1.match.ppm = 15, 

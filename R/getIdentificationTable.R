@@ -14,11 +14,15 @@
 #' @import dplyr
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' annotation_table <- 
+#' get_identification_table(annotate_result, candidate.num = 3, type = "old")
+#' annotation_table
+#' annotation_table <- 
+#' get_identification_table(annotate_result, candidate.num = 3, type = "new")
+#' annotation_table
 
-# table1 <- getIdentificationTable(result1)
-# table2 <- getIdentificationTable(result2, type = "new")
-# table3 <- getIdentificationTable2(result3)
-# test <- getIdentificationTable(result1, result2)
 setGeneric(
   name = "get_identification_table",
   def = function(...,
@@ -333,6 +337,11 @@ setGeneric(
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' annotation_table <- 
+#' get_identification_table(annotate_result, candidate.num = 3, type = "old")
+#' annotation_table <- trans_to_new_style(annotation_table)
 
 setGeneric(
   name = "trans_to_new_style",

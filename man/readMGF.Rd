@@ -16,6 +16,12 @@ Return ms2 data. This is a list.
 Read MGF data.
 \lifecycle{experimental}
 }
+\examples{
+ms2_data <- system.file("ms2_data", package = "metID")
+dir(ms2_data)
+data <- readMGF(dir(ms2_data, full.names = TRUE))
+data[[1]]
+}
 \author{
 Xiaotao Shen
 \email{shenxt1990@163.com}

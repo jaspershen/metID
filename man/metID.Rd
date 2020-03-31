@@ -13,6 +13,9 @@ A ASCII log of metID
 Show the base information of metID pacakge.
 \lifecycle{maturing}
 }
+\examples{
+metID()
+}
 \author{
 Xiaotao Shen
 \email{shenxt@stanford.edu}

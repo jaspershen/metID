@@ -20,6 +20,12 @@ A identification table (data.frame).
 Get identification information from a metIdentifyClass object.
 \lifecycle{maturing}
 }
+\examples{
+data("annotate_result", package = "metID")
+data("msDatabase_hilic0.0.2", package = "metID")
+peak_name <- which_has_identification(annotate_result)
+get_iden_info(annotate_result, peak_name[1,1], database = msDatabase_rplc0.0.2)
+}
 \seealso{
 The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html

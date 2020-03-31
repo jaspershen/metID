@@ -20,6 +20,15 @@ A identification table (data.frame).
 Get identification table from a metIdentifyClass object.
 \lifecycle{maturing}
 }
+\examples{
+data("annotate_result", package = "metID")
+annotation_table <- 
+get_identification_table(annotate_result, candidate.num = 3, type = "old")
+annotation_table
+annotation_table <- 
+get_identification_table(annotate_result, candidate.num = 3, type = "new")
+annotation_table
+}
 \seealso{
 The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html

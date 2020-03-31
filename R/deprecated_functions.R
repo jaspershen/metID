@@ -14,11 +14,14 @@
 #' @import dplyr
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
-
-# table1 <- getIdentificationTable(result1)
-# table2 <- getIdentificationTable(result2, type = "new")
-# table3 <- getIdentificationTable2(result3)
-# test <- getIdentificationTable(result1, result2)
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' annotation_table <- 
+#' getIdentificationTable(annotate_result, candidate.num = 3, type = "old")
+#' annotation_table
+#' annotation_table <- 
+#' getIdentificationTable(annotate_result, candidate.num = 3, type = "new")
+#' annotation_table
 setGeneric(
   name = "getIdentificationTable",
   def = function(...,
@@ -338,6 +341,11 @@ setGeneric(
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' annotation_table <- 
+#' get_identification_table(annotate_result, candidate.num = 3, type = "old")
+#' annotation_table <- trans2newStyle(annotation_table)
 
 setGeneric(
   name = "trans2newStyle",
@@ -486,6 +494,11 @@ setGeneric(
 #' @export
 #' @import magrittr
 #' @import dplyr
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' getParams(annotate_result)
+
+
 setGeneric(
   name = "getParams",
   def = function(object) {
@@ -580,6 +593,11 @@ setGeneric(
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' data("msDatabase_hilic0.0.2", package = "metID")
+#' peak_name <- which_has_identification(annotate_result)
+#' getIdenInfo(annotate_result, peak_name[1,1], database = msDatabase_rplc0.0.2)
 
 setGeneric(
   name = "getIdenInfo",
@@ -648,6 +666,9 @@ setGeneric(
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' which_has_identification(annotate_result)
 
 setGeneric(
   name = "whichHasIden",
@@ -683,6 +704,9 @@ setGeneric(
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' annotate_result2 <- filterIden(annotate_result, rt.match.tol = 5)
 
 setGeneric(
   name = "filterIden",
@@ -743,17 +767,22 @@ setGeneric(
 #' \lifecycle{maturing}
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
-#' @param peak.name Peak name.
 #' @param object metIdentifyClass.
+#' @param peak.name Peak name.
 #' @return A MS2 spectrum.
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' peak_name <- which_has_identification(annotate_result)
+#' getMS2spectrum2Object(annotate_result, peak_name[1,1])
 
 setGeneric(
   name = "getMS2spectrum2Object",
-  def = function(peak.name,
-                 object) {
+  def = function(object,
+                peak.name
+                 ) {
     
     cat(crayon::yellow(
       "`getMS2spectrum2Object()` is deprecated, use `get_ms2_spectrum_from_object()`."

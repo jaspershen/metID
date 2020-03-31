@@ -57,12 +57,12 @@ The in-house database in our lab were provided, with RPLC and HILIC mode RT info
 
 First we load the MS1 peak, MS2 data and database from `metID` package and then put them in a `example` folder.
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
 library(metID)
 library(tidyverse)
 ```
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
 ##creat a folder nameed as example
 path <- file.path(".", "example")
 dir.create(path = path, showWarnings = FALSE)
@@ -88,7 +88,7 @@ Now in your `./example`, there are three files, namely `ms1.peak.table.csv`, `QC
 
 ### Use m/z, RT and MS2 for metabolite identification
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
 annotate_result3 <- 
   identify_metabolites(ms1.data = "ms1.peak.table.csv", 
                        ms2.data = c("QC1_MSMS_NCE25.mgf"), 
@@ -130,7 +130,7 @@ $$Dot\;product = \dfrac{\sum(wA_{act.}wA_{lib})^2}{\sum(wA_{act.})^2\sum(wA_{lib
 
 The return result `annotate_result3` is a `metIdentifyClass` object, you can directory get the brief information by print it in console:
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
 annotate_result3
 ```
 
@@ -145,7 +145,7 @@ You can also use `ms2plot()` function to output the MS2 specra match plot for on
 
 ### Output one MS2 spectra match plot.
 
-```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=FALSE}
 ##which peaks have identifications
 which_has_identification(annotate_result3) %>% 
   head()
@@ -153,11 +153,11 @@ which_has_identification(annotate_result3) %>%
 
 Becase we need the information from database, so we need to load database first.
 
-```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=FALSE}
 load(file.path(path, "msDatabase_rplc0.0.2"))
 ```
 
-```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=FALSE}
 ms2.plot1 <- ms2plot(object = annotate_result3,
                      database = msDatabase_rplc0.0.2,
                      which.peak = "pRPLC_603")
@@ -167,7 +167,7 @@ ms2.plot1
 
 > You can also output interactive MS2 spectra match plot by setting `interaction.plot` as TRUE.
 
-```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=FALSE}
 ##which peaks have identification
 ms2.plot2 <- ms2plot(object = annotate_result3,
                      database = msDatabase_rplc0.0.2,
@@ -178,7 +178,7 @@ ms2.plot2
 
 Some time you want to get the dark theme. Because the plot from `ms2plot` is a `ggplot2` object, so you can just set the theme as 'dark theme'.
 
-```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=FALSE}
 ms2.plot1 <- ms2plot(object = annotate_result3,
                      database = msDatabase_rplc0.0.2,
                      which.peak = "pRPLC_603", 
@@ -192,7 +192,7 @@ ms2.plot1_2
 
 Just use `plotly` to convert it to interactive plot.
 
-```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval = TRUE,warning=FALSE,message=FALSE,R.options="",cache=FALSE}
 ms2.plot1_2 %>% 
   plotly::ggplotly()
 ```
@@ -203,7 +203,7 @@ You can set the `which.peak` as a vector of peak names to output multiple peaks 
 
 For example, if we want to output all the MS2 spectra match plots:
 
-```{r, eval=FALSE,warning=FALSE,message=FALSE,R.options="",cache=TRUE}
+```{r, eval=FALSE,warning=FALSE,message=FALSE,R.options="",cache=FALSE}
 ms2plot(
   object = annotate_result3,
   database = msDatabase_rplc0.0.2,

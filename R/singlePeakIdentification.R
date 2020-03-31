@@ -28,6 +28,40 @@
 #' @param threads Number of threads
 #' @return A metIdentifyClass object.
 #' @export
+#' @examples 
+#' \dontrun{
+#' mz <- 472.3032
+#' rt <- 772.906
+#' ms2 <- data.frame(
+#' mz = c(81.38455,82.19755,85.02840,86.5934,86.98958,89.48135,90.70250,
+#'          93.03886, 102.09140, 103.03903, 116.01658, 127.98412, 
+#'          134.06819, 152.46967, 162.02180, 162.05521, 162.11261),
+#'   intensity = c(1396.341,1488.730,15473.604, 1740.842,2158.014,1351.686,
+#'                 1547.099,1325.864,22441.047,76217.016,17809.395,
+#'                 1439.743, 1729.786, 1543.765, 2228.743, 
+#'                 3508.225, 529120.000),
+#'   stringsAsFactors = FALSE
+#' )
+#' 
+#' path <- file.path(".", "example")
+#' dir.create(path = path, showWarnings = FALSE)
+#' database <- system.file("ms2_database", package = "metID")
+#'
+#' file.copy(from = file.path(database, "msDatabase_rplc0.0.2"), 
+#'          to = path, overwrite = TRUE, recursive = TRUE)
+#' 
+#' annotation_result <- 
+#' identify_single_peak(ms1.mz = mz, 
+#'                     ms1.rt = rt, 
+#'                     ms2 = ms2, 
+#'                     ms1.match.ppm = 15, 
+#'                     rt.match.tol = 30,
+#'                     ms2.match.tol = 0.5, 
+#'                     database = "msDatabase_rplc0.0.2",
+#'                     path = path)
+#'                     
+#' annotation_result
+#' }
 
 
 # ms1.mz
@@ -53,9 +87,8 @@
 # database
 # threads = 3
 
-
 setGeneric(
-  name = "identifySinglePeak",
+  name = "identify_single_peak",
   def = function(ms1.mz,
                  ms1.rt,
                  ms2,
@@ -263,7 +296,7 @@ setGeneric(
       threads = threads,
       version = "0.4.0"
     )
-    cat(crayon::bgYellow("All done.\n"))
+    cat(crayon::bgRed("All done.\n"))
     return(return.result)
     
   }

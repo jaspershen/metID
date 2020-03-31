@@ -4,12 +4,12 @@
 \alias{get_ms2_spectrum_from_object}
 \title{Get spectra of peaks from metIdentifyClass object}
 \usage{
-get_ms2_spectrum_from_object(peak.name, object)
+get_ms2_spectrum_from_object(object, peak.name)
 }
 \arguments{
-\item{peak.name}{Peak name.}
-
 \item{object}{metIdentifyClass.}
+
+\item{peak.name}{Peak name.}
 }
 \value{
 A MS2 spectrum.
@@ -17,6 +17,11 @@ A MS2 spectrum.
 \description{
 Get spectra of peaks from metIdentifyClass object.
 \lifecycle{maturing}
+}
+\examples{
+data("annotate_result", package = "metID")
+peak_name <- which_has_identification(annotate_result)
+get_ms2_spectrum_from_object(annotate_result, peak_name[1,1])
 }
 \seealso{
 The example and demo data of this function can be found

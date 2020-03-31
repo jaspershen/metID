@@ -108,14 +108,21 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Help documents
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Brief introduction</li>
+    <li>
+      <a href="../articles/metID.html">Brief introduction</a>
+    </li>
     <li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
+    </li>
+    <li>
+      <a href="../articles/public_databases.html">Public databases for metID</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Metabolite identification</li>
@@ -129,10 +136,13 @@
       <a href="../articles/multiple_databases.html">Metabolite identification using multiple databases</a>
     </li>
     <li>
-      <a href="../articles/other_tools.html">Other usefull tools in metID</a>
+      <a href="../articles/identify_single_peak.html">Identify single peak</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Other links</li>
+    <li class="dropdown-header">Others</li>
+    <li>
+      <a href="../articles/other_tools.html">Other usefull tools</a>
+    </li>
     <li>
       <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/">Test</a>
     </li>
@@ -147,7 +157,7 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Blog posts</li>
     <li>
-      <a href="../articles/metID.html">Version 0.0.1</a>
+      <a href="../articles/metID.html">Version 0.4.0</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -226,6 +236,30 @@
     <div class='dont-index'><p>The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html</p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"annotate_result"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"metID"</span>)
+<span class='fu'>which_has_identification</span>(<span class='no'>annotate_result</span>)</div><div class='output co'>#&gt;    MS1.peak.name               MS2.spectra.name
+#&gt; 1      pRPLC_603 mz162.112442157672rt37.9743312
+#&gt; 2      pRPLC_722  mz181.072050304971rt226.14144
+#&gt; 3     pRPLC_1046 mz181.072050673093rt196.800648
+#&gt; 4     pRPLC_1112 mz209.092155077047rt58.3735608
+#&gt; 5     pRPLC_1307 mz314.232707486156rt400.268664
+#&gt; 6     pRPLC_1860   mz249.185015539689rt579.6807
+#&gt; 7     pRPLC_2151  mz363.219789874681rt639.06132
+#&gt; 8     pRPLC_2171   mz568.339426689102rt651.8226
+#&gt; 9     pRPLC_3110 mz414.299882562149rt547.018302
+#&gt; 10    pRPLC_3138 mz286.143744909833rt539.856222
+#&gt; 11    pRPLC_3927  mz232.154645316297rt81.379896
+#&gt; 12    pRPLC_3959    mz153.065948486328rt79.9428
+#&gt; 13    pRPLC_4508 mz260.185769513105rt221.518974
+#&gt; 14    pRPLC_5025 mz195.087723069497rt282.107316
+#&gt; 15    pRPLC_5044  mz286.201128766454rt283.41231
+#&gt; 16    pRPLC_5461  mz310.20109172433rt337.353198
+#&gt; 17   pRPLC_19596 mz310.201172089798rt321.875562
+#&gt; 18   pRPLC_20350 mz352.165086040505rt255.455742
+#&gt; 19   pRPLC_21471   mz166.072528849955rt78.64743
+#&gt; 20   pRPLC_21522  mz123.055358886719rt71.791338
+#&gt; 21   pRPLC_22098 mz182.081244423266rt34.2243402</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -233,6 +267,7 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
     <h2>Author</h2>
@@ -244,7 +279,7 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Xiaotao Shen.</p>
+  <p>Developed by Xiaotao Shen, Si Wu.</p>
 </div>
 
 <div class="pkgdown">

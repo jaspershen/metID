@@ -60,14 +60,21 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Help documents
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li class="dropdown-header">Database construction</li>
+<li class="dropdown-header">Brief introduction</li>
+    <li>
+      <a href="../articles/metID.html">Brief introduction</a>
+    </li>
+    <li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
+    </li>
+    <li>
+      <a href="../articles/public_databases.html">Public databases for metID</a>
     </li>
     <li class="divider">
     <li class="dropdown-header">Metabolite identification</li>
@@ -81,10 +88,13 @@
       <a href="../articles/multiple_databases.html">Metabolite identification using multiple databases</a>
     </li>
     <li>
-      <a href="../articles/other_tools.html">Other usefull tools in metID</a>
+      <a href="../articles/identify_single_peak.html">Identify single peak</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Other links</li>
+    <li class="dropdown-header">Others</li>
+    <li>
+      <a href="../articles/other_tools.html">Other usefull tools</a>
+    </li>
     <li>
       <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/">Test</a>
     </li>
@@ -99,7 +109,7 @@
   <ul class="dropdown-menu" role="menu">
 <li class="dropdown-header">Blog posts</li>
     <li>
-      <a href="../articles/metID.html">Version 0.0.1</a>
+      <a href="../articles/metID.html">Version 0.4.0</a>
     </li>
     <li class="divider">
     <li>
@@ -150,10 +160,10 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Brief instroduction of metID</h1>
-                        <h4 class="author">Xiaotao Shen (<a href="https://www.shenxt.info/" class="uri">https://www.shenxt.info/</a>)</h4>
-                                    <h4 class="author">Si Wu</h4>
+                        <h4 class="author">Xiaotao Shen PhD (<a href="https://www.shenxt.info/" class="uri">https://www.shenxt.info/</a>)</h4>
+                                    <h4 class="author">Si Wu PhD</h4>
             <address class="author_afil">
-      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2020-03-30</h4>
+      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2020-03-31</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jaspershen/metID/blob/master/vignettes/metID.Rmd"><code>vignettes/metID.Rmd</code></a></small>
       <div class="hidden name"><code>metID.Rmd</code></div>
@@ -163,13 +173,14 @@
 
     
     
+<hr>
 <div id="introduction-installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction-installation" class="anchor"></a><strong>Introduction &amp; Installation</strong>
 </h2>
 <hr>
 <p><em>metID</em> is a R package which can be used for in-hosue MS2 database construction, and metabolite identification based on in-house and public MS1 and MS2 database.</p>
-<p><img src="../man/figures/workflow_metid.jpg"></p>
+<p><img src="../man/figures/workflow_metid.jpg" align="middle" alt="" width="80%"></p>
 <p>Please install it via <a href="https://github.com/jaspershen/metID">github</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">if</span>(<span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span>(devtools)){</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
@@ -185,19 +196,25 @@
 <a href="#database-construction" class="anchor"></a><strong>Database construction</strong>
 </h2>
 <hr>
-<p>Please refer to this article: <a href="https://jaspershen.github.io/metID/articles/database_construction.html">Construct in-house MS2 datbase using metID</a></p>
+<p>Please refer to this article: <a href="https://jaspershen.github.io/metID/articles/database_construction.html">Construct in-house MS2 datbase using metID</a> for database construction.</p>
+</div>
+<div id="public-databases" class="section level2">
+<h2 class="hasAnchor">
+<a href="#public-databases" class="anchor"></a><strong>Public databases</strong>
+</h2>
+<p>We have provide some public databases and our in-house databases, so if you want to use them, please refer this article, <a href="https://jaspershen.github.io/metID/articles/public_databases.html">Database provided for <code>metID</code></a>.</p>
 </div>
 <div id="metabolite-identification" class="section level2">
 <h2 class="hasAnchor">
 <a href="#metabolite-identification" class="anchor"></a><strong>Metabolite identification</strong>
 </h2>
-<p>Please refer to those two articles: <a href="https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS2.html">Annotate metabolites according to MS2 database using metID</a> and <a href="https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS1.html">Annotate metabolites according to MS1 database using metID</a></p>
+<p>If you want to identify metablite without MS2 spectra, please refer to this article, <a href="https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS1.html">Annotate metabolites according to MS1 database using metID</a>. If you want to identify metabolite with MS2 spectra, please refer to this article, <a href="https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS2.html">Annotate metabolites according to MS2 database using metID</a>. If you want to identify a peak table with mutiple databases, please refer to this article, <a href="https://jaspershen.github.io/metID/articles/multiple_databases.html">Identify peak tables with multiple databases</a>. If you just want to identify single peak, please refer to this article: <a href="https://jaspershen.github.io/metID/articles/identify_single_peak.html">Identify single peak with metID</a>.</p>
 </div>
-<div id="identification-with-multiple-datasets" class="section level2">
+<div id="other-tools" class="section level2">
 <h2 class="hasAnchor">
-<a href="#identification-with-multiple-datasets" class="anchor"></a><strong>Identification with multiple datasets</strong>
+<a href="#other-tools" class="anchor"></a><strong>Other tools</strong>
 </h2>
-<p>Please refer to this article: <a href="https://jaspershen.github.io/metID/articles/multiple_databases.html">Identification with multiple datasets using metID</a></p>
+<p><code>metID</code> package also has some usefull tools, please refer to this article, <a href="https://jaspershen.github.io/metID/articles/other_tools.html">Other tools in metID</a></p>
 </div>
   </div>
 
@@ -209,8 +226,9 @@
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction-installation"><strong>Introduction &amp; Installation</strong></a></li>
       <li><a href="#database-construction"><strong>Database construction</strong></a></li>
+      <li><a href="#public-databases"><strong>Public databases</strong></a></li>
       <li><a href="#metabolite-identification"><strong>Metabolite identification</strong></a></li>
-      <li><a href="#identification-with-multiple-datasets"><strong>Identification with multiple datasets</strong></a></li>
+      <li><a href="#other-tools"><strong>Other tools</strong></a></li>
       </ul>
 </div>
       </div>
@@ -220,7 +238,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Xiaotao Shen.</p>
+  <p>Developed by Xiaotao Shen, Si Wu.</p>
 </div>
 
 <div class="pkgdown">

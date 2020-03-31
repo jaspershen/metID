@@ -106,14 +106,21 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Help documents
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Brief introduction</li>
+    <li>
+      <a href="../articles/metID.html">Brief introduction</a>
+    </li>
     <li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
+    </li>
+    <li>
+      <a href="../articles/public_databases.html">Public databases for metID</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Metabolite identification</li>
@@ -127,10 +134,13 @@
       <a href="../articles/multiple_databases.html">Metabolite identification using multiple databases</a>
     </li>
     <li>
-      <a href="../articles/other_tools.html">Other usefull tools in metID</a>
+      <a href="../articles/identify_single_peak.html">Identify single peak</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Other links</li>
+    <li class="dropdown-header">Others</li>
+    <li>
+      <a href="../articles/other_tools.html">Other usefull tools</a>
+    </li>
     <li>
       <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/">Test</a>
     </li>
@@ -145,7 +155,7 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Blog posts</li>
     <li>
-      <a href="../articles/metID.html">Version 0.0.1</a>
+      <a href="../articles/metID.html">Version 0.4.0</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -216,83 +226,9 @@
       <tr>
         
         <td>
-          <p><code><a href="getMS2spectrum.html">getMS2spectrum()</a></code> </p>
-        </td>
-        <td><p>Get MS2 spectra of peaks from databaseClass object</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="databaseConstruction.html">databaseConstruction()</a></code> </p>
         </td>
         <td><p>Construct in-house or public MS2 database for metID.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-metabolite-identification" class="hasAnchor"><a href="#section-metabolite-identification" class="anchor"></a>Metabolite identification</h2>
-          <p class="section-desc"><p>Metabolite identification based on MS1 and MS2 library.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="metIdentify.html">metIdentify()</a></code> <code><a href="metIdentify.html">metIdentify()</a></code> </p>
-        </td>
-        <td><p>Identify metabolites based on MS/MS database.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="filterIden.html">filterIden()</a></code> </p>
-        </td>
-        <td><p>Filter identifications according to m/z error, RT error, MS similarity and total score</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getIdenInfo.html">getIdenInfo()</a></code> </p>
-        </td>
-        <td><p>Get identification information from a metIdentifyClass object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getIdentificationTable.html">getIdentificationTable()</a></code> </p>
-        </td>
-        <td><p>Get identification table from a metIdentifyClass object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getIdentificationTable2.html">getIdentificationTable2()</a></code> </p>
-        </td>
-        <td><p>Get identification table from a mzIdentifyClass object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getMS2spectrum2Object.html">getMS2spectrum2Object()</a></code> </p>
-        </td>
-        <td><p>Get spectra of peaks from metIdentifyClass object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getParams.html">getParams()</a></code> </p>
-        </td>
-        <td><p>Get parameters from a metIdentifyClass object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getParams2.html">getParams2()</a></code> </p>
-        </td>
-        <td><p>Get parameters from a mzIdentifyClass object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ms2plot.html">ms2plot()</a></code> </p>
-        </td>
-        <td><p>Get MS2 match plots from a metIdentifyClass object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mzIdentify.html">mzIdentify()</a></code> </p>
-        </td>
-        <td><p>Identify peaks based on MS1 database</p></td>
       </tr><tr>
         
         <td>
@@ -302,9 +238,83 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="whichHasIden.html">whichHasIden()</a></code> </p>
+          <p><code><a href="get_ms2_spectrum.html">get_ms2_spectrum()</a></code> </p>
+        </td>
+        <td><p>Get MS2 spectra of peaks from databaseClass object</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-metabolite-identification" class="hasAnchor"><a href="#section-metabolite-identification" class="anchor"></a>Metabolite identification</h2>
+          <p class="section-desc"><p>Metabolite identification based on MS1 and MS2 databases.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="which_has_identification.html">which_has_identification()</a></code> </p>
         </td>
         <td><p>Get the peak names which have identifications</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="trans_to_new_style.html">trans_to_new_style()</a></code> </p>
+        </td>
+        <td><p>Transform old style identification table to new style</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ms2plot.html">ms2plot()</a></code> </p>
+        </td>
+        <td><p>Get MS2 match plots from a metIdentifyClass object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="identify_single_peak.html">identify_single_peak()</a></code> </p>
+        </td>
+        <td><p>Identify single peak based on database.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="identify_metabolites_params.html">identify_metabolites_params()</a></code> </p>
+        </td>
+        <td><p>Generate the parameter list for identify_metabolites function</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="identify_metabolites.html">identify_metabolites()</a></code> </p>
+        </td>
+        <td><p>Identify metabolites based on MS1 or MS/MS database</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_parameters.html">get_parameters()</a></code> </p>
+        </td>
+        <td><p>Get parameters from a metIdentifyClass object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_ms2_spectrum_from_object.html">get_ms2_spectrum_from_object()</a></code> </p>
+        </td>
+        <td><p>Get spectra of peaks from metIdentifyClass object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_identification_table.html">get_identification_table()</a></code> </p>
+        </td>
+        <td><p>Get identification table from a metIdentifyClass object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_iden_info.html">get_iden_info()</a></code> </p>
+        </td>
+        <td><p>Get identification information from a metIdentifyClass object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filter_identification.html">filter_identification()</a></code> </p>
+        </td>
+        <td><p>Filter identifications according to m/z error, RT error, MS similarity and total score</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -349,12 +359,18 @@
           <p><code><a href="msDatabase_hilic0.0.2.html">msDatabase_hilic0.0.2</a></code> </p>
         </td>
         <td><p>Michael Snyder lab RPLC database</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="annotate_result.html">annotate_result</a></code> </p>
+        </td>
+        <td><p>A metIdentifyClass object.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-other-function" class="hasAnchor"><a href="#section-other-function" class="anchor"></a>Other function</h2>
-          <p class="section-desc"><p>Other functions</p></p>
+          <h2 id="section-other-functions" class="hasAnchor"><a href="#section-other-functions" class="anchor"></a>Other functions</h2>
+          <p class="section-desc"><p>Other usefull functions in metID</p></p>
         </th>
       </tr>
       <tr>
@@ -372,15 +388,15 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="readMSP_MoNA.html">readMSP_MoNA()</a></code> </p>
-        </td>
-        <td><p>readMSP_MoNA</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="readMZXML.html">readMZXML()</a></code> </p>
         </td>
         <td><p>readMZXML</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="metID.html">metID()</a></code> </p>
+        </td>
+        <td><p>Show the base information of metID pacakge</p></td>
       </tr>
     </tbody>
     </table>
@@ -392,7 +408,7 @@
       <li><a href="#section-database-construction">Database construction</a></li>
       <li><a href="#section-metabolite-identification">Metabolite identification</a></li>
       <li><a href="#section-data">Data</a></li>
-      <li><a href="#section-other-function">Other function</a></li>
+      <li><a href="#section-other-functions">Other functions</a></li>
     </ul>
   </div>
 </div>
@@ -400,7 +416,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Xiaotao Shen.</p>
+  <p>Developed by Xiaotao Shen, Si Wu.</p>
 </div>
 
 <div class="pkgdown">

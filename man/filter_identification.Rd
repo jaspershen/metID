@@ -30,6 +30,10 @@ A new metIdentifyClass.
 Filter identifications according to m/z error, RT error, MS similarity and total score.
 \lifecycle{maturing}
 }
+\examples{
+data("annotate_result", package = "metID")
+annotate_result2 <- filter_identification(annotate_result, rt.match.tol = 5)
+}
 \seealso{
 The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html

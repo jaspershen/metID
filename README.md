@@ -10,8 +10,8 @@
 ## About
 
 `metID` is a R packge which is used for metabolite identification based
-on in-house database and public database based on accurate mass,
-rentention time and/or MS2
+on in-house database and public database based on accurate mass (m/z),
+rentention time (RT) and/or MS2
 spectra.
 
 <img src="man/figures/workflow_metid.jpg" align="middle" alt="" width = "80%"/>
@@ -22,17 +22,26 @@ You can install `metID` from
 [Github](https://github.com/jaspershen/metID).
 
 ``` r
-# Install `metID` from GitHub
+if(!require(devtools)){
+install.packages("devtools")
+}
+devtools::install_github("jaspershen/metID")
+```
+
+`tinyTools` is a dependent package for `metID`. Please install it too.
+
+``` r
 if(!require(devtools)){
 install.packages("devtools")
 }
 devtools::install_github("jaspershen/tinyTools")
-devtools::install_github("jaspershen/metID")
 ```
 
 ## Usage
 
-Please see the `Get started` page to get the instruction of `metID`.
+Please see the [Get
+started](https://jaspershen.github.io/metID/articles/metID.html) page to
+get the instruction of `metID`.
 
 ## Need help?
 
@@ -42,9 +51,13 @@ me (<shenxt@stanford.edu>).
 <i class="fa fa-weixin"></i>
 [shenzutao1990](https://www.shenxt.info/files/wechat_QR.jpg)
 
-<i class="fa fa-envelope"></i> <shenxt1990@163.com>
+<i class="fa fa-envelope"></i> <shenxt@stanford.edu>
 
-<i class="fa fa-map-marker-alt"></i> [Cooper Lane, Palo Alto,
+<i class="fa fa-twitter"></i>
+[Twitter](https://twitter.com/JasperShen1990)
+
+<i class="fa fa-map-marker-alt"></i> [M339, Alway Buidling, Cooper Lane,
+Palo Alto,
 CA 94304](https://www.google.com/maps/place/Alway+Building/@37.4322345,-122.1770883,17z/data=!3m1!4b1!4m5!3m4!1s0x808fa4d335c3be37:0x9057931f3b312c29!8m2!3d37.4322345!4d-122.1748996)
 
 ## Citation

@@ -16,6 +16,10 @@ Peak names with identifications.
 Get the peak names which have identifications.
 \lifecycle{deprecated}
 }
+\examples{
+data("annotate_result", package = "metID")
+which_has_identification(annotate_result)
+}
 \seealso{
 The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html

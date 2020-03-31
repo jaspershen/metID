@@ -45,3 +45,11 @@
 #' \email{shenxt1990@@163.com}
 #' @format A databaseClass object.
 "msDatabase_hilic0.0.2"
+
+##------------------------------------------------------------------------------
+#' @title A metIdentifyClass object.
+#' @description A metIdentifyClass object.
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@163.com}
+#' @format A metIdentifyClass object.
+"annotate_result"

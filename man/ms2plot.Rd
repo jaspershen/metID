@@ -87,6 +87,12 @@ A or all ms2 match plot(s).
 Get MS2 match plots from a metIdentifyClass object.
 \lifecycle{maturing}
 }
+\examples{
+data("annotate_result", package = "metID")
+data("msDatabase_hilic0.0.2", package = "metID")
+peak_name <- which_has_identification(annotate_result)
+ms2plot(annotate_result, database = msDatabase_rplc0.0.2, which.peak = peak_name[1,1])
+}
 \seealso{
 The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html

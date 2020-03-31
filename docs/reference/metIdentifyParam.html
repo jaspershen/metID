@@ -108,14 +108,21 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Help documents
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Brief introduction</li>
+    <li>
+      <a href="../articles/metID.html">Brief introduction</a>
+    </li>
     <li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
+    </li>
+    <li>
+      <a href="../articles/public_databases.html">Public databases for metID</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Metabolite identification</li>
@@ -129,10 +136,13 @@
       <a href="../articles/multiple_databases.html">Metabolite identification using multiple databases</a>
     </li>
     <li>
-      <a href="../articles/other_tools.html">Other usefull tools in metID</a>
+      <a href="../articles/identify_single_peak.html">Identify single peak</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Other links</li>
+    <li class="dropdown-header">Others</li>
+    <li>
+      <a href="../articles/other_tools.html">Other usefull tools</a>
+    </li>
     <li>
       <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/">Test</a>
     </li>
@@ -147,7 +157,7 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Blog posts</li>
     <li>
-      <a href="../articles/metID.html">Version 0.0.1</a>
+      <a href="../articles/metID.html">Version 0.4.0</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -198,7 +208,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Generate the parameter list for metIdentify function</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/metIdentify4all.R'><code>R/metIdentify4all.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/deprecated_metIdentify4all.R'><code>R/deprecated_metIdentify4all.R</code></a></small>
     <div class="hidden name"><code>metIdentifyParam.Rd</code></div>
     </div>
 
@@ -321,8 +331,88 @@
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>The example and demo data of this function can be found
-https://jaspershen.github.io/metID/articles/metID.html</p></div>
+https://jaspershen.github.io/metID/articles/multiple_databases.html</p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'> <span class='no'>param1</span> <span class='kw'>&lt;-</span>
+<span class='fu'>metIdentifyParam</span>(
+  <span class='kw'>ms1.match.ppm</span> <span class='kw'>=</span> <span class='fl'>15</span>,
+  <span class='kw'>rt.match.tol</span> <span class='kw'>=</span> <span class='fl'>15</span>,
+  <span class='kw'>polarity</span> <span class='kw'>=</span> <span class='st'>"positive"</span>,
+  <span class='kw'>ce</span> <span class='kw'>=</span> <span class='st'>"all"</span>,
+  <span class='kw'>column</span> <span class='kw'>=</span> <span class='st'>"rp"</span>,
+  <span class='kw'>total.score.tol</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>database</span> <span class='kw'>=</span> <span class='st'>"msDatabase_rplc0.0.2"</span>
+)</div><div class='output co'>#&gt; <span style='color: #BBBB00;'>`metIdentifyParam()` is deprecated, use `identify_metabolites_params()`.</span><span></div><div class='input'><span class='no'>param1</span></div><div class='output co'>#&gt; $metIdentifyParam
+#&gt; $metIdentifyParam$ms1.ms2.match.mz.tol
+#&gt; [1] 25
+#&gt; 
+#&gt; $metIdentifyParam$ms1.ms2.match.rt.tol
+#&gt; [1] 10
+#&gt; 
+#&gt; $metIdentifyParam$ms1.ms2.match.mz.tol
+#&gt; [1] 25
+#&gt; 
+#&gt; $metIdentifyParam$ms1.ms2.match.rt.tol
+#&gt; [1] 10
+#&gt; 
+#&gt; $metIdentifyParam$ms1.match.ppm
+#&gt; [1] 15
+#&gt; 
+#&gt; $metIdentifyParam$ms2.match.ppm
+#&gt; [1] 30
+#&gt; 
+#&gt; $metIdentifyParam$mz.ppm.thr
+#&gt; [1] 400
+#&gt; 
+#&gt; $metIdentifyParam$ms2.match.tol
+#&gt; [1] 0.5
+#&gt; 
+#&gt; $metIdentifyParam$fraction.weight
+#&gt; [1] 0.3
+#&gt; 
+#&gt; $metIdentifyParam$dp.forward.weight
+#&gt; [1] 0.6
+#&gt; 
+#&gt; $metIdentifyParam$dp.reverse.weight
+#&gt; [1] 0.1
+#&gt; 
+#&gt; $metIdentifyParam$rt.match.tol
+#&gt; [1] 15
+#&gt; 
+#&gt; $metIdentifyParam$polarity
+#&gt; [1] "positive"
+#&gt; 
+#&gt; $metIdentifyParam$ce
+#&gt; [1] "all"
+#&gt; 
+#&gt; $metIdentifyParam$column
+#&gt; [1] "rp"
+#&gt; 
+#&gt; $metIdentifyParam$ms1.match.weight
+#&gt; [1] 0.25
+#&gt; 
+#&gt; $metIdentifyParam$rt.match.weight
+#&gt; [1] 0.25
+#&gt; 
+#&gt; $metIdentifyParam$ms2.match.weight
+#&gt; [1] 0.5
+#&gt; 
+#&gt; $metIdentifyParam$total.score.tol
+#&gt; [1] 0.5
+#&gt; 
+#&gt; $metIdentifyParam$candidate.num
+#&gt; [1] 3
+#&gt; 
+#&gt; $metIdentifyParam$database
+#&gt; [1] "msDatabase_rplc0.0.2"
+#&gt; 
+#&gt; $metIdentifyParam$threads
+#&gt; [1] 3
+#&gt; 
+#&gt; </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -330,6 +420,7 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
     <h2>Author</h2>
@@ -341,7 +432,7 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Xiaotao Shen.</p>
+  <p>Developed by Xiaotao Shen, Si Wu.</p>
 </div>
 
 <div class="pkgdown">

@@ -1,4 +1,29 @@
-
+#' An S4 class to represent annotation result.
+#'
+#' @slot ms1.data MS1 peak table. data.frame.
+#' @slot ms1.info MS1 information of MS2 data. data.frame. 
+#' @slot ms2.info MS2 information of MS2 data. list.
+#' @slot identification.result Identification result. list.
+#' @slot match.result MS1 peak table and MS2 data match result. data.frame.
+#' @slot adduct.table Adduct table used for annotation. data.frame.
+#' @slot ms1.ms2.match.mz.tol Parameter for annotation.
+#' @slot ms1.ms2.match.rt.tol Parameter for annotation.
+#' @slot ms1.match.ppm Parameter for annotation.
+#' @slot ms2.match.ppm Parameter for annotation.
+#' @slot ms2.match.tol Parameter for annotation.
+#' @slot rt.match.tol Parameter for annotation.
+#' @slot polarity Parameter for annotation.
+#' @slot ce Parameter for annotation.
+#' @slot column Parameter for annotation.
+#' @slot ms1.match.weight Parameter for annotation.
+#' @slot rt.match.weight Parameter for annotation.
+#' @slot ms2.match.weight Parameter for annotation.
+#' @slot path Parameter for annotation.
+#' @slot total.score.tol Parameter for annotation.
+#' @slot candidate.num Parameter for annotation.
+#' @slot database Parameter for annotation.
+#' @slot threads Parameter for annotation.
+#' @slot version Parameter for annotation.
 
 ###S4 class for function metIdentification
 setClass(
@@ -110,6 +135,10 @@ setMethod(
 #' @export
 #' @import magrittr
 #' @import dplyr
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' get_parameters(annotate_result)
+
 setGeneric(
   name = "get_parameters",
   def = function(object) {
@@ -197,6 +226,11 @@ setGeneric(
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' data("msDatabase_hilic0.0.2", package = "metID")
+#' peak_name <- which_has_identification(annotate_result)
+#' get_iden_info(annotate_result, peak_name[1,1], database = msDatabase_rplc0.0.2)
 
 setGeneric(
   name = "get_iden_info",
@@ -304,6 +338,11 @@ setGeneric(
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' data("msDatabase_hilic0.0.2", package = "metID")
+#' peak_name <- which_has_identification(annotate_result)
+#' ms2plot(annotate_result, database = msDatabase_rplc0.0.2, which.peak = peak_name[1,1])
 
 setGeneric(
   name = "ms2plot",
@@ -623,6 +662,9 @@ setGeneric(
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' which_has_identification(annotate_result)
 
 setGeneric(
   name = "which_has_identification",
@@ -668,8 +710,11 @@ setGeneric(
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
-#'
-#'
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' annotate_result2 <- filter_identification(annotate_result, rt.match.tol = 5)
+
+
 setGeneric(
   name = "filter_identification",
   def = function(object,
@@ -722,17 +767,22 @@ setGeneric(
 #' \lifecycle{maturing}
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
-#' @param peak.name Peak name.
 #' @param object metIdentifyClass.
+#' @param peak.name Peak name.
 #' @return A MS2 spectrum.
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' peak_name <- which_has_identification(annotate_result)
+#' get_ms2_spectrum_from_object(annotate_result, peak_name[1,1])
 
 setGeneric(
   name = "get_ms2_spectrum_from_object",
-  def = function(peak.name,
-                 object) {
+  def = function(object,
+                 peak.name
+                 ) {
     if (class(object) != "metIdentifyClass")
       stop("Only for metIdentifyClass\n")
     if (missing(peak.name))

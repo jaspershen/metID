@@ -108,14 +108,21 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    Help documents
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Brief introduction</li>
+    <li>
+      <a href="../articles/metID.html">Brief introduction</a>
+    </li>
     <li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
+    </li>
+    <li>
+      <a href="../articles/public_databases.html">Public databases for metID</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Metabolite identification</li>
@@ -129,10 +136,13 @@
       <a href="../articles/multiple_databases.html">Metabolite identification using multiple databases</a>
     </li>
     <li>
-      <a href="../articles/other_tools.html">Other usefull tools in metID</a>
+      <a href="../articles/identify_single_peak.html">Identify single peak</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Other links</li>
+    <li class="dropdown-header">Others</li>
+    <li>
+      <a href="../articles/other_tools.html">Other usefull tools</a>
+    </li>
     <li>
       <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/">Test</a>
     </li>
@@ -147,7 +157,7 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Blog posts</li>
     <li>
-      <a href="../articles/metID.html">Version 0.0.1</a>
+      <a href="../articles/metID.html">Version 0.4.0</a>
     </li>
     <li class="divider"></li>
     <li>
@@ -198,7 +208,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Generate the mzIdentify parameter list</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/metIdentify4all.R'><code>R/metIdentify4all.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/deprecated_metIdentify4all.R'><code>R/deprecated_metIdentify4all.R</code></a></small>
     <div class="hidden name"><code>mzIdentifyParam.Rd</code></div>
     </div>
 
@@ -253,6 +263,36 @@
     <div class='dont-index'><p>The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html</p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'> <span class='no'>param1</span> <span class='kw'>&lt;-</span>
+<span class='fu'>mzIdentifyParam</span>(
+  <span class='kw'>ms1.match.ppm</span> <span class='kw'>=</span> <span class='fl'>15</span>,
+  <span class='kw'>polarity</span> <span class='kw'>=</span> <span class='st'>"positive"</span>,
+  <span class='kw'>column</span> <span class='kw'>=</span> <span class='st'>"rp"</span>,
+  <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>database</span> <span class='kw'>=</span> <span class='st'>"HMDB.metabolite.data"</span>
+)
+<span class='no'>param1</span></div><div class='output co'>#&gt; $mzIdentifyParam
+#&gt; $mzIdentifyParam$ms1.match.ppm
+#&gt; [1] 15
+#&gt; 
+#&gt; $mzIdentifyParam$polarity
+#&gt; [1] "positive"
+#&gt; 
+#&gt; $mzIdentifyParam$column
+#&gt; [1] "rp"
+#&gt; 
+#&gt; $mzIdentifyParam$candidate.num
+#&gt; [1] 3
+#&gt; 
+#&gt; $mzIdentifyParam$database
+#&gt; [1] "HMDB.metabolite.data"
+#&gt; 
+#&gt; $mzIdentifyParam$threads
+#&gt; [1] 3
+#&gt; 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -260,6 +300,7 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
     <h2>Author</h2>
@@ -271,7 +312,7 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Xiaotao Shen.</p>
+  <p>Developed by Xiaotao Shen, Si Wu.</p>
 </div>
 
 <div class="pkgdown">

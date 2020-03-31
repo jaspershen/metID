@@ -16,6 +16,10 @@ A data frame contains all the parameters of this metIdentifiyClass object.
 Get parameters from a metIdentifyClass object.
 \lifecycle{maturing}
 }
+\examples{
+data("annotate_result", package = "metID")
+get_parameters(annotate_result)
+}
 \author{
 Xiaotao Shen
 \email{shenxt1990@163.com}

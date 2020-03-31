@@ -342,58 +342,37 @@ setGeneric(
 )
 
 
-#----------------------------------------------------------------------------
-setGeneric(
-  name = "ListMGF",
-  def = function(file) {
-    mgf.data <- readLines(file)
-    nl.rec.new <- 1
-    idx.rec <- 1
-    rec.list <- list()
-    for (nl in seq_along(mgf.data))
-    {
-      if (mgf.data[nl] == "END IONS")
-      {
-        rec.list[idx.rec] <- list(Compound = mgf.data[nl.rec.new:nl])
-        nl.rec.new <- nl + 1
-        idx.rec <- idx.rec + 1
-      }
-    }
-    rec.list
-  }
-)
-
-
 #---------------------------------------------------------------------------
-#'@title readMSP
-#'@description Read MSP data.
-#'\lifecycle{experimental}
-#'@author Xiaotao Shen
-#'\email{shenxt1990@@163.com}
-#'@param file The vector of names of ms2 files. MS2 file must be msp format.
-#'@return Return ms2 data. This is a list.
-#'@export
+#' @title readMSP
+#' @description Read MSP data.
+#' \lifecycle{experimental}
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@163.com}
+#' @param file The vector of names of ms2 files. MS2 file must be msp format.
+#' @return Return ms2 data. This is a list.
+#' @export
+
 setGeneric('readMSP', function(file) {
   msp.data <- readLines(file)
   # n.tot <- length(msp.data)
   n.null <- which(msp.data == '')
-  
+
   temp.idx1 <- c(1, n.null[-length(n.null)])
   temp.idx2 <- n.null - 1
-  
+
   temp.idx <- data.frame(temp.idx1, temp.idx2,
                          stringsAsFactors = FALSE)
   temp.idx <- apply(temp.idx, 1, list)
-  
+
   temp.idx <- lapply(temp.idx, unlist)
-  
+
   # n.spec <- which(grepl('^\\d', msp.data))
   # n.info <- seq(n.tot)[-c(n.spec, n.null)]
-  
+
   pbapply::pboptions(style = 1)
   info.spec <- pbapply::pblapply(temp.idx, function(idx) {
     temp.msp.data <- msp.data[idx[1]:idx[2]]
-    
+
     temp.msp.data <- temp.msp.data[temp.msp.data != ""]
     info.idx <- grep("[A-Za-z]", temp.msp.data)
     temp.info <- temp.msp.data[info.idx]
@@ -405,18 +384,18 @@ setGeneric('readMSP', function(file) {
     colnames(temp.info) <- rownames(temp.info) <- NULL
     rownames(temp.info) <- temp.info[, 1]
     temp.info <- temp.info[, -1, drop = FALSE]
-    
+
     temp.spec <- temp.msp.data[-info.idx]
-    
+
     if (length(temp.spec) != 0) {
       if (length(grep(" ", temp.spec[1])) == 1) {
         temp.spec <- strsplit(temp.spec, split = ' ')
       }
-      
+
       if (length(grep("\t", temp.spec[1])) == 1) {
         temp.spec <- strsplit(x = temp.spec, split = "\t")
       }
-      
+
       temp.spec <- do.call(rbind, temp.spec)
       temp.spec <- data.frame(temp.spec,
                               stringsAsFactors = FALSE)
@@ -428,15 +407,15 @@ setGeneric('readMSP', function(file) {
     } else{
       temp.spec <- NULL
     }
-    
+
     list('info' = temp.info,
          'spec' = temp.spec)
   })
-  
+
   mz.idx <- grep("[Mm][Zz]", rownames(info.spec[[1]][[1]]))
   rt.idx <-
     grep("Time|TIME|time|RT|rt|Rt", rownames(info.spec[[1]][[1]]))
-  
+
   ##fix bug in msp data from metAnalyzer
   if (length(rt.idx) == 0) {
     cat(crayon::yellow("The msp data are from MetAnalyzer software.\n"))
@@ -462,26 +441,27 @@ setGeneric('readMSP', function(file) {
       x
     })
   }
-  
+
   remove.idx <-
     which(unlist(lapply(info.spec, function(x)
       is.null(x[[2]]))))
   if (length(remove.idx) > 0) {
     info.spec <- info.spec[-remove.idx]
   }
-  
+
   info.spec <- info.spec
 })
 
 #---------------------------------------------------------------------------
-#'@title readMSP_MoNA
-#'@description Read MSP data from MoNA.
-#'\lifecycle{experimental}
-#'@author Xiaotao Shen
-#'\email{shenxt1990@@163.com}
-#'@param file The vector of names of ms2 files. MS2 file must be msp. The msp data must from MoNA.
-#'@return Return ms2 data. This is a list.
-#'@export
+# @title readMSP_MoNA
+# @description Read MSP data from MoNA.
+# \lifecycle{experimental}
+# @author Xiaotao Shen
+# \email{shenxt1990@@163.com}
+# @param file The vector of names of ms2 files. MS2 file must be msp. The msp data must from MoNA.
+# @return Return ms2 data. This is a list.
+# @export
+# 
 setGeneric('readMSP_MoNA', function(file) {
   cat(crayon::green("Reading MSP data...\n"))
   msp.data <- readr::read_lines(file)
@@ -611,15 +591,19 @@ setGeneric(
 
 
 
-#'@title readMZXML
-#'@description Read mzXML data.
-#'\lifecycle{experimental}
-#'@author Xiaotao Shen
-#'\email{shenxt1990@@163.com}
-#'@param file The vector of names of ms2 files. MS2 file must be mzXML or mzML.
-#'@param threads Thread number
-#'@return Return ms2 data. This is a list.
-#'@export
+#' @title readMZXML
+#' @description Read mzXML data.
+#' \lifecycle{experimental}
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@163.com}
+#' @param file The vector of names of ms2 files. MS2 file must be mzXML or mzML.
+#' @param threads Thread number
+#' @return Return ms2 data. This is a list.
+#' @export
+#' mzxml_data <- system.file("mzxml_data", package = "metID")
+#' dir(mzxml_data)
+#' data <- readMZXML(dir(mzxml_data, full.names = TRUE))
+#' data[[1]]
 
 setGeneric(
   name = "readMZXML",
@@ -872,14 +856,19 @@ setGeneric(
 
 
 
-#'@title readMGF
-#'@description Read MGF data.
-#'\lifecycle{experimental}
-#'@author Xiaotao Shen
-#'\email{shenxt1990@@163.com}
-#'@param file The vector of names of ms2 files. MS2 file must be mgf.
-#'@return Return ms2 data. This is a list.
-#'@export
+#' @title readMGF
+#' @description Read MGF data.
+#' \lifecycle{experimental}
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@163.com}
+#' @param file The vector of names of ms2 files. MS2 file must be mgf.
+#' @return Return ms2 data. This is a list.
+#' @export
+#' @examples 
+#' ms2_data <- system.file("ms2_data", package = "metID")
+#' dir(ms2_data)
+#' data <- readMGF(dir(ms2_data, full.names = TRUE))
+#' data[[1]]
 
 setGeneric(
   name = "readMGF",
@@ -999,3 +988,6 @@ setGeneric(
     rec.list
   }
 )
+
+
+

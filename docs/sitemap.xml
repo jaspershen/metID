@@ -4,6 +4,9 @@
     <loc>https://jaspershen.github.io/metID//index.html</loc>
   </url>
   <url>
+    <loc>https://jaspershen.github.io/metID//reference/annotate_result.html</loc>
+  </url>
+  <url>
     <loc>https://jaspershen.github.io/metID//reference/databaseConstruction.html</loc>
   </url>
   <url>
@@ -55,10 +58,16 @@
     <loc>https://jaspershen.github.io/metID//reference/hilic.pos.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/identifySinglePeak.html</loc>
+    <loc>https://jaspershen.github.io/metID//reference/identify_metabolite_all.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//reference/identify_metabolites.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID//reference/identify_metabolites_params.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID//reference/identify_single_peak.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//reference/metID.html</loc>
@@ -68,6 +77,9 @@
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//reference/metIdentify4all.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID//reference/metIdentifyClass-class.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//reference/metIdentifyParam.html</loc>
@@ -92,9 +104,6 @@
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//reference/readMSP.html</loc>
-  </url>
-  <url>
-    <loc>https://jaspershen.github.io/metID//reference/readMSP_MoNA.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//reference/readMZXML.html</loc>
@@ -127,6 +136,9 @@
     <loc>https://jaspershen.github.io/metID//articles/database_construction.html</loc>
   </url>
   <url>
+    <loc>https://jaspershen.github.io/metID//articles/identify_single_peak.html</loc>
+  </url>
+  <url>
     <loc>https://jaspershen.github.io/metID//articles/metID.html</loc>
   </url>
   <url>
@@ -140,5 +152,8 @@
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//articles/other_tools.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID//articles/public_databases.html</loc>
   </url>
 </urlset>
