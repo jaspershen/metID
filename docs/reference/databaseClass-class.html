@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get parameters from a metIdentifyClass object — get_parameters • metID</title>
+<title>An S4 class to represent MS1 or MS2 database. — databaseClass-class • metID</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,9 +52,8 @@
 
 
 
-<meta property="og:title" content="Get parameters from a metIdentifyClass object — get_parameters" />
-<meta property="og:description" content="Get parameters from a metIdentifyClass object.
-" />
+<meta property="og:title" content="An S4 class to represent MS1 or MS2 database. — databaseClass-class" />
+<meta property="og:description" content="An S4 class to represent MS1 or MS2 database." />
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png" />
 
 
@@ -210,53 +209,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get parameters from a metIdentifyClass object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/function4metIdentifyClass.R'><code>R/function4metIdentifyClass.R</code></a></small>
-    <div class="hidden name"><code>get_parameters.Rd</code></div>
+    <h1>An S4 class to represent MS1 or MS2 database.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/databaseConstruction.R'><code>R/databaseConstruction.R</code></a></small>
+    <div class="hidden name"><code>databaseClass-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get parameters from a metIdentifyClass object.
-<a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
+    <p>An S4 class to represent MS1 or MS2 database.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_parameters</span>(<span class='no'>object</span>)</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p>A metIdentifyClass object.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
 
-    <p>A data frame contains all the parameters of this metIdentifiyClass object.</p>
+    
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"annotate_result"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"metID"</span>)
-<span class='fu'>get_parameters</span>(<span class='no'>annotate_result</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 17 x 3</span><span>
-#&gt;    Parameter          Meaning                                   Value           
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; </span><span style='color: #555555;'> 1</span><span> ms1.ms2.match.mz.… MS1 features &amp; MS spectra matching mz to… 25              
-#&gt; </span><span style='color: #555555;'> 2</span><span> ms1.ms2.match.rt.… MS1 features &amp; MS spectra matching RT to… 10              
-#&gt; </span><span style='color: #555555;'> 3</span><span> ms1.match.ppm      MS1 match tolerance (ppm)                 15              
-#&gt; </span><span style='color: #555555;'> 4</span><span> ms2.match.ppm      MS2 fragment match tolerance (ppm)        30              
-#&gt; </span><span style='color: #555555;'> 5</span><span> ms2.match.tol      MS2 match tolerance                       0.5             
-#&gt; </span><span style='color: #555555;'> 6</span><span> rt.match.tol       RT match tolerance (s)                    30              
-#&gt; </span><span style='color: #555555;'> 7</span><span> polarity           Polarity                                  positive        
-#&gt; </span><span style='color: #555555;'> 8</span><span> ce                 Collision energy                          all             
-#&gt; </span><span style='color: #555555;'> 9</span><span> column             Column                                    rp              
-#&gt; </span><span style='color: #555555;'>10</span><span> ms1.match.weight   MS1 match weight                          0.25            
-#&gt; </span><span style='color: #555555;'>11</span><span> rt.match.weight    RT match weight                           0.25            
-#&gt; </span><span style='color: #555555;'>12</span><span> ms2.match.weight   MS2 match weight                          0.5             
-#&gt; </span><span style='color: #555555;'>13</span><span> path               Work directory                            ./example       
-#&gt; </span><span style='color: #555555;'>14</span><span> total.score.tol    Total score tolerance                     0.5             
-#&gt; </span><span style='color: #555555;'>15</span><span> candidate.num      Candidate number                          3               
-#&gt; </span><span style='color: #555555;'>16</span><span> database           MS2 database                              msDatabase_rplc…
-#&gt; </span><span style='color: #555555;'>17</span><span> threads            Thread number                             2               </div></span></pre>
+<dl'>
+<dt><code>database.info</code></dt><dd><p>Database information.</p></dd>
+
+<dt><code>spectra.info</code></dt><dd><p>Metabolites in database.</p></dd>
+
+<dt><code>spectra.data</code></dt><dd><p>MS2 spectra data.</p></dd>
+
+</dl>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
