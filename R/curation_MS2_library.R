@@ -1474,3 +1474,236 @@
 #   
 #   
 #    
+#    
+
+# ###########---------------------------------------------------------------------
+# sxtTools::setwd_project()
+# setwd("ms2_database/")
+# 
+# 
+# #-------------------------------------------------
+# ##massBankDatabase0.0.1 to massBankDatabase0.0.2
+# load("massbankDatabase0.0.1")
+# massbankDatabase0.0.1
+# 
+# names(massbankDatabase0.0.1)
+# 
+# database.info <-
+#   massbankDatabase0.0.1@database.info
+# 
+# spectra.info <-
+#   massbankDatabase0.0.1@spectra.info
+# 
+# spectra.data <-
+#   massbankDatabase0.0.1@spectra.data
+# 
+# spectra.info$Compound.name
+# 
+# 
+# remove_idx <-
+#   which(is.na(spectra.info$Compound.name))
+# 
+# if(length(remove_idx) > 0){
+#   spectra.info <-
+#     spectra.info[-remove_idx,]
+# }
+# 
+#   database.info$Version <- "0.0.2"
+# 
+#   massbankDatabase0.0.2 <- new(
+#     Class = "databaseClass",
+#     database.info = database.info,
+#     spectra.info = spectra.info,
+#     spectra.data = spectra.data
+#   )
+# 
+# save(massbankDatabase0.0.2, file = "massbankDatabase0.0.2", compress = "xz")
+  
+
+###########---------------------------------------------------------------------
+# sxtTools::setwd_project()
+# setwd("ms2_database/")
+# 
+# #-------------------------------------------------
+# ##massBankDatabase0.0.1 to massBankDatabase0.0.2
+# load("metlinDatabase0.0.1")
+# metlinDatabase0.0.1
+# 
+# names(metlinDatabase0.0.1)
+# 
+# database.info <-
+#   metlinDatabase0.0.1@database.info
+# 
+# spectra.info <-
+#   metlinDatabase0.0.1@spectra.info
+# 
+# spectra.data <-
+#   metlinDatabase0.0.1@spectra.data
+# 
+# spectra.info$Compound.name
+# 
+# 
+# remove_idx <-
+#   which(is.na(spectra.info$Compound.name))
+# 
+# if(length(remove_idx) > 0){
+#   spectra.info <-
+#     spectra.info[-remove_idx,]
+# }
+# 
+# database.info$Version <- "0.0.2"
+# 
+# 
+# ##get KEGG and HMDB using metID::tran_ID
+#   kegg.id <-
+#     pbapply::pblapply(spectra.info$Compound.name, function(x){
+#       metflow2::transID(query = x, from = "Chemical name", to = "KEGG", top = 1)
+#     }) %>%
+#     do.call(rbind, .)
+# 
+#   hmdb.id <-
+#     pbapply::pblapply(spectra.info$Compound.name, function(x){
+#       metflow2::transID(query = x, from = "Chemical name",
+#                         to = "Human Metabolome Database", top = 1)
+#     }) %>%
+#     do.call(rbind, .)
+# 
+#   ID_trans <-
+#     data.frame(
+#       KEGG = kegg.id$KEGG,
+#       HMDB = hmdb.id$`Human Metabolome Database`,
+#       stringsAsFactors = FALSE
+#     )
+# 
+# 
+#   hmdb_kegg <-
+#     spectra.info %>%
+#     select(KEGG.ID, HMDB.ID) %>%
+#     data.frame(ID_trans, stringsAsFactors = FALSE)
+# 
+#   hmdb_kegg <-
+#     apply(hmdb_kegg, 1, function(x){
+#       hmdb <- x[c(2,4)]
+#       hmdb <- hmdb[!is.na(hmdb)]
+#       kegg <- x[c(1,3)]
+#       kegg <- kegg[!is.na(kegg)]
+# 
+#       hmdb <- ifelse(length(hmdb) == 0, NA, hmdb[1])
+#       kegg <- ifelse(length(kegg) == 0, NA, kegg[1])
+# 
+#       c(hmdb, kegg)
+# 
+#     }) %>%
+#     t() %>%
+#     as_tibble()
+# 
+# 
+#   colnames(hmdb_kegg) <-
+#     c("HMDB.ID", "KEGG.ID")
+# 
+#   hmdb_kegg$HMDB.ID <-
+#     hmdb_kegg$HMDB.ID %>%
+#     sapply(function(x) {
+#       if(is.na(x)) {
+#         return(NA)
+#       }
+#       if(nchar(x) == 9){
+#         pre <- stringr::str_extract(x, "[A-Za-z]{1,}")
+#         end <- stringr::str_extract(x, "[0-9]{1,}")
+#         end <- paste("00", end, sep = "")
+#         x <- paste(pre, end, sep = "")
+#       }
+#       x
+#     }
+#     ) %>%
+#     unname()
+# 
+#   cbind(spectra.info$HMDB.ID, hmdb_kegg[,1])
+# 
+#   spectra.info[,c("HMDB.ID", 'KEGG.ID')] <-
+#     hmdb_kegg
+# 
+# 
+# 
+# 
+# metlinDatabase0.0.2 <- new(
+#   Class = "databaseClass",
+#   database.info = database.info,
+#   spectra.info = spectra.info,
+#   spectra.data = spectra.data
+# )
+# 
+# save(metlinDatabase0.0.2, file = "metlinDatabase0.0.2", compress = "xz")
+# 
+# 
+# ###########---------------------------------------------------------------------
+# sxtTools::setwd_project()
+# setwd("ms2_database/")
+# 
+# #-------------------------------------------------
+# ##massBankDatabase0.0.1 to massBankDatabase0.0.2
+# load("nistDatabase0.0.1")
+# nistDatabase0.0.1
+# 
+# database.info <-
+#   nistDatabase0.0.1@database.info
+# 
+# spectra.info <-
+#   nistDatabase0.0.1@spectra.info
+# 
+# spectra.data <-
+#   nistDatabase0.0.1@spectra.data
+# 
+# spectra.info$Compound.name
+# 
+# 
+# nistDatabase0.0.2 <- new(
+#   Class = "databaseClass",
+#   database.info = database.info,
+#   spectra.info = spectra.info,
+#   spectra.data = spectra.data
+# )
+# 
+# save(nistDatabase0.0.2, file = "nistDatabase0.0.2", compress = "xz")
+# 
+# 
+# 
+# 
+# ###########---------------------------------------------------------------------
+# sxtTools::setwd_project()
+# setwd("ms2_database/")
+# 
+# #-------------------------------------------------
+# ##massBankDatabase0.0.1 to massBankDatabase0.0.2
+# load("monaDatabase0.0.1")
+# monaDatabase0.0.1
+# 
+# database.info <-
+#   monaDatabase0.0.1@database.info
+# 
+# spectra.info <-
+#   monaDatabase0.0.1@spectra.info
+# 
+# spectra.data <-
+#   monaDatabase0.0.1@spectra.data
+# 
+# spectra.info$Compound.name
+# 
+# 
+# monaDatabase0.0.2 <- new(
+#   Class = "databaseClass",
+#   database.info = database.info,
+#   spectra.info = spectra.info,
+#   spectra.data = spectra.data
+# )
+# 
+# save(monaDatabase0.0.2, file = "monaDatabase0.0.2", compress = "xz")
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 

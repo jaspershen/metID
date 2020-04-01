@@ -376,8 +376,13 @@ setGeneric(
   }
 )
 
-
 ###S4 class for function metIdentification
+#' An S4 class to represent MS1 or MS2 database.
+#'
+#' @slot database.info Database information.
+#' @slot spectra.info Metabolites in database.
+#' @slot spectra.data MS2 spectra data.
+
 setClass(
   Class = "databaseClass",
   representation(
@@ -425,31 +430,39 @@ setMethod(
     cat(crayon::green(paste(
       colnames(object@spectra.info), collapse = "; "
     ), "\n"))
+    
     cat(crayon::green("There are", length(
       unique(object@spectra.info$Compound.name)
     ), "metabolites in total\n"))
+    
     cat(crayon::green(
       "There are",
       length(object@spectra.data$Spectra.positive),
-      "metabolites in positive mode\n"
+      "metabolites in positive mode with MS2 spectra.\n"
     ))
+    
     cat(crayon::green(
       "There are",
       length(object@spectra.data$Spectra.negative),
-      "metabolites in negative mode\n"
+      "metabolites in negative mode with MS2 spectra.\n"
     ))
+    
     ce.pos <-
       unique(unlist(lapply(
         object@spectra.data$Spectra.positive, names
       )))
+    
     ce.neg <-
       unique(unlist(lapply(
         object@spectra.data$Spectra.negative, names
       )))
-    cat(crayon::green("Collision energy in positive mode:\n"))
-    cat(crayon::green(paste(ce.pos, collapse = "; "), "\n"))
+    
+    cat(crayon::green("Collision energy in positive mode (number:):\n"))
+    cat(crayon::green("Total number:", length(ce.pos), "\n"))
+    cat(crayon::green(paste(head(ce.pos, 10), collapse = "; "), "\n"))
     cat(crayon::green("Collision energy in negative mode:\n"))
-    cat(crayon::green(paste(ce.neg, collapse = "; "), "\n"))
+    cat(crayon::green("Total number:", length(ce.neg), "\n"))
+    cat(crayon::green(paste(head(ce.neg, 10), collapse = "; "), "\n"))
   }
 )
 
