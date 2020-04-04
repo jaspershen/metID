@@ -270,7 +270,7 @@ setGeneric(
         threads = threads
       )
     }
-    cat(crayon::bgYellow("All done.\n"))
+    cat(crayon::bgRed("All done.\n"))
     return(return.result)
   }
 )
