@@ -6,7 +6,8 @@ setGeneric(
                  #rt.tol is relative
                  rt.tol = 30,
                  rt.error.type = c("relative", "abs")) {
-    rt.error.type <- match.arg(rt.error.type)
+    rt.error.type <- match.arg(rt.error.type) #What are the choices to which it can match? Does it know the 
+    #choices by default?
     #
     if (nrow(data1) == 0 | nrow(data2) == 0) {
       result <- NULL
@@ -14,9 +15,9 @@ setGeneric(
     }
     
     info1 <- data1[, c(1, 2), drop = FALSE]
-    info1 <- apply(info1, 1, list)
+    info1 <- apply(info1, 1, list) #coerce into a list
     
-    mz2 <- as.numeric(data2[, 1])
+    mz2 <- as.numeric(data2[, 1]) #select columns
     rt2 <- as.numeric(data2[, 2])
     
     result <- pbapply::pblapply(info1, function(x) {

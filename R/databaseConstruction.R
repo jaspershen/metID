@@ -78,15 +78,15 @@
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param path Work directory.
-#' @param version The version of you database. Default is 0.0.1.
-#' @param metabolite.info.name The metabolite information table name, it must be csv format.
-#' The demo data can be got from the `demoData` package.
+#' @param version The version of your database. Default is 0.0.1.
+#' @param metabolite.info.name The metabolite information table name, must be in csv format.
+#' The demo data can be taken from the `demoData` package.
 #' Please see https://jaspershen.github.io/metID/articles/metID.html
 #' @param source The source of your database.
 #' @param link Website link of the source.
-#' @param creater Creater name. For example, Xiaotao Shen.
+#' @param creater Creator name. For example, Xiaotao Shen.
 #' @param email email address.
-#' @param rt Do the metabolites have RT information or not?. If not, set it as FALSE.
+#' @param rt Do the metabolites have RT information?. If not, set it as FALSE.
 #' @param mz.tol m/z tolerance for the match between metabolites and precursor m/z of MS2 spectra.
 #' @param rt.tol RT tolerance for the match between metabolites and precursor m/z of MS2 spectra.
 #' @param threads The number of threads
@@ -115,7 +115,7 @@
 #   databaseConstruction(metabolite.info.name = "metabolite.info_RPLC.csv")
 
 setGeneric(
-  name = "databaseConstruction",
+  name = "databaseConstruction2",
   def = function(path = ".",
                  version = "0.0.1",
                  metabolite.info.name = "metabolite.info.csv",
@@ -129,31 +129,32 @@ setGeneric(
                  threads = 3) {
     ##check data first
     file <- dir(path)
-    if (all(file != metabolite.info.name)) {
+    browser() #Run line by line
+    if (all(file != metabolite.info.name)) { #Is there a metabolite.info.csv in the working directory?
       cat(crayon::red("No", metabolite.info.name, "in your", path, "\n"))
       return(NULL)
     }
     
-    if (all(file != "POS")) {
+    if (all(file != "POS")) { #Is there a POS file in the working directory?
       cat(crayon::red("No POS file in your", path, "\n"))
     } else{
       file_pos <- dir(file.path(path, "POS"))
-      if (length(file_pos) == 0) {
+      if (length(file_pos) == 0) { #If the file exists, is it empty?
         cat(crayon::red("No mzXML files in POS folder\n"))
-      } else{
+      } else{ #If the file is not empty, does it contain an mzXML file?
         if (sum(stringr::str_detect(file_pos, "mzXML")) == 0) {
           cat(crayon::red("No mzXML files in POS folder\n"))
         }
       }
     }
     
-    if (all(file != "NEG")) {
+    if (all(file != "NEG")) { #Is there a NEG file in the working directory?
       cat(crayon::red("No NEG file in your", path, "\n"))
     } else{
       file_neg <- dir(file.path(path, "NEG"))
-      if (length(file_neg) == 0) {
+      if (length(file_neg) == 0) { #If the file exists, is it empty?
         cat(crayon::red("No mzXML files in NEG folder\n"))
-      } else{
+      } else{ #If the file is not empty, does it contain an mzXML file?
         if (sum(stringr::str_detect(file_neg, "mzXML")) == 0) {
           cat(crayon::red("No mzXML files in NEG folder\n"))
         }
@@ -164,29 +165,35 @@ setGeneric(
     cat(crayon::green("Reading metabolite information...\n"))
     metabolite.info <-
       readTable(file = file.path(path, metabolite.info.name),
-                col_types = readr::cols())
+                col_types = readr::cols()) #col_types is not a parameter defined in readTable()?
     
     cat(crayon::green("Reading positive MS2 data...\n"))
     
+    #List all the POS files in the directory
     file.pos <-
       dir(file.path(path, 'POS'), full.names = TRUE)
     
+    #Reads the POS files
     ms2.data.pos <-
-      readMZXML(file = file.pos, threads = threads)
+      readMZXML(file = file.pos, threads = threads) #in tools4MetaboliteIdentification.R
     
+    #Take the first element of the ms2 list
     ms1.info.pos <- lapply(ms2.data.pos, function(x) {
       x[[1]]
     })
     
     ms1.info.pos <- do.call(rbind, ms1.info.pos)
     
+    #Removes file path until the last part --> only care about which spectra comes from which file
     ms1.info.pos$file <- basename(ms1.info.pos$file)
     
+    #Take the second element of the ms2 list. This contains information on each peak in the spectrum.
     ms2.info.pos <- lapply(ms2.data.pos, function(x) {
       x[[2]]
     })
     
-    rm(list = "ms2.data.pos")
+    rm(list = "ms2.data.pos") #No longer needed, now that it is
+    #separated into ms1.info.pos and ms2.info.pos
     
     cat(crayon::red("OK\n"))
     
@@ -217,6 +224,7 @@ setGeneric(
     ###---------------------------------------------------------------------------
     cat(crayon::green("Matching metabolites with MS2 spectra (positive)...\n"))
     
+    #Figure out this...
     match.result.pos <-
       SXTMTmatch(
         data1 = as.data.frame(metabolite.info[, c("mz.pos", "RT")]),
@@ -262,7 +270,7 @@ setGeneric(
             temp.idx <-
               which.max(unlist(lapply(ms2.info.pos[temp.x[, 2]], function(y) {
                 sum(y[, 2])
-              })))
+              }))) #Figure out later...run manually?
             ms2.info.pos[[temp.x[temp.idx, 2]]]
           })
         
@@ -372,7 +380,7 @@ setGeneric(
     msDatabase0.0.1@database.info$RT <-
       ifelse(all(is.na(msDatabase0.0.1@spectra.info$RT)), FALSE, TRUE)
     cat(crayon::bgRed("All done!\n"))
-    return(msDatabase0.0.1)
+    return(msDatabase0.0.1) #Where can this be found?
   }
 )
 
@@ -420,7 +428,7 @@ setMethod(
     cat(crayon::green(
       "There are",
       ncol(object@spectra.info),
-      "items of metabolites in database:\n"
+      "items of metabolites in database:\n" 
     ))
     cat(crayon::green(paste(
       colnames(object@spectra.info), collapse = "; "
