@@ -4,7 +4,9 @@
 \name{annotate_result}
 \alias{annotate_result}
 \title{A metIdentifyClass object.}
-\format{A metIdentifyClass object.}
+\format{
+A metIdentifyClass object.
+}
 \usage{
 annotate_result
 }

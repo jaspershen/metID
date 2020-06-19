@@ -4,7 +4,9 @@
 \name{rp.neg}
 \alias{rp.neg}
 \title{Reverse phase negative mode adduct table}
-\format{A data frame.}
+\format{
+A data frame.
+}
 \usage{
 rp.neg
 }

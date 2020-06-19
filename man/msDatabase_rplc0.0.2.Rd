@@ -4,7 +4,9 @@
 \name{msDatabase_rplc0.0.2}
 \alias{msDatabase_rplc0.0.2}
 \title{Michael Snyder lab RPLC database}
-\format{A databaseClass object.}
+\format{
+A databaseClass object.
+}
 \usage{
 msDatabase_rplc0.0.2
 }

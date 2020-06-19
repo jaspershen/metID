@@ -4,7 +4,9 @@
 \name{msDatabase_hilic0.0.2}
 \alias{msDatabase_hilic0.0.2}
 \title{Michael Snyder lab RPLC database}
-\format{A databaseClass object.}
+\format{
+A databaseClass object.
+}
 \usage{
 msDatabase_hilic0.0.2
 }
