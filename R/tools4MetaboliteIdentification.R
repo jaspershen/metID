@@ -113,6 +113,32 @@ setGeneric(
           dp.reverse.weight = dp.reverse.weight
         )
       )
+    
+    
+    # ##fix bugs
+    # for(i in 1:nrow(ms1.info)){
+    #   cat(i, " ")
+    #   identifyPeak(idx = i,
+    #                ms1.info = ms1.info,
+    #                ms2.info = ms2.info,
+    #                spectra.info = spectra.info,
+    #                spectra.data = spectra.data,
+    #                ppm.ms1match = ms1.match.ppm,
+    #                ppm.ms2match = ms2.match.ppm,
+    #                mz.ppm.thr = mz.ppm.thr,
+    #                ms2.match.tol = ms2.match.tol,
+    #                rt.match.tol = rt.match.tol,
+    #                ms1.match.weight = ms1.match.weight,
+    #                rt.match.weight = rt.match.weight,
+    #                ms2.match.weight = ms2.match.weight,
+    #                total.score.tol = total.score.tol,
+    #                adduct.table = adduct.table,
+    #                candidate.num = candidate.num,
+    #                fraction.weight = fraction.weight,
+    #                dp.forward.weight = dp.forward.weight,
+    #                dp.reverse.weight = dp.reverse.weight)
+    # }
+    
 
     names(identification.result) <- ms1.info$name
     identification.result <-
@@ -271,7 +297,7 @@ setGeneric(
       lib.spec <- spectra.data[[x[1]]]
       dp <- lapply(lib.spec, function(y) {
         tinyTools::getSpectraMatchScore(
-          exp.spectrum = pk.spec,
+          exp.spectrum = as.data.frame(pk.spec),
           lib.spectrum = y,
           ppm.tol = ppm.ms2match,
           mz.ppm.thr = mz.ppm.thr,
@@ -386,7 +412,7 @@ setGeneric('readMSP', function(file) {
     spec <- 
       spec %>% as.matrix()
     
-    colnames(spec) <- c("mz", "rt")
+    colnames(spec) <- c("mz", "intensity")
     
     spec <- list(info = spec_info, spec = spec)
     spec

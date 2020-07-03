@@ -293,7 +293,7 @@ setGeneric(
             temp.ms2.data.name = ms2.data.name
           )
         
-        if (class(ms2.data) == "matrix") {
+        if (class(ms2.data)[1] == "matrix") {
           ms2.data <- ms2.data[, 1]
         } else{
           ms2.data <- do.call(what = c, args = ms2.data)
