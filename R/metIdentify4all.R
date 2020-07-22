@@ -106,6 +106,10 @@ setGeneric(
                  ms2.data,
                  parameter.list,
                  path = ".") {
+    dir.create(path = path, showWarnings = FALSE)
+    path <- file.path(path, "Result")
+    dir.create(path = path, showWarnings = FALSE)
+    
     threads = parameter.list[[1]]$threads
     ms1.data.name <- ms1.data
     ms2.data.name <- ms2.data

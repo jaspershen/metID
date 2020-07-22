@@ -3,6 +3,7 @@
 export(construct_database)
 export(databaseConstruction)
 export(filterIden)
+export(filter_adducts)
 export(filter_identification)
 export(getIdenInfo)
 export(getIdentificationTable)

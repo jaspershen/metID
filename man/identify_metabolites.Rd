@@ -103,20 +103,6 @@ database <- system.file("ms2_database", package = "metID")
 file.copy(from = file.path(database, "msDatabase_rplc0.0.2"), 
           to = path, overwrite = TRUE, recursive = TRUE)
 
-annotate_result3 <- 
-identify_metabolites(ms1.data = "ms1.peak.table.csv", 
-                     ms2.data = c("QC1_MSMS_NCE25.mgf"), 
-                     ms2.match.tol = 0.5, 
-                     ce = "all",
-                     ms1.match.ppm = 15, 
-                     rt.match.tol = 30, 
-                     polarity = "positive", 
-                     column = "rp", 
-                     path = path, 
-                     candidate.num = 3,
-                     database = "msDatabase_rplc0.0.2", 
-                     threads = 2)
-annotate_result3
 }
 }
 \seealso{

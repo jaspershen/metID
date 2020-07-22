@@ -294,7 +294,7 @@ setGeneric(
       candidate.num = candidate.num,
       database = database.name,
       threads = threads,
-      version = "0.4.0"
+      version = "0.4.1"
     )
     cat(crayon::bgRed("All done.\n"))
     return(return.result)

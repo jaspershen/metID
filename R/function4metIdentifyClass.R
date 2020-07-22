@@ -78,7 +78,7 @@ setClass(
     candidate.num = 3,
     database = "HMDB",
     threads = 0,
-    version = "0.4.0"
+    version = "0.4.1"
   )
 )
 
@@ -103,7 +103,7 @@ setMethod(
                         })
                       ))),
                       "metabolites are identified\n"))
-    if (!is.null(object@identification.result[[1]])) {
+    if (length(object@identification.result) > 0) {
       cat(crayon::green(
         "There are",
         length(object@identification.result),
@@ -794,5 +794,78 @@ setGeneric(
     }
     
     object@ms2.info[[which(object@match.result$MS2.spectra.name[match(peak.name, object@match.result$MS1.peak.name)] == names(object@ms2.info))]]
+  }
+)
+
+
+
+
+#------------------------------------------------------------------------------
+#' @title Filter adducts.
+#' @description Filter adducts.
+#' \lifecycle{maturing}
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@163.com}
+#' @param object metIdentifyClass.
+#' @param remove_adduct What adduct you want to remove from annotation result. Like '(M-H)-'. All the adduct list can be found here:
+#' data("hilic.pos", package = 'metID'), data("hilic.neg", package = 'metID'), 
+#' data("rp.pos", package = 'metID'), data("rp.neg", package = 'metID').
+#' @return A MS2 spectrum.
+#' @import magrittr
+#' @import dplyr
+#' @export
+#' @seealso The example and demo data of this function can be found
+#' https://jaspershen.github.io/metID/articles/metID.html
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' peak_name <- which_has_identification(annotate_result)
+#' get_ms2_spectrum_from_object(annotate_result, peak_name[1,1])
+
+setGeneric(
+  name = "filter_adducts",
+  def = function(object,
+                 remove_adduct = NULL) {
+    if (class(object) != "metIdentifyClass")
+      stop("Only for metIdentifyClass\n")
+    if (missing(remove_adduct))
+      stop('Please provide peak name.\n')
+    
+    if(is.null(remove_adduct)){
+      return(object)
+    }
+    
+    cat(crayon::yellow(
+      paste(remove_adduct, collapse = ";")),
+      "will be removed from the annotation result.\n"
+    )
+  
+    object@adduct.table <- 
+      object@adduct.table %>% 
+      dplyr::filter(!adduct %in% remove_adduct)
+    
+    if(length(object@identification.result) == 0){
+      return(object)
+    }else{
+      object@identification.result <- 
+      purrr::map(.x = object@identification.result, .f = function(x){
+          x %>% 
+          dplyr::filter(!Adduct %in% remove_adduct)
+      })    
+      
+      remove_idx <- 
+        purrr::map(.x = object@identification.result, .f = function(x){
+          nrow(x)
+        }) %>% unlist()
+      
+      remove_idx <- which(remove_idx == 0)
+      if(length(remove_idx) > 0){
+        object@identification.result <- object@identification.result[-remove_idx]
+      }
+      
+      if(length(object@identification.result) == 0){
+        object@identification.result <- list()
+      }
+      return(object)
+    }
   }
 )
