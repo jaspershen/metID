@@ -66,23 +66,23 @@
 #                      threads = 2)
 # annotate_result3
 #' }
-
-
- # annotate_result3 <-
- #  identify_metabolites(
- #    ms1.data = "ms1.peak.table.txt",
- #    ms2.data = "XZMU-GuoLab-Mousekidney-D1-POS.mgf",
- #    ms2.match.tol = 0.5,
- #    ce = "all",
- #    ms1.match.ppm = 15,
- #    rt.match.tol = 100000000,
- #    polarity = "positive",
- #    column = "rp",
- #    path = path,
- #    candidate.num = 3,
- #    database = "msDatabase_rplc0.0.2",
- #    threads = 5
- #  )
+# 
+# 
+#  annotate_result3 <-
+#   identify_metabolites(
+#     ms1.data = "pos.csv",
+#     ms2.data = "BG_QC_POS_ddMS2.mgf",
+#     ms2.match.tol = 0.5,
+#     ce = "all",
+#     ms1.match.ppm = 15,
+#     rt.match.tol = 100000000,
+#     polarity = "positive",
+#     column = "rp",
+#     path = path,
+#     candidate.num = 3,
+#     database = "msDatabase_rplc0.0.2",
+#     threads = 5
+#   )
 
 setGeneric(
   name = "identify_metabolites",

@@ -342,6 +342,10 @@ setGeneric(
         stop("Only support csv format ms1 data.\n")
       }
       
+      ms1.data <-
+        readr::read_csv(file = file.path(path, ms1.data),
+                        col_types = readr::cols())
+      
       ##check for the ms1 data
       if(ncol(ms1.data) < 3){
         stop("MS1 data should have there columns. See here: \n https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS1.html")
@@ -354,9 +358,6 @@ setGeneric(
         stop("The columns should be name, mz and rt, respectively.\n")
       }
       
-      ms1.data <-
-        readr::read_csv(file = file.path(path, ms1.data),
-                        col_types = readr::cols())
       colnames(ms1.data)[1:3] <- c("name", "mz", "rt")
       match.result <-
         SXTMTmatch(
