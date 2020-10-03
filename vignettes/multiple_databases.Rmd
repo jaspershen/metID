@@ -42,7 +42,7 @@ The raw MS2 data from DDA or DIA should be transfered to msp, mgf or mzXML forma
 
 The database must be generated using `construct_database()` function. Here we use the databases in `metID` packages. 
 
-* `msDatabase_rplc0.0.1`: A in-house database, it contains m/z, RT and MS2 spectra information.
+* `msDatabase_rplc0.0.2`: A in-house database, it contains m/z, RT and MS2 spectra information.
 
 * `orbitrapDatabase0.0.1`: A public database from `MassBank`. It contains m/z and MS2 spectra information.
 

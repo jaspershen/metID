@@ -56,7 +56,7 @@ The names of the mzXML files should be like this: `xxx_NCE25.mzXML`.
 
 ![](../man/figures/database_construction.png)
 
-## **Run `databaseConstruction()` function**
+## **Run `construct_database()` function**
 
 
 ```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
