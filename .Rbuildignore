@@ -5,7 +5,7 @@ NEWS.md
 README.Rmd
 test_data
 _pkgdown.yml
-database
+all_ms2_database
 pkgdown
 docs
 example

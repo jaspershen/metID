@@ -127,6 +127,11 @@ setGeneric(
                  mz.tol = 15,
                  rt.tol = 30,
                  threads = 3) {
+    
+    cat(crayon::yellow(
+      "`databaseConstruction()` is deprecated, use `construct_database()`."
+    ))  
+    
     ##check data first
     file <- dir(path)
     if (all(file != metabolite.info.name)) {

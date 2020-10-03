@@ -78,7 +78,7 @@ setGeneric(
     file.pos <-
       dir(file.path(path, 'POS'), full.names = TRUE)
     
-    if(length(file.pos) > 0){
+    if (length(file.pos) > 0) {
       ms2.data.pos <-
         readMZXML(file = file.pos, threads = threads)
       
@@ -97,7 +97,7 @@ setGeneric(
       rm(list = "ms2.data.pos")
       
       cat(crayon::red("OK\n"))
-    }else{
+    } else{
       ms1.info.pos <- NULL
     }
     
@@ -106,7 +106,7 @@ setGeneric(
     file.neg <-
       dir(file.path(path, 'NEG'), full.names = TRUE)
     
-    if(length(file.neg) > 0){
+    if (length(file.neg) > 0) {
       ms2.data.neg <-
         readMZXML(file = file.neg, threads = threads)
       
@@ -124,7 +124,7 @@ setGeneric(
       
       rm(list = "ms2.data.neg")
       cat(crayon::red("OK\n"))
-    }else{
+    } else{
       ms1.info.neg <- NULL
     }
     
@@ -132,7 +132,7 @@ setGeneric(
     ###---------------------------------------------------------------------------
     cat(crayon::green("Matching metabolites with MS2 spectra (positive)...\n"))
     
-    if(!is.null(ms1.info.pos)){
+    if (!is.null(ms1.info.pos)) {
       match.result.pos <-
         SXTMTmatch(
           data1 = as.data.frame(metabolite.info[, c("mz.pos", "RT")]),
@@ -156,7 +156,7 @@ setGeneric(
             return(NULL)
           temp.submitter <- metabolite.info$Submitter[idx]
           temp.match.result.pos <-
-            temp.match.result.pos[grep(temp.submitter, temp.match.result.pos[, 9]),]
+            temp.match.result.pos[grep(temp.submitter, temp.match.result.pos[, 9]), ]
           if (nrow(temp.match.result.pos) == 0)
             return(NULL)
           
@@ -197,13 +197,13 @@ setGeneric(
         spectra.pos[which(!unlist(lapply(spectra.pos, is.null)))]
       
       cat(crayon::red("OK\n"))
-    }else{
+    } else{
       spectra.pos <- NULL
     }
     
     ###---------------------------------------------------------------------------
     cat(crayon::green("Matching metabolites with MS2 spectra (negative)...\n"))
-    if(!is.null(ms1.info.neg)){
+    if (!is.null(ms1.info.neg)) {
       match.result.neg <-
         SXTMTmatch(
           data1 = as.data.frame(metabolite.info[, c("mz.neg", "RT")]),
@@ -227,7 +227,7 @@ setGeneric(
             return(NULL)
           temp.submitter <- metabolite.info$Submitter[idx]
           temp.match.result.neg <-
-            temp.match.result.neg[grep(temp.submitter, temp.match.result.neg[, 9]),]
+            temp.match.result.neg[grep(temp.submitter, temp.match.result.neg[, 9]), ]
           if (nrow(temp.match.result.neg) == 0)
             return(NULL)
           
@@ -265,17 +265,17 @@ setGeneric(
       spectra.neg <-
         spectra.neg[which(!unlist(lapply(spectra.neg, is.null)))]
       cat(crayon::red("OK\n"))
-    }else{
+    } else{
       spectra.neg <- NULL
     }
-   
-    if(is.null(spectra.pos) & is.null(spectra.neg)){
+    
+    if (is.null(spectra.pos) & is.null(spectra.neg)) {
       Spectra <- list()
-    }else{
+    } else{
       Spectra <- list("Spectra.positive" = spectra.pos,
-                      "Spectra.negative" = spectra.neg)    
+                      "Spectra.negative" = spectra.neg)
     }
-  
+    
     database.info <- list(
       "Version" = version,
       "Source" = source,
@@ -361,17 +361,21 @@ setMethod(
       unique(object@spectra.info$Compound.name)
     ), "metabolites in total\n"))
     
-    cat(crayon::green(
-      "There are",
-      length(object@spectra.data$Spectra.positive),
-      "metabolites in positive mode with MS2 spectra.\n"
-    ))
+    cat(
+      crayon::green(
+        "There are",
+        length(object@spectra.data$Spectra.positive),
+        "metabolites in positive mode with MS2 spectra.\n"
+      )
+    )
     
-    cat(crayon::green(
-      "There are",
-      length(object@spectra.data$Spectra.negative),
-      "metabolites in negative mode with MS2 spectra.\n"
-    ))
+    cat(
+      crayon::green(
+        "There are",
+        length(object@spectra.data$Spectra.negative),
+        "metabolites in negative mode with MS2 spectra.\n"
+      )
+    )
     
     ce.pos <-
       unique(unlist(lapply(

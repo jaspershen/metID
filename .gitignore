@@ -40,7 +40,7 @@ vignettes/*_cache
 rsconnect/
 
 test_data
-database
+all_ms2_database
 database_construction
 example
 

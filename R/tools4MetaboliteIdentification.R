@@ -81,7 +81,7 @@ setGeneric(
     
     spectra.info <- database@spectra.info
     spectra.info <-
-      spectra.info[which(spectra.info$Lab.ID %in% names(spectra.data)),]
+      spectra.info[which(spectra.info$Lab.ID %in% names(spectra.data)), ]
     
     rm(list = c("database"))
     cat("\n")
@@ -139,7 +139,7 @@ setGeneric(
     #                dp.reverse.weight = dp.reverse.weight)
     # }
     
-
+    
     names(identification.result) <- ms1.info$name
     identification.result <-
       identification.result[which(!unlist(lapply(identification.result, function(x)
@@ -203,7 +203,7 @@ setGeneric(
                  dp.reverse.weight = 0.1,
                  # report top 10 satisfactories
                  ...) {
-    pk.precursor <- ms1.info[idx, ]
+    pk.precursor <- ms1.info[idx,]
     rm(list = c("ms1.info"))
     pk.mz <- pk.precursor$mz
     pk.rt <- pk.precursor$rt
@@ -351,9 +351,9 @@ setGeneric(
     }
     
     match.idx <-
-      match.idx[order(match.idx$Total.score, decreasing = TRUE),]
+      match.idx[order(match.idx$Total.score, decreasing = TRUE), ]
     if (nrow(match.idx) > candidate.num) {
-      match.idx <- match.idx[1:candidate.num,]
+      match.idx <- match.idx[1:candidate.num, ]
     }
     ##add other information
     match.idx <-
@@ -381,44 +381,53 @@ setGeneric(
 
 setGeneric('readMSP', function(file) {
   msp.data <- readLines(file)
-  if(length(grep("BEGIN IONS", msp.data)) > 0){
+  if (length(grep("BEGIN IONS", msp.data)) > 0) {
     msp.data <- msp.data[msp.data != ""]
     temp.idx1 <- grep("BEGIN IONS", msp.data)
     temp.idx2 <- grep("END IONS", msp.data)
-    if(length(temp.idx2) < length(temp.idx1)){
+    if (length(temp.idx2) < length(temp.idx1)) {
       temp.idx2 <- c(temp.idx2, length(msp.data))
     }
     
-    temp.idx <- purrr::map2(.x = temp.idx1, temp.idx2, function(x,y){
-      c(x + 1,y - 1)
-    })
+    temp.idx <-
+      purrr::map2(.x = temp.idx1, temp.idx2, function(x, y) {
+        c(x + 1, y - 1)
+      })
     
-    ms2_spec <- purrr::map(.x = temp.idx, .f = function(x){
-    temp_spec <- msp.data[x[1] : x[2]]
-    temp_spec <- temp_spec
-    spec_info <- temp_spec[stringr::str_detect(temp_spec, "[A-Za-z]")]
-    spec <- temp_spec[!stringr::str_detect(temp_spec, "[A-Za-z]")]
-    spec_info <- stringr::str_split(spec_info, "\\=") %>% 
-      do.call(rbind, .)
-    mz <- as.numeric(spec_info[grep("MASS|MZ", spec_info[,1]),2])
-    rt <- as.numeric(spec_info[grep("RT|RETETION", spec_info[,1]),2])
-    spec_info <- c(mz = mz, rt = rt)
-    
-    spec <- purrr::map(.x = spec, .f = function(x){
-      stringr::str_split(x, " ")[[1]] %>% as.numeric()
-    }) %>% 
-      do.call(rbind, .)
-    
-    spec <- 
-      spec %>% as.matrix()
-    
-    colnames(spec) <- c("mz", "intensity")
-    
-    spec <- list(info = spec_info, spec = spec)
-    spec
-    })
+    ms2_spec <- purrr::map(
+      .x = temp.idx,
+      .f = function(x) {
+        temp_spec <- msp.data[x[1]:x[2]]
+        temp_spec <- temp_spec
+        spec_info <-
+          temp_spec[stringr::str_detect(temp_spec, "[A-Za-z]")]
+        spec <- temp_spec[!stringr::str_detect(temp_spec, "[A-Za-z]")]
+        spec_info <- stringr::str_split(spec_info, "\\=") %>%
+          do.call(rbind, .)
+        mz <- as.numeric(spec_info[grep("MASS|MZ", spec_info[, 1]), 2])
+        rt <-
+          as.numeric(spec_info[grep("RT|RETETION", spec_info[, 1]), 2])
+        spec_info <- c(mz = mz, rt = rt)
+        
+        spec <- purrr::map(
+          .x = spec,
+          .f = function(x) {
+            stringr::str_split(x, " ")[[1]] %>% as.numeric()
+          }
+        ) %>%
+          do.call(rbind, .)
+        
+        spec <-
+          spec %>% as.matrix()
+        
+        colnames(spec) <- c("mz", "intensity")
+        
+        spec <- list(info = spec_info, spec = spec)
+        spec
+      }
+    )
     return(ms2_spec)
-  }else{
+  } else{
     # n.tot <- length(msp.data)
     n.null <- which(msp.data == '')
     
@@ -468,7 +477,7 @@ setGeneric('readMSP', function(file) {
         rownames(temp.spec) <- NULL
         temp.spec$mz <- as.numeric(as.character(temp.spec$mz))
         temp.spec$intensity <- as.numeric(temp.spec$intensity)
-        temp.spec <- temp.spec[temp.spec$intensity != 0,]
+        temp.spec <- temp.spec[temp.spec$intensity != 0, ]
       } else{
         temp.spec <- NULL
       }
@@ -484,7 +493,8 @@ setGeneric('readMSP', function(file) {
     ##fix bug in msp data from metAnalyzer
     if (length(rt.idx) == 0) {
       cat(crayon::yellow("The msp data are from MetAnalyzer software.\n"))
-      rt.idx <- grep("NAME|Name|name", rownames(info.spec[[1]][[1]]))
+      rt.idx <-
+        grep("NAME|Name|name", rownames(info.spec[[1]][[1]]))
       ##rt.idx is the name of peak
       info.spec <- lapply(info.spec, function(x) {
         info <- x[[1]]
@@ -505,8 +515,8 @@ setGeneric('readMSP', function(file) {
         x[[1]] <- info
         x
       })
-  }
-  
+    }
+    
   }
   
   remove.idx <-
@@ -530,7 +540,7 @@ setGeneric('readMSP', function(file) {
 # @param file The vector of names of ms2 files. MS2 file must be msp. The msp data must from MoNA.
 # @return Return ms2 data. This is a list.
 # @export
-# 
+#
 setGeneric('readMSP_MoNA', function(file) {
   cat(crayon::green("Reading MSP data...\n"))
   msp.data <- readr::read_lines(file)
@@ -583,7 +593,7 @@ setGeneric('readMSP_MoNA', function(file) {
         stringr::str_c(temp.info[stringr::str_which(string = temp.info[, 1], pattern = "Synon"), 2,
                                  drop = TRUE], collapse = ";")
       temp.info[which(temp.info[, 1] == "Synon")[1], 2] <- Synon
-      temp.info <- temp.info[!duplicated(temp.info[, 1]),]
+      temp.info <- temp.info[!duplicated(temp.info[, 1]), ]
       
     }
     
@@ -607,7 +617,7 @@ setGeneric('readMSP_MoNA', function(file) {
       rownames(temp.spec) <- NULL
       temp.spec$mz <- as.numeric(as.character(temp.spec$mz))
       temp.spec$intensity <- as.numeric(temp.spec$intensity)
-      temp.spec <- temp.spec[temp.spec$intensity != 0,]
+      temp.spec <- temp.spec[temp.spec$intensity != 0, ]
     } else{
       temp.spec <- NULL
     }
@@ -648,7 +658,7 @@ setGeneric(
           cat('PRECURSORMZ: ', mz, '\n', sep = '')
           cat('Num Peaks: ', nrow(spec), '\n', sep = '')
           for (nr in seq(nrow(spec))) {
-            cat(paste(spec[nr, ], collapse = ' '), '\n', sep = '')
+            cat(paste(spec[nr,], collapse = ' '), '\n', sep = '')
           }
           cat('\n')
         }
@@ -669,10 +679,6 @@ setGeneric(
 #' @param threads Thread number
 #' @return Return ms2 data. This is a list.
 #' @export
-#' mzxml_data <- system.file("mzxml_data", package = "metID")
-#' dir(mzxml_data)
-#' data <- readMZXML(dir(mzxml_data, full.names = TRUE))
-#' data[[1]]
 
 setGeneric(
   name = "readMZXML",
@@ -933,7 +939,7 @@ setGeneric(
 #' @param file The vector of names of ms2 files. MS2 file must be mgf.
 #' @return Return ms2 data. This is a list.
 #' @export
-#' @examples 
+#' @examples
 #' ms2_data <- system.file("ms2_data", package = "metID")
 #' dir(ms2_data)
 #' data <- readMGF(dir(ms2_data, full.names = TRUE))
@@ -1057,6 +1063,3 @@ setGeneric(
     rec.list
   }
 )
-
-
-
