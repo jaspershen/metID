@@ -163,7 +163,7 @@
                         <h4 class="author">Xiaotao Shen PhD (<a href="https://www.shenxt.info/" class="uri">https://www.shenxt.info/</a>)</h4>
                                     <h4 class="author">Si Wu PhD</h4>
             <address class="author_afil">
-      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2020-06-19</h4>
+      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2020-10-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jaspershen/metID/blob/master/vignettes/metabolite_annotation_using_MS1.Rmd"><code>vignettes/metabolite_annotation_using_MS1.Rmd</code></a></small>
       <div class="hidden name"><code>metabolite_annotation_using_MS1.Rmd</code></div>
@@ -217,14 +217,14 @@
 <span class="co">#&gt; Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics.</span>
 <span class="co">#&gt; Authors: Xiaotao Shen (shenxt1990@163.com)</span>
 <span class="co">#&gt; Maintainer: Xiaotao Shen.</span>
-<span class="co">#&gt; Version 0.4.0 (20200328)</span>
+<span class="co">#&gt; Version 0.4.1 (2020702)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
-<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.0     ✓ purrr   0.3.4</span>
-<span class="co">#&gt; ✓ tibble  3.0.1     ✓ dplyr   0.8.5</span>
-<span class="co">#&gt; ✓ tidyr   1.0.2     ✓ stringr 1.4.0</span>
-<span class="co">#&gt; ✓ readr   1.3.1     ✓ forcats 0.5.0</span>
-<span class="co">#&gt; ── Conflicts ────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; ── Attaching packages ────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</span>
+<span class="co">#&gt; ✓ ggplot2 3.3.2.9000     ✓ purrr   0.3.4     </span>
+<span class="co">#&gt; ✓ tibble  3.0.1          ✓ dplyr   0.8.5     </span>
+<span class="co">#&gt; ✓ tidyr   1.0.2          ✓ stringr 1.4.0     </span>
+<span class="co">#&gt; ✓ readr   1.3.1          ✓ forcats 0.5.0</span>
+<span class="co">#&gt; ── Conflicts ───────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
 <span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></pre></body></html></div>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co">##creat a folder nameed as example</span>
@@ -287,7 +287,7 @@
 <p>The return result <code>annotate_result1</code> is a <code>metIdentifyClass</code> object, you can directory get the brief information by print it in console:</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">annotate_result1</span>
 <span class="co">#&gt; --------------metID version-----------</span>
-<span class="co">#&gt; 0.4.0 </span>
+<span class="co">#&gt; 0.4.1 </span>
 <span class="co">#&gt; -----------Identifications------------</span>
 <span class="co">#&gt; (Use get_identification_table() to get identification table)</span>
 <span class="co">#&gt; There are 100 peaks</span>
@@ -508,7 +508,7 @@
                         <span class="kw">rt.match.tol</span> <span class="kw">=</span> <span class="fl">5</span>)</pre></body></html></div>
 <div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">annotate_result2_2</span>
 <span class="co">#&gt; --------------metID version-----------</span>
-<span class="co">#&gt; 0.4.0 </span>
+<span class="co">#&gt; 0.4.1 </span>
 <span class="co">#&gt; -----------Identifications------------</span>
 <span class="co">#&gt; (Use get_identification_table() to get identification table)</span>
 <span class="co">#&gt; There are 100 peaks</span>
@@ -526,7 +526,7 @@
 <span class="co">#&gt; (M+H)+;(M+H-H2O)+;(M+H-2H2O)+;(M+NH4)+;(M+Na)+;(M-H+2Na)+;(M-2H+3Na)+;(M+K)+;(M-H+2K)+;(M-2H+3K)+;(M+CH3CN+H)+;(M+CH3CN+Na)+;(2M+H)+;(2M+NH4)+;(2M+Na)+;(2M+K)+;(M+HCOO+2H)+</span></pre></body></html></div>
 <div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="no">annotate_result2</span>
 <span class="co">#&gt; --------------metID version-----------</span>
-<span class="co">#&gt; 0.4.0 </span>
+<span class="co">#&gt; 0.4.1 </span>
 <span class="co">#&gt; -----------Identifications------------</span>
 <span class="co">#&gt; (Use get_identification_table() to get identification table)</span>
 <span class="co">#&gt; There are 100 peaks</span>

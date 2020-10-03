@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Identify metabolites based on MS1 or MS/MS database — identify_metabolites • metID</title>
+<title>Filter adducts. — filter_adducts • metID</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,8 +52,8 @@
 
 
 
-<meta property="og:title" content="Identify metabolites based on MS1 or MS/MS database — identify_metabolites" />
-<meta property="og:description" content="Identify metabolites based on MS1 or MS/MS database.
+<meta property="og:title" content="Filter adducts. — filter_adducts" />
+<meta property="og:description" content="Filter adducts.
 " />
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png" />
 
@@ -210,167 +210,62 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Identify metabolites based on MS1 or MS/MS database</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/identify_metabolites.R'><code>R/identify_metabolites.R</code></a></small>
-    <div class="hidden name"><code>identify_metabolites.Rd</code></div>
+    <h1>Filter adducts.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/function4metIdentifyClass.R'><code>R/function4metIdentifyClass.R</code></a></small>
+    <div class="hidden name"><code>filter_adducts.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Identify metabolites based on MS1 or MS/MS database.
+    <p>Filter adducts.
 <a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>identify_metabolites</span>(
-  <span class='no'>ms1.data</span>,
-  <span class='kw'>ms2.data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ms1.ms2.match.mz.tol</span> <span class='kw'>=</span> <span class='fl'>25</span>,
-  <span class='kw'>ms1.ms2.match.rt.tol</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-  <span class='kw'>ms1.match.ppm</span> <span class='kw'>=</span> <span class='fl'>25</span>,
-  <span class='kw'>ms2.match.ppm</span> <span class='kw'>=</span> <span class='fl'>30</span>,
-  <span class='kw'>mz.ppm.thr</span> <span class='kw'>=</span> <span class='fl'>400</span>,
-  <span class='kw'>ms2.match.tol</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>fraction.weight</span> <span class='kw'>=</span> <span class='fl'>0.3</span>,
-  <span class='kw'>dp.forward.weight</span> <span class='kw'>=</span> <span class='fl'>0.6</span>,
-  <span class='kw'>dp.reverse.weight</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>rt.match.tol</span> <span class='kw'>=</span> <span class='fl'>30</span>,
-  <span class='kw'>polarity</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"positive"</span>, <span class='st'>"negative"</span>),
-  <span class='kw'>ce</span> <span class='kw'>=</span> <span class='st'>"all"</span>,
-  <span class='kw'>column</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"rp"</span>, <span class='st'>"hilic"</span>),
-  <span class='kw'>ms1.match.weight</span> <span class='kw'>=</span> <span class='fl'>0.25</span>,
-  <span class='kw'>rt.match.weight</span> <span class='kw'>=</span> <span class='fl'>0.25</span>,
-  <span class='kw'>ms2.match.weight</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>total.score.tol</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='no'>database</span>,
-  <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>
-)</pre>
+    <pre class="usage"><span class='fu'>filter_adducts</span>(<span class='no'>object</span>, <span class='kw'>remove_adduct</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ms1.data</th>
-      <td><p>The name of ms1 peak table (csv format). Column 1 is "name", Column 2 is
-"mz" and column is "rt" (second).</p></td>
+      <th>object</th>
+      <td><p>metIdentifyClass.</p></td>
     </tr>
     <tr>
-      <th>ms2.data</th>
-      <td><p>MS2 data, must be mgf, msp or mzXML format. For example, ms2.data = c("test.mgf", "test2.msp").</p></td>
-    </tr>
-    <tr>
-      <th>ms1.ms2.match.mz.tol</th>
-      <td><p>MS1 peak and MS2 spectrum matching m/z tolerance. Default is 25 pm.</p></td>
-    </tr>
-    <tr>
-      <th>ms1.ms2.match.rt.tol</th>
-      <td><p>MS1 peak and MS2 spectrum matching RT tolerance. Default is 10 s.</p></td>
-    </tr>
-    <tr>
-      <th>ms1.match.ppm</th>
-      <td><p>Precursor match ppm tolerance.</p></td>
-    </tr>
-    <tr>
-      <th>ms2.match.ppm</th>
-      <td><p>Fragment ion match ppm tolerance.</p></td>
-    </tr>
-    <tr>
-      <th>mz.ppm.thr</th>
-      <td><p>Accurate mass tolerance for m/z error calculation.</p></td>
-    </tr>
-    <tr>
-      <th>ms2.match.tol</th>
-      <td><p>MS2 match (MS2 similarity) tolerance.</p></td>
-    </tr>
-    <tr>
-      <th>fraction.weight</th>
-      <td><p>The weight for matched fragments.</p></td>
-    </tr>
-    <tr>
-      <th>dp.forward.weight</th>
-      <td><p>Forward dot product weight.</p></td>
-    </tr>
-    <tr>
-      <th>dp.reverse.weight</th>
-      <td><p>Reverse dot product weight.</p></td>
-    </tr>
-    <tr>
-      <th>rt.match.tol</th>
-      <td><p>RT match tolerance.</p></td>
-    </tr>
-    <tr>
-      <th>polarity</th>
-      <td><p>The polarity of data, "positive"or "negative".</p></td>
-    </tr>
-    <tr>
-      <th>ce</th>
-      <td><p>Collision energy. Please confirm the CE values in your database. Default is "all".</p></td>
-    </tr>
-    <tr>
-      <th>column</th>
-      <td><p>"hilic" (HILIC column) or "rp" (reverse phase).</p></td>
-    </tr>
-    <tr>
-      <th>ms1.match.weight</th>
-      <td><p>The weight of MS1 match for total score calculation.</p></td>
-    </tr>
-    <tr>
-      <th>rt.match.weight</th>
-      <td><p>The weight of RT match for total score calculation.</p></td>
-    </tr>
-    <tr>
-      <th>ms2.match.weight</th>
-      <td><p>The weight of MS2 match for total score calculation.</p></td>
-    </tr>
-    <tr>
-      <th>path</th>
-      <td><p>Work directory.</p></td>
-    </tr>
-    <tr>
-      <th>total.score.tol</th>
-      <td><p>Total score tolerance. The total score are refering to MS-DIAL.</p></td>
-    </tr>
-    <tr>
-      <th>candidate.num</th>
-      <td><p>The number of candidate.</p></td>
-    </tr>
-    <tr>
-      <th>database</th>
-      <td><p>MS2 database name.</p></td>
-    </tr>
-    <tr>
-      <th>threads</th>
-      <td><p>Number of threads</p></td>
+      <th>remove_adduct</th>
+      <td><p>What adduct you want to remove from annotation result. Like '(M-H)-'. All the adduct list can be found here:
+data("hilic.pos", package = 'metID'), data("hilic.neg", package = 'metID'), 
+data("rp.pos", package = 'metID'), data("rp.neg", package = 'metID').</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A metIdentifyClass object.</p>
+    <p>A MS2 spectrum.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='co'>##creat a folder nameed as example</span>
-<span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='st'>"."</span>, <span class='st'>"example"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/files2.html'>dir.create</a></span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='no'>path</span>, <span class='kw'>showWarnings</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='co'>##get MS1 peak table from metID</span>
-<span class='no'>ms1_peak</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"ms1_peak"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"metID"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>ms1_peak</span>, <span class='st'>"ms1.peak.table.csv"</span>),
-          <span class='kw'>to</span> <span class='kw'>=</span> <span class='no'>path</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>ms2_data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"ms2_data"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"metID"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>ms2_data</span>, <span class='st'>"QC1_MSMS_NCE25.mgf"</span>),
-          <span class='kw'>to</span> <span class='kw'>=</span> <span class='no'>path</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>database</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"ms2_database"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"metID"</span>)
-
-<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>database</span>, <span class='st'>"msDatabase_rplc0.0.2"</span>),
-          <span class='kw'>to</span> <span class='kw'>=</span> <span class='no'>path</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"annotate_result"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"metID"</span>)
+<span class='no'>peak_name</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='which_has_identification.html'>which_has_identification</a></span>(<span class='no'>annotate_result</span>)
+<span class='fu'><a href='get_ms2_spectrum_from_object.html'>get_ms2_spectrum_from_object</a></span>(<span class='no'>annotate_result</span>, <span class='no'>peak_name</span>[<span class='fl'>1</span>,<span class='fl'>1</span>])</div><div class='output co'>#&gt;              mz  intensity
+#&gt;  [1,]  81.38455   1396.341
+#&gt;  [2,]  82.19755   1488.730
+#&gt;  [3,]  85.02840  15473.604
+#&gt;  [4,]  86.59349   1740.842
+#&gt;  [5,]  86.98958   2158.014
+#&gt;  [6,]  89.48135   1351.686
+#&gt;  [7,]  90.70250   1547.099
+#&gt;  [8,]  93.03886   1325.864
+#&gt;  [9,] 102.09140  22441.047
+#&gt; [10,] 103.03903  76217.016
+#&gt; [11,] 116.01658  17809.395
+#&gt; [12,] 127.98412   1439.743
+#&gt; [13,] 134.06819   1729.786
+#&gt; [14,] 152.46967   1543.765
+#&gt; [15,] 162.02180   2228.743
+#&gt; [16,] 162.05521   3508.225
+#&gt; [17,] 162.11261 529120.000</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

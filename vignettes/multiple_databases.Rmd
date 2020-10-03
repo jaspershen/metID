@@ -40,7 +40,7 @@ The raw MS2 data from DDA or DIA should be transfered to msp, mgf or mzXML forma
 
 ## **Database**
 
-The database must be generated using `constructDatabase()` function. Here we use the databases in `metID` packages. 
+The database must be generated using `construct_database()` function. Here we use the databases in `metID` packages. 
 
 * `msDatabase_rplc0.0.1`: A in-house database, it contains m/z, RT and MS2 spectra information.
 
@@ -63,13 +63,13 @@ We use the demo data in `metID` package.
 First we load the MS1 peak, MS2 data and databases from `metID` package and then put them in a `example` folder.
 
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
 library(metID)
 library(tidyverse)
 ```
 
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r message=FALSE, warning=FALSE, message=TRUE, cache=TRUE, R.options=""}
 ##creat a folder nameed as example
 path <- file.path(".", "example")
 dir.create(path = path, showWarnings = FALSE)
@@ -116,7 +116,7 @@ Now in your `./example`, there are files files, namely `ms1.peak.table.csv`, `QC
 
 We need to use `identify_metabolites_params()` functions to set parameter list for each database.
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
 param1 <-
   identify_metabolites_params(
     ms1.match.ppm = 15,
@@ -126,7 +126,7 @@ param1 <-
     column = "rp",
     total.score.tol = 0.5,
     candidate.num = 3,
-    threads = 3, 
+    threads = 3,
     database = "msDatabase_rplc0.0.2"
   )
 
@@ -161,7 +161,7 @@ param3 <- identify_metabolites_params(
 
 All the parameters for three databases should be provided to `parameter.list`.
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
 result <- identify_metabolite_all(
   ms1.data = "ms1.peak.table.csv",
   ms2.data = "QC1_MSMS_NCE25.mgf",
@@ -178,80 +178,80 @@ After we get the annotation result list, we then can integrate the annotation re
 
 For `msDatabase_rplc0.0.2`, the annotaiton results are `Level 1` according to MSI.
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
 result[[1]]
 ```
 
 Then get the annotation table.
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
-annotation_table1 <- 
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
+annotation_table1 <-
   get_identification_table(result[[1]], type = "new", candidate.num = 1)
-annotation_table1 %>% 
+annotation_table1 %>%
   head()
 ```
 
 
 For `orbitrapDatabase0.0.1`, the annotaiton results are `Level 2` according to MSI.
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
 result[[2]]
 ```
 
 Then get the annotation table.
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
-annotation_table2 <- 
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
+annotation_table2 <-
   get_identification_table(result[[2]], type = "new", candidate.num = 1)
-annotation_table2 %>% 
+annotation_table2 %>%
   head()
 ```
 
 
 For `hmdbMS1Database0.0.1`, the annotaiton results are `Level 3` according to MSI.
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
 result[[3]]
 ```
 
 Then get the annotation table.
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
-annotation_table3 <- 
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
+annotation_table3 <-
   get_identification_table(result[[3]], type = "new", candidate.num = 1)
-annotation_table3 %>% 
+annotation_table3 %>%
   head()
 ```
 
 Then we should combine them together:
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
-annotation_table1 <- 
-  annotation_table1 %>% 
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
+annotation_table1 <-
+  annotation_table1 %>%
   dplyr::filter(!is.na(Compound.name))
 
 dim(annotation_table1)
 
-annotation_table1 <- 
-  data.frame(annotation_table1, 
-             Level = 1, 
+annotation_table1 <-
+  data.frame(annotation_table1,
+             Level = 1,
              stringsAsFactors = FALSE)
 ```
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
-annotation_table2 <- 
-  annotation_table2 %>% 
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
+annotation_table2 <-
+  annotation_table2 %>%
   dplyr::filter(!is.na(Compound.name))
 
 dim(annotation_table2)
 
-annotation_table2 <- 
-  data.frame(annotation_table2, 
-             Level = 2, 
+annotation_table2 <-
+  data.frame(annotation_table2,
+             Level = 2,
              stringsAsFactors = FALSE)
 ```
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
 annotation_table3 <- 
   annotation_table3 %>% 
   dplyr::filter(!is.na(Compound.name))
@@ -267,7 +267,7 @@ annotation_table3 <-
 
 If one peak have annotation from three different database, we only contains the annotations with higher confidence.
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
 annotation_table2 <- 
   annotation_table2 %>% 
   dplyr::filter(!(name %in% annotation_table1$name))
@@ -277,7 +277,7 @@ annotation_table <-
         annotation_table2)
 ```
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
 annotation_table3 <- 
   annotation_table3 %>% 
   dplyr::filter(!(name %in% annotation_table$name))
@@ -291,7 +291,7 @@ The `annotation_table` is the final annotation table.
 
 Then we can output it as `csv` file.
 
-```{r,eval = FALSE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = FALSE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
 readr::write_csv(annotation_table, 
                  "annotation_table.csv")
 ```

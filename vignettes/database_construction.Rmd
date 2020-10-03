@@ -48,7 +48,7 @@ From column 1 to 11, the columns are "Lab.ID", "mz", "RT", "CAS.ID", "HMDB.ID", 
 
 - Submitter: The name of person or organization.
 
-![](../man/figures/compound_information.png)
+![](../man/figures/compound_information.PNG)
 
 Then create a folder and put your mzXML format datasets (positive mode in 'POS' folder and negative mode in 'NEG' folder) and compound information in it. The mzXML file should have the collision energy in the name of each file. For example, `test_NCE25.mzXML`.
 
@@ -63,23 +63,30 @@ The names of the mzXML files should be like this: `xxx_NCE25.mzXML`.
 library(demoData)
 library(metID)
 path <- system.file("database_construction", package = "demoData")
-file.copy(from = path, to = ".", overwrite = TRUE, recursive = TRUE)
+file.copy(
+  from = path,
+  to = ".",
+  overwrite = TRUE,
+  recursive = TRUE
+)
 new.path <- file.path("./database_construction")
 
-test.database <- databaseConstruction(path = new.path, 
-                                      version = "0.0.1",
-                                      metabolite.info.name = "metabolite.info_RPLC.csv", 
-                                      source = "Michael Snyder lab", 
-                                      link = "http://snyderlab.stanford.edu/",
-                                      creater = "Xiaotao Shen",
-                                      email = "shenxt1990@163.com",
-                                      rt = TRUE,
-                                      mz.tol = 15,
-                                      rt.tol = 30,
-                                      threads = 3)
+test.database <- construct_database(
+  path = new.path,
+  version = "0.0.1",
+  metabolite.info.name = "metabolite.info_RPLC.csv",
+  source = "Michael Snyder lab",
+  link = "http://snyderlab.stanford.edu/",
+  creater = "Xiaotao Shen",
+  email = "shenxt1990@163.com",
+  rt = TRUE,
+  mz.tol = 15,
+  rt.tol = 30,
+  threads = 3
+)
 ```
 
-The arguments of `databaseConstruction()` can be found here `databaseConstruction()`.
+The arguments of `construct_database()` can be found here `construct_database()`.
 
 test.database is a `databaseClass` object, you can print it to see its information.
 
@@ -123,6 +130,3 @@ The `database` should be the database (`databaseClass` object) for which you wan
 > Note:
 `test.database2` is only a demo database (metIdentifyClass object). We will not use it for the next metabolite identification step.
 
-Test from win10 shenxt github account.
-
-Test from hzackriah

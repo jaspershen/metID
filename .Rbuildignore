@@ -8,6 +8,7 @@ _pkgdown.yml
 ms2_database
 pkgdown
 docs
+example
 vignettes
 vignettes/metID_cache
 vignettes/metabolite_identification.png
