@@ -133,8 +133,8 @@ setMethod(
 #' @param object A metIdentifyClass object.
 #' @return A data frame contains all the parameters of this metIdentifiyClass object.
 #' @export
-#' @import magrittr
-#' @import dplyr
+#' @importFrom magrittr %>%
+#' @importFrom  dplyr filter select mutate pull everything lag
 #' @examples 
 #' data("annotate_result", package = "metID")
 #' get_parameters(annotate_result)
@@ -811,8 +811,7 @@ setGeneric(
 #' data("hilic.pos", package = 'metID'), data("hilic.neg", package = 'metID'), 
 #' data("rp.pos", package = 'metID'), data("rp.neg", package = 'metID').
 #' @return A MS2 spectrum.
-#' @import magrittr
-#' @import dplyr
+#' @importFrom magrittr %>%
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html

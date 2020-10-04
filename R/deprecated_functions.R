@@ -10,8 +10,7 @@
 #' @return A identification table (data.frame).
 #' @export
 #' @import tibble
-#' @import magrittr
-#' @import dplyr
+#' @importFrom magrittr %>%
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
 #' @examples 
@@ -492,8 +491,8 @@ setGeneric(
 #' @param object A metIdentifyClass object.
 #' @return A data frame contains all the parameters of this metIdentifiyClass object.
 #' @export
-#' @import magrittr
-#' @import dplyr
+#' @importFrom magrittr %>%
+#' @importFrom dplyr select mutate everything
 #' @examples 
 #' data("annotate_result", package = "metID")
 #' getParams(annotate_result)

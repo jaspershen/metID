@@ -15,6 +15,8 @@
 #' @param threads Number of threads
 #' @param silence.deprecated Silenc the deprecated information or not.
 #' @return A mzIdentifyClass or metIdentifyClass object.
+#' @importFrom magrittr %>%
+#' @importFrom dplyr pull filter
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
@@ -213,8 +215,8 @@ setGeneric(
                               stringsAsFactors = FALSE)
       
       match.idx <-
-        match.idx %>%
-        dplyr::filter(is.na(RT.error) | RT.error < rt.match.tol)
+        dplyr::filter(match.idx,
+                      is.na(RT.error) | RT.error < rt.match.tol)
       
       if (nrow(match.idx) == 0) {
         return(NA)
@@ -297,8 +299,7 @@ setGeneric(
       )
       
       return.result@identification.result <-
-        return.result@identification.result %>%
-        lapply(function(x) {
+        lapply( return.result@identification.result,function(x) {
           if (is.null(x)) {
             return(x)
           } else{

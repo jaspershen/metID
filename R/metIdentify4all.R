@@ -11,14 +11,15 @@
 #' @param path Work directory.
 #' @return A list containing mzIdentifyClass object.
 #' @export
+#' @importFrom magrittr %>%
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/multiple_databases.html
-#' @examples 
+#' @examples
 #' \dontrun{
 #' ##creat a folder nameed as example
 #' path <- file.path(".", "example")
 #' dir.create(path = path, showWarnings = FALSE)
-#' 
+#'
 #' ##get MS1 peak table from metID
 #' ms1_peak <- system.file("ms1_peak", package = "metID")
 #' file.copy(
@@ -27,7 +28,7 @@
 #'   overwrite = TRUE,
 #'   recursive = TRUE
 #' )
-#' 
+#'
 #' ##get MS2 data from metID
 #' ms2_data <- system.file("ms2_data", package = "metID")
 #' file.copy(
@@ -36,10 +37,10 @@
 #'   overwrite = TRUE,
 #'   recursive = TRUE
 #' )
-#' 
+#'
 #' ##get databases from metID
 #' database <- system.file("ms2_database", package = "metID")
-#' 
+#'
 #' file.copy(
 #'   from = file.path(
 #'     database,
@@ -62,10 +63,10 @@
 #'   column = "rp",
 #'   total.score.tol = 0.5,
 #'   candidate.num = 3,
-#'   threads = 3, 
+#'   threads = 3,
 #'   database = "msDatabase_rplc0.0.2"
 #' )
-#' 
+#'
 #' param2 <- identify_metabolites_params(
 #'   ms1.match.ppm = 15,
 #'   rt.match.tol = 15,
@@ -77,7 +78,7 @@
 #'   threads = 3,
 #'   database = "orbitrapDatabase0.0.1"
 #' )
-#' 
+#'
 #' param3 <- identify_metabolites_params(
 #'   ms1.match.ppm = 15,
 #'   rt.match.tol = 15,
@@ -107,13 +108,14 @@ setGeneric(
                  parameter.list,
                  path = ".") {
     dir.create(path = path, showWarnings = FALSE)
+    old.path <- path
     path <- file.path(path, "Result")
     dir.create(path = path, showWarnings = FALSE)
     
     threads = parameter.list[[1]]$threads
     ms1.data.name <- ms1.data
     ms2.data.name <- ms2.data
-
+    
     intermediate_path <-
       file.path(path, "intermediate_data")
     dir.create(intermediate_path, showWarnings = FALSE)
@@ -134,7 +136,7 @@ setGeneric(
       
       if (temp.ms2.type %in% c("mzXML", "mzML")) {
         ms2.data <-
-          readMZXML(file = file.path(path, ms2.data.name),
+          readMZXML(file = file.path(old.path, ms2.data.name),
                     threads = threads)
       } else{
         ms2.data <- lapply(ms2.data.name, function(temp.ms2.data) {
@@ -145,9 +147,9 @@ setGeneric(
           if (!temp.ms2.type %in% c("mgf", "msp"))
             stop("We only support mgf or msp.\n")
           if (temp.ms2.type == "msp") {
-            temp.ms2.data <- readMSP(file = file.path(path, temp.ms2.data))
+            temp.ms2.data <- readMSP(file = file.path(old.path, temp.ms2.data))
           } else{
-            temp.ms2.data <- readMGF(file = file.path(path, temp.ms2.data))
+            temp.ms2.data <- readMGF(file = file.path(old.path, temp.ms2.data))
           }
           temp.ms2.data
         })
@@ -221,13 +223,13 @@ setGeneric(
         x$database
       }))
     
-    if (!all(database.name %in% dir(path))) {
+    if (!all(database.name %in% dir(old.path))) {
       stop(
         "The database: ",
-        paste(database.name[!database.name %in% dir(path)],  collapse = ", "),
+        paste(database.name[!database.name %in% dir(old.path)],  collapse = ", "),
         "\n",
         " you want to use are not in you directory: \n",
-        path
+        old.path
       )
     }
     
@@ -253,8 +255,8 @@ setGeneric(
         next()
       }
       
-      temp_database <- 
-        load(file.path(path, parameter.list[[i]]$database))
+      temp_database <-
+        load(file.path(old.path, parameter.list[[i]]$database))
       
       temp_database <-
         get(temp_database)
@@ -267,13 +269,15 @@ setGeneric(
           rt.match.tol = parameter.list[[i]]$rt.match.tol,
           polarity = parameter.list[[i]]$polarity,
           column = parameter.list[[i]]$column,
-          path = path,
+          path = old.path,
           candidate.num = parameter.list[[i]]$candidate.num,
           database = parameter.list[[i]]$database,
-          threads = parameter.list[[i]]$threads
+          threads = parameter.list[[i]]$threads,
+          silence.deprecated = TRUE
         )
+        
       } else{
-        rm(list = parameter.list[[i]]$database)
+        # rm(list = parameter.list[[i]]$database)
         result <- identify_metabolites(
           ms1.data = ms1.data.name,
           ms2.data = ms2.data.name,
@@ -293,7 +297,7 @@ setGeneric(
           ms1.match.weight = parameter.list[[i]]$ms1.match.weight,
           rt.match.weight = parameter.list[[i]]$rt.match.weight,
           ms2.match.weight = parameter.list[[i]]$ms2.match.weight,
-          path = path,
+          path = old.path,
           total.score.tol = parameter.list[[i]]$total.score.tol,
           candidate.num = parameter.list[[i]]$candidate.num,
           database = parameter.list[[i]]$database,
@@ -339,7 +343,7 @@ setGeneric(
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/multiple_databases.html
-#' @examples 
+#' @examples
 #'  param1 <-
 #' identify_metabolites_params(
 #'   ms1.match.ppm = 15,
@@ -349,7 +353,7 @@ setGeneric(
 #'   column = "rp",
 #'   total.score.tol = 0.5,
 #'   candidate.num = 3,
-#'   threads = 3, 
+#'   threads = 3,
 #'   database = "msDatabase_rplc0.0.2"
 #' )
 #' param1
@@ -412,6 +416,3 @@ setGeneric(
     list("metIdentifyParam" = param)
   }
 )
-
-
-

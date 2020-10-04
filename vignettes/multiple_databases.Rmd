@@ -58,7 +58,7 @@ Place the MS1 peak table, MS2 data and databases which you want to use in one fo
 
 We use the demo data in `metID` package.
 
-### **Load demo datas**
+### **Load demo data**
 
 First we load the MS1 peak, MS2 data and databases from `metID` package and then put them in a `example` folder.
 

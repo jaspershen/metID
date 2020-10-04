@@ -10,8 +10,8 @@
 #' @return A identification table (data.frame).
 #' @export
 #' @import tibble
-#' @import magrittr
-#' @import dplyr
+#' @importFrom magrittr %>%
+#' @importFrom dplyr select mutate everything lag filter
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
 #' @examples 

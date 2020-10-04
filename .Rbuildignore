@@ -17,7 +17,6 @@ vignettes/database_construction
 vignettes/*_cache
 vignettes/*.png
 
-test_data
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
@@ -26,6 +25,8 @@ database_construction
 man/figures
 
 .git
+
+.gitignore
 
 # RStudio files
 .Rproj.user/

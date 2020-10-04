@@ -29,7 +29,7 @@
 #' @param threads Number of threads
 #' @param silence.deprecated Silenc the deprecated information or not.
 #' @return A metIdentifyClass object.
-#' @import crayon
+#' @importFrom crayon yellow green red bgRed
 #' @import BiocParallel
 #' @import ggplot2
 #' @import pbapply
@@ -37,7 +37,6 @@
 #' @import graphics
 #' @import grDevices
 #' @import utils
-#' @import stats
 #' @import readr
 #' @import readxl
 #' @import RColorBrewer

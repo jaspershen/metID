@@ -29,7 +29,8 @@
 #' @param database MS2 database name.
 #' @param threads Number of threads
 #' @return A metIdentifyClass object.
-#' @import crayon
+#' @importFrom crayon yellow green red bgRed
+#' @importFrom magrittr %>% 
 #' @export
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
