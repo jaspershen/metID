@@ -46,7 +46,7 @@ knitr::opts_chunk$set(
 
 ---
 
-<i class="fa fa-weixin"></i> [shenzutao1990](https://www.shenxt.info/files/wechat_QR.jpg)
+<i class="fa fa-weixin"></i> [shenxt1990](https://www.shenxt.info/files/wechat_QR.jpg)
 
 <i class="fa fa-envelope"></i> shenxt@stanford.edu
 
