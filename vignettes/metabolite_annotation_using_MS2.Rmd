@@ -106,13 +106,13 @@ annotate_result3 <-
 
 > Note: You can also provide more than one MS2 data. Just provide them to `ms2.data` as a vector.
 
-Most of the paramters are same with in `Annotate metabolites according to MS1 database using metID package`. 
+Most of the parameters are same with in `Annotate metabolites according to MS1 database using metID package`. 
 
 Some parameters for MS2 matching:
 
 * `ms2.data`: The ms2 data. 
 
-* `ce`: The collision energy of spectra used for matchin. Set as `all` to use all the spectra.
+* `ce`: The collision energy of spectra used for matching. Set as `all` to use all the spectra.
 
 * `ms2.match.tol`: The MS2 similarity tolerance for peak and database metabolite match. The MS2 similarity refers to the algorithm from [MS-DIAl](https://www.nature.com/articles/nmeth.3393). So if you want to know more information about it, please read this publication.
 

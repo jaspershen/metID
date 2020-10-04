@@ -60,7 +60,7 @@ ms2 %>% head()
 First we load the database from `metID` package and then put them in a `example` folder.
 
 ```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
-##creat a folder nameed as example
+##create a folder named as example
 path <- file.path(".", "example")
 dir.create(path = path, showWarnings = FALSE)
 

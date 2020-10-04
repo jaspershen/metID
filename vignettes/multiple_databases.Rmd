@@ -191,7 +191,6 @@ annotation_table1 %>%
   head()
 ```
 
-
 For `orbitrapDatabase0.0.1`, the annotaiton results are `Level 2` according to MSI.
 
 ```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}

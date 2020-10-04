@@ -44,9 +44,9 @@ Place the MS1 peak table and databases which you want to use in one folder like 
 
 ## **Run `identify_metabolites()` function**
 
-We use the demo data in `metID` package to show how to use `metID` to identify metablite without MS2 spectra. 
+We use the demo data in `metID` package to show how to use `metID` to identify metabolites without MS2 spectra. 
 
-### **Load demo datas**
+### **Load demo data**
 
 First we load the MS1 peak and database from `metID` package and then put them in a `example` folder.
 
@@ -56,7 +56,7 @@ library(tidyverse)
 ```
 
 ```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
-##creat a folder nameed as example
+##create a folder named as example
 path <- file.path(".", "example")
 dir.create(path = path, showWarnings = FALSE)
 

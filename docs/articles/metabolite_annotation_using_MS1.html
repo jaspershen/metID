@@ -198,10 +198,10 @@
 <h2 class="hasAnchor">
 <a href="#run-identify_metabolites-function" class="anchor"></a><strong>Run <code>identify_metabolites()</code> function</strong>
 </h2>
-<p>We use the demo data in <code>metID</code> package to show how to use <code>metID</code> to identify metablite without MS2 spectra.</p>
-<div id="load-demo-datas" class="section level3">
+<p>We use the demo data in <code>metID</code> package to show how to use <code>metID</code> to identify metabolites without MS2 spectra.</p>
+<div id="load-demo-data" class="section level3">
 <h3 class="hasAnchor">
-<a href="#load-demo-datas" class="anchor"></a><strong>Load demo datas</strong>
+<a href="#load-demo-data" class="anchor"></a><strong>Load demo data</strong>
 </h3>
 <p>First we load the MS1 peak and database from <code>metID</code> package and then put them in a <code>example</code> folder.</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">metID</span>)
@@ -227,7 +227,7 @@
 <span class="co">#&gt; ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
 <span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></pre></body></html></div>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co">##creat a folder nameed as example</span>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co">##create a folder named as example</span>
 <span class="no">path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="st">"."</span>, <span class="st">"example"</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="no">path</span>, <span class="kw">showWarnings</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
 
