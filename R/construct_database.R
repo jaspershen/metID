@@ -16,6 +16,7 @@
 #' @param mz.tol m/z tolerance for the match between metabolites and precursor m/z of MS2 spectra.
 #' @param rt.tol RT tolerance for the match between metabolites and precursor m/z of MS2 spectra.
 #' @param threads The number of threads
+#' @importFrom magrittr %>% 
 #' @return A databaseClass object.
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
@@ -86,7 +87,8 @@ setGeneric(
         x[[1]]
       })
       
-      ms1.info.pos <- do.call(rbind, ms1.info.pos)
+      ms1.info.pos <- do.call(rbind, ms1.info.pos) %>%
+        as.data.frame()
       
       ms1.info.pos$file <- basename(ms1.info.pos$file)
       
@@ -114,7 +116,8 @@ setGeneric(
         x[[1]]
       })
       
-      ms1.info.neg <- do.call(rbind, ms1.info.neg)
+      ms1.info.neg <- do.call(rbind, ms1.info.neg) %>% 
+        as.data.frame()
       
       ms1.info.neg$file <- basename(ms1.info.neg$file)
       
@@ -127,7 +130,6 @@ setGeneric(
     } else{
       ms1.info.neg <- NULL
     }
-    
     
     ###---------------------------------------------------------------------------
     cat(crayon::green("Matching metabolites with MS2 spectra (positive)...\n"))
@@ -142,23 +144,31 @@ setGeneric(
           rt.error.type = "abs"
         )
       
-      match.result.pos <- data.frame(match.result.pos,
-                                     "file" = ms1.info.pos$file[match.result.pos[, 2]],
-                                     stringsAsFactors = FALSE)
+      match.result.pos <-
+        data.frame(match.result.pos,
+                   "file" = ms1.info.pos$file[match.result.pos[, 2]],
+                   stringsAsFactors = FALSE)
       
       unique.idx1 <- unique(match.result.pos[, 1])
       
       spectra.pos <-
         pbapply::pblapply(unique.idx1, function(idx) {
           temp.match.result.pos <-
-            match.result.pos[which(match.result.pos == idx), , drop = FALSE]
-          if (nrow(temp.match.result.pos) == 0)
+            match.result.pos[which(match.result.pos$Index1 == idx), , drop = FALSE]
+          if (nrow(temp.match.result.pos) == 0){
             return(NULL)
+          }
           temp.submitter <- metabolite.info$Submitter[idx]
-          temp.match.result.pos <-
-            temp.match.result.pos[grep(temp.submitter, temp.match.result.pos[, 9]), ]
-          if (nrow(temp.match.result.pos) == 0)
-            return(NULL)
+          if(!is.na(temp.submitter) & 
+             length(grep(temp.submitter, temp.match.result.pos[, 9])) > 0
+          ){
+            temp.match.result.pos <-
+              temp.match.result.pos[grep(temp.submitter, temp.match.result.pos[, 9]), ]   
+          }
+         
+          if (nrow(temp.match.result.pos) == 0){
+            return(NULL)            
+          }
           
           if (nrow(temp.match.result.pos) == 1) {
             temp.ms2.pos <- ms2.info.pos[temp.match.result.pos[1, 2]]
@@ -186,8 +196,6 @@ setGeneric(
             stringr::str_extract(string = unique.file.name,
                                  pattern = "NCE[0-9]{1,3}")
           temp.ms2.pos
-          
-          
         })
       
       names(spectra.pos) <-
@@ -222,15 +230,23 @@ setGeneric(
       spectra.neg <-
         pbapply::pblapply(unique.idx1, function(idx) {
           temp.match.result.neg <-
-            match.result.neg[which(match.result.neg == idx), , drop = FALSE]
-          if (nrow(temp.match.result.neg) == 0)
+            match.result.neg[which(match.result.neg$Index1 == idx), , drop = FALSE]
+          if (nrow(temp.match.result.neg) == 0){
             return(NULL)
+          }
+            
           temp.submitter <- metabolite.info$Submitter[idx]
-          temp.match.result.neg <-
-            temp.match.result.neg[grep(temp.submitter, temp.match.result.neg[, 9]), ]
-          if (nrow(temp.match.result.neg) == 0)
-            return(NULL)
+          if(!is.na(temp.submitter) & 
+             length(grep(temp.submitter, temp.match.result.neg[, 9])) > 0
+          ){
+            temp.match.result.neg <-
+              temp.match.result.neg[grep(temp.submitter, temp.match.result.neg[, 9]), ]  
+          }
           
+          if (nrow(temp.match.result.neg) == 0){
+            return(NULL)
+          }
+
           if (nrow(temp.match.result.neg) == 1) {
             temp.ms2.neg <- ms2.info.neg[temp.match.result.neg[1, 2]]
             names(temp.ms2.neg) <-

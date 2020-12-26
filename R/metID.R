@@ -10,7 +10,7 @@
 
 metID <- function() {
   cat(crayon::green("Thank you for using metID!\n"))
-  cat(crayon::green("Version 0.4.1 (2020702)\n"))
+  cat(crayon::green("Version 0.4.1 (20201225)\n"))
   cat(
     crayon::green(
       "More information can be found at https://jaspershen.github.io/metID/\n"
@@ -39,7 +39,7 @@ If you use metID in you publication, please cite this publication:
 Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics.
 Authors: Xiaotao Shen (shenxt1990@163.com)
 Maintainer: Xiaotao Shen.
-Version 0.4.1 (2020702)"
+Version 0.4.1 (20201225)"
     ),
     cat(crayon::green(
       c(

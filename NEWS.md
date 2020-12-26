@@ -44,3 +44,7 @@
 ## Version 0.4.0 (2020328)
 --------------
 * Great improvements.
+
+## Version 0.4.1 (20201225)
+--------------
+* Fix small bug in construct_database.
