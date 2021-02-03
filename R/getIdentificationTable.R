@@ -109,7 +109,7 @@ setGeneric(
           })
         identification.table <-
           data.frame(peak.table, identification.table, stringsAsFactors = FALSE)
-      } else{
+      } else {
         identification.table <-
           vector(mode = "list", length = nrow(peak.table))
         names(identification.table)[match.result[, 1]] <-
@@ -166,6 +166,45 @@ setGeneric(
         
         identification.table <-
           as.data.frame(do.call(rbind, identification.table))
+        identification.table$mz <-
+          identification.table$mz %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$rt <-
+          identification.table$rt %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$mz.error <-
+          identification.table$mz.error %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$mz.match.score <-
+          identification.table$mz.match.score %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$RT.error <-
+          identification.table$RT.error %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$RT.match.score <-
+          identification.table$RT.match.score %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$SS <-
+          identification.table$SS %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$Total.score <-
+          identification.table$Total.score %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
       }
       rownames(identification.table) <- NULL
       return(tibble::as_tibble(identification.table))
@@ -315,6 +354,45 @@ setGeneric(
         data.frame(peak.table, identification.table, stringsAsFactors = FALSE)
       if(type == "new"){
         identification.table <- trans_to_new_style(identification.table = identification.table)
+        identification.table$mz <-
+          identification.table$mz %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$rt <-
+          identification.table$rt %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$mz.error <-
+          identification.table$mz.error %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$mz.match.score <-
+          identification.table$mz.match.score %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$RT.error <-
+          identification.table$RT.error %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$RT.match.score <-
+          identification.table$RT.match.score %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$SS <-
+          identification.table$SS %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
+        
+        identification.table$Total.score <-
+          identification.table$Total.score %>% 
+          stringr::str_trim(side = 'both') %>% 
+          as.numeric()
       }
       return(tibble::as_tibble(identification.table))
     }

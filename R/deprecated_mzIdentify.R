@@ -416,6 +416,7 @@ setGeneric(
 #' @param silence.deprecated Silenc the deprecated information or not.
 #' @return A identification table (data.frame).
 #' @export
+#' @importFrom magrittr %>%
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
 
@@ -448,7 +449,6 @@ setGeneric(
     }
     
     ##add database information
-    
     identification.result <-
       lapply(identification.result, function(x) {
         if (nrow(x) > candidate.num) {
@@ -558,6 +558,46 @@ setGeneric(
     }
     
     rownames(identification.table) <- NULL
+    ###as.numeric for several column
+    identification.table$mz =
+      identification.table$mz %>% 
+      stringr::str_trim(side = "both") %>% 
+      as.numeric()
+    
+    identification.table$rt =
+      identification.table$rt %>% 
+      stringr::str_trim(side = "both") %>% 
+      as.numeric()
+    
+    identification.table$mz.error =
+      identification.table$mz.error %>% 
+      stringr::str_trim(side = "both") %>% 
+      as.numeric()
+    
+    identification.table$RT.error =
+      identification.table$RT.error %>% 
+      stringr::str_trim(side = "both") %>% 
+      as.numeric()
+    
+    identification.table$mz.match.score =
+      identification.table$mz.match.score %>% 
+      stringr::str_trim(side = "both") %>% 
+      as.numeric()
+    
+    identification.table$RT.match.score =
+      identification.table$RT.match.score %>% 
+      stringr::str_trim(side = "both") %>% 
+      as.numeric()
+    
+    identification.table$Total.score =
+      identification.table$Total.score %>% 
+      stringr::str_trim(side = "both") %>% 
+      as.numeric()
+    
+    identification.table$SS =
+      identification.table$SS %>% 
+      stringr::str_trim(side = "both") %>% 
+      as.numeric()
     
     return(tibble::as_tibble(identification.table))
   }
