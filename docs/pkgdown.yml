@@ -1,5 +1,5 @@
-pandoc: 2.7.3
-pkgdown: 1.5.1
+pandoc: 2.11.2
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   contact_us: contact_us.html
@@ -11,7 +11,7 @@ articles:
   multiple_databases: multiple_databases.html
   other_tools: other_tools.html
   public_databases: public_databases.html
-last_built: 2020-12-26T04:00Z
+last_built: 2021-02-19T20:40Z
 urls:
   reference: https://jaspershen.github.io/metID//reference
   article: https://jaspershen.github.io/metID//articles

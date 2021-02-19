@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/darkly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -35,7 +35,7 @@
 </head>
 <body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
-      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -54,7 +54,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -130,13 +130,13 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/jaspershen/metID/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://twitter.com/JasperShen1990">
-    <span class="fab fa fab fa-twitter fa-lg"></span>
+    <span class="fab fa-twitter fa-lg"></span>
      
   </a>
 </li>
@@ -156,14 +156,14 @@
 
       
 
-      </header><div class="row">
+      </header><script src="identify_single_peak_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Identify single peak with metID</h1>
                         <h4 class="author">Xiaotao Shen PhD (<a href="https://www.shenxt.info/" class="uri">https://www.shenxt.info/</a>)</h4>
                                     <h4 class="author">Si Wu PhD</h4>
             <address class="author_afil">
-      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2020-12-25</h4>
+      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2021-02-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jaspershen/metID/blob/master/vignettes/identify_single_peak.Rmd"><code>vignettes/identify_single_peak.Rmd</code></a></small>
       <div class="hidden name"><code>identify_single_peak.Rmd</code></div>
@@ -175,54 +175,50 @@
     
 <hr>
 <p>Some times we only want to match one peak. We can use <code><a href="../reference/identify_single_peak.html">identify_single_peak()</a></code> function to identify single peak.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">metID</span>)
-<span class="co">#&gt;                 _    _____  ___ </span>
-<span class="co">#&gt;  _ __ ___   ___| |_  \_   \/   \</span>
-<span class="co">#&gt; | '_ ` _ \ / _ \ __|  / /\/ /\ /</span>
-<span class="co">#&gt; | | | | | |  __/ |_/\/ /_/ /_// </span>
-<span class="co">#&gt; |_| |_| |_|\___|\__\____/___,'  </span>
-<span class="co">#&gt; </span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jaspershen/metID">metID</a></span><span class="op">)</span>
 <span class="co">#&gt; metID,</span>
 <span class="co">#&gt; More information can be found at https://jaspershen.github.io/metID/</span>
 <span class="co">#&gt; If you use metID in you publication, please cite this publication:</span>
 <span class="co">#&gt; Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics.</span>
 <span class="co">#&gt; Authors: Xiaotao Shen (shenxt1990@163.com)</span>
 <span class="co">#&gt; Maintainer: Xiaotao Shen.</span>
-<span class="co">#&gt; Version 0.4.1 (20201225)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
-<span class="co">#&gt; ── Attaching packages ───────────────────────────────────────────── tidyverse 1.3.0 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.2.9000     ✓ purrr   0.3.4     </span>
-<span class="co">#&gt; ✓ tibble  3.0.1          ✓ dplyr   0.8.5     </span>
-<span class="co">#&gt; ✓ tidyr   1.0.2          ✓ stringr 1.4.0     </span>
-<span class="co">#&gt; ✓ readr   1.3.1          ✓ forcats 0.5.0</span>
-<span class="co">#&gt; ── Conflicts ──────────────────────────────────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; Version 0.4.1 (20210202)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span>
+<span class="co">#&gt; ✓ ggplot2 3.3.3     ✓ purrr   0.3.4</span>
+<span class="co">#&gt; ✓ tibble  3.0.4     ✓ dplyr   1.0.2</span>
+<span class="co">#&gt; ✓ tidyr   1.1.2     ✓ stringr 1.4.0</span>
+<span class="co">#&gt; ✓ readr   1.4.0     ✓ forcats 0.5.0</span>
+<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
-<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></pre></body></html></div>
+<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></code></pre></div>
 <div id="peak-information" class="section level2">
 <h2 class="hasAnchor">
 <a href="#peak-information" class="anchor"></a><strong>Peak information</strong>
 </h2>
 <p>We need the m/z, rt and MS2 information. MS2 must be a matrix with two columns: <code>mz</code> and <code>intensity</code>.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">mz</span> <span class="kw">&lt;-</span> <span class="fl">472.3032</span>
-<span class="no">rt</span> <span class="kw">&lt;-</span> <span class="fl">772.906</span>
-<span class="no">ms2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
-  <span class="kw">mz</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">81.38455</span>,<span class="fl">82.19755</span>,<span class="fl">85.02840</span>,<span class="fl">86.5934</span>,<span class="fl">86.98958</span>,<span class="fl">89.48135</span>,<span class="fl">90.70250</span>,
-         <span class="fl">93.03886</span>, <span class="fl">102.09140</span>, <span class="fl">103.03903</span>, <span class="fl">116.01658</span>, <span class="fl">127.98412</span>,
-         <span class="fl">134.06819</span>, <span class="fl">152.46967</span>, <span class="fl">162.02180</span>, <span class="fl">162.05521</span>, <span class="fl">162.11261</span>),
-  <span class="kw">intensity</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1396.341</span>,<span class="fl">1488.730</span>,<span class="fl">15473.604</span>, <span class="fl">1740.842</span>,<span class="fl">2158.014</span>,<span class="fl">1351.686</span>,
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mz</span> <span class="op">&lt;-</span> <span class="fl">472.3032</span>
+<span class="va">rt</span> <span class="op">&lt;-</span> <span class="fl">772.906</span>
+<span class="va">ms2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+  mz <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">81.38455</span>,<span class="fl">82.19755</span>,<span class="fl">85.02840</span>,<span class="fl">86.5934</span>,<span class="fl">86.98958</span>,<span class="fl">89.48135</span>,<span class="fl">90.70250</span>,
+         <span class="fl">93.03886</span>, <span class="fl">102.09140</span>, <span class="fl">103.03903</span>, <span class="fl">116.01658</span>, <span class="fl">127.98412</span>, 
+         <span class="fl">134.06819</span>, <span class="fl">152.46967</span>, <span class="fl">162.02180</span>, <span class="fl">162.05521</span>, <span class="fl">162.11261</span><span class="op">)</span>,
+  intensity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1396.341</span>,<span class="fl">1488.730</span>,<span class="fl">15473.604</span>, <span class="fl">1740.842</span>,<span class="fl">2158.014</span>,<span class="fl">1351.686</span>,
                 <span class="fl">1547.099</span>,<span class="fl">1325.864</span>,<span class="fl">22441.047</span>,<span class="fl">76217.016</span>,<span class="fl">17809.395</span>,
-                <span class="fl">1439.743</span>, <span class="fl">1729.786</span>, <span class="fl">1543.765</span>, <span class="fl">2228.743</span>,
-                <span class="fl">3508.225</span>, <span class="fl">529120.000</span>),
-  <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>
-)
-<span class="no">ms2</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()
+                <span class="fl">1439.743</span>, <span class="fl">1729.786</span>, <span class="fl">1543.765</span>, <span class="fl">2228.743</span>, 
+                <span class="fl">3508.225</span>, <span class="fl">529120.000</span><span class="op">)</span>,
+  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span>
+<span class="va">ms2</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt;         mz intensity</span>
 <span class="co">#&gt; 1 81.38455  1396.341</span>
 <span class="co">#&gt; 2 82.19755  1488.730</span>
 <span class="co">#&gt; 3 85.02840 15473.604</span>
 <span class="co">#&gt; 4 86.59340  1740.842</span>
 <span class="co">#&gt; 5 86.98958  2158.014</span>
-<span class="co">#&gt; 6 89.48135  1351.686</span></pre></body></html></div>
+<span class="co">#&gt; 6 89.48135  1351.686</span></code></pre></div>
 </div>
 <div id="run-identify_single_peak-function" class="section level2">
 <h2 class="hasAnchor">
@@ -233,36 +229,37 @@
 <a href="#load-database" class="anchor"></a><strong>Load database</strong>
 </h3>
 <p>First we load the database from <code>metID</code> package and then put them in a <code>example</code> folder.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co">##create a folder named as example</span>
-<span class="no">path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="st">"."</span>, <span class="st">"example"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="no">path</span>, <span class="kw">showWarnings</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">##create a folder named as example</span>
+<span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"."</span>, <span class="st">"example"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">path</span>, showWarnings <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="co">##get database from metID</span>
-<span class="no">database</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"ms2_database"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"metID"</span>)
+<span class="va">database</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"ms2_database"</span>, package <span class="op">=</span> <span class="st">"metID"</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span>(<span class="kw">from</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="no">database</span>, <span class="st">"msDatabase_rplc0.0.2"</span>),
-          <span class="kw">to</span> <span class="kw">=</span> <span class="no">path</span>, <span class="kw">overwrite</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">recursive</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-<span class="co">#&gt; [1] TRUE</span></pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">database</span>, <span class="st">"msDatabase_rplc0.0.2"</span><span class="op">)</span>, 
+          to <span class="op">=</span> <span class="va">path</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
 <p>Now in your <code>./example</code>, there are one file, namely <code>msDatabase_rplc_0.0.2</code>.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r">annotation_result &lt;- 
-  identify_single_peak(ms1.mz = mz, 
-                       ms1.rt = rt, 
-                       ms2 = ms2, 
-                       ms1.match.ppm = 15, 
-                       rt.match.tol = 30,
-                       ms2.match.tol = 0.5, 
-                       database = "msDatabase_rplc0.0.2",
-                       path = path)
-#&gt; Use all CE values.
-#&gt; 
-#&gt; Identifing metabolites with MS/MS database...
-#&gt; 
-  |                                                                            
-  |                                                                      |   0%
-  |                                                                            
-  |======================================================================| 100%
-#&gt; 
-#&gt; All done.</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>annotation_result <span class="ot">&lt;-</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">identify_single_peak</span>(<span class="at">ms1.mz =</span> mz, </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ms1.rt =</span> rt, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ms2 =</span> ms2, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ms1.match.ppm =</span> <span class="dv">15</span>, </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">rt.match.tol =</span> <span class="dv">30</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ms2.match.tol =</span> <span class="fl">0.5</span>, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">database =</span> <span class="st">"msDatabase_rplc0.0.2"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">path =</span> path)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Use all CE values.</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Identifing metabolites with MS/MS database...</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="er">|</span>                                                                      <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                            </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="er">|======================================================================|</span> <span class="dv">100</span>%</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; All done.</span></span></code></pre></div>
 <p><code>annotation_result</code> is a <code>metIdentifyClass</code> object, so you can use all the functions for it to process.</p>
 </div>
 </div>
@@ -283,7 +280,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

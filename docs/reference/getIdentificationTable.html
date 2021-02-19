@@ -19,7 +19,7 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/darkly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
@@ -86,7 +86,7 @@
   <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -105,7 +105,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -181,13 +181,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/jaspershen/metID/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://twitter.com/JasperShen1990">
-    <span class="fab fa fab fa-twitter fa-lg"></span>
+    <span class="fab fa-twitter fa-lg"></span>
      
   </a>
 </li>
@@ -220,7 +220,7 @@
 <img src='figures/lifecycle-deprecated.svg' alt='Deprecated lifecycle' /></p>
     </div>
 
-    <pre class="usage"><span class='fu'>getIdentificationTable</span>(<span class='no'>...</span>, <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"old"</span>, <span class='st'>"new"</span>))</pre>
+    <pre class="usage"><span class='fu'>getIdentificationTable</span><span class='op'>(</span><span class='va'>...</span>, candidate.num <span class='op'>=</span> <span class='fl'>3</span>, type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"old"</span>, <span class='st'>"new"</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -246,11 +246,17 @@
 
     <div class='dont-index'><p>The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Xiaotao Shen
+<a href='mailto:shenxt1990@163.com'>shenxt1990@163.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"annotate_result"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"metID"</span>)
-<span class='no'>annotation_table</span> <span class='kw'>&lt;-</span>
-<span class='fu'>getIdentificationTable</span>(<span class='no'>annotate_result</span>, <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"old"</span>)</div><div class='output co'>#&gt; <span style='color: #BBBB00;'>`getIdentificationTable()` is deprecated, use `get_identification_table()`.</span><span></div><div class='input'><span class='no'>annotation_table</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 100 x 6</span><span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"annotate_result"</span>, package <span class='op'>=</span> <span class='st'>"metID"</span><span class='op'>)</span>
+<span class='va'>annotation_table</span> <span class='op'>&lt;-</span> 
+<span class='fu'>getIdentificationTable</span><span class='op'>(</span><span class='va'>annotate_result</span>, candidate.num <span class='op'>=</span> <span class='fl'>3</span>, type <span class='op'>=</span> <span class='st'>"old"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #BBBB00;'>`getIdentificationTable()` is deprecated, use `get_identification_table()`.</span><span></div><div class='input'><span class='va'>annotation_table</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 100 x 6</span><span>
 #&gt;    name      mz    rt MS2.spectrum.name  Candidate.number Identification        
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                 
 #&gt; </span><span style='color: #555555;'> 1</span><span> pRPLC…  472. 773.  </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
@@ -263,8 +269,10 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
 #&gt; </span><span style='color: #555555;'> 8</span><span> pRPLC…  181. 201.  mz181.07205067309…                3 Compound.name:Theophy…
 #&gt; </span><span style='color: #555555;'> 9</span><span> pRPLC…  209.  57.4 mz209.09215507704…                1 Compound.name:L-KYNUR…
 #&gt; </span><span style='color: #555555;'>10</span><span> pRPLC…  283.  40.9 </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
-#&gt; </span><span style='color: #555555;'># … with 90 more rows</span><span></div><div class='input'><span class='no'>annotation_table</span> <span class='kw'>&lt;-</span>
-<span class='fu'>getIdentificationTable</span>(<span class='no'>annotate_result</span>, <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"new"</span>)</div><div class='output co'>#&gt; </span><span style='color: #BBBB00;'>`getIdentificationTable()` is deprecated, use `get_identification_table()`.</span><span></div><div class='input'><span class='no'>annotation_table</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 115 x 17</span><span>
+#&gt; </span><span style='color: #555555;'># … with 90 more rows</span><span></div><div class='input'><span class='va'>annotation_table</span> <span class='op'>&lt;-</span> 
+<span class='fu'>getIdentificationTable</span><span class='op'>(</span><span class='va'>annotate_result</span>, candidate.num <span class='op'>=</span> <span class='fl'>3</span>, type <span class='op'>=</span> <span class='st'>"new"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #BBBB00;'>`getIdentificationTable()` is deprecated, use `get_identification_table()`.</span><span></div><div class='input'><span class='va'>annotation_table</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 115 x 17</span><span>
 #&gt;    name  mz    rt    Compound.name CAS.ID HMDB.ID KEGG.ID Lab.ID Adduct mz.error
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
 #&gt; </span><span style='color: #555555;'> 1</span><span> pRPL… </span><span style='color: #555555;'>"</span><span>472… </span><span style='color: #555555;'>"</span><span>772… </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>      
@@ -295,7 +303,7 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

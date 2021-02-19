@@ -4,7 +4,7 @@ url: https://jaspershen.github.io/metID/
 
 home:
   strip_header: false
-  title: metID package
+  title: metID
   links:
   - text: Find me
     href: https://shenxt.info/
@@ -19,7 +19,7 @@ template:
     docsearch:
       api_key: 21ff2860978c5d2ceb7d4150364070ff
       index_name: metid
-    bootswatch: darkly
+    bootswatch: flatly
     ganalytics: UA-000000-01
 
 reference:
@@ -66,7 +66,8 @@ reference:
     - metID
 
 navbar:
-  type: inverse
+  title: "sparklyr" 
+  # type: inverse
   structure:
     left: [home, references, articles, news, contact]
     right: [github, twitter]

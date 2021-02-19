@@ -19,7 +19,7 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/darkly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
@@ -86,7 +86,7 @@
   <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -105,7 +105,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -181,13 +181,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/jaspershen/metID/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://twitter.com/JasperShen1990">
-    <span class="fab fa fab fa-twitter fa-lg"></span>
+    <span class="fab fa-twitter fa-lg"></span>
      
   </a>
 </li>
@@ -220,28 +220,28 @@
 <a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>identify_metabolites_params</span>(
-  <span class='kw'>ms1.ms2.match.mz.tol</span> <span class='kw'>=</span> <span class='fl'>25</span>,
-  <span class='kw'>ms1.ms2.match.rt.tol</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-  <span class='kw'>ms1.match.ppm</span> <span class='kw'>=</span> <span class='fl'>25</span>,
-  <span class='kw'>ms2.match.ppm</span> <span class='kw'>=</span> <span class='fl'>30</span>,
-  <span class='kw'>mz.ppm.thr</span> <span class='kw'>=</span> <span class='fl'>400</span>,
-  <span class='kw'>ms2.match.tol</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>fraction.weight</span> <span class='kw'>=</span> <span class='fl'>0.3</span>,
-  <span class='kw'>dp.forward.weight</span> <span class='kw'>=</span> <span class='fl'>0.6</span>,
-  <span class='kw'>dp.reverse.weight</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>rt.match.tol</span> <span class='kw'>=</span> <span class='fl'>30</span>,
-  <span class='kw'>polarity</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"positive"</span>, <span class='st'>"negative"</span>),
-  <span class='kw'>ce</span> <span class='kw'>=</span> <span class='st'>"all"</span>,
-  <span class='kw'>column</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hilic"</span>, <span class='st'>"rp"</span>),
-  <span class='kw'>ms1.match.weight</span> <span class='kw'>=</span> <span class='fl'>0.25</span>,
-  <span class='kw'>rt.match.weight</span> <span class='kw'>=</span> <span class='fl'>0.25</span>,
-  <span class='kw'>ms2.match.weight</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>total.score.tol</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='no'>database</span>,
-  <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>
-)</pre>
+    <pre class="usage"><span class='fu'>identify_metabolites_params</span><span class='op'>(</span>
+  ms1.ms2.match.mz.tol <span class='op'>=</span> <span class='fl'>25</span>,
+  ms1.ms2.match.rt.tol <span class='op'>=</span> <span class='fl'>10</span>,
+  ms1.match.ppm <span class='op'>=</span> <span class='fl'>25</span>,
+  ms2.match.ppm <span class='op'>=</span> <span class='fl'>30</span>,
+  mz.ppm.thr <span class='op'>=</span> <span class='fl'>400</span>,
+  ms2.match.tol <span class='op'>=</span> <span class='fl'>0.5</span>,
+  fraction.weight <span class='op'>=</span> <span class='fl'>0.3</span>,
+  dp.forward.weight <span class='op'>=</span> <span class='fl'>0.6</span>,
+  dp.reverse.weight <span class='op'>=</span> <span class='fl'>0.1</span>,
+  rt.match.tol <span class='op'>=</span> <span class='fl'>30</span>,
+  polarity <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"positive"</span>, <span class='st'>"negative"</span><span class='op'>)</span>,
+  ce <span class='op'>=</span> <span class='st'>"all"</span>,
+  column <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"hilic"</span>, <span class='st'>"rp"</span><span class='op'>)</span>,
+  ms1.match.weight <span class='op'>=</span> <span class='fl'>0.25</span>,
+  rt.match.weight <span class='op'>=</span> <span class='fl'>0.25</span>,
+  ms2.match.weight <span class='op'>=</span> <span class='fl'>0.5</span>,
+  total.score.tol <span class='op'>=</span> <span class='fl'>0.5</span>,
+  candidate.num <span class='op'>=</span> <span class='fl'>3</span>,
+  <span class='va'>database</span>,
+  threads <span class='op'>=</span> <span class='fl'>3</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -335,21 +335,26 @@
 
     <div class='dont-index'><p>The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/multiple_databases.html</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Xiaotao Shen
+<a href='mailto:shenxt1990@163.com'>shenxt1990@163.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'> <span class='no'>param1</span> <span class='kw'>&lt;-</span>
-<span class='fu'>identify_metabolites_params</span>(
-  <span class='kw'>ms1.match.ppm</span> <span class='kw'>=</span> <span class='fl'>15</span>,
-  <span class='kw'>rt.match.tol</span> <span class='kw'>=</span> <span class='fl'>15</span>,
-  <span class='kw'>polarity</span> <span class='kw'>=</span> <span class='st'>"positive"</span>,
-  <span class='kw'>ce</span> <span class='kw'>=</span> <span class='st'>"all"</span>,
-  <span class='kw'>column</span> <span class='kw'>=</span> <span class='st'>"rp"</span>,
-  <span class='kw'>total.score.tol</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>candidate.num</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>threads</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>database</span> <span class='kw'>=</span> <span class='st'>"msDatabase_rplc0.0.2"</span>
-)
-<span class='no'>param1</span></div><div class='output co'>#&gt; $metIdentifyParam
+    <pre class="examples"><div class='input'> <span class='va'>param1</span> <span class='op'>&lt;-</span>
+<span class='fu'>identify_metabolites_params</span><span class='op'>(</span>
+  ms1.match.ppm <span class='op'>=</span> <span class='fl'>15</span>,
+  rt.match.tol <span class='op'>=</span> <span class='fl'>15</span>,
+  polarity <span class='op'>=</span> <span class='st'>"positive"</span>,
+  ce <span class='op'>=</span> <span class='st'>"all"</span>,
+  column <span class='op'>=</span> <span class='st'>"rp"</span>,
+  total.score.tol <span class='op'>=</span> <span class='fl'>0.5</span>,
+  candidate.num <span class='op'>=</span> <span class='fl'>3</span>,
+  threads <span class='op'>=</span> <span class='fl'>3</span>,
+  database <span class='op'>=</span> <span class='st'>"msDatabase_rplc0.0.2"</span>
+<span class='op'>)</span>
+<span class='va'>param1</span>
+</div><div class='output co'>#&gt; $metIdentifyParam
 #&gt; $metIdentifyParam$ms1.ms2.match.mz.tol
 #&gt; [1] 25
 #&gt; 
@@ -432,7 +437,7 @@ https://jaspershen.github.io/metID/articles/multiple_databases.html</p></div>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

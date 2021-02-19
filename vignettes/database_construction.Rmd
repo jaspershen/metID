@@ -82,7 +82,7 @@ test.database <- construct_database(
   rt = TRUE,
   mz.tol = 15,
   rt.tol = 30,
-  threads = 3
+  threads = 1
 )
 ```
 

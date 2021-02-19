@@ -88,7 +88,7 @@ annotate_result1 <-
                        path = path, 
                        candidate.num = 3,
                        database = "msDatabase_rplc0.0.2", 
-                       threads = 2)
+                       threads = 1)
 ```
 
 > Note: because here we only want to use m/z for metabolite identification, so please set `rt.match.tol` (second) > 10,000, for example '1000000' here, so the RT will not be used for filtering.
@@ -132,7 +132,7 @@ annotate_result2 <-
                        path = path, 
                        candidate.num = 3,
                        database = "msDatabase_rplc0.0.2", 
-                       threads = 2)
+                       threads = 1)
 ```
 
 ## Get detailed annotation information
@@ -168,7 +168,8 @@ We can use `get_identification_table()` to get the identification table.
 
 ```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
 table1 <- 
-  get_identification_table(annotate_result1, candidate.num = 3,
+  get_identification_table(annotate_result1, 
+                           candidate.num = 3,
                            type = "old")
 table1
 ```
@@ -188,7 +189,7 @@ If you only want to keep one cancidate for each peak. Please set `candiate.num` 
 
 ```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
 table2 <- 
-  get_identification_table(annotate_result1, candidate.num = 1,
+  get_identification_table(annotate_result1, candidate.num = 2,
                            type = "new")
 table2
 ```

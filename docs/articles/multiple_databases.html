@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/darkly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -35,7 +35,7 @@
 </head>
 <body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
-      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -54,7 +54,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -130,13 +130,13 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/jaspershen/metID/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://twitter.com/JasperShen1990">
-    <span class="fab fa fab fa-twitter fa-lg"></span>
+    <span class="fab fa-twitter fa-lg"></span>
      
   </a>
 </li>
@@ -156,14 +156,14 @@
 
       
 
-      </header><div class="row">
+      </header><script src="multiple_databases_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Identify peak tables with multiple databases</h1>
                         <h4 class="author">Xiaotao Shen PhD (<a href="https://www.shenxt.info/" class="uri">https://www.shenxt.info/</a>)</h4>
                                     <h4 class="author">Si Wu PhD</h4>
             <address class="author_afil">
-      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2020-12-25</h4>
+      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2021-02-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jaspershen/metID/blob/master/vignettes/multiple_databases.Rmd"><code>vignettes/multiple_databases.Rmd</code></a></small>
       <div class="hidden name"><code>multiple_databases.Rmd</code></div>
@@ -214,91 +214,94 @@
 <a href="#load-demo-data" class="anchor"></a><strong>Load demo data</strong>
 </h3>
 <p>First we load the MS1 peak, MS2 data and databases from <code>metID</code> package and then put them in a <code>example</code> folder.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">metID</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co">##creat a folder nameed as example</span>
-<span class="no">path</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="st">"."</span>, <span class="st">"example"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span>(<span class="kw">path</span> <span class="kw">=</span> <span class="no">path</span>, <span class="kw">showWarnings</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jaspershen/metID">metID</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">##creat a folder nameed as example</span>
+<span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"."</span>, <span class="st">"example"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">path</span>, showWarnings <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="co">##get MS1 peak table from metID</span>
-<span class="no">ms1_peak</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"ms1_peak"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"metID"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span>(
-  <span class="kw">from</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="no">ms1_peak</span>, <span class="st">"ms1.peak.table.csv"</span>),
-  <span class="kw">to</span> <span class="kw">=</span> <span class="no">path</span>,
-  <span class="kw">overwrite</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-  <span class="kw">recursive</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)
+<span class="va">ms1_peak</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"ms1_peak"</span>, package <span class="op">=</span> <span class="st">"metID"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span><span class="op">(</span>
+  from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">ms1_peak</span>, <span class="st">"ms1.peak.table.csv"</span><span class="op">)</span>,
+  to <span class="op">=</span> <span class="va">path</span>,
+  overwrite <span class="op">=</span> <span class="cn">TRUE</span>,
+  recursive <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
 
 <span class="co">##get MS2 data from metID</span>
-<span class="no">ms2_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"ms2_data"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"metID"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span>(
-  <span class="kw">from</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="no">ms2_data</span>, <span class="st">"QC1_MSMS_NCE25.mgf"</span>),
-  <span class="kw">to</span> <span class="kw">=</span> <span class="no">path</span>,
-  <span class="kw">overwrite</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-  <span class="kw">recursive</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)
+<span class="va">ms2_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"ms2_data"</span>, package <span class="op">=</span> <span class="st">"metID"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span><span class="op">(</span>
+  from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="va">ms2_data</span>, <span class="st">"QC1_MSMS_NCE25.mgf"</span><span class="op">)</span>,
+  to <span class="op">=</span> <span class="va">path</span>,
+  overwrite <span class="op">=</span> <span class="cn">TRUE</span>,
+  recursive <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
 
 <span class="co">##get databases from metID</span>
-<span class="no">database</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"ms2_database"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"metID"</span>)
+<span class="va">database</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"ms2_database"</span>, package <span class="op">=</span> <span class="st">"metID"</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span>(
-  <span class="kw">from</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(
-    <span class="no">database</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.copy</a></span><span class="op">(</span>
+  from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span>
+    <span class="va">database</span>,
+    <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
       <span class="st">"msDatabase_rplc0.0.2"</span>,
       <span class="st">"orbitrapDatabase0.0.1"</span>,
       <span class="st">"hmdbMS1Database0.0.1"</span>
-    )
-  ),
-  <span class="kw">to</span> <span class="kw">=</span> <span class="no">path</span>,
-  <span class="kw">overwrite</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-  <span class="kw">recursive</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-)
-<span class="co">#&gt; [1] TRUE TRUE TRUE</span></pre></body></html></div>
+    <span class="op">)</span>
+  <span class="op">)</span>,
+  to <span class="op">=</span> <span class="va">path</span>,
+  overwrite <span class="op">=</span> <span class="cn">TRUE</span>,
+  recursive <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
+<span class="co">#&gt; [1] TRUE TRUE TRUE</span></code></pre></div>
 <p>Now in your <code>./example</code>, there are files files, namely <code>ms1.peak.table.csv</code>, <code>QC1_MSMS_NCE25.mgf</code> and three databases.</p>
 </div>
 <div id="set-parameter-list" class="section level3">
 <h3 class="hasAnchor">
 <a href="#set-parameter-list" class="anchor"></a>Set parameter list</h3>
 <p>We need to use <code><a href="../reference/identify_metabolites_params.html">identify_metabolites_params()</a></code> functions to set parameter list for each database.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">param1</span> <span class="kw">&lt;-</span>
-  <span class="fu"><a href="../reference/identify_metabolites_params.html">identify_metabolites_params</a></span>(
-    <span class="kw">ms1.match.ppm</span> <span class="kw">=</span> <span class="fl">15</span>,
-    <span class="kw">rt.match.tol</span> <span class="kw">=</span> <span class="fl">15</span>,
-    <span class="kw">polarity</span> <span class="kw">=</span> <span class="st">"positive"</span>,
-    <span class="kw">ce</span> <span class="kw">=</span> <span class="st">"all"</span>,
-    <span class="kw">column</span> <span class="kw">=</span> <span class="st">"rp"</span>,
-    <span class="kw">total.score.tol</span> <span class="kw">=</span> <span class="fl">0.5</span>,
-    <span class="kw">candidate.num</span> <span class="kw">=</span> <span class="fl">3</span>,
-    <span class="kw">threads</span> <span class="kw">=</span> <span class="fl">3</span>,
-    <span class="kw">database</span> <span class="kw">=</span> <span class="st">"msDatabase_rplc0.0.2"</span>
-  )
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">param1</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="../reference/identify_metabolites_params.html">identify_metabolites_params</a></span><span class="op">(</span>
+    ms1.match.ppm <span class="op">=</span> <span class="fl">15</span>,
+    rt.match.tol <span class="op">=</span> <span class="fl">15</span>,
+    polarity <span class="op">=</span> <span class="st">"positive"</span>,
+    ce <span class="op">=</span> <span class="st">"all"</span>,
+    column <span class="op">=</span> <span class="st">"rp"</span>,
+    total.score.tol <span class="op">=</span> <span class="fl">0.5</span>,
+    candidate.num <span class="op">=</span> <span class="fl">3</span>,
+    threads <span class="op">=</span> <span class="fl">1</span>,
+    database <span class="op">=</span> <span class="st">"msDatabase_rplc0.0.2"</span>
+  <span class="op">)</span>
 
-<span class="no">param2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/identify_metabolites_params.html">identify_metabolites_params</a></span>(
-  <span class="kw">ms1.match.ppm</span> <span class="kw">=</span> <span class="fl">15</span>,
-  <span class="kw">rt.match.tol</span> <span class="kw">=</span> <span class="fl">15</span>,
-  <span class="kw">polarity</span> <span class="kw">=</span> <span class="st">"positive"</span>,
-  <span class="kw">ce</span> <span class="kw">=</span> <span class="st">"all"</span>,
-  <span class="kw">column</span> <span class="kw">=</span> <span class="st">"rp"</span>,
-  <span class="kw">total.score.tol</span> <span class="kw">=</span> <span class="fl">0.5</span>,
-  <span class="kw">candidate.num</span> <span class="kw">=</span> <span class="fl">3</span>,
-  <span class="kw">threads</span> <span class="kw">=</span> <span class="fl">3</span>,
-  <span class="kw">database</span> <span class="kw">=</span> <span class="st">"orbitrapDatabase0.0.1"</span>
-)
+<span class="va">param2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/identify_metabolites_params.html">identify_metabolites_params</a></span><span class="op">(</span>
+  ms1.match.ppm <span class="op">=</span> <span class="fl">15</span>,
+  rt.match.tol <span class="op">=</span> <span class="fl">15</span>,
+  polarity <span class="op">=</span> <span class="st">"positive"</span>,
+  ce <span class="op">=</span> <span class="st">"all"</span>,
+  column <span class="op">=</span> <span class="st">"rp"</span>,
+  total.score.tol <span class="op">=</span> <span class="fl">0.5</span>,
+  candidate.num <span class="op">=</span> <span class="fl">3</span>,
+  threads <span class="op">=</span> <span class="fl">1</span>,
+  database <span class="op">=</span> <span class="st">"orbitrapDatabase0.0.1"</span>
+<span class="op">)</span>
 
-<span class="no">param3</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/identify_metabolites_params.html">identify_metabolites_params</a></span>(
-  <span class="kw">ms1.match.ppm</span> <span class="kw">=</span> <span class="fl">15</span>,
-  <span class="kw">rt.match.tol</span> <span class="kw">=</span> <span class="fl">15</span>,
-  <span class="kw">polarity</span> <span class="kw">=</span> <span class="st">"positive"</span>,
-  <span class="kw">ce</span> <span class="kw">=</span> <span class="st">"all"</span>,
-  <span class="kw">column</span> <span class="kw">=</span> <span class="st">"rp"</span>,
-  <span class="kw">total.score.tol</span> <span class="kw">=</span> <span class="fl">0.5</span>,
-  <span class="kw">candidate.num</span> <span class="kw">=</span> <span class="fl">3</span>,
-  <span class="kw">threads</span> <span class="kw">=</span> <span class="fl">3</span>,
-  <span class="kw">database</span> <span class="kw">=</span> <span class="st">"hmdbMS1Database0.0.1"</span>
-)</pre></body></html></div>
+<span class="va">param3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/identify_metabolites_params.html">identify_metabolites_params</a></span><span class="op">(</span>
+  ms1.match.ppm <span class="op">=</span> <span class="fl">15</span>,
+  rt.match.tol <span class="op">=</span> <span class="fl">15</span>,
+  polarity <span class="op">=</span> <span class="st">"positive"</span>,
+  ce <span class="op">=</span> <span class="st">"all"</span>,
+  column <span class="op">=</span> <span class="st">"rp"</span>,
+  total.score.tol <span class="op">=</span> <span class="fl">0.5</span>,
+  candidate.num <span class="op">=</span> <span class="fl">3</span>,
+  threads <span class="op">=</span> <span class="fl">1</span>,
+  database <span class="op">=</span> <span class="st">"hmdbMS1Database0.0.1"</span>
+<span class="op">)</span></code></pre></div>
 <blockquote>
 <p>Note: You can set different parametes for each database.</p>
 </blockquote>
@@ -307,12 +310,13 @@
 <h3 class="hasAnchor">
 <a href="#metabolite-identification" class="anchor"></a>Metabolite identification</h3>
 <p>All the parameters for three databases should be provided to <code>parameter.list</code>.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">result</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/identify_metabolite_all.html">identify_metabolite_all</a></span>(
-  <span class="kw">ms1.data</span> <span class="kw">=</span> <span class="st">"ms1.peak.table.csv"</span>,
-  <span class="kw">ms2.data</span> <span class="kw">=</span> <span class="st">"QC1_MSMS_NCE25.mgf"</span>,
-  <span class="kw">parameter.list</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">param1</span>, <span class="no">param2</span>, <span class="no">param3</span>),
-  <span class="kw">path</span> <span class="kw">=</span> <span class="no">path</span>
-)
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/identify_metabolite_all.html">identify_metabolite_all</a></span><span class="op">(</span>
+  ms1.data <span class="op">=</span> <span class="st">"ms1.peak.table.csv"</span>,
+  ms2.data <span class="op">=</span> <span class="st">"QC1_MSMS_NCE25.mgf"</span>,
+  parameter.list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">param1</span>, <span class="va">param2</span>, <span class="va">param3</span><span class="op">)</span>,
+  path <span class="op">=</span> <span class="va">path</span>
+<span class="op">)</span>
 <span class="co">#&gt; Use old data</span>
 <span class="co">#&gt; -------------------------------</span>
 <span class="co">#&gt; Database 1 : msDatabase_rplc0.0.2 </span>
@@ -322,7 +326,7 @@
 <span class="co">#&gt; -------------------------------</span>
 <span class="co">#&gt; -------------------------------</span>
 <span class="co">#&gt; Database 3 : hmdbMS1Database0.0.1 </span>
-<span class="co">#&gt; -------------------------------</span></pre></body></html></div>
+<span class="co">#&gt; -------------------------------</span></code></pre></div>
 <blockquote>
 <p>Note: <code>result</code> is a list, and each element is a <code>metIdentifyClass</code> object. So you can use the functions for <code>metIdentifylass</code> object to process it.</p>
 </blockquote>
@@ -332,7 +336,8 @@
 <a href="#integrate-annotation-results-from-different-databases" class="anchor"></a>Integrate annotation results from different databases</h3>
 <p>After we get the annotation result list, we then can integrate the annotation results from different databases.</p>
 <p>For <code>msDatabase_rplc0.0.2</code>, the annotaiton results are <code>Level 1</code> according to MSI.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">result</span><span class="kw">[[</span><span class="fl">1</span>]]
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">result</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; --------------metID version-----------</span>
 <span class="co">#&gt; 0.4.1 </span>
 <span class="co">#&gt; -----------Identifications------------</span>
@@ -349,25 +354,27 @@
 <span class="co">#&gt; Total score cutoff: 0.5 </span>
 <span class="co">#&gt; Column: rp </span>
 <span class="co">#&gt; Adduct table:</span>
-<span class="co">#&gt; (M+H)+;(M+H-H2O)+;(M+H-2H2O)+;(M+NH4)+;(M+Na)+;(M-H+2Na)+;(M-2H+3Na)+;(M+K)+;(M-H+2K)+;(M-2H+3K)+;(M+CH3CN+H)+;(M+CH3CN+Na)+;(2M+H)+;(2M+NH4)+;(2M+Na)+;(2M+K)+;(M+HCOO+2H)+</span></pre></body></html></div>
+<span class="co">#&gt; (M+H)+;(M+H-H2O)+;(M+H-2H2O)+;(M+NH4)+;(M+Na)+;(M-H+2Na)+;(M-2H+3Na)+;(M+K)+;(M-H+2K)+;(M-2H+3K)+;(M+CH3CN+H)+;(M+CH3CN+Na)+;(2M+H)+;(2M+NH4)+;(2M+Na)+;(2M+K)+;(M+HCOO+2H)+</span></code></pre></div>
 <p>Then get the annotation table.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">annotation_table1</span> <span class="kw">&lt;-</span>
-  <span class="fu"><a href="../reference/get_identification_table.html">get_identification_table</a></span>(<span class="no">result</span><span class="kw">[[</span><span class="fl">1</span>]], <span class="kw">type</span> <span class="kw">=</span> <span class="st">"new"</span>, <span class="kw">candidate.num</span> <span class="kw">=</span> <span class="fl">1</span>)
-<span class="no">annotation_table1</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">annotation_table1</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="../reference/get_identification_table.html">get_identification_table</a></span><span class="op">(</span><span class="va">result</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"new"</span>, candidate.num <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+<span class="va">annotation_table1</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 17</span>
-<span class="co">#&gt;   name  mz    rt    Compound.name CAS.ID HMDB.ID KEGG.ID Lab.ID Adduct mz.error</span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 pRPL… 472.… "772… &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    </span>
-<span class="co">#&gt; 2 pRPL… 466.… "746… &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    </span>
-<span class="co">#&gt; 3 pRPL… 162.… " 33… L-Carnitine   541-1… HMDB00… C00318  RPLC_… (M+H)+ 1.66789…</span>
-<span class="co">#&gt; 4 pRPL… 181.… " 36… &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    </span>
-<span class="co">#&gt; 5 pRPL… 230.… "158… &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    </span>
-<span class="co">#&gt; 6 pRPL… 181.… "228… &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    </span>
-<span class="co">#&gt; # … with 7 more variables: mz.match.score &lt;chr&gt;, RT.error &lt;chr&gt;,</span>
-<span class="co">#&gt; #   RT.match.score &lt;chr&gt;, CE &lt;chr&gt;, SS &lt;chr&gt;, Total.score &lt;chr&gt;, Database &lt;chr&gt;</span></pre></body></html></div>
+<span class="co">#&gt;   name     mz    rt Compound.name CAS.ID HMDB.ID KEGG.ID Lab.ID Adduct mz.error</span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 pRPL…  472. 773.  &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;      NA   </span>
+<span class="co">#&gt; 2 pRPL…  466. 747.  &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;      NA   </span>
+<span class="co">#&gt; 3 pRPL…  162.  33.7 L-Carnitine   541-1… HMDB00… C00318  RPLC_… (M+H)+     1.67</span>
+<span class="co">#&gt; 4 pRPL…  181.  36.4 &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;      NA   </span>
+<span class="co">#&gt; 5 pRPL…  230. 158.  &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;      NA   </span>
+<span class="co">#&gt; 6 pRPL…  181. 228.  &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;      NA   </span>
+<span class="co">#&gt; # … with 7 more variables: mz.match.score &lt;dbl&gt;, RT.error &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   RT.match.score &lt;dbl&gt;, CE &lt;chr&gt;, SS &lt;dbl&gt;, Total.score &lt;dbl&gt;, Database &lt;chr&gt;</span></code></pre></div>
 <p>For <code>orbitrapDatabase0.0.1</code>, the annotaiton results are <code>Level 2</code> according to MSI.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">result</span><span class="kw">[[</span><span class="fl">2</span>]]
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">result</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; --------------metID version-----------</span>
 <span class="co">#&gt; 0.4.1 </span>
 <span class="co">#&gt; -----------Identifications------------</span>
@@ -384,25 +391,27 @@
 <span class="co">#&gt; Total score cutoff: 0.5 </span>
 <span class="co">#&gt; Column: rp </span>
 <span class="co">#&gt; Adduct table:</span>
-<span class="co">#&gt; (M+H)+;(M+H-H2O)+;(M+H-2H2O)+;(M+NH4)+;(M+Na)+;(M-H+2Na)+;(M-2H+3Na)+;(M+K)+;(M-H+2K)+;(M-2H+3K)+;(M+CH3CN+H)+;(M+CH3CN+Na)+;(2M+H)+;(2M+NH4)+;(2M+Na)+;(2M+K)+;(M+HCOO+2H)+</span></pre></body></html></div>
+<span class="co">#&gt; (M+H)+;(M+H-H2O)+;(M+H-2H2O)+;(M+NH4)+;(M+Na)+;(M-H+2Na)+;(M-2H+3Na)+;(M+K)+;(M-H+2K)+;(M-2H+3K)+;(M+CH3CN+H)+;(M+CH3CN+Na)+;(2M+H)+;(2M+NH4)+;(2M+Na)+;(2M+K)+;(M+HCOO+2H)+</span></code></pre></div>
 <p>Then get the annotation table.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">annotation_table2</span> <span class="kw">&lt;-</span>
-  <span class="fu"><a href="../reference/get_identification_table.html">get_identification_table</a></span>(<span class="no">result</span><span class="kw">[[</span><span class="fl">2</span>]], <span class="kw">type</span> <span class="kw">=</span> <span class="st">"new"</span>, <span class="kw">candidate.num</span> <span class="kw">=</span> <span class="fl">1</span>)
-<span class="no">annotation_table2</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">annotation_table2</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="../reference/get_identification_table.html">get_identification_table</a></span><span class="op">(</span><span class="va">result</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"new"</span>, candidate.num <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+<span class="va">annotation_table2</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 17</span>
-<span class="co">#&gt;   name  mz    rt    Compound.name CAS.ID HMDB.ID KEGG.ID Lab.ID Adduct mz.error</span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 pRPL… 472.… "772… &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    </span>
-<span class="co">#&gt; 2 pRPL… 466.… "746… &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    </span>
-<span class="co">#&gt; 3 pRPL… 162.… " 33… &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    </span>
-<span class="co">#&gt; 4 pRPL… 181.… " 36… &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    </span>
-<span class="co">#&gt; 5 pRPL… 230.… "158… &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    </span>
-<span class="co">#&gt; 6 pRPL… 181.… "228… &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    </span>
-<span class="co">#&gt; # … with 7 more variables: mz.match.score &lt;chr&gt;, RT.error &lt;chr&gt;,</span>
-<span class="co">#&gt; #   RT.match.score &lt;chr&gt;, CE &lt;chr&gt;, SS &lt;chr&gt;, Total.score &lt;chr&gt;, Database &lt;chr&gt;</span></pre></body></html></div>
+<span class="co">#&gt;   name     mz    rt Compound.name CAS.ID HMDB.ID KEGG.ID Lab.ID Adduct mz.error</span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 pRPL…  472. 773.  &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;         NA</span>
+<span class="co">#&gt; 2 pRPL…  466. 747.  &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;         NA</span>
+<span class="co">#&gt; 3 pRPL…  162.  33.7 &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;         NA</span>
+<span class="co">#&gt; 4 pRPL…  181.  36.4 &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;         NA</span>
+<span class="co">#&gt; 5 pRPL…  230. 158.  &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;         NA</span>
+<span class="co">#&gt; 6 pRPL…  181. 228.  &lt;NA&gt;          &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    &lt;NA&gt;   &lt;NA&gt;         NA</span>
+<span class="co">#&gt; # … with 7 more variables: mz.match.score &lt;dbl&gt;, RT.error &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   RT.match.score &lt;dbl&gt;, CE &lt;chr&gt;, SS &lt;dbl&gt;, Total.score &lt;dbl&gt;, Database &lt;chr&gt;</span></code></pre></div>
 <p>For <code>hmdbMS1Database0.0.1</code>, the annotaiton results are <code>Level 3</code> according to MSI.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">result</span><span class="kw">[[</span><span class="fl">3</span>]]
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">result</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; --------------metID version-----------</span>
 <span class="co">#&gt; 0.4.1 </span>
 <span class="co">#&gt; -----------Identifications------------</span>
@@ -419,77 +428,84 @@
 <span class="co">#&gt; Total score cutoff: 0.5 </span>
 <span class="co">#&gt; Column: rp </span>
 <span class="co">#&gt; Adduct table:</span>
-<span class="co">#&gt; (M+H)+;(M+H-H2O)+;(M+H-2H2O)+;(M+NH4)+;(M+Na)+;(M-H+2Na)+;(M-2H+3Na)+;(M+K)+;(M-H+2K)+;(M-2H+3K)+;(M+CH3CN+H)+;(M+CH3CN+Na)+;(2M+H)+;(2M+NH4)+;(2M+Na)+;(2M+K)+;(M+HCOO+2H)+</span></pre></body></html></div>
+<span class="co">#&gt; (M+H)+;(M+H-H2O)+;(M+H-2H2O)+;(M+NH4)+;(M+Na)+;(M-H+2Na)+;(M-2H+3Na)+;(M+K)+;(M-H+2K)+;(M-2H+3K)+;(M+CH3CN+H)+;(M+CH3CN+Na)+;(2M+H)+;(2M+NH4)+;(2M+Na)+;(2M+K)+;(M+HCOO+2H)+</span></code></pre></div>
 <p>Then get the annotation table.</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">annotation_table3</span> <span class="kw">&lt;-</span>
-  <span class="fu"><a href="../reference/get_identification_table.html">get_identification_table</a></span>(<span class="no">result</span><span class="kw">[[</span><span class="fl">3</span>]], <span class="kw">type</span> <span class="kw">=</span> <span class="st">"new"</span>, <span class="kw">candidate.num</span> <span class="kw">=</span> <span class="fl">1</span>)
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">annotation_table3</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="../reference/get_identification_table.html">get_identification_table</a></span><span class="op">(</span><span class="va">result</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"new"</span>, candidate.num <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; The object is identified without MS2 spectra.</span>
-<span class="no">annotation_table3</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()
+<span class="va">annotation_table3</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 17</span>
-<span class="co">#&gt;   name  mz    rt    Compound.name CAS.ID HMDB.ID KEGG.ID Lab.ID Adduct mz.error</span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 pRPL… 472.… "772… Allocholic a… 2464-… HMDB00… C17737  HMDB0… (M+CH… 0.28813…</span>
-<span class="co">#&gt; 2 pRPL… 466.… "746… LysoPA(18:0e… &lt;NA&gt;   HMDB00… &lt;NA&gt;    HMDB0… (M+CH… 0.03145…</span>
-<span class="co">#&gt; 3 pRPL… 162.… " 33… N-(3-Methylb… 13434… HMDB00… &lt;NA&gt;    HMDB0… (M+HC… 0.01864…</span>
-<span class="co">#&gt; 4 pRPL… 181.… " 36… Paraxanthine  611-5… HMDB00… C13747  HMDB0… (M+H)+ 0.01529…</span>
-<span class="co">#&gt; 5 pRPL… 230.… "158… 1-(Methylsul… 13221… HMDB00… &lt;NA&gt;    HMDB0… (M+NH… 0.39100…</span>
-<span class="co">#&gt; 6 pRPL… 181.… "228… Dihydropteri… &lt;NA&gt;   HMDB00… C05649  HMDB0… (M+HC… 0.02072…</span>
-<span class="co">#&gt; # … with 7 more variables: RT.error &lt;chr&gt;, mz.match.score &lt;chr&gt;,</span>
-<span class="co">#&gt; #   RT.match.score &lt;chr&gt;, Total.score &lt;chr&gt;, CE &lt;chr&gt;, SS &lt;chr&gt;, Database &lt;chr&gt;</span></pre></body></html></div>
+<span class="co">#&gt;   name     mz    rt Compound.name CAS.ID HMDB.ID KEGG.ID Lab.ID Adduct mz.error</span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 pRPL…  472. 773.  Allocholic a… 2464-… HMDB00… C17737  HMDB0… (M+CH…   0.288 </span>
+<span class="co">#&gt; 2 pRPL…  466. 747.  LysoPA(18:0e… &lt;NA&gt;   HMDB00… &lt;NA&gt;    HMDB0… (M+CH…   0.0315</span>
+<span class="co">#&gt; 3 pRPL…  162.  33.7 N-(3-Methylb… 13434… HMDB00… &lt;NA&gt;    HMDB0… (M+HC…   0.0186</span>
+<span class="co">#&gt; 4 pRPL…  181.  36.4 Paraxanthine  611-5… HMDB00… C13747  HMDB0… (M+H)+   0.0153</span>
+<span class="co">#&gt; 5 pRPL…  230. 158.  1-(Methylsul… 13221… HMDB00… &lt;NA&gt;    HMDB0… (M+NH…   0.391 </span>
+<span class="co">#&gt; 6 pRPL…  181. 228.  Dihydropteri… &lt;NA&gt;   HMDB00… C05649  HMDB0… (M+HC…   0.0207</span>
+<span class="co">#&gt; # … with 7 more variables: RT.error &lt;dbl&gt;, mz.match.score &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   RT.match.score &lt;dbl&gt;, Total.score &lt;dbl&gt;, CE &lt;chr&gt;, SS &lt;dbl&gt;, Database &lt;chr&gt;</span></code></pre></div>
 <p>Then we should combine them together:</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">annotation_table1</span> <span class="kw">&lt;-</span>
-  <span class="no">annotation_table1</span> <span class="kw">%&gt;%</span>
-  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">Compound.name</span>))
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">annotation_table1</span> <span class="op">&lt;-</span>
+  <span class="va">annotation_table1</span> <span class="op">%&gt;%</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Compound.name</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="no">annotation_table1</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">annotation_table1</span><span class="op">)</span>
 <span class="co">#&gt; [1] 10 17</span>
 
-<span class="no">annotation_table1</span> <span class="kw">&lt;-</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="no">annotation_table1</span>,
-             <span class="kw">Level</span> <span class="kw">=</span> <span class="fl">1</span>,
-             <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">annotation_table2</span> <span class="kw">&lt;-</span>
-  <span class="no">annotation_table2</span> <span class="kw">%&gt;%</span>
-  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">Compound.name</span>))
+<span class="va">annotation_table1</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">annotation_table1</span>,
+             Level <span class="op">=</span> <span class="fl">1</span>,
+             stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">annotation_table2</span> <span class="op">&lt;-</span>
+  <span class="va">annotation_table2</span> <span class="op">%&gt;%</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Compound.name</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="no">annotation_table2</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">annotation_table2</span><span class="op">)</span>
 <span class="co">#&gt; [1]  7 17</span>
 
-<span class="no">annotation_table2</span> <span class="kw">&lt;-</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="no">annotation_table2</span>,
-             <span class="kw">Level</span> <span class="kw">=</span> <span class="fl">2</span>,
-             <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">annotation_table3</span> <span class="kw">&lt;-</span>
-  <span class="no">annotation_table3</span> <span class="kw">%&gt;%</span>
-  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">Compound.name</span>))
+<span class="va">annotation_table2</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">annotation_table2</span>,
+             Level <span class="op">=</span> <span class="fl">2</span>,
+             stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">annotation_table3</span> <span class="op">&lt;-</span> 
+  <span class="va">annotation_table3</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Compound.name</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="no">annotation_table3</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">annotation_table3</span><span class="op">)</span>
 <span class="co">#&gt; [1] 97 17</span>
 
-<span class="no">annotation_table3</span> <span class="kw">&lt;-</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="no">annotation_table3</span>,
-             <span class="kw">Level</span> <span class="kw">=</span> <span class="fl">3</span>,
-             <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
+<span class="va">annotation_table3</span> <span class="op">&lt;-</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">annotation_table3</span>, 
+             Level <span class="op">=</span> <span class="fl">3</span>, 
+             stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p>If one peak have annotation from three different database, we only contains the annotations with higher confidence.</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">annotation_table2</span> <span class="kw">&lt;-</span>
-  <span class="no">annotation_table2</span> <span class="kw">%&gt;%</span>
-  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(!(<span class="no">name</span> <span class="kw">%in%</span> <span class="no">annotation_table1</span>$<span class="no">name</span>))
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">annotation_table2</span> <span class="op">&lt;-</span> 
+  <span class="va">annotation_table2</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">name</span> <span class="op">%in%</span> <span class="va">annotation_table1</span><span class="op">$</span><span class="va">name</span><span class="op">)</span><span class="op">)</span>
 
-<span class="no">annotation_table</span> <span class="kw">&lt;-</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span>(<span class="no">annotation_table1</span>,
-        <span class="no">annotation_table2</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">annotation_table3</span> <span class="kw">&lt;-</span>
-  <span class="no">annotation_table3</span> <span class="kw">%&gt;%</span>
-  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(!(<span class="no">name</span> <span class="kw">%in%</span> <span class="no">annotation_table</span>$<span class="no">name</span>))
+<span class="va">annotation_table</span> <span class="op">&lt;-</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">annotation_table1</span>,
+        <span class="va">annotation_table2</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">annotation_table3</span> <span class="op">&lt;-</span> 
+  <span class="va">annotation_table3</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">name</span> <span class="op">%in%</span> <span class="va">annotation_table</span><span class="op">$</span><span class="va">name</span><span class="op">)</span><span class="op">)</span>
 
-<span class="no">annotation_table</span> <span class="kw">&lt;-</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span>(<span class="no">annotation_table</span>,
-        <span class="no">annotation_table3</span>)</pre></body></html></div>
+<span class="va">annotation_table</span> <span class="op">&lt;-</span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">annotation_table</span>,
+        <span class="va">annotation_table3</span><span class="op">)</span></code></pre></div>
 <p>The <code>annotation_table</code> is the final annotation table.</p>
 <p>Then we can output it as <code>csv</code> file.</p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="kw pkg">readr</span><span class="kw ns">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span>(<span class="no">annotation_table</span>,
-                 <span class="st">"annotation_table.csv"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">annotation_table</span>, 
+                 <span class="st">"annotation_table.csv"</span><span class="op">)</span></code></pre></div>
 <p><img src="../man/figures/Screen%20Shot%202020-03-30%20at%2010.48.10%20PM.png"></p>
 </div>
 </div>
@@ -510,7 +526,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

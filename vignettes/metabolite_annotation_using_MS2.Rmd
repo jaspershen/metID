@@ -101,7 +101,7 @@ annotate_result3 <-
                        path = path, 
                        candidate.num = 3,
                        database = "msDatabase_rplc0.0.2", 
-                       threads = 2)
+                       threads = 1)
 ```
 
 > Note: You can also provide more than one MS2 data. Just provide them to `ms2.data` as a vector.
@@ -209,7 +209,7 @@ ms2plot(
   database = msDatabase_rplc0.0.2,
   which.peak = "all",
   path = file.path(path, "inhouse"), 
-  threads = 3
+  threads = 1
 )
 ```
 
