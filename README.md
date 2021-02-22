@@ -14,7 +14,7 @@ on in-house database and public database based on accurate mass (m/z),
 rentention time (RT) and/or MS2
 spectra.
 
-<img src="man/figures/workflow_metid.jpg" align="middle" alt="" width = "80%"/>
+<img src="man/figures/Figure_1.png" align="middle" alt="" width = "100%"/>
 
 ## Installation
 
@@ -28,14 +28,7 @@ install.packages("devtools")
 devtools::install_github("jaspershen/metID")
 ```
 
-`tinyTools` is a dependent package for `metID`. Please install it too.
-
-``` r
-if(!require(devtools)){
-install.packages("devtools")
-}
-devtools::install_github("jaspershen/tinyTools")
-```
+`metID` is a part of `tidymass`, so you can also install it by installing [`tidymass`](https://jaspershen.github.io/tidymass/index.html).
 
 ## Usage
 

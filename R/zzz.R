@@ -21,7 +21,6 @@ Maintainer: Xiaotao Shen."
   )
 }
 
-
 globalVariables(
   names = c(
     "MS1.peak.name",

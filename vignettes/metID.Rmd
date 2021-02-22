@@ -31,7 +31,7 @@ knitr::opts_chunk$set(
 
 *metID* is a R package which can be used for in-hosue MS2 database construction, and metabolite identification based on in-house and public MS1 and MS2 database.
 
-<img src="../man/figures/workflow_metid.jpg" align="middle" alt="" width = "80%"/>
+<img src="../man/figures/Figure_1.png" align="middle" alt="" width = "100%"/>
 
 Please install it via [github](https://github.com/jaspershen/metID).
 
@@ -40,8 +40,6 @@ if(!require(devtools)){
   install.packages("devtools")
 }
 devtools::install_github("jaspershen/metID")
-##tinyTools is a dependent package for metID
-devtools::install_github("jaspershen/tinyTools")
 ```
 
 All the demo data for `metID` are from `demoData`, so please install it first.
@@ -49,6 +47,8 @@ All the demo data for `metID` are from `demoData`, so please install it first.
 ```{r,eval=FALSE,warning=FALSE, R.options=""}
 devtools::install_github("jaspershen/demoData")
 ```
+
+`metID` is a part of `tidymass`, so you can also install it by installing [`tidymass`](https://jaspershen.github.io/tidymass/index.html).
 
 ## **Database construction**
 ******************************************
