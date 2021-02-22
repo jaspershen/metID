@@ -50,12 +50,12 @@ We use the demo data in `metID` package to show how to use `metID` to identify m
 
 First we load the MS1 peak and database from `metID` package and then put them in a `example` folder.
 
-```{r,eval = TRUE, warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE, warning=FALSE, message=TRUE,R.options="",cache=TRUE}
 library(metID)
 library(tidyverse)
 ```
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 ##create a folder named as example
 path <- file.path(".", "example")
 dir.create(path = path, showWarnings = FALSE)
@@ -78,7 +78,7 @@ Now in your `./example`, there are two files, namely `ms1.peak.table.csv` and `m
 
 First, we only use m/z for metabolite identification.
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 annotate_result1 <- 
   identify_metabolites(ms1.data = "ms1.peak.table.csv", 
                        ms1.match.ppm = 15, 
@@ -114,7 +114,7 @@ Other parameters:
 The return result `annotate_result1` is a `metIdentifyClass` object, you can directory get the brief information by print it in console:
 
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 annotate_result1
 ```
 
@@ -122,7 +122,7 @@ annotate_result1
 
 Here we set RT tolerance (`rt.match.tol`) as 30 s.
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 annotate_result2 <- 
   identify_metabolites(ms1.data = "ms1.peak.table.csv", 
                        ms1.match.ppm = 15, 
@@ -143,11 +143,11 @@ After get the `annotation_result`, we can get the detailed information from it.
 
 We can use `get_parameters()` function to get the detailed parameters. This is very useful for reproductive analysis for data analysis.
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 metID::get_parameters(annotate_result1)
 ```
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 metID::get_parameters(annotate_result2)
 ```
 
@@ -155,7 +155,7 @@ metID::get_parameters(annotate_result2)
 
 Use `which_has_identification()` function to get what peaks have annotions.
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 which_has_identification(annotate_result1) %>% 
   head()
 ```
@@ -166,7 +166,7 @@ which_has_identification(annotate_result1) %>%
 
 We can use `get_identification_table()` to get the identification table. 
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 table1 <- 
   get_identification_table(annotate_result1, 
                            candidate.num = 3,
@@ -178,7 +178,7 @@ The `type` is set as `old`. It means the identifications for each peak is shown 
 
 You can also set `type` as `new` to get another style.
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 table2 <- 
   get_identification_table(annotate_result1, candidate.num = 3,
                            type = "new")
@@ -187,7 +187,7 @@ table2
 
 If you only want to keep one cancidate for each peak. Please set `candiate.num` as 1.
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 table2 <- 
   get_identification_table(annotate_result1, candidate.num = 2,
                            type = "new")
@@ -201,7 +201,7 @@ We can use `get_iden_info()` function to get the detailed information for a sinl
 First, we need to know what peaks have annotations.
 
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 which_has_identification(annotate_result1) %>% 
   head()
 ```
@@ -209,7 +209,7 @@ which_has_identification(annotate_result1) %>%
 
 Then we can get the annotation for peak `pRPLC_376` use `get_iden_info()` function.
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 load(file.path(path, "msDatabase_rplc0.0.2"))
 get_iden_info(object = annotate_result1, 
               which.peak = "pRPLC_376", 
@@ -223,16 +223,16 @@ We can get the detailed information for metabolites in database.
 
 After we get the annotation result use `identify_metabolites()` function. We can also use `filter_identification()` function to filter annotations based on m/z, rt and MS2 match tolerance.
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 annotate_result2_2 <- 
   filter_identification(object = annotate_result2, 
                         rt.match.tol = 5)
 ```
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 annotate_result2_2
 ```
 
-```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 annotate_result2
 ```

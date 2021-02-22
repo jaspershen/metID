@@ -22,10 +22,10 @@ Get identification table from a metIdentifyClass object.
 }
 \examples{
 data("annotate_result", package = "metID")
-annotation_table <- 
+annotation_table <-
 get_identification_table(annotate_result, candidate.num = 3, type = "old")
 annotation_table
-annotation_table <- 
+annotation_table <-
 get_identification_table(annotate_result, candidate.num = 3, type = "new")
 annotation_table
 }

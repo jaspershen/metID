@@ -163,7 +163,7 @@
                         <h4 class="author">Xiaotao Shen PhD (<a href="https://www.shenxt.info/" class="uri">https://www.shenxt.info/</a>)</h4>
                                     <h4 class="author">Si Wu PhD</h4>
             <address class="author_afil">
-      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2021-02-19</h4>
+      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2021-02-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jaspershen/metID/blob/master/vignettes/metabolite_annotation_using_MS1.Rmd"><code>vignettes/metabolite_annotation_using_MS1.Rmd</code></a></small>
       <div class="hidden name"><code>metabolite_annotation_using_MS1.Rmd</code></div>
@@ -212,7 +212,6 @@
 <span class="co">#&gt; Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics.</span>
 <span class="co">#&gt; Authors: Xiaotao Shen (shenxt1990@163.com)</span>
 <span class="co">#&gt; Maintainer: Xiaotao Shen.</span>
-<span class="co">#&gt; Version 0.4.1 (20210202)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span>
 <span class="co">#&gt; ✓ ggplot2 3.3.3     ✓ purrr   0.3.4</span>
@@ -824,22 +823,23 @@
                            type <span class="op">=</span> <span class="st">"new"</span><span class="op">)</span>
 <span class="co">#&gt; The object is identified without MS2 spectra.</span>
 <span class="va">table2</span>
-<span class="co">#&gt; # A tibble: 169 x 17</span>
-<span class="co">#&gt;    name     mz    rt Compound.name CAS.ID HMDB.ID KEGG.ID Lab.ID Adduct mz.error</span>
-<span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 pRPL…  472. 773.  Chenodeoxych… 640-7… HMDB00… C05466  RPLC_… (M+Na…   0.240 </span>
-<span class="co">#&gt;  2 pRPL…   NA   NA   CHOLATE       &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    RPLC_… (M+CH…   0.300 </span>
-<span class="co">#&gt;  3 pRPL…   NA   NA   Cholic Acid   &lt;NA&gt;   HMDB00… &lt;NA&gt;    RPLC_… (M+CH…   0.452 </span>
-<span class="co">#&gt;  4 pRPL…  466. 747.  C18:0 AC (St… 1976-… HMDB00… 0       RPLC_… (M+K)+   3.83  </span>
-<span class="co">#&gt;  5 pRPL…  162.  33.7 L(-)-Carniti… &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    RPLC_… (M+H)+   0.0538</span>
-<span class="co">#&gt;  6 pRPL…   NA   NA   L-Carnitine   541-1… HMDB00… C00318  RPLC_… (M+H)+   1.87  </span>
-<span class="co">#&gt;  7 pRPL…  181.  36.4 THEOBROMINE   &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    RPLC_… (M+H)+   0.0265</span>
-<span class="co">#&gt;  8 pRPL…   NA   NA   5-Acetylamin… &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    RPLC_… (M+H-…   0.0485</span>
-<span class="co">#&gt;  9 pRPL…   NA   NA   Theophylline  &lt;NA&gt;   HMDB00… &lt;NA&gt;    RPLC_… (M+H)+   1.61  </span>
-<span class="co">#&gt; 10 pRPL…  230. 158.  Pyridoxic ac… 82-82… HMDB00… C00847  RPLC_… (M+HC…   9.11  </span>
-<span class="co">#&gt; # … with 159 more rows, and 7 more variables: RT.error &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   mz.match.score &lt;dbl&gt;, RT.match.score &lt;dbl&gt;, Total.score &lt;dbl&gt;, CE &lt;chr&gt;,</span>
-<span class="co">#&gt; #   SS &lt;dbl&gt;, Database &lt;chr&gt;</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 169 x 19</span>
+<span class="co">#&gt;    name     mz    rt MS2.spectra.name Candidate.number Compound.name CAS.ID</span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;            &lt;lgl&gt;            &lt;chr&gt;         &lt;chr&gt; </span>
+<span class="co">#&gt;  1 pRPL…  472. 773.  NA               NA               Chenodeoxych… 640-7…</span>
+<span class="co">#&gt;  2 pRPL…   NA   NA   NA               NA               CHOLATE       &lt;NA&gt;  </span>
+<span class="co">#&gt;  3 pRPL…   NA   NA   NA               NA               Cholic Acid   &lt;NA&gt;  </span>
+<span class="co">#&gt;  4 pRPL…  466. 747.  NA               NA               C18:0 AC (St… 1976-…</span>
+<span class="co">#&gt;  5 pRPL…  162.  33.7 NA               NA               L(-)-Carniti… &lt;NA&gt;  </span>
+<span class="co">#&gt;  6 pRPL…   NA   NA   NA               NA               L-Carnitine   541-1…</span>
+<span class="co">#&gt;  7 pRPL…  181.  36.4 NA               NA               THEOBROMINE   &lt;NA&gt;  </span>
+<span class="co">#&gt;  8 pRPL…   NA   NA   NA               NA               5-Acetylamin… &lt;NA&gt;  </span>
+<span class="co">#&gt;  9 pRPL…   NA   NA   NA               NA               Theophylline  &lt;NA&gt;  </span>
+<span class="co">#&gt; 10 pRPL…  230. 158.  NA               NA               Pyridoxic ac… 82-82…</span>
+<span class="co">#&gt; # … with 159 more rows, and 12 more variables: HMDB.ID &lt;chr&gt;, KEGG.ID &lt;chr&gt;,</span>
+<span class="co">#&gt; #   Lab.ID &lt;chr&gt;, Adduct &lt;chr&gt;, mz.error &lt;dbl&gt;, mz.match.score &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   RT.error &lt;dbl&gt;, RT.match.score &lt;dbl&gt;, CE &lt;chr&gt;, SS &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Total.score &lt;dbl&gt;, Database &lt;chr&gt;</span></code></pre></div>
 <p>If you only want to keep one cancidate for each peak. Please set <code>candiate.num</code> as 1.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">table2</span> <span class="op">&lt;-</span> 
@@ -847,22 +847,23 @@
                            type <span class="op">=</span> <span class="st">"new"</span><span class="op">)</span>
 <span class="co">#&gt; The object is identified without MS2 spectra.</span>
 <span class="va">table2</span>
-<span class="co">#&gt; # A tibble: 141 x 17</span>
-<span class="co">#&gt;    name     mz    rt Compound.name CAS.ID HMDB.ID KEGG.ID Lab.ID Adduct mz.error</span>
-<span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 pRPL…  472. 773.  Chenodeoxych… 640-7… HMDB00… C05466  RPLC_… (M+Na…   0.240 </span>
-<span class="co">#&gt;  2 pRPL…   NA   NA   CHOLATE       &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    RPLC_… (M+CH…   0.300 </span>
-<span class="co">#&gt;  3 pRPL…  466. 747.  C18:0 AC (St… 1976-… HMDB00… 0       RPLC_… (M+K)+   3.83  </span>
-<span class="co">#&gt;  4 pRPL…  162.  33.7 L(-)-Carniti… &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    RPLC_… (M+H)+   0.0538</span>
-<span class="co">#&gt;  5 pRPL…   NA   NA   L-Carnitine   541-1… HMDB00… C00318  RPLC_… (M+H)+   1.87  </span>
-<span class="co">#&gt;  6 pRPL…  181.  36.4 THEOBROMINE   &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    RPLC_… (M+H)+   0.0265</span>
-<span class="co">#&gt;  7 pRPL…   NA   NA   5-Acetylamin… &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    RPLC_… (M+H-…   0.0485</span>
-<span class="co">#&gt;  8 pRPL…  230. 158.  Pyridoxic ac… 82-82… HMDB00… C00847  RPLC_… (M+HC…   9.11  </span>
-<span class="co">#&gt;  9 pRPL…   NA   NA   Pyridoxic ac… 82-82… HMDB00… C00847  RPLC_… (M+HC…   9.11  </span>
-<span class="co">#&gt; 10 pRPL…  181. 228.  THEOBROMINE   &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;    RPLC_… (M+H)+   0.0613</span>
-<span class="co">#&gt; # … with 131 more rows, and 7 more variables: RT.error &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   mz.match.score &lt;dbl&gt;, RT.match.score &lt;dbl&gt;, Total.score &lt;dbl&gt;, CE &lt;chr&gt;,</span>
-<span class="co">#&gt; #   SS &lt;dbl&gt;, Database &lt;chr&gt;</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 141 x 19</span>
+<span class="co">#&gt;    name     mz    rt MS2.spectra.name Candidate.number Compound.name CAS.ID</span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;            &lt;lgl&gt;            &lt;chr&gt;         &lt;chr&gt; </span>
+<span class="co">#&gt;  1 pRPL…  472. 773.  NA               NA               Chenodeoxych… 640-7…</span>
+<span class="co">#&gt;  2 pRPL…   NA   NA   NA               NA               CHOLATE       &lt;NA&gt;  </span>
+<span class="co">#&gt;  3 pRPL…  466. 747.  NA               NA               C18:0 AC (St… 1976-…</span>
+<span class="co">#&gt;  4 pRPL…  162.  33.7 NA               NA               L(-)-Carniti… &lt;NA&gt;  </span>
+<span class="co">#&gt;  5 pRPL…   NA   NA   NA               NA               L-Carnitine   541-1…</span>
+<span class="co">#&gt;  6 pRPL…  181.  36.4 NA               NA               THEOBROMINE   &lt;NA&gt;  </span>
+<span class="co">#&gt;  7 pRPL…   NA   NA   NA               NA               5-Acetylamin… &lt;NA&gt;  </span>
+<span class="co">#&gt;  8 pRPL…  230. 158.  NA               NA               Pyridoxic ac… 82-82…</span>
+<span class="co">#&gt;  9 pRPL…   NA   NA   NA               NA               Pyridoxic ac… 82-82…</span>
+<span class="co">#&gt; 10 pRPL…  181. 228.  NA               NA               THEOBROMINE   &lt;NA&gt;  </span>
+<span class="co">#&gt; # … with 131 more rows, and 12 more variables: HMDB.ID &lt;chr&gt;, KEGG.ID &lt;chr&gt;,</span>
+<span class="co">#&gt; #   Lab.ID &lt;chr&gt;, Adduct &lt;chr&gt;, mz.error &lt;dbl&gt;, mz.match.score &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   RT.error &lt;dbl&gt;, RT.match.score &lt;dbl&gt;, CE &lt;chr&gt;, SS &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Total.score &lt;dbl&gt;, Database &lt;chr&gt;</span></code></pre></div>
 </div>
 <div id="get-the-identification-information-for-single-peak" class="section level3">
 <h3 class="hasAnchor">

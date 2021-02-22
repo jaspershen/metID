@@ -34,3 +34,5 @@ man/figures
 # History files
 .Rhistory
 .Rapp.history
+manuscript
+^\.github$

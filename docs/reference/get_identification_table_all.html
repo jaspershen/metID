@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Show the base information of metID pacakge — metID_logo • metID</title>
+<title>get_identification_table_all — get_identification_table_all • metID</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,8 +52,8 @@
 
 
 
-<meta property="og:title" content="Show the base information of metID pacakge — metID_logo" />
-<meta property="og:description" content="Show the base information of metID pacakge.
+<meta property="og:title" content="get_identification_table_all — get_identification_table_all" />
+<meta property="og:description" content="Extract the identifications from multiple results of `identify_metabolite_all()`.
 " />
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png" />
 
@@ -210,38 +210,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Show the base information of metID pacakge</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/metID_logo.R'><code>R/metID_logo.R</code></a></small>
-    <div class="hidden name"><code>metID_logo.Rd</code></div>
+    <h1>get_identification_table_all</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/get_identification_table_all.R'><code>R/get_identification_table_all.R</code></a></small>
+    <div class="hidden name"><code>get_identification_table_all.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Show the base information of metID pacakge.
+    <p>Extract the identifications from multiple results of `identify_metabolite_all()`.
 <a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>metID_logo</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_identification_table_all</span><span class='op'>(</span>
+  <span class='va'>...</span>,
+  candidate.num <span class='op'>=</span> <span class='fl'>1</span>,
+  level_condition <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>`mz&amp;rt&amp;ms2` <span class='op'>=</span> <span class='fl'>1</span>, `mz&amp;rt` <span class='op'>=</span> <span class='fl'>2</span>, `mz&amp;ms2` <span class='op'>=</span> <span class='fl'>2</span>, mz <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>...</th>
+      <td><p>One or multiple results from `identify_metabolite_all()`.</p></td>
+    </tr>
+    <tr>
+      <th>candidate.num</th>
+      <td><p>candidate.num</p></td>
+    </tr>
+    <tr>
+      <th>level_condition</th>
+      <td><p>Condition for level assign.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A ASCII log of metID</p>
+    <p>A identification table (data.frame).</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>The example and demo data of this function can be found
+https://jaspershen.github.io/metID/articles/metID.html</p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Xiaotao Shen
-<a href='mailto:shenxt@stanford.edu'>shenxt@stanford.edu</a></p>
+<a href='mailto:shenxt1990@163.com'>shenxt1990@163.com</a></p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>metID_logo</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #00BB00;'>Thank you for using metID!
-#&gt; Version 0.4.11 (20210221)
-#&gt; More information can be found at https://jaspershen.github.io/metID/
-#&gt;                 _    _____  ___ </span><span>
-#&gt; </span><span style='color: #00BB00;'> _ __ ___   ___| |_  \_   \/   \</span><span>
-#&gt; </span><span style='color: #00BB00;'>| '_ ` _ \ / _ \ __|  / /\/ /\ /</span><span>
-#&gt; </span><span style='color: #00BB00;'>| | | | | |  __/ |_/\/ /_/ /_// </span><span>
-#&gt; </span><span style='color: #00BB00;'>|_| |_| |_|\___|\__\____/___,'  </span><span>
-#&gt; </span><span style='color: #00BB00;'>                                </span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

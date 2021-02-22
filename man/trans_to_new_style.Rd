@@ -18,7 +18,7 @@ Transform old style identification table to new style.
 }
 \examples{
 data("annotate_result", package = "metID")
-annotation_table <- 
+annotation_table <-
 get_identification_table(annotate_result, candidate.num = 3, type = "old")
 annotation_table <- trans_to_new_style(annotation_table)
 }

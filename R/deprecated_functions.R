@@ -85,7 +85,7 @@ setGeneric(
         identification.table <-
           as.data.frame(matrix(nrow = nrow(peak.table), ncol = 3))
         colnames(identification.table) <-
-          c("MS2.spectrum.name",
+          c("MS2.spectra.name",
             "Candidate.number",
             "Identification")
         identification.table[match.result[, 1], 1] <-
@@ -99,7 +99,7 @@ setGeneric(
           })
         
         identification.table$Identification[match(names(identification.result),
-                                                  identification.table$MS2.spectrum.name)] <-
+                                                  identification.table$MS2.spectra.name)] <-
           unlist(identification.result)
         
         identification.table$Candidate.number <-
@@ -277,7 +277,7 @@ setGeneric(
       identification.table <-
         as.data.frame(matrix(nrow = nrow(peak.table), ncol = 3))
       colnames(identification.table) <-
-        c("MS2.spectrum.name",
+        c("MS2.spectra.name",
           "Candidate.number",
           "Identification")
       # identification.table[match.result[,1],1] <- object@ms1.info$name[match.result[,2]]
@@ -301,7 +301,7 @@ setGeneric(
           )[[1]]))
         })
       
-      identification.table$MS2.spectrum.name <-
+      identification.table$MS2.spectra.name <-
         unlist(lapply(identification.table$Identification, function(x) {
           if (is.na(x))
             return(NA)
