@@ -10,7 +10,7 @@
 
 metID <- function() {
   cat(crayon::yellow(
-    "`metID()` is deprecated, use `metID_logo()`."
+    "`metID()` is deprecated, please use `metID_logo()`."
   ))  
   cat(crayon::green(
     c(
