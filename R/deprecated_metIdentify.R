@@ -107,7 +107,6 @@ setGeneric(
                  database,
                  threads = 3,
                  silence.deprecated = FALSE) {
-    
     if(!silence.deprecated){
       cat(crayon::yellow(
         "`metIdentify()` is deprecated, use `identify_metabolites()`."

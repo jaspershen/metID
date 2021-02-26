@@ -91,8 +91,10 @@ setGeneric(
         BiocParallel::bplapply(
           1:nrow(ms1.info),
           FUN = identifyPeak,
-          BPPARAM = BiocParallel::SnowParam(workers = threads,
-                                            progressbar = TRUE),
+          # BPPARAM = BiocParallel::SnowParam(workers = threads,
+          #                                   progressbar = TRUE),
+          BPPARAM = BiocParallel::MulticoreParam(workers = threads,
+                                                 progressbar = TRUE),
           ms1.info = ms1.info,
           ms2.info = ms2.info,
           spectra.info = spectra.info,
@@ -695,6 +697,7 @@ setGeneric(
     
     new.ms2 <- ProtGenerics::spectra(object = ms2)
     rm(list = c("ms2"))
+    # 
     temp.fun <- function(idx, ms2) {
       temp.ms2 <- ms2[[idx]]
       rm(list = c("ms2"))
@@ -715,7 +718,7 @@ setGeneric(
             paste(x, c(1:sum(info$name == x)), sep = "_")
         })
       }
-      
+
       rownames(info) <- NULL
       spec <- data.frame(
         "mz" = temp.ms2@mz,
@@ -724,15 +727,26 @@ setGeneric(
       )
       list(info = info, spec = spec)
     }
+
+    # new.ms2 <-
+    #   BiocParallel::bplapply(
+    #     X = c(1:length(new.ms2)),
+    #     FUN = temp.fun,
+    #     BPPARAM = BiocParallel::SnowParam(workers = threads,
+    #                                       progressbar = TRUE,
+    #                                       type = "SOCK"),
+    #     ms2 = new.ms2
+    #   )
     
     new.ms2 <-
       BiocParallel::bplapply(
         X = c(1:length(new.ms2)),
         FUN = temp.fun,
-        ms2 = new.ms2,
-        BPPARAM = BiocParallel::SnowParam(workers = threads,
-                                          progressbar = TRUE)
+        BPPARAM = BiocParallel::MulticoreParam(workers = threads,
+                                          progressbar = TRUE),
+        ms2 = new.ms2
       )
+    
     new.ms2 <- new.ms2
   }
 )

@@ -624,8 +624,10 @@ setGeneric(
       BiocParallel::bplapply(
         X = anno.idx,
         FUN = temp.fun,
-        BPPARAM = BiocParallel::SnowParam(workers = threads,
-                                          progressbar = TRUE),
+        # BPPARAM = BiocParallel::SnowParam(workers = threads,
+        #                                   progressbar = TRUE),
+        BPPARAM = BiocParallel::MulticoreParam(workers = threads,
+                                               progressbar = TRUE),
         identification.result = identification.result,
         ms2.info = object@ms2.info,
         match.result = object@match.result,

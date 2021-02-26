@@ -253,8 +253,10 @@ setGeneric(
       BiocParallel::bplapply(
         1:nrow(ms1.data),
         FUN = temp.fun,
-        BPPARAM = BiocParallel::SnowParam(workers = threads,
-                                          progressbar = TRUE),
+        # BPPARAM = BiocParallel::SnowParam(workers = threads,
+        #                                   progressbar = TRUE),
+        BPPARAM = BiocParallel::MulticoreParam(workers = threads,
+                                     progressbar = TRUE),
         ms1.data = ms1.data,
         ms1.match.ppm = ms1.match.ppm,
         rt.match.tol = rt.match.tol,
