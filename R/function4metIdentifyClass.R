@@ -25,7 +25,7 @@
 #' @slot threads Parameter for annotation.
 #' @slot version Parameter for annotation.
 
-###S4 class for function metIdentification
+###S4 class for function metIdentification.
 setClass(
   Class = "metIdentifyClass",
   representation(
@@ -78,7 +78,7 @@ setClass(
     candidate.num = 3,
     database = "HMDB",
     threads = 0,
-    version = "0.4.1"
+    version = "0.9.0"
   )
 )
 
@@ -104,11 +104,17 @@ setMethod(
                       ))),
                       "metabolites are identified\n"))
     if (length(object@identification.result) > 0) {
-      cat(crayon::green(
-        "There are",
-        length(object@identification.result),
-        "peaks with identification\n"
-      ))
+      if(is.null(object@identification.result[[1]])){
+        cat(crayon::green(
+          "There are no peaks with identification\n"
+        )) 
+      }else{
+        cat(crayon::green(
+          "There are",
+          length(object@identification.result),
+          "peaks with identification\n"
+        )) 
+      }
     }
     
     cat(crayon::green("-----------Parameters------------\n"))
@@ -127,7 +133,7 @@ setMethod(
 #------------------------------------------------------------------------------
 #' @title Get parameters from a metIdentifyClass object
 #' @description Get parameters from a metIdentifyClass object.
-#' \lifecycle{maturing}
+#' \lifecycle{deprecated}
 #' @author Xiaotao Shen
 #' \email{shenxt1990@@163.com}
 #' @param object A metIdentifyClass object.
@@ -139,9 +145,11 @@ setMethod(
 #' data("annotate_result", package = "metID")
 #' get_parameters(annotate_result)
 
-setGeneric(
-  name = "get_parameters",
-  def = function(object) {
+get_parameters =
+  function(object) {
+    cat(crayon::yellow(
+      "`get_parameters()` is deprecated, use `get_parameters_metID()`."
+    ))  
     if (class(object) == "mzIdentifyClass"){
       stop(crayon::red('Please use getParams2 to get the parameters for mzIdentifyClass object.\n'))
     }
@@ -209,7 +217,93 @@ setGeneric(
     ) %>%
       tibble::as_tibble()
   }
-)
+
+
+#------------------------------------------------------------------------------
+#' @title Get parameters from a metIdentifyClass object
+#' @description Get parameters from a metIdentifyClass object.
+#' \lifecycle{maturing}
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@163.com}
+#' @param object A metIdentifyClass object.
+#' @return A data frame contains all the parameters of this metIdentifiyClass object.
+#' @export
+#' @importFrom magrittr %>%
+#' @importFrom tibble as_tibble
+#' @importFrom dplyr filter select mutate pull everything lag
+#' @examples 
+#' data("annotate_result", package = "metID")
+#' get_parameters(annotate_result)
+
+get_parameters_metID =
+  function(object) {
+    if (class(object) == "mzIdentifyClass"){
+      stop(crayon::red('Please use getParams2 to get the parameters for mzIdentifyClass object.\n'))
+    }
+    if (class(object) != "metIdentifyClass")
+      stop(crayon::red("Only for metIdentifyClass\n"))
+    data.frame(
+      "Parameter" = c(
+        "ms1.ms2.match.mz.tol",
+        "ms1.ms2.match.rt.tol",
+        "ms1.match.ppm",
+        "ms2.match.ppm",
+        "ms2.match.tol",
+        "rt.match.tol",
+        "polarity",
+        "ce",
+        "column",
+        "ms1.match.weight",
+        "rt.match.weight",
+        "ms2.match.weight",
+        "path",
+        "total.score.tol",
+        "candidate.num",
+        "database",
+        "threads"
+      ),
+      "Meaning" = c(
+        "MS1 features & MS spectra matching mz tolerance (ppm)",
+        "MS1 features & MS spectra matching RT tolerance (s)",
+        "MS1 match tolerance (ppm)",
+        "MS2 fragment match tolerance (ppm)",
+        "MS2 match tolerance",
+        "RT match tolerance (s)",
+        "Polarity",
+        "Collision energy",
+        "Column",
+        "MS1 match weight",
+        "RT match weight",
+        "MS2 match weight",
+        "Work directory",
+        "Total score tolerance",
+        "Candidate number",
+        "MS2 database",
+        "Thread number"
+      ),
+      "Value" = c(
+        object@ms1.ms2.match.mz.tol,
+        object@ms1.ms2.match.rt.tol,
+        object@ms1.match.ppm,
+        object@ms2.match.ppm,
+        object@ms2.match.tol,
+        object@rt.match.tol,
+        object@polarity,
+        object@ce,
+        object@column,
+        object@ms1.match.weight,
+        object@rt.match.weight,
+        object@ms2.match.weight,
+        object@path,
+        object@total.score.tol,
+        object@candidate.num,
+        object@database,
+        object@threads
+      ),
+      stringsAsFactors = FALSE
+    ) %>%
+      tibble::as_tibble()
+  }
 
 
 
@@ -232,74 +326,74 @@ setGeneric(
 #' peak_name <- which_has_identification(annotate_result)
 #' get_iden_info(annotate_result, peak_name[1,1], database = msDatabase_rplc0.0.2)
 
-setGeneric(
-  name = "get_iden_info",
-  def = function(object,
-                 which.peak,
-                 database) {
+get_iden_info = function(
+  object,
+  which.peak,
+  database
+){
+  
+  if (missing(object) | missing(which.peak) | missing(database)) {
+    stop("Please provide the object, which.peak and database.\n")
+  }
+  
+  if (class(object) != "metIdentifyClass")
+    stop("Only for metIdentifyClass\n")
+  
+  if (class(database) != "databaseClass")
+    stop("Only for databaseClass\n")
+  
+  identification.result <- object@identification.result
+  
+  which.peak <- as.character(which.peak)
+  
+  if (!which.peak %in% object@ms1.data$name) {
+    stop(which.peak, " is not in peak table, please check it.\n")
+  }
+  
+  if(is.null(object@identification.result[[1]])) {
+    cat(crayon::red("No identification in this result.\n"))
+    return(NULL)
+  }
+  
+  #####
+  if(nrow(object@match.result) == 0){
+    temp <- match(which.peak, names(object@identification.result)) %>% 
+      `[[`(object@identification.result, .)
     
-    if (missing(object) | missing(which.peak) | missing(database)) {
-      stop("Please provide the object, which.peak and database.\n")
-    }
-    
-    if (class(object) != "metIdentifyClass")
-      stop("Only for metIdentifyClass\n")
-    
-    if (class(database) != "databaseClass")
-      stop("Only for databaseClass\n")
-    
-    identification.result <- object@identification.result
-    
-    which.peak <- as.character(which.peak)
-    
-    if (!which.peak %in% object@ms1.data$name) {
-      stop(which.peak, " is not in peak table, please check it.\n")
-    }
-    
-    if(is.null(object@identification.result[[1]])) {
-      cat(crayon::red("No identification in this result.\n"))
-      return(NULL)
-    }
-    
-    #####
-    if(nrow(object@match.result) == 0){
-      temp <- match(which.peak, names(object@identification.result)) %>% 
-        `[[`(object@identification.result, .)
-      
-      temp <-
-        data.frame(temp, database@spectra.info[match(temp$Lab.ID, database@spectra.info$Lab.ID),
-                                               setdiff(colnames(database@spectra.info), colnames(temp))], 
-                   stringsAsFactors = FALSE)
-      temp <- tibble::as_tibble(temp)
-      return(temp)
-      
-    }
-    
-    if (is.na(match(which.peak, object@match.result$MS1.peak.name))) {
-      cat(crayon::green("The peak has no MS2 spectrum.\n"))
-      return()
-    }
-    
-    if (is.na(match(
-      object@match.result$MS2.spectra.name[match(which.peak, object@match.result$MS1.peak.name)],
-      names(identification.result)
-    ))) {
-      cat(crayon::green("The peak hsa no identification result.\n"))
-      return(NULL)
-    }
-    
-    temp <-
-      match(object@match.result$MS2.spectra.name[match(which.peak, object@match.result$MS1.peak.name)],
-            names(identification.result))
-    temp <- identification.result[[temp]]
     temp <-
       data.frame(temp, database@spectra.info[match(temp$Lab.ID, database@spectra.info$Lab.ID),
                                              setdiff(colnames(database@spectra.info), colnames(temp))], 
                  stringsAsFactors = FALSE)
     temp <- tibble::as_tibble(temp)
-    temp
+    return(temp)
+    
   }
-)
+  
+  if (is.na(match(which.peak, object@match.result$MS1.peak.name))) {
+    cat(crayon::green("The peak has no MS2 spectrum.\n"))
+    return()
+  }
+  
+  if (is.na(match(
+    object@match.result$MS2.spectra.name[match(which.peak, object@match.result$MS1.peak.name)],
+    names(identification.result)
+  ))) {
+    cat(crayon::green("The peak hsa no identification result.\n"))
+    return(NULL)
+  }
+  
+  temp <-
+    match(object@match.result$MS2.spectra.name[match(which.peak, object@match.result$MS1.peak.name)],
+          names(identification.result))
+  temp <- identification.result[[temp]]
+  temp <-
+    data.frame(temp, database@spectra.info[match(temp$Lab.ID, database@spectra.info$Lab.ID),
+                                           setdiff(colnames(database@spectra.info), colnames(temp))], 
+               stringsAsFactors = FALSE)
+  temp <- tibble::as_tibble(temp)
+  temp
+}
+
 
 
 
@@ -344,313 +438,311 @@ setGeneric(
 #' peak_name <- which_has_identification(annotate_result)
 #' ms2plot(annotate_result, database = msDatabase_rplc0.0.2, which.peak = peak_name[1,1])
 
-setGeneric(
-  name = "ms2plot",
-  def = function(object,
-                 database,
-                 which.peak = "all",
-                 ppm.tol = 30,
-                 mz.ppm.thr = 400,
-                 path = ".",
-                 width = 20,
-                 height = 8,
-                 interaction.plot = FALSE,
-                 range.mz,
-                 range.int = c(-1, 1),
-                 xlab = "Mass to charge ratio (m/z)",
-                 ylab = "Relative intensity",
-                 col.lib = "red",
-                 col.exp = "black",
-                 title.size = 15,
-                 lab.size = 12,
-                 axis.text.size = 12,
-                 legend.title.size = 12,
-                 legend.text.size = 10,
-                 figure.type = c("png", "pdf"),
-                 threads = 3,
-                 one.folder = TRUE,
-                 show.plot = TRUE) {
-    #
-    if (class(object) != "metIdentifyClass")
-      stop("Only for metIdentifyClass\n")
-    
-    if(nrow(object@match.result) == 0){
-      cat(crayon::red("Only for results using MS/MS spectra identification.\n"))
-      return(NULL)
+ms2plot = function(object,
+                   database,
+                   which.peak = "all",
+                   ppm.tol = 30,
+                   mz.ppm.thr = 400,
+                   path = ".",
+                   width = 20,
+                   height = 8,
+                   interaction.plot = FALSE,
+                   range.mz,
+                   range.int = c(-1, 1),
+                   xlab = "Mass to charge ratio (m/z)",
+                   ylab = "Relative intensity",
+                   col.lib = "red",
+                   col.exp = "black",
+                   title.size = 15,
+                   lab.size = 12,
+                   axis.text.size = 12,
+                   legend.title.size = 12,
+                   legend.text.size = 10,
+                   figure.type = c("png", "pdf"),
+                   threads = 3,
+                   one.folder = TRUE,
+                   show.plot = TRUE){
+  #
+  if (class(object) != "metIdentifyClass")
+    stop("Only for metIdentifyClass\n")
+  
+  if(nrow(object@match.result) == 0){
+    cat(crayon::red("Only for results using MS/MS spectra identification.\n"))
+    return(NULL)
+  }
+  
+  if (which.peak == "all") {
+    which.peak <- object@ms1.data$name
+  }
+  
+  identification.result <- object@identification.result
+  polarity <- object@polarity
+  figure.type <- match.arg(figure.type)
+  ##-------------------------------------------------------------------
+  ##only for one peak
+  if (all(which.peak != "all") &
+      length(which.peak) == 1 & show.plot) {
+    which.peak <- as.character(which.peak)
+    if (!which.peak %in% object@ms1.data$name)
+      stop(which.peak, " is not in peak table, please check it.\n")
+    ms2.spectra.name <-
+      object@match.result$MS2.spectra.name[match(which.peak,
+                                                 object@match.result$MS1.peak.name)]
+    if (is.na(ms2.spectra.name)) {
+      cat(crayon::red(which.peak, "hsa no MS2 spectrum.\n"))
+      return()
     }
-    
-    if (which.peak == "all") {
-      which.peak <- object@ms1.data$name
+    temp.idx <-
+      which(names(identification.result) == ms2.spectra.name)
+    if (length(temp.idx) == 0) {
+      cat(crayon::red(which.peak, "hsa no identification.\n"))
+      return()
     }
+    matched.info <- identification.result[[temp.idx]]
     
-    identification.result <- object@identification.result
-    polarity <- object@polarity
-    figure.type <- match.arg(figure.type)
-    ##-------------------------------------------------------------------
-    ##only for one peak
-    if (all(which.peak != "all") &
-        length(which.peak) == 1 & show.plot) {
-      which.peak <- as.character(which.peak)
-      if (!which.peak %in% object@ms1.data$name)
-        stop(which.peak, " is not in peak table, please check it.\n")
-      ms2.spectra.name <-
-        object@match.result$MS2.spectra.name[match(which.peak,
-                                                   object@match.result$MS1.peak.name)]
-      if (is.na(ms2.spectra.name)) {
-        cat(crayon::red(which.peak, "hsa no MS2 spectrum.\n"))
-        return()
+    if (nrow(matched.info) > 1) {
+      cat(crayon::green("There are", nrow(matched.info), "identifications.\n"))
+      cat(crayon::green(paste(
+        paste(c(1:nrow(matched.info)), as.character(matched.info[, 1]), sep = ":"),
+        collapse = "\n"
+      )))
+      cat("\n")
+      which.identification <- "test"
+      while (is.na(which.identification) |
+             !which.identification %in% c(1:length(matched.info))) {
+        which.identification <-
+          readline(prompt = "Which identification (index: number)?")
+        which.identification <-
+          as.numeric(which.identification)
       }
-      temp.idx <-
-        which(names(identification.result) == ms2.spectra.name)
-      if (length(temp.idx) == 0) {
-        cat(crayon::red(which.peak, "hsa no identification.\n"))
-        return()
-      }
-      matched.info <- identification.result[[temp.idx]]
-      
-      if (nrow(matched.info) > 1) {
-        cat(crayon::green("There are", nrow(matched.info), "identifications.\n"))
-        cat(crayon::green(paste(
-          paste(c(1:nrow(matched.info)), as.character(matched.info[, 1]), sep = ":"),
-          collapse = "\n"
-        )))
-        cat("\n")
-        which.identification <- "test"
-        while (is.na(which.identification) |
-               !which.identification %in% c(1:length(matched.info))) {
-          which.identification <-
-            readline(prompt = "Which identification (index: number)?")
-          which.identification <-
-            as.numeric(which.identification)
-        }
-        matched.info <-
-          unlist(matched.info[which.identification, , drop = TRUE])
-      } else{
-        matched.info <- unlist(matched.info[1, , drop = TRUE])
-      }
-      
-      lib.spectrum <-
-        get_ms2_spectrum(
-          lab.id = matched.info["Lab.ID"],
-          database = database,
-          polarity = polarity,
-          ce = matched.info["CE"]
-        )
-      # lib.spectrum <- getMS2spectrum(lab.id = matched.info["Lab.ID"],
-      #                                database = database,
-      #                                polarity = polarity,
-      #                                ce = matched.info["CE"])
-      exp.spectrum <-
-        object@ms2.info[[match(ms2.spectra.name, names(object@ms2.info))]]
-      if (missing(range.mz)) {
-        range.mz <- range(c(lib.spectrum[, "mz"], exp.spectrum[, "mz"]))
-      }
-      
-      plot <- plotMS2match(
-        matched.info = matched.info,
-        ppm.tol = ppm.tol,
-        mz.ppm.thr = mz.ppm.thr,
-        exp.spectrum = exp.spectrum,
-        lib.spectrum = lib.spectrum,
-        polarity = polarity,
-        xlab = xlab,
-        ylab = ylab,
-        col.lib = col.lib,
-        col.exp = col.exp,
-        ce = matched.info["CE"],
-        title.size = title.size,
-        lab.size = lab.size,
-        axis.text.size = axis.text.size,
-        legend.title.size = legend.title.size,
-        legend.text.size = legend.text.size,
-        database = database
-      )
-      if (interaction.plot) {
-        plot <- plotly::ggplotly(p = plot)
-      }
-      plot
+      matched.info <-
+        unlist(matched.info[which.identification, , drop = TRUE])
     } else{
-      ##output all MS2 match
-      dir.create(path, showWarnings = FALSE)
-      path <- file.path(path, "ms2_match_plot")
-      dir.create(path, showWarnings = FALSE)
-      
-      if (all(which.peak != "all")) {
-        if (!all(which.peak %in% object@ms1.data$name)) {
-          stop("Some peaks are not in MMS1 peak table, please check them.\n")
-        }
-        ms2.spectra.name <-
-          object@match.result$MS2.spectra.name[match(which.peak, object@match.result$MS1.peak.name)]
-        which.peak <- which.peak[!is.na(ms2.spectra.name)]
-        ms2.spectra.name <-
-          ms2.spectra.name[!is.na(ms2.spectra.name)]
-        if (length(ms2.spectra.name) == 0) {
-          cat(crayon::red("All peaks have no MS2 spectra.\n"))
-          return(NULL)
-        }
-        anno.idx <-
-          match(ms2.spectra.name, names(object@identification.result))
-        if (all(is.na(anno.idx))) {
-          cat(crayon::red("All peaks have no identifications.\n"))
-          return(NULL)
-        }
-        
-        which.peak <- which.peak[!is.na(anno.idx)]
-        ms2.spectra.name <-
-          ms2.spectra.name[!is.na(anno.idx)]
-        anno.idx <- anno.idx[!is.na(anno.idx)]
+      matched.info <- unlist(matched.info[1, , drop = TRUE])
+    }
+    
+    lib.spectrum <-
+      get_ms2_spectrum(
+        lab.id = matched.info["Lab.ID"],
+        database = database,
+        polarity = polarity,
+        ce = matched.info["CE"]
+      )
+    # lib.spectrum <- getMS2spectrum(lab.id = matched.info["Lab.ID"],
+    #                                database = database,
+    #                                polarity = polarity,
+    #                                ce = matched.info["CE"])
+    exp.spectrum <-
+      object@ms2.info[[match(ms2.spectra.name, names(object@ms2.info))]]
+    if (missing(range.mz)) {
+      range.mz <- range(c(lib.spectrum[, "mz"], exp.spectrum[, "mz"]))
+    }
+    
+    plot <- plotMS2match(
+      matched.info = matched.info,
+      ppm.tol = ppm.tol,
+      mz.ppm.thr = mz.ppm.thr,
+      exp.spectrum = exp.spectrum,
+      lib.spectrum = lib.spectrum,
+      polarity = polarity,
+      xlab = xlab,
+      ylab = ylab,
+      col.lib = col.lib,
+      col.exp = col.exp,
+      ce = matched.info["CE"],
+      title.size = title.size,
+      lab.size = lab.size,
+      axis.text.size = axis.text.size,
+      legend.title.size = legend.title.size,
+      legend.text.size = legend.text.size,
+      database = database
+    )
+    if (interaction.plot) {
+      plot <- plotly::ggplotly(p = plot)
+    }
+    plot
+  } else{
+    ##output all MS2 match
+    dir.create(path, showWarnings = FALSE)
+    path <- file.path(path, "ms2_match_plot")
+    dir.create(path, showWarnings = FALSE)
+    
+    if (all(which.peak != "all")) {
+      if (!all(which.peak %in% object@ms1.data$name)) {
+        stop("Some peaks are not in MMS1 peak table, please check them.\n")
       }
-      # cat("There are", length(anno.idx), "peaks with identifications.\n")
-      
-      if (length(anno.idx) == 0) {
+      ms2.spectra.name <-
+        object@match.result$MS2.spectra.name[match(which.peak, object@match.result$MS1.peak.name)]
+      which.peak <- which.peak[!is.na(ms2.spectra.name)]
+      ms2.spectra.name <-
+        ms2.spectra.name[!is.na(ms2.spectra.name)]
+      if (length(ms2.spectra.name) == 0) {
+        cat(crayon::red("All peaks have no MS2 spectra.\n"))
         return(NULL)
       }
-      temp.fun <- function(anno.idx,
-                           identification.result,
-                           ms2.info,
-                           match.result,
-                           database,
-                           ppm.tol = 30,
-                           mz.ppm.thr = 400,
-                           col.lib = "red",
-                           col.exp = "black",
-                           polarity = c("positive", "nagative"),
-                           range.int = c(-1, 1),
-                           xlab = "Mass to charge ratio (m/z)",
-                           ylab = "Relative intensity",
-                           title.size = 15,
-                           lab.size = 12,
-                           axis.text.size = 12,
-                           legend.title.size = 12,
-                           legend.text.size = 10,
-                           plotMS2match,
-                           getMS2spectrum) {
-        matched.info <- identification.result[[anno.idx]]
-        temp.ms2.spectrum.name <-
-          names(identification.result)[anno.idx]
-        temp.peak.name <-
-          match.result$MS1.peak.name[match(temp.ms2.spectrum.name,
-                                           match.result$MS2.spectra.name)]
-        
-        if (!one.folder) {
-          temp.path <- file.path(
-            path,
-            stringr::str_replace_all(
-              string = temp.peak.name,
-              pattern = "/",
-              replacement = "_"
-            )
-          )
-          dir.create(temp.path, showWarnings = FALSE)
-        }
-        
-        matched.info <- apply(matched.info, 1, list)
-        matched.info <- lapply(matched.info, unlist)
-        
-        non.meaning <-
-          lapply(matched.info, function(temp.matched.info) {
-            if (one.folder) {
-              temp.file.name <-
-                file.path(path,
-                          stringr::str_c(
-                            paste(
-                              stringr::str_replace_all(
-                                string = temp.peak.name,
-                                pattern = "/",
-                                replacement = "_"
-                              ),
-                              paste(as.character(temp.matched.info[c("Total.score", "Lab.ID", "Adduct")]), collapse = ";"),
-                              sep = ";"
-                            ),
-                            ".",
-                            figure.type ,
-                            sep = ""
-                          ))
-            } else{
-              temp.file.name <- file.path(temp.path,
-                                          stringr::str_c(
-                                            paste(as.character(temp.matched.info[c("Total.score", "Lab.ID", "Adduct")]), collapse = ";"),
-                                            ".",
-                                            figure.type ,
-                                            sep = ""
-                                          ))
-            }
-            
-            
-            lib.spectrum <-
-              getMS2spectrum(
-                lab.id = temp.matched.info["Lab.ID"],
-                database = database,
-                polarity = polarity,
-                ce = temp.matched.info["CE"]
-              )
-            exp.spectrum <-
-              ms2.info[[match(match.result$MS2.spectra.name[match(temp.peak.name,
-                                                                  match.result$MS1.peak.name)],
-                              names(ms2.info))]]
-            range.mz <-
-              range(c(lib.spectrum[, "mz"], exp.spectrum[, "mz"]))
-            
-            temp.plot <-
-              plotMS2match(
-                matched.info = temp.matched.info,
-                ppm.tol = ppm.tol,
-                mz.ppm.thr = mz.ppm.thr,
-                exp.spectrum = exp.spectrum,
-                lib.spectrum = lib.spectrum,
-                polarity = polarity,
-                xlab = xlab,
-                ylab = ylab,
-                col.lib = col.lib,
-                col.exp = col.exp,
-                ce = temp.matched.info["CE"],
-                title.size = title.size,
-                lab.size = lab.size,
-                axis.text.size = axis.text.size,
-                legend.title.size = legend.title.size,
-                legend.text.size = legend.text.size,
-                database = database
-              )
-            ggplot2::ggsave(
-              filename = temp.file.name,
-              plot = temp.plot,
-              width = width,
-              height = height
-            )
-            
-          })
+      anno.idx <-
+        match(ms2.spectra.name, names(object@identification.result))
+      if (all(is.na(anno.idx))) {
+        cat(crayon::red("All peaks have no identifications.\n"))
+        return(NULL)
       }
       
-      BiocParallel::bplapply(
-        X = anno.idx,
-        FUN = temp.fun,
-        # BPPARAM = BiocParallel::SnowParam(workers = threads,
-        #                                   progressbar = TRUE),
-        BPPARAM = BiocParallel::MulticoreParam(workers = threads,
-                                               progressbar = TRUE),
-        identification.result = identification.result,
-        ms2.info = object@ms2.info,
-        match.result = object@match.result,
-        database = database,
-        ppm.tol = ppm.tol,
-        mz.ppm.thr = mz.ppm.thr,
-        col.lib = col.lib,
-        col.exp = col.exp,
-        polarity = polarity,
-        xlab = xlab,
-        ylab = ylab,
-        title.size = title.size,
-        lab.size = lab.size,
-        axis.text.size = axis.text.size,
-        legend.title.size = legend.title.size,
-        legend.text.size = legend.text.size,
-        plotMS2match = plotMS2match,
-        getMS2spectrum = getMS2spectrum
-      )
-      cat(crayon::bgYellow("All done.\n"))
+      which.peak <- which.peak[!is.na(anno.idx)]
+      ms2.spectra.name <-
+        ms2.spectra.name[!is.na(anno.idx)]
+      anno.idx <- anno.idx[!is.na(anno.idx)]
     }
+    # cat("There are", length(anno.idx), "peaks with identifications.\n")
+    
+    if (length(anno.idx) == 0) {
+      return(NULL)
+    }
+    temp.fun <- function(anno.idx,
+                         identification.result,
+                         ms2.info,
+                         match.result,
+                         database,
+                         ppm.tol = 30,
+                         mz.ppm.thr = 400,
+                         col.lib = "red",
+                         col.exp = "black",
+                         polarity = c("positive", "nagative"),
+                         range.int = c(-1, 1),
+                         xlab = "Mass to charge ratio (m/z)",
+                         ylab = "Relative intensity",
+                         title.size = 15,
+                         lab.size = 12,
+                         axis.text.size = 12,
+                         legend.title.size = 12,
+                         legend.text.size = 10,
+                         plotMS2match,
+                         getMS2spectrum) {
+      matched.info <- identification.result[[anno.idx]]
+      temp.ms2.spectrum.name <-
+        names(identification.result)[anno.idx]
+      temp.peak.name <-
+        match.result$MS1.peak.name[match(temp.ms2.spectrum.name,
+                                         match.result$MS2.spectra.name)]
+      
+      if (!one.folder) {
+        temp.path <- file.path(
+          path,
+          stringr::str_replace_all(
+            string = temp.peak.name,
+            pattern = "/",
+            replacement = "_"
+          )
+        )
+        dir.create(temp.path, showWarnings = FALSE)
+      }
+      
+      matched.info <- apply(matched.info, 1, list)
+      matched.info <- lapply(matched.info, unlist)
+      
+      non.meaning <-
+        lapply(matched.info, function(temp.matched.info) {
+          if (one.folder) {
+            temp.file.name <-
+              file.path(path,
+                        stringr::str_c(
+                          paste(
+                            stringr::str_replace_all(
+                              string = temp.peak.name,
+                              pattern = "/",
+                              replacement = "_"
+                            ),
+                            paste(as.character(temp.matched.info[c("Total.score", "Lab.ID", "Adduct")]), collapse = ";"),
+                            sep = ";"
+                          ),
+                          ".",
+                          figure.type ,
+                          sep = ""
+                        ))
+          } else{
+            temp.file.name <- file.path(temp.path,
+                                        stringr::str_c(
+                                          paste(as.character(temp.matched.info[c("Total.score", "Lab.ID", "Adduct")]), collapse = ";"),
+                                          ".",
+                                          figure.type ,
+                                          sep = ""
+                                        ))
+          }
+          
+          
+          lib.spectrum <-
+            getMS2spectrum(
+              lab.id = temp.matched.info["Lab.ID"],
+              database = database,
+              polarity = polarity,
+              ce = temp.matched.info["CE"]
+            )
+          exp.spectrum <-
+            ms2.info[[match(match.result$MS2.spectra.name[match(temp.peak.name,
+                                                                match.result$MS1.peak.name)],
+                            names(ms2.info))]]
+          range.mz <-
+            range(c(lib.spectrum[, "mz"], exp.spectrum[, "mz"]))
+          
+          temp.plot <-
+            plotMS2match(
+              matched.info = temp.matched.info,
+              ppm.tol = ppm.tol,
+              mz.ppm.thr = mz.ppm.thr,
+              exp.spectrum = exp.spectrum,
+              lib.spectrum = lib.spectrum,
+              polarity = polarity,
+              xlab = xlab,
+              ylab = ylab,
+              col.lib = col.lib,
+              col.exp = col.exp,
+              ce = temp.matched.info["CE"],
+              title.size = title.size,
+              lab.size = lab.size,
+              axis.text.size = axis.text.size,
+              legend.title.size = legend.title.size,
+              legend.text.size = legend.text.size,
+              database = database
+            )
+          ggplot2::ggsave(
+            filename = temp.file.name,
+            plot = temp.plot,
+            width = width,
+            height = height
+          )
+          
+        })
+    }
+    
+    BiocParallel::bplapply(
+      X = anno.idx,
+      FUN = temp.fun,
+      # BPPARAM = BiocParallel::SnowParam(workers = threads,
+      #                                   progressbar = TRUE),
+      BPPARAM = BiocParallel::MulticoreParam(workers = threads,
+                                             progressbar = TRUE),
+      identification.result = identification.result,
+      ms2.info = object@ms2.info,
+      match.result = object@match.result,
+      database = database,
+      ppm.tol = ppm.tol,
+      mz.ppm.thr = mz.ppm.thr,
+      col.lib = col.lib,
+      col.exp = col.exp,
+      polarity = polarity,
+      xlab = xlab,
+      ylab = ylab,
+      title.size = title.size,
+      lab.size = lab.size,
+      axis.text.size = axis.text.size,
+      legend.title.size = legend.title.size,
+      legend.text.size = legend.text.size,
+      plotMS2match = plotMS2match,
+      getMS2spectrum = getMS2spectrum
+    )
+    cat(crayon::bgYellow("All done.\n"))
   }
-)
+}
+
 
 
 #------------------------------------------------------------------------------
@@ -668,31 +760,30 @@ setGeneric(
 #' data("annotate_result", package = "metID")
 #' which_has_identification(annotate_result)
 
-setGeneric(
-  name = "which_has_identification",
-  def = function(object) {
-    if (class(object) != "metIdentifyClass")
-      stop("Only for metIdentifyClass\n")
-    
-    if(is.null(object@identification.result[[1]])){
-      cat(crayon::yellow("No identifications in this object.\n"))
-      return(NULL)
-    }
-    
-    if(nrow(object@match.result) != 0){
-      temp <-
-        object@match.result[match(names(object@identification.result),
-                                  object@match.result$MS2.spectra.name), c(3, 4)]  
-    }else{
-      temp <- names(object@identification.result) %>% 
-        data.frame("MS1.peak.name" = ., 
-                   MS2.spectra.name = NA, 
-                   stringsAsFactors = FALSE)
-    }
-    rownames(temp) <- NULL
-    return(temp)
+which_has_identification = function(object){
+  if (class(object) != "metIdentifyClass")
+    stop("Only for metIdentifyClass\n")
+  
+  if(is.null(object@identification.result[[1]])){
+    cat(crayon::yellow("No identifications in this object.\n"))
+    return(NULL)
   }
-)
+  
+  if(nrow(object@match.result) != 0){
+    temp <-
+      object@match.result[match(names(object@identification.result),
+                                object@match.result$MS2.spectra.name), c(3, 4)]  
+  }else{
+    temp <- names(object@identification.result) %>% 
+      data.frame("MS1.peak.name" = ., 
+                 MS2.spectra.name = NA, 
+                 stringsAsFactors = FALSE)
+  }
+  rownames(temp) <- NULL
+  return(temp)
+}
+
+
 
 
 
@@ -716,51 +807,49 @@ setGeneric(
 #' data("annotate_result", package = "metID")
 #' annotate_result2 <- filter_identification(annotate_result, rt.match.tol = 5)
 
-
-setGeneric(
-  name = "filter_identification",
-  def = function(object,
-                 ms1.match.ppm = 25,
-                 rt.match.tol = 30,
-                 ms2.match.tol = 0.5,
-                 total.score.tol = 0.5) {
-    if (class(object) != "metIdentifyClass") {
-      stop("Only for metIdentifyClass\n")
-    }
-    
-    object@ms1.match.ppm <- ms1.match.ppm
-    object@rt.match.tol <- rt.match.tol
-    object@ms2.match.tol <- ms2.match.tol
-    object@total.score.tol <- total.score.tol
-    
-    identification.result <- object@identification.result
-    
-    identification.result <-
-      lapply(identification.result, function(x) {
-        RT.error <- x$RT.error
-        RT.error[is.na(RT.error)] <- rt.match.tol - 1
-        SS <- x$SS 
-        SS[is.na(SS)] <- ms2.match.tol + 1
-        SS[SS == 0] <- ms2.match.tol + 1
-        x <-
-          x[which(
-            x$mz.error < ms1.match.ppm & RT.error < rt.match.tol &
-              SS > ms2.match.tol &
-              x$Total.score > total.score.tol
-          ), , drop = FALSE]
-      })
-    
-    temp.idx <-
-      which(unlist(lapply(identification.result, function(x) {
-        nrow(x) != 0
-      })))
-    
-    identification.result <-
-      identification.result[temp.idx]
-    object@identification.result <- identification.result
-    object
+filter_identification = function(object,
+                                 ms1.match.ppm = 25,
+                                 rt.match.tol = 30,
+                                 ms2.match.tol = 0.5,
+                                 total.score.tol = 0.5){
+  if (class(object) != "metIdentifyClass") {
+    stop("Only for metIdentifyClass\n")
   }
-)
+  
+  object@ms1.match.ppm <- ms1.match.ppm
+  object@rt.match.tol <- rt.match.tol
+  object@ms2.match.tol <- ms2.match.tol
+  object@total.score.tol <- total.score.tol
+  
+  identification.result <- object@identification.result
+  
+  identification.result <-
+    lapply(identification.result, function(x) {
+      RT.error <- x$RT.error
+      RT.error[is.na(RT.error)] <- rt.match.tol - 1
+      SS <- x$SS 
+      SS[is.na(SS)] <- ms2.match.tol + 1
+      SS[SS == 0] <- ms2.match.tol + 1
+      x <-
+        x[which(
+          x$mz.error < ms1.match.ppm & RT.error < rt.match.tol &
+            SS > ms2.match.tol &
+            x$Total.score > total.score.tol
+        ), , drop = FALSE]
+    })
+  
+  temp.idx <-
+    which(unlist(lapply(identification.result, function(x) {
+      nrow(x) != 0
+    })))
+  
+  identification.result <-
+    identification.result[temp.idx]
+  object@identification.result <- identification.result
+  object
+}
+
+
 
 
 #------------------------------------------------------------------------------
@@ -780,24 +869,22 @@ setGeneric(
 #' peak_name <- which_has_identification(annotate_result)
 #' get_ms2_spectrum_from_object(annotate_result, peak_name[1,1])
 
-setGeneric(
-  name = "get_ms2_spectrum_from_object",
-  def = function(object,
-                 peak.name
-                 ) {
-    if (class(object) != "metIdentifyClass")
-      stop("Only for metIdentifyClass\n")
-    if (missing(peak.name))
-      stop('Please provide peak name.\n')
-    
-    if(nrow(object@match.result) == 0){
-      cat(crayon::red('No MS2 spectrum in this result.\n'))
-      return(NULL)
-    }
-    
-    object@ms2.info[[which(object@match.result$MS2.spectra.name[match(peak.name, object@match.result$MS1.peak.name)] == names(object@ms2.info))]]
+get_ms2_spectrum_from_object = function(object,
+                                        peak.name){
+  if (class(object) != "metIdentifyClass")
+    stop("Only for metIdentifyClass\n")
+  if (missing(peak.name))
+    stop('Please provide peak name.\n')
+  
+  if(nrow(object@match.result) == 0){
+    cat(crayon::red('No MS2 spectrum in this result.\n'))
+    return(NULL)
   }
-)
+  
+  object@ms2.info[[which(object@match.result$MS2.spectra.name[match(peak.name, object@match.result$MS1.peak.name)] == names(object@ms2.info))]]
+}
+
+
 
 
 
@@ -822,51 +909,49 @@ setGeneric(
 #' peak_name <- which_has_identification(annotate_result)
 #' get_ms2_spectrum_from_object(annotate_result, peak_name[1,1])
 
-setGeneric(
-  name = "filter_adducts",
-  def = function(object,
-                 remove_adduct = NULL) {
-    if (class(object) != "metIdentifyClass")
-      stop("Only for metIdentifyClass\n")
-    if (missing(remove_adduct))
-      stop('Please provide peak name.\n')
-    
-    if(is.null(remove_adduct)){
-      return(object)
-    }
-    
-    cat(crayon::yellow(
-      paste(remove_adduct, collapse = ";")),
-      "will be removed from the annotation result.\n"
-    )
+filter_adducts = function(object,
+                          remove_adduct = NULL){
+  if (class(object) != "metIdentifyClass")
+    stop("Only for metIdentifyClass\n")
+  if (missing(remove_adduct))
+    stop('Please provide peak name.\n')
   
-    object@adduct.table <- 
-      object@adduct.table %>% 
-      dplyr::filter(!adduct %in% remove_adduct)
-    
-    if(length(object@identification.result) == 0){
-      return(object)
-    }else{
-      object@identification.result <- 
+  if(is.null(remove_adduct)){
+    return(object)
+  }
+  
+  cat(crayon::yellow(
+    paste(remove_adduct, collapse = ";")),
+    "will be removed from the annotation result.\n"
+  )
+  
+  object@adduct.table <- 
+    object@adduct.table %>% 
+    dplyr::filter(!adduct %in% remove_adduct)
+  
+  if(length(object@identification.result) == 0){
+    return(object)
+  }else{
+    object@identification.result <- 
       purrr::map(.x = object@identification.result, .f = function(x){
-          x %>% 
+        x %>% 
           dplyr::filter(!Adduct %in% remove_adduct)
       })    
-      
-      remove_idx <- 
-        purrr::map(.x = object@identification.result, .f = function(x){
-          nrow(x)
-        }) %>% unlist()
-      
-      remove_idx <- which(remove_idx == 0)
-      if(length(remove_idx) > 0){
-        object@identification.result <- object@identification.result[-remove_idx]
-      }
-      
-      if(length(object@identification.result) == 0){
-        object@identification.result <- list()
-      }
-      return(object)
+    
+    remove_idx <- 
+      purrr::map(.x = object@identification.result, .f = function(x){
+        nrow(x)
+      }) %>% unlist()
+    
+    remove_idx <- which(remove_idx == 0)
+    if(length(remove_idx) > 0){
+      object@identification.result <- object@identification.result[-remove_idx]
     }
+    
+    if(length(object@identification.result) == 0){
+      object@identification.result <- list()
+    }
+    return(object)
   }
-)
+}
+

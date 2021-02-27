@@ -1,8 +1,8 @@
 Type: Package
 Package: metID
 Title: Metabolite identification based on MS1 and MS2 spectra
-Version: 0.4.1
-Date: 2020-12-25
+Version: 0.9.0
+Date: 2021-02-26
 Authors@R: c(
     person(given = "Xiaotao",
            family = "Shen",
@@ -14,6 +14,12 @@ Authors@R: c(
            role = c("aut", "ctb")),
            person(given = "Hanyah",
            family = "Zackriah",
+           role = c("ctb")),
+           person(given = "Liang",
+           family = "Liang",
+           role = c("ctb")),
+           person(given = "Songjie",
+           family = "Chen",
            role = c("ctb"))
            )
 Description: Metabolite identification using MS1 and MS2 databases.
@@ -42,7 +48,10 @@ Imports:
     magrittr,
     tinyTools (>= 0.1.2),
     purrr,
-    plyr
+    plyr,
+    MSnbase,
+    ProtGenerics,
+    plotly
 Suggests: 
     knitr,
     rmarkdown,

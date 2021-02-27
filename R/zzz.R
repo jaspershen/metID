@@ -42,6 +42,27 @@ globalVariables(
     "Database",
     "Peak.name",
     "name",
-    "."
+    ".",
+    "Cor.RT",
+    "Ref.RT",
+    "Degree.Span.MSE",
+    "Poly.MSE",
+    "adduct",
+    "hilic.pos",
+    "rp.pos",
+    "hilic.neg",
+    "rp.neg",
+    "database",
+    "ms1.match.ppm",
+    "candidate.num",
+    "threads",
+    "Exp.mz",
+    "Exp.intensity",
+    "Lib.mz",
+    "Lib.intensity",
+    "extenstion",
+    "Identification",
+    ""
+    
   )
 )

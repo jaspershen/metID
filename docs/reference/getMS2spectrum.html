@@ -53,8 +53,7 @@
 
 
 <meta property="og:title" content="Get MS2 spectra of peaks from databaseClass object — getMS2spectrum" />
-<meta property="og:description" content="Get MS2 spectra of peaks from databaseClass object.
-Get MS2 spectra of peaks from databaseClass object." />
+<meta property="og:description" content="Get MS2 spectra of peaks from databaseClass object." />
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png" />
 
 
@@ -97,7 +96,7 @@ Get MS2 spectra of peaks from databaseClass object." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metID</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">0.4.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">0.9.0</span>
       </span>
     </div>
 
@@ -125,7 +124,10 @@ Get MS2 spectra of peaks from databaseClass object." />
       <a href="../articles/database_construction.html">Database construction</a>
     </li>
     <li>
-      <a href="../articles/public_databases.html">Public databases for metID</a>
+      <a href="../articles/rt_correction.html">Correct retention times in database according to internal standards</a>
+    </li>
+    <li>
+      <a href="../articles/public_databases.html">Public databases in metID</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Metabolite identification</li>
@@ -211,23 +213,15 @@ Get MS2 spectra of peaks from databaseClass object." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get MS2 spectra of peaks from databaseClass object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/construct_database.R'><code>R/construct_database.R</code></a>, <a href='https://github.com/jaspershen/metID/blob/master/R/databaseConstruction.R'><code>R/databaseConstruction.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/deprecated_function4databaseClass.R'><code>R/deprecated_function4databaseClass.R</code></a></small>
     <div class="hidden name"><code>getMS2spectrum.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Get MS2 spectra of peaks from databaseClass object.</p>
-<p>Get MS2 spectra of peaks from databaseClass object.</p>
     </div>
 
     <pre class="usage"><span class='fu'>getMS2spectrum</span><span class='op'>(</span>
-  <span class='va'>lab.id</span>,
-  <span class='va'>database</span>,
-  polarity <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"positive"</span>, <span class='st'>"negative"</span><span class='op'>)</span>,
-  ce <span class='op'>=</span> <span class='st'>"30"</span>
-<span class='op'>)</span>
-
-<span class='fu'>getMS2spectrum</span><span class='op'>(</span>
   <span class='va'>lab.id</span>,
   <span class='va'>database</span>,
   polarity <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"positive"</span>, <span class='st'>"negative"</span><span class='op'>)</span>,
@@ -258,18 +252,13 @@ Get MS2 spectra of peaks from databaseClass object." />
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A MS2 spectrum (data.frame).</p>
-<p>A MS2 spectrum (data.frame).</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>The example and demo data of this function can be found
-https://jaspershen.github.io/metID/articles/metID.html</p>
-<p>The example and demo data of this function can be found
 https://jaspershen.github.io/metID/articles/metID.html</p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Xiaotao Shen
-<a href='mailto:shenxt1990@163.com'>shenxt1990@163.com</a></p>
-<p>Xiaotao Shen
 <a href='mailto:shenxt1990@163.com'>shenxt1990@163.com</a></p>
 
   </div>

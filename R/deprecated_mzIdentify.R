@@ -21,25 +21,24 @@
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
 
-setGeneric(
-  name = "mzIdentify",
-  def = function(ms1.data,
-                 ##csv format
-                 ms1.match.ppm = 25,
-                 rt.match.tol = 30,
-                 polarity = c("positive", "negative"),
-                 column = c("hilic", "rp"),
-                 path = ".",
-                 candidate.num = 3,
-                 database,
-                 threads = 3,
-                 silence.deprecated = FALSE) {
+
+mzIdentify =
+  function(ms1.data,
+           ##csv format
+           ms1.match.ppm = 25,
+           rt.match.tol = 30,
+           polarity = c("positive", "negative"),
+           column = c("hilic", "rp"),
+           path = ".",
+           candidate.num = 3,
+           database,
+           threads = 3,
+           silence.deprecated = FALSE) {
     if (!silence.deprecated) {
       cat(crayon::yellow(
         "`mzIdentify()` is deprecated, use `identify_metabolites()`."
       ))
     }
-    
     options(warn = -1)
     ###Check data
     if (missing(database)) {
@@ -119,9 +118,9 @@ setGeneric(
                          adduct.table,
                          candidate.num = 3) {
       temp.mz <-
-        as.numeric(dplyr::pull(.data = ms1.data[idx, ], var = "mz"))
+        as.numeric(dplyr::pull(.data = ms1.data[idx,], var = "mz"))
       temp.rt <-
-        as.numeric(dplyr::pull(.data = ms1.data[idx, ], var = "rt"))
+        as.numeric(dplyr::pull(.data = ms1.data[idx,], var = "rt"))
       
       rm(list = c("ms1.data"))
       
@@ -256,7 +255,7 @@ setGeneric(
         # BPPARAM = BiocParallel::SnowParam(workers = threads,
         #                                   progressbar = TRUE),
         BPPARAM = BiocParallel::MulticoreParam(workers = threads,
-                                     progressbar = TRUE),
+                                               progressbar = TRUE),
         ms1.data = ms1.data,
         ms1.match.ppm = ms1.match.ppm,
         rt.match.tol = rt.match.tol,
@@ -301,7 +300,7 @@ setGeneric(
         candidate.num = candidate.num,
         database = database.name,
         threads = threads,
-        version = "0.4.1"
+        version = "0.9.0"
       )
       
       return.result@identification.result <-
@@ -348,9 +347,6 @@ setGeneric(
     cat(crayon::bgRed("All done.\n"))
     return(return.result)
   }
-)
-
-
 
 
 #------------------------------------------------------------------------------
@@ -365,47 +361,46 @@ setGeneric(
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
 
-setGeneric(
-  name = "getParams2",
-  def = function(object) {
-    # cat(crayon::yellow(
-    #   "`getParams2()` is deprecated, use `get_parameters()`."
-    # ))
-    
-    if (class(object) != "mzIdentifyClass")
-      stop("Only for mzIdentifyClass\n")
-    data.frame(
-      "Parameter" = c(
-        "ms1.match.ppm",
-        "polarity",
-        "column",
-        "path",
-        "candidate.num",
-        "database",
-        "threads"
-      ),
-      "Meaning" = c(
-        "MS1 match tolerance (ppm)",
-        "Polarity",
-        "Column",
-        "Work directory",
-        "Candidate number",
-        "MS2 database",
-        "Thread number"
-      ),
-      "Value" = c(
-        object@ms1.match.ppm,
-        object@polarity,
-        object@column,
-        object@path,
-        object@candidate.num,
-        object@database,
-        object@threads
-      ),
-      stringsAsFactors = FALSE
-    )
-  }
-)
+getParams2 = function(object){
+  cat(crayon::yellow(
+    "`getParams2()` is deprecated, use `get_parameters_metID()`."
+  ))
+  
+  if (class(object) != "mzIdentifyClass")
+    stop("Only for mzIdentifyClass\n")
+  data.frame(
+    "Parameter" = c(
+      "ms1.match.ppm",
+      "polarity",
+      "column",
+      "path",
+      "candidate.num",
+      "database",
+      "threads"
+    ),
+    "Meaning" = c(
+      "MS1 match tolerance (ppm)",
+      "Polarity",
+      "Column",
+      "Work directory",
+      "Candidate number",
+      "MS2 database",
+      "Thread number"
+    ),
+    "Value" = c(
+      object@ms1.match.ppm,
+      object@polarity,
+      object@column,
+      object@path,
+      object@candidate.num,
+      object@database,
+      object@threads
+    ),
+    stringsAsFactors = FALSE
+  )
+}
+
+
 
 
 

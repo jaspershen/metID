@@ -48,3 +48,9 @@
 ## Version 0.4.1 (20201225)
 --------------
 * Fix small bug in construct_database.
+
+## Version 0.5.0 (20210226)
+--------------
+* Fix small bugs.
+* get_identification_table_all().
+

@@ -18,9 +18,6 @@
 #' @seealso The example and demo data of this function can be found
 #' https://jaspershen.github.io/metID/articles/metID.html
 
-# x =
-# get_identification_table_all(result)
-
 get_identification_table_all =
   function(...,
            candidate.num = 1,

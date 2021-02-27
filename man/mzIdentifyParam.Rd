@@ -7,8 +7,8 @@
 mzIdentifyParam(
   ms1.match.ppm = 25,
   polarity = c("positive", "negative"),
-  column = c("hilic", "rp"),
-  candidate.num = 3,
+  column = c("rp", "hilic"),
+  candidate.num = 1,
   database,
   threads = 3
 )
@@ -32,18 +32,6 @@ A mzIdentifyClass object.
 \description{
 Generate the mzIdentify parameter list.
 \lifecycle{deprecated}
-}
-\examples{
- param1 <-
-mzIdentifyParam(
-  ms1.match.ppm = 15,
-  polarity = "positive",
-  column = "rp",
-  candidate.num = 3,
-  threads = 3, 
-  database = "HMDB.metabolite.data"
-)
-param1
 }
 \seealso{
 The example and demo data of this function can be found

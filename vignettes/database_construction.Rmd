@@ -12,8 +12,12 @@ output:
     toc: no
   pdf_document:
     toc: no
-vignette: "%\\VignetteIndexEntry{Vignette Title} \n%\\VignetteEncoding{UTF-8}\n%\\VignetteEngine{knitr::rmarkdown}
-  \n"
+vignette: >
+  %\VignetteIndexEntry{database_construction}
+  %\VignettePackage{metID}
+  % \VignetteEngine{knitr::rmarkdown}
+  % \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include=FALSE}
@@ -34,17 +38,17 @@ Firstly, please transform your raw standard MS data (positive and negative modes
 
 ## **Data organization**
 
-Secondly, please organize your standard information as a table, and output it in a csv or xlsx format. The format of stanford information can refer to our demo data in `demoData` package. 
+Secondly, please organize your standard information as a table, and output it in a csv or xlsx format. The format of standard information can refer to our demo data in `demoData` package. 
 
-From column 1 to 11, the columns are "Lab.ID", "mz", "RT", "CAS.ID", "HMDB.ID", "KEGG.ID", "Formula", "mz.pos", "mz.neg", "Submitter", respectively. It is OK if you have other information for the standards. As the demo data show, there are other additional information, namely "Family", "Sub.pathway" and "Note".
+From column 1 to 11, the columns are "Lab.ID", "Compound.name", "mz", "RT", "CAS.ID", "HMDB.ID", "KEGG.ID", "Formula", "mz.pos", "mz.neg", "Submitter", respectively. It is OK if you have other information for the standards. As the demo data show, there are other additional information, namely "Family", "Sub.pathway" and "Note".
 
 - mz: Accurate mass of compound.
 
 - RT: Retention time, unit is second.
 
-- mz.pos: Mass to change ratio of compound in positive mode, for example, M+H.
+- mz.pos: Mass to change ratio of compound in positive mode, for example, M+H. You can set it as NA.
 
-- mz.neg: Mass to change ratio of compound in negative mode, for example, M-H.
+- mz.neg: Mass to change ratio of compound in negative mode, for example, M-H. You can set it as NA.
 
 - Submitter: The name of person or organization.
 
@@ -58,6 +62,10 @@ The names of the mzXML files should be like this: `xxx_NCE25.mzXML`.
 
 ## **Run `construct_database()` function**
 
+Here we use the demo data from `demoData` package to show how to use the `construct_database()` function
+to construct database.
+
+We first prepare dataset.
 
 ```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 library(demoData)
@@ -69,6 +77,14 @@ file.copy(
   overwrite = TRUE,
   recursive = TRUE
 )
+new.path <- file.path("./database_construction")
+```
+
+Then there will be a folder named as `database_construction` in your work directory like below figure shows:
+
+![](../man/figures/Screen Shot 2021-02-26 at 9.22.52 PM.png)
+Then we run `construct_database()` function and then we can get the database.
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 new.path <- file.path("./database_construction")
 
 test.database <- construct_database(
@@ -82,7 +98,7 @@ test.database <- construct_database(
   rt = TRUE,
   mz.tol = 15,
   rt.tol = 30,
-  threads = 1
+  threads = 5
 )
 ```
 
@@ -99,34 +115,4 @@ test.database
 
 ## MS1 database
 
-If you do not have MS2 data, please use `construct_database()` function to construct MS1 database. 
-
-
-## **Retention time correction**
-******************************************
-
-The metabolite retention time (RT) may shift in different batches. Therefore, if you spike internal standards into your standards and biological samples, you can correct the RTs in database using the `rtCor4database()` function. 
-
-## **Data preparation**
-
-Firstly, please prepare two internal standard (IS) tables for the database and biological samples. The format of the IS table is shown in the figure below:
-
-![](../man/figures/IS_table.png)
-
-The IS table for the database should be named as "database.is.table.xlsx" and the IS table for experiment should be named as "experiment.is.table.xlsx".
-
-## **Run `rtCor4database()` function**
-
-
-```{r,eval=TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
-test.database2 <- rtCor4database(experiment.is.table = "experiment.is.table.xlsx", 
-                                 database.is.table = "database.is.table.xlsx", 
-                                 database = test.database, 
-                                 path = new.path)
-```
-
-The `database` should be the database (`databaseClass` object) for which you want to correct RTs.
-
-> Note:
-`test.database2` is only a demo database (metIdentifyClass object). We will not use it for the next metabolite identification step.
-
+If you do not have MS2 data, you can also use `construct_database()` function to construct MS1 database. 

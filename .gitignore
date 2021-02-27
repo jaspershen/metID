@@ -47,3 +47,4 @@ example
 metID.Rproj
 
 .Rproj.user
+inst/doc

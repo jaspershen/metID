@@ -14,7 +14,7 @@ A data frame contains all the parameters of this metIdentifiyClass object.
 }
 \description{
 Get parameters from a metIdentifyClass object.
-\lifecycle{maturing}
+\lifecycle{deprecated}
 }
 \examples{
 data("annotate_result", package = "metID")

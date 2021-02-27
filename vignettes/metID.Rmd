@@ -1,5 +1,5 @@
 ---
-title: "Brief instroduction of metID"
+title: "Brief introduction of metID"
 author:
 - name: Xiaotao Shen PhD (https://www.shenxt.info/)
 - affiliation: School of Medicine, Stanford University
@@ -12,8 +12,12 @@ output:
     toc: no
   pdf_document:
     toc: no
-vignette: "%\\VignetteIndexEntry{Vignette Title} \n%\\VignetteEncoding{UTF-8}\n%\\VignetteEngine{knitr::rmarkdown}
-  \n"
+vignette: >
+  %\VignetteIndexEntry{metID}
+  %\VignettePackage{metID}
+  % \VignetteEngine{knitr::rmarkdown}
+  % \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include=FALSE}
@@ -29,7 +33,7 @@ knitr::opts_chunk$set(
 ## **Introduction & Installation**
 ******************************************
 
-*metID* is a R package which can be used for in-hosue MS2 database construction, and metabolite identification based on in-house and public MS1 and MS2 database.
+*metID* is a R package which can be used for in-house (MS2) database construction, and metabolite identification based on in-house and public MS1/MS2 database.
 
 <img src="../man/figures/Figure_1.png" align="middle" alt="" width = "100%"/>
 
@@ -61,10 +65,22 @@ We have provide some public databases and our in-house databases, so if you want
 
 ## **Metabolite identification**
 
-If you want to identify metablite without MS2 spectra, please refer to this article, [Annotate metabolites according to MS1 database using metID](https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS1.html). If you want to identify metabolite with MS2 spectra, please refer to this article, [Annotate metabolites according to MS2 database using metID](https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS2.html). If you want to identify a peak table with mutiple databases, please refer to this article, [Identify peak tables with multiple databases](https://jaspershen.github.io/metID/articles/multiple_databases.html). If you just want to identify single peak, please refer to this article: [Identify single peak with metID](https://jaspershen.github.io/metID/articles/identify_single_peak.html).
+If you want to identify metabolite without MS2 spectra, please refer to this article, [Annotate metabolites according to MS1 database using metID](https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS1.html). 
+
+---
+
+If you want to identify metabolite with MS2 spectra, please refer to this article, [Annotate metabolites according to MS2 database using metID](https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS2.html). 
+
+---
+
+If you want to identify a peak table with multiple databases, please refer to this article, [Identify peak tables with multiple databases](https://jaspershen.github.io/metID/articles/multiple_databases.html). 
+
+---
+
+If you just want to identify single peak, please refer to this article: [Identify single peak with metID](https://jaspershen.github.io/metID/articles/identify_single_peak.html).
 
 
 ## **Other tools**
 
-`metID` package also has some usefull tools, please refer to this article, [Other tools in metID](https://jaspershen.github.io/metID/articles/other_tools.html)
+`metID` package also has some useful tools, please refer to this article, [Other tools in metID](https://jaspershen.github.io/metID/articles/other_tools.html)
 

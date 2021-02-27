@@ -12,8 +12,12 @@ output:
     toc: no
   pdf_document:
     toc: no
-vignette: "%\\VignetteIndexEntry{Vignette Title} \n%\\VignetteEncoding{UTF-8}\n%\\VignetteEngine{knitr::rmarkdown}
-  \n"
+vignette: >
+  %\VignetteIndexEntry{metabolite_annotation_using_MS2}
+  %\VignettePackage{metID}
+  % \VignetteEngine{knitr::rmarkdown}
+  % \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include=FALSE}

@@ -53,8 +53,7 @@
 
 
 <meta property="og:title" content="An S4 class to represent MS1 or MS2 database. — databaseClass-class" />
-<meta property="og:description" content="An S4 class to represent MS1 or MS2 database.
-An S4 class to represent MS1 or MS2 database." />
+<meta property="og:description" content="An S4 class to represent MS1 or MS2 database." />
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png" />
 
 
@@ -97,7 +96,7 @@ An S4 class to represent MS1 or MS2 database." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metID</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">0.4.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">0.9.0</span>
       </span>
     </div>
 
@@ -125,7 +124,10 @@ An S4 class to represent MS1 or MS2 database." />
       <a href="../articles/database_construction.html">Database construction</a>
     </li>
     <li>
-      <a href="../articles/public_databases.html">Public databases for metID</a>
+      <a href="../articles/rt_correction.html">Correct retention times in database according to internal standards</a>
+    </li>
+    <li>
+      <a href="../articles/public_databases.html">Public databases in metID</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Metabolite identification</li>
@@ -211,13 +213,12 @@ An S4 class to represent MS1 or MS2 database." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>An S4 class to represent MS1 or MS2 database.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/construct_database.R'><code>R/construct_database.R</code></a>, <a href='https://github.com/jaspershen/metID/blob/master/R/databaseConstruction.R'><code>R/databaseConstruction.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/function4databaseClass.R'><code>R/function4databaseClass.R</code></a></small>
     <div class="hidden name"><code>databaseClass-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>An S4 class to represent MS1 or MS2 database.</p>
-<p>An S4 class to represent MS1 or MS2 database.</p>
     </div>
 
 
@@ -227,12 +228,6 @@ An S4 class to represent MS1 or MS2 database." />
     
 
 <dl>
-<dt><code>database.info</code></dt><dd><p>Database information.</p></dd>
-
-<dt><code>spectra.info</code></dt><dd><p>Metabolites in database.</p></dd>
-
-<dt><code>spectra.data</code></dt><dd><p>MS2 spectra data.</p></dd>
-
 <dt><code>database.info</code></dt><dd><p>Database information.</p></dd>
 
 <dt><code>spectra.info</code></dt><dd><p>Metabolites in database.</p></dd>

@@ -97,7 +97,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metID</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">0.4.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">0.9.0</span>
       </span>
     </div>
 
@@ -125,7 +125,10 @@
       <a href="../articles/database_construction.html">Database construction</a>
     </li>
     <li>
-      <a href="../articles/public_databases.html">Public databases for metID</a>
+      <a href="../articles/rt_correction.html">Correct retention times in database according to internal standards</a>
+    </li>
+    <li>
+      <a href="../articles/public_databases.html">Public databases in metID</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Metabolite identification</li>
@@ -211,7 +214,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Identify single peak based on database.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/singlePeakIdentification.R'><code>R/singlePeakIdentification.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/single_peak_identification.R'><code>R/single_peak_identification.R</code></a></small>
     <div class="hidden name"><code>identify_single_peak.Rd</code></div>
     </div>
 
@@ -348,40 +351,7 @@ first column is m/z and the second column is the intensity.</p></td>
 <a href='mailto:shenxt1990@163.com'>shenxt1990@163.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>mz</span> <span class='op'>&lt;-</span> <span class='fl'>472.3032</span>
-<span class='va'>rt</span> <span class='op'>&lt;-</span> <span class='fl'>772.906</span>
-<span class='va'>ms2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
-mz <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>81.38455</span>,<span class='fl'>82.19755</span>,<span class='fl'>85.02840</span>,<span class='fl'>86.5934</span>,<span class='fl'>86.98958</span>,<span class='fl'>89.48135</span>,<span class='fl'>90.70250</span>,
-         <span class='fl'>93.03886</span>, <span class='fl'>102.09140</span>, <span class='fl'>103.03903</span>, <span class='fl'>116.01658</span>, <span class='fl'>127.98412</span>, 
-         <span class='fl'>134.06819</span>, <span class='fl'>152.46967</span>, <span class='fl'>162.02180</span>, <span class='fl'>162.05521</span>, <span class='fl'>162.11261</span><span class='op'>)</span>,
-  intensity <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1396.341</span>,<span class='fl'>1488.730</span>,<span class='fl'>15473.604</span>, <span class='fl'>1740.842</span>,<span class='fl'>2158.014</span>,<span class='fl'>1351.686</span>,
-                <span class='fl'>1547.099</span>,<span class='fl'>1325.864</span>,<span class='fl'>22441.047</span>,<span class='fl'>76217.016</span>,<span class='fl'>17809.395</span>,
-                <span class='fl'>1439.743</span>, <span class='fl'>1729.786</span>, <span class='fl'>1543.765</span>, <span class='fl'>2228.743</span>, 
-                <span class='fl'>3508.225</span>, <span class='fl'>529120.000</span><span class='op'>)</span>,
-  stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
-<span class='op'>)</span>
-
-<span class='va'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='st'>"."</span>, <span class='st'>"example"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/files2.html'>dir.create</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='va'>path</span>, showWarnings <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='va'>database</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"ms2_database"</span>, package <span class='op'>=</span> <span class='st'>"metID"</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span><span class='op'>(</span>from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>database</span>, <span class='st'>"msDatabase_rplc0.0.2"</span><span class='op'>)</span>, 
-         to <span class='op'>=</span> <span class='va'>path</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span>, recursive <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-<span class='va'>annotation_result</span> <span class='op'>&lt;-</span> 
-<span class='fu'>identify_single_peak</span><span class='op'>(</span>ms1.mz <span class='op'>=</span> <span class='va'>mz</span>, 
-                    ms1.rt <span class='op'>=</span> <span class='va'>rt</span>, 
-                    ms2 <span class='op'>=</span> <span class='va'>ms2</span>, 
-                    ms1.match.ppm <span class='op'>=</span> <span class='fl'>15</span>, 
-                    rt.match.tol <span class='op'>=</span> <span class='fl'>30</span>,
-                    ms2.match.tol <span class='op'>=</span> <span class='fl'>0.5</span>, 
-                    database <span class='op'>=</span> <span class='st'>"msDatabase_rplc0.0.2"</span>,
-                    path <span class='op'>=</span> <span class='va'>path</span><span class='op'>)</span>
-                    
-<span class='va'>annotation_result</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

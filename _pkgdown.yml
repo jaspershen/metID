@@ -82,7 +82,9 @@ navbar:
       - text: "Database construction"
       - text: Database construction
         href: articles/database_construction.html
-      - text: Public databases for metID
+      - text: Correct retention times in database according to internal standards
+        href: articles/rt_correction.html
+      - text: Public databases in metID
         href: articles/public_databases.html
       - text: -------
       - text: "Metabolite identification"
