@@ -21,9 +21,18 @@
 vignettes/*.html
 vignettes/*.pdf
 vignettes/*.png
-vignettes/database_construction
-vignettes/ms2_identification_demo_data1
 vignettes/*_cache
+vignettes/database_construction
+vignettes/database_construction_cache
+vignettes/example
+vignettes/intermediate_data
+vignettes/metabolite_annotation_using_MS1
+vignettes/metabolite_annotation_using_MS1_cache
+vignettes/ms2_identification_demo_data1
+vignettes/metID_cache
+vignettes/multiple_databases_cache
+vignettes/other_tools_cache
+vignettes/rt_correction_cache
 
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth

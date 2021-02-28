@@ -61,8 +61,6 @@ globalVariables(
     "Lib.mz",
     "Lib.intensity",
     "extenstion",
-    "Identification",
-    ""
-    
+    "Identification"
   )
 )

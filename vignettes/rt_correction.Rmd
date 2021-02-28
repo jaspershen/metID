@@ -13,7 +13,7 @@ output:
   pdf_document:
     toc: no
 vignette: >
-  %\VignetteIndexEntry{database_construction}
+  %\VignetteIndexEntry{rt_correction}
   %\VignettePackage{metID}
   % \VignetteEngine{knitr::rmarkdown}
   % \usepackage[utf8]{inputenc}

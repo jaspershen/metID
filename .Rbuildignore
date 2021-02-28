@@ -10,7 +10,7 @@ pkgdown
 docs
 example
 vignettes
-vignettes/metID_cache
+vignettes/example
 vignettes/metabolite_identification.png
 vignettes/database_construction.png
 vignettes/database_construction
@@ -36,3 +36,4 @@ man/figures
 .Rapp.history
 manuscript
 ^\.github$
+^\.git$
