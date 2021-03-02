@@ -80,6 +80,7 @@ navbar:
       - text: Brief introduction
         href: articles/metID.html
       - text: "Database construction"
+      - text: "Database construction"
       - text: Database construction
         href: articles/database_construction.html
       - text: Correct retention times in database according to internal standards
