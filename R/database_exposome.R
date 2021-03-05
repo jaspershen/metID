@@ -8,20 +8,17 @@
 # 
 # load("msDatabase6.6.6")
 # 
-# 
-# msDatabase6.6.6@spectra.data
-# 
 # exposureDatabase =
 #   msDatabase6.6.6
-# 
 # 
 # exposureDatabase@database.info$Source = "South China Agricultural University"
 # 
 # save(exposureDatabase, file = "exposureDatabase")
 # 
-# 
 # tinyTools::ms2_plot(exposureDatabase@spectra.data$Spectra.positive$CMP_6$NCE10,
 #                     exposureDatabase@spectra.data$Spectra.positive$CMP_6$NCE20)
+# 
+# metID::read_mgf("C1_1.mgf")
 # 
 # result =
 #   metID::identify_metabolites(

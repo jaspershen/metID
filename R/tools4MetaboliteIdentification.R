@@ -906,10 +906,9 @@ plotMS2match = function(matched.info,
 #' @return Return ms2 data. This is a list.
 #' @export
 
-
 readMGF = function(file){
   cat(crayon::yellow(
-    "`readMGF()` is deprecated, use `read_mgf()`."
+    "`readMGF()` is deprecated, use `read_mgf()`.\n"
   ))  
   pbapply::pboptions(style = 1)
   cat(crayon::green("Reading MS2 data...\n"))
@@ -1118,7 +1117,7 @@ read_mgf = function(file){
 
 #----------------------------------------------------------------------------
 
-ListMGF = function(ListMGF){
+ListMGF = function(file){
   mgf.data <- readLines(file)
   nl.rec.new <- 1
   idx.rec <- 1
