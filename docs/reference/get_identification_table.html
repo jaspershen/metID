@@ -121,6 +121,7 @@
       <a href="../articles/metID.html">Brief introduction</a>
     </li>
     <li class="dropdown-header">Database construction</li>
+    <li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
     </li>
@@ -220,7 +221,7 @@
 
     <div class="ref-description">
     <p>Get identification table from a metIdentifyClass object.
-<a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
+<a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
     </div>
 
     <pre class="usage"><span class='fu'>get_identification_table</span><span class='op'>(</span><span class='va'>...</span>, candidate.num <span class='op'>=</span> <span class='fl'>3</span>, type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"old"</span>, <span class='st'>"new"</span><span class='op'>)</span><span class='op'>)</span></pre>
@@ -259,39 +260,39 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
 <span class='va'>annotation_table</span> <span class='op'>&lt;-</span>
 <span class='fu'>get_identification_table</span><span class='op'>(</span><span class='va'>annotate_result</span>, candidate.num <span class='op'>=</span> <span class='fl'>3</span>, type <span class='op'>=</span> <span class='st'>"old"</span><span class='op'>)</span>
 <span class='va'>annotation_table</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 100 x 6</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 100 x 6</span><span>
 #&gt;    name      mz    rt MS2.spectra.name   Candidate.number Identification        
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                 
-#&gt; </span><span style='color: #555555;'> 1</span><span> pRPLC…  472. 773.  </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
-#&gt; </span><span style='color: #555555;'> 2</span><span> pRPLC…  466. 747.  </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
-#&gt; </span><span style='color: #555555;'> 3</span><span> pRPLC…  162.  33.7 mz162.11244215767…                1 Compound.name:L-Carni…
-#&gt; </span><span style='color: #555555;'> 4</span><span> pRPLC…  181.  36.4 </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
-#&gt; </span><span style='color: #555555;'> 5</span><span> pRPLC…  230. 158.  </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
-#&gt; </span><span style='color: #555555;'> 6</span><span> pRPLC…  181. 228.  mz181.07205030497…                1 Compound.name:Theophy…
-#&gt; </span><span style='color: #555555;'> 7</span><span> pRPLC…  289. 286.  mz289.22726440429…                0 </span><span style='color: #BB0000;'>NA</span><span>                    
-#&gt; </span><span style='color: #555555;'> 8</span><span> pRPLC…  181. 201.  mz181.07205067309…                3 Compound.name:Theophy…
-#&gt; </span><span style='color: #555555;'> 9</span><span> pRPLC…  209.  57.4 mz209.09215507704…                1 Compound.name:L-KYNUR…
-#&gt; </span><span style='color: #555555;'>10</span><span> pRPLC…  283.  40.9 </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
-#&gt; </span><span style='color: #555555;'># … with 90 more rows</span><span></div><div class='input'><span class='va'>annotation_table</span> <span class='op'>&lt;-</span>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                 
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> pRPLC…  472. 773.  </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> pRPLC…  466. 747.  </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> pRPLC…  162.  33.7 mz162.11244215767…                1 Compound.name:L-Carni…
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> pRPLC…  181.  36.4 </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> pRPLC…  230. 158.  </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> pRPLC…  181. 228.  mz181.07205030497…                1 Compound.name:Theophy…
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> pRPLC…  289. 286.  mz289.22726440429…                0 </span><span style='color: #BB0000;'>NA</span><span>                    
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> pRPLC…  181. 201.  mz181.07205067309…                3 Compound.name:Theophy…
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> pRPLC…  209.  57.4 mz209.09215507704…                1 Compound.name:L-KYNUR…
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> pRPLC…  283.  40.9 </span><span style='color: #BB0000;'>NA</span><span>                                0 </span><span style='color: #BB0000;'>NA</span><span>                    
+#&gt; </span><span style='color: #949494;'># … with 90 more rows</span><span></div><div class='input'><span class='va'>annotation_table</span> <span class='op'>&lt;-</span>
 <span class='fu'>get_identification_table</span><span class='op'>(</span><span class='va'>annotate_result</span>, candidate.num <span class='op'>=</span> <span class='fl'>3</span>, type <span class='op'>=</span> <span class='st'>"new"</span><span class='op'>)</span>
 <span class='va'>annotation_table</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 115 x 19</span><span>
-#&gt;    name     mz    rt MS2.spectra.name Candidate.number Compound.name CAS.ID
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
-#&gt; </span><span style='color: #555555;'> 1</span><span> pRPL…  472. 773.  </span><span style='color: #BB0000;'>NA</span><span>                             </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>    
-#&gt; </span><span style='color: #555555;'> 2</span><span> pRPL…  466. 747.  </span><span style='color: #BB0000;'>NA</span><span>                             </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>    
-#&gt; </span><span style='color: #555555;'> 3</span><span> pRPL…  162.  33.7 mz162.112442157…                1 L-Carnitine   541-1…
-#&gt; </span><span style='color: #555555;'> 4</span><span> pRPL…  181.  36.4 </span><span style='color: #BB0000;'>NA</span><span>                             </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>    
-#&gt; </span><span style='color: #555555;'> 5</span><span> pRPL…  230. 158.  </span><span style='color: #BB0000;'>NA</span><span>                             </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>    
-#&gt; </span><span style='color: #555555;'> 6</span><span> pRPL…  181. 228.  mz181.072050304…                1 Theophylline  </span><span style='color: #BB0000;'>NA</span><span>    
-#&gt; </span><span style='color: #555555;'> 7</span><span> pRPL…  289. 286.  </span><span style='color: #BB0000;'>NA</span><span>                             </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>    
-#&gt; </span><span style='color: #555555;'> 8</span><span> pRPL…  181. 201.  mz181.072050673…                3 Theophylline  611-5…
-#&gt; </span><span style='color: #555555;'> 9</span><span> pRPL…   </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #BB0000;'>NA</span><span>   mz181.072050673…                3 Paraxanthine  611-5…
-#&gt; </span><span style='color: #555555;'>10</span><span> pRPL…   </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #BB0000;'>NA</span><span>   mz181.072050673…                3 Theophylline  </span><span style='color: #BB0000;'>NA</span><span>    
-#&gt; </span><span style='color: #555555;'># … with 105 more rows, and 12 more variables: HMDB.ID </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, KEGG.ID </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   Lab.ID </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, Adduct </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, mz.error </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, mz.match.score </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   RT.error </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, RT.match.score </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, CE </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, SS </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   Total.score </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, Database </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 115 x 19</span><span>
+#&gt;    name       mz    rt MS2.spectra.name    Candidate.number Compound.name CAS.ID
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> pRPLC_…  472. 773.  </span><span style='color: #BB0000;'>NA</span><span>                                </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> pRPLC_…  466. 747.  </span><span style='color: #BB0000;'>NA</span><span>                                </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> pRPLC_…  162.  33.7 mz162.112442157672…                1 L-Carnitine   541-1…
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> pRPLC_…  181.  36.4 </span><span style='color: #BB0000;'>NA</span><span>                                </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> pRPLC_…  230. 158.  </span><span style='color: #BB0000;'>NA</span><span>                                </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> pRPLC_…  181. 228.  mz181.072050304971…                1 Theophylline  </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> pRPLC_…  289. 286.  </span><span style='color: #BB0000;'>NA</span><span>                                </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>            </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> pRPLC_…  181. 201.  mz181.072050673093…                3 Theophylline  611-5…
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> pRPLC_…   </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #BB0000;'>NA</span><span>   mz181.072050673093…                3 Paraxanthine  611-5…
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> pRPLC_…   </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #BB0000;'>NA</span><span>   mz181.072050673093…                3 Theophylline  </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #949494;'># … with 105 more rows, and 12 more variables: HMDB.ID &lt;chr&gt;, KEGG.ID &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   Lab.ID &lt;chr&gt;, Adduct &lt;chr&gt;, mz.error &lt;dbl&gt;, mz.match.score &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   RT.error &lt;dbl&gt;, RT.match.score &lt;dbl&gt;, CE &lt;chr&gt;, SS &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   Total.score &lt;dbl&gt;, Database &lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -121,6 +121,7 @@
       <a href="../articles/metID.html">Brief introduction</a>
     </li>
     <li class="dropdown-header">Database construction</li>
+    <li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
     </li>
@@ -220,7 +221,7 @@
 
     <div class="ref-description">
     <p>Get parameters from a metIdentifyClass object.
-<img src='figures/lifecycle-deprecated.svg' alt='Deprecated lifecycle' /></p>
+<a href='https://lifecycle.r-lib.org/articles/stages.html#deprecated'><img src='figures/lifecycle-deprecated.svg' alt='[Deprecated]' /></a></p>
     </div>
 
     <pre class="usage"><span class='fu'>get_parameters</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span></pre>
@@ -245,26 +246,26 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"annotate_result"</span>, package <span class='op'>=</span> <span class='st'>"metID"</span><span class='op'>)</span>
 <span class='fu'>get_parameters</span><span class='op'>(</span><span class='va'>annotate_result</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #BBBB00;'>`get_parameters()` is deprecated, use `get_parameters_metID()`.</span><span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 17 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #BBBB00;'>`get_parameters()` is deprecated, use `get_parameters_metID()`.</span><span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 17 x 3</span><span>
 #&gt;    Parameter          Meaning                                   Value           
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; </span><span style='color: #555555;'> 1</span><span> ms1.ms2.match.mz.… MS1 features &amp; MS spectra matching mz to… 25              
-#&gt; </span><span style='color: #555555;'> 2</span><span> ms1.ms2.match.rt.… MS1 features &amp; MS spectra matching RT to… 10              
-#&gt; </span><span style='color: #555555;'> 3</span><span> ms1.match.ppm      MS1 match tolerance (ppm)                 15              
-#&gt; </span><span style='color: #555555;'> 4</span><span> ms2.match.ppm      MS2 fragment match tolerance (ppm)        30              
-#&gt; </span><span style='color: #555555;'> 5</span><span> ms2.match.tol      MS2 match tolerance                       0.5             
-#&gt; </span><span style='color: #555555;'> 6</span><span> rt.match.tol       RT match tolerance (s)                    30              
-#&gt; </span><span style='color: #555555;'> 7</span><span> polarity           Polarity                                  positive        
-#&gt; </span><span style='color: #555555;'> 8</span><span> ce                 Collision energy                          all             
-#&gt; </span><span style='color: #555555;'> 9</span><span> column             Column                                    rp              
-#&gt; </span><span style='color: #555555;'>10</span><span> ms1.match.weight   MS1 match weight                          0.25            
-#&gt; </span><span style='color: #555555;'>11</span><span> rt.match.weight    RT match weight                           0.25            
-#&gt; </span><span style='color: #555555;'>12</span><span> ms2.match.weight   MS2 match weight                          0.5             
-#&gt; </span><span style='color: #555555;'>13</span><span> path               Work directory                            ./example       
-#&gt; </span><span style='color: #555555;'>14</span><span> total.score.tol    Total score tolerance                     0.5             
-#&gt; </span><span style='color: #555555;'>15</span><span> candidate.num      Candidate number                          3               
-#&gt; </span><span style='color: #555555;'>16</span><span> database           MS2 database                              msDatabase_rplc…
-#&gt; </span><span style='color: #555555;'>17</span><span> threads            Thread number                             2               </div></span></pre>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> ms1.ms2.match.mz.… MS1 features &amp; MS spectra matching mz to… 25              
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> ms1.ms2.match.rt.… MS1 features &amp; MS spectra matching RT to… 10              
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> ms1.match.ppm      MS1 match tolerance (ppm)                 15              
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> ms2.match.ppm      MS2 fragment match tolerance (ppm)        30              
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> ms2.match.tol      MS2 match tolerance                       0.5             
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> rt.match.tol       RT match tolerance (s)                    30              
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> polarity           Polarity                                  positive        
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> ce                 Collision energy                          all             
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> column             Column                                    rp              
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> ms1.match.weight   MS1 match weight                          0.25            
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> rt.match.weight    RT match weight                           0.25            
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> ms2.match.weight   MS2 match weight                          0.5             
+#&gt; </span><span style='color: #BCBCBC;'>13</span><span> path               Work directory                            ./example       
+#&gt; </span><span style='color: #BCBCBC;'>14</span><span> total.score.tol    Total score tolerance                     0.5             
+#&gt; </span><span style='color: #BCBCBC;'>15</span><span> candidate.num      Candidate number                          3               
+#&gt; </span><span style='color: #BCBCBC;'>16</span><span> database           MS2 database                              msDatabase_rplc…
+#&gt; </span><span style='color: #BCBCBC;'>17</span><span> threads            Thread number                             2               </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

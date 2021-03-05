@@ -121,6 +121,7 @@
       <a href="../articles/metID.html">Brief introduction</a>
     </li>
     <li class="dropdown-header">Database construction</li>
+    <li class="dropdown-header">Database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
     </li>
@@ -220,7 +221,7 @@
 
     <div class="ref-description">
     <p>Get identification information from a metIdentifyClass object.
-<a href='https://www.tidyverse.org/lifecycle/#maturing'><img src='figures/lifecycle-maturing.svg' alt='Maturing lifecycle'></a></p>
+<a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
     </div>
 
     <pre class="usage"><span class='fu'>get_iden_info</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>which.peak</span>, <span class='va'>database</span><span class='op'>)</span></pre>
@@ -259,14 +260,14 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"msDatabase_hilic0.0.2"</span>, package <span class='op'>=</span> <span class='st'>"metID"</span><span class='op'>)</span>
 <span class='va'>peak_name</span> <span class='op'>&lt;-</span> <span class='fu'><a href='which_has_identification.html'>which_has_identification</a></span><span class='op'>(</span><span class='va'>annotate_result</span><span class='op'>)</span>
 <span class='fu'>get_iden_info</span><span class='op'>(</span><span class='va'>annotate_result</span>, <span class='va'>peak_name</span><span class='op'>[</span><span class='fl'>1</span>,<span class='fl'>1</span><span class='op'>]</span>, database <span class='op'>=</span> <span class='va'>msDatabase_rplc0.0.2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 22</span><span>
-#&gt;   Compound.name CAS.ID HMDB.ID KEGG.ID Lab.ID Adduct mz.error mz.match.score
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> L-Carnitine   541-1… HMDB00… C00318  RPLC_… (M+H)+     1.67          0.994
-#&gt; </span><span style='color: #555555;'># … with 14 more variables: RT.error </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, RT.match.score </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, CE </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   SS </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, Total.score </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, mz </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, RT </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, Formula </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   mz.pos </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, mz.neg </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, Submitter </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, Family </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   Sub.pathway </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, Note </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 22</span><span>
+#&gt;   Compound.name CAS.ID   HMDB.ID  KEGG.ID Lab.ID  Adduct mz.error mz.match.score
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> L-Carnitine   541-15-1 HMDB000… C00318  RPLC_4… (M+H)+     1.67          0.994
+#&gt; </span><span style='color: #949494;'># … with 14 more variables: RT.error &lt;dbl&gt;, RT.match.score &lt;dbl&gt;, CE &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   SS &lt;dbl&gt;, Total.score &lt;dbl&gt;, mz &lt;chr&gt;, RT &lt;dbl&gt;, Formula &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   mz.pos &lt;dbl&gt;, mz.neg &lt;dbl&gt;, Submitter &lt;chr&gt;, Family &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   Sub.pathway &lt;chr&gt;, Note &lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
