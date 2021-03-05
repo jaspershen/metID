@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • metID</title>
+<title>read_mgf — read_mgf • metID</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,7 +52,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="read_mgf — read_mgf" />
+<meta property="og:description" content="Read MGF data.
+" />
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png" />
 
 
@@ -82,7 +84,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -210,231 +212,38 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>read_mgf</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/tools4MetaboliteIdentification.R'><code>R/tools4MetaboliteIdentification.R</code></a></small>
+    <div class="hidden name"><code>read_mgf.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Read MGF data.
+<a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a></p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>read_mgf</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-database-construction" class="hasAnchor"><a href="#section-database-construction" class="anchor"></a>Database construction</h2>
-          <p class="section-desc"><p>Construct in-house or public MS2 spectra database.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="databaseConstruction.html">databaseConstruction()</a></code> </p>
-        </td>
-        <td><p>Construct in-house or public MS2 database for metID.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_ms2_spectrum.html">get_ms2_spectrum()</a></code> </p>
-        </td>
-        <td><p>Get MS2 spectra of peaks from databaseClass object</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-metabolite-identification" class="hasAnchor"><a href="#section-metabolite-identification" class="anchor"></a>Metabolite identification</h2>
-          <p class="section-desc"><p>Metabolite identification based on MS1 and MS2 databases.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="which_has_identification.html">which_has_identification()</a></code> </p>
-        </td>
-        <td><p>Get the peak names which have identifications</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="trans_to_new_style.html">trans_to_new_style()</a></code> </p>
-        </td>
-        <td><p>Transform old style identification table to new style</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ms2plot.html">ms2plot()</a></code> </p>
-        </td>
-        <td><p>Get MS2 match plots from a metIdentifyClass object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="identify_single_peak.html">identify_single_peak()</a></code> </p>
-        </td>
-        <td><p>Identify single peak based on database.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="identify_metabolites_params.html">identify_metabolites_params()</a></code> </p>
-        </td>
-        <td><p>Generate the parameter list for identify_metabolites function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="identify_metabolites.html">identify_metabolites()</a></code> </p>
-        </td>
-        <td><p>Identify metabolites based on MS1 or MS/MS database</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_parameters.html">get_parameters()</a></code> </p>
-        </td>
-        <td><p>Get parameters from a metIdentifyClass object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_ms2_spectrum_from_object.html">get_ms2_spectrum_from_object()</a></code> </p>
-        </td>
-        <td><p>Get spectra of peaks from metIdentifyClass object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_identification_table.html">get_identification_table()</a></code> </p>
-        </td>
-        <td><p>Get identification table from a metIdentifyClass object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_identification_table_all.html">get_identification_table_all()</a></code> </p>
-        </td>
-        <td><p>get_identification_table_all</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_iden_info.html">get_iden_info()</a></code> </p>
-        </td>
-        <td><p>Get identification information from a metIdentifyClass object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="filter_identification.html">filter_identification()</a></code> </p>
-        </td>
-        <td><p>Filter identifications according to m/z error, RT error, MS similarity and total score</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
-          <p class="section-desc"><p>Some data embed in metID</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="hilic.pos.html">hilic.pos</a></code> </p>
-        </td>
-        <td><p>HILIC positive mode adduct table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hilic.neg.html">hilic.neg</a></code> </p>
-        </td>
-        <td><p>HILIC negative mode adduct table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rp.pos.html">rp.pos</a></code> </p>
-        </td>
-        <td><p>Reverse phase positive mode adduct table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rp.neg.html">rp.neg</a></code> </p>
-        </td>
-        <td><p>Reverse phase negative mode adduct table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="msDatabase_rplc0.0.2.html">msDatabase_rplc0.0.2</a></code> </p>
-        </td>
-        <td><p>Michael Snyder lab RPLC database</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="msDatabase_hilic0.0.2.html">msDatabase_hilic0.0.2</a></code> </p>
-        </td>
-        <td><p>Michael Snyder lab RPLC database</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="annotate_result.html">annotate_result</a></code> </p>
-        </td>
-        <td><p>A metIdentifyClass object.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-other-functions" class="hasAnchor"><a href="#section-other-functions" class="anchor"></a>Other functions</h2>
-          <p class="section-desc"><p>Other usefull functions in metID</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="readMGF.html">readMGF()</a></code> </p>
-        </td>
-        <td><p>readMGF</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_mgf.html">read_mgf()</a></code> </p>
-        </td>
-        <td><p>read_mgf</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="readMSP.html">readMSP()</a></code> </p>
-        </td>
-        <td><p>readMSP</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="readMZXML.html">readMZXML()</a></code> </p>
-        </td>
-        <td><p>readMZXML</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="metID.html">metID()</a></code> </p>
-        </td>
-        <td><p>Show the base information of metID pacakge</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>The vector of names of ms2 files. MS2 file must be mgf.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Return ms2 data. This is a list.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Xiaotao Shen
+<a href='mailto:shenxt1990@163.com'>shenxt1990@163.com</a></p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

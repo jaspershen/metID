@@ -62,6 +62,7 @@ reference:
     desc: Other usefull functions in metID
     contents:
     - readMGF
+    - read_mgf
     - readMSP
     - readMZXML
     - metID

@@ -11,7 +11,7 @@
 # 
 # msDatabase6.6.6@spectra.data
 # 
-# exposureDatabase = 
+# exposureDatabase =
 #   msDatabase6.6.6
 # 
 # 

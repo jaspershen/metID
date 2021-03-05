@@ -147,7 +147,7 @@ identify_metabolite_all = function(ms1.data,
         if (temp.ms2.type == "msp") {
           temp.ms2.data <- readMSP(file = file.path(old.path, temp.ms2.data))
         } else{
-          temp.ms2.data <- readMGF(file = file.path(old.path, temp.ms2.data))
+          temp.ms2.data <- read_mgf(file = file.path(old.path, temp.ms2.data))
         }
         temp.ms2.data
       })

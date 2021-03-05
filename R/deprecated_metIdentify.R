@@ -249,7 +249,7 @@ metIdentify = function(
         if (temp.ms2.type == "msp") {
           temp.ms2.data <- readMSP(file = file.path(path, temp.ms2.data))
         } else{
-          temp.ms2.data <- readMGF(file = file.path(path, temp.ms2.data))
+          temp.ms2.data <- read_mgf(file = file.path(path, temp.ms2.data))
         }
         temp.ms2.data
       })
