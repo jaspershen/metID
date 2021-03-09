@@ -121,7 +121,7 @@
       <a href="../articles/metID.html">Brief introduction</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Database construction</li>
+    <li class="dropdown-header">In-house database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
     </li>
@@ -176,6 +176,9 @@
   <a href="../articles/contact_us.html">Contact us</a>
 </li>
 <li>
+  <a href="../articles/public_databases.html">Public databases</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -224,7 +227,7 @@
 <a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>readMSP</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>readMSP</span><span class='op'>(</span><span class='va'>file</span>, silence.deprecated <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -232,6 +235,10 @@
     <tr>
       <th>file</th>
       <td><p>The vector of names of ms2 files. MS2 file must be msp format.</p></td>
+    </tr>
+    <tr>
+      <th>silence.deprecated</th>
+      <td><p>Silenc the deprecated information or not.</p></td>
     </tr>
     </table>
 

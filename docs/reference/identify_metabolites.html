@@ -121,7 +121,7 @@
       <a href="../articles/metID.html">Brief introduction</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Database construction</li>
+    <li class="dropdown-header">In-house database construction</li>
     <li>
       <a href="../articles/database_construction.html">Database construction</a>
     </li>
@@ -174,6 +174,9 @@
 </li>
 <li>
   <a href="../articles/contact_us.html">Contact us</a>
+</li>
+<li>
+  <a href="../articles/public_databases.html">Public databases</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -368,14 +371,14 @@ https://jaspershen.github.io/metID/articles/metID.html</p></div>
 
 <span class='co'>##get MS1 peak table from metID</span>
 <span class='va'>ms1_peak</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"ms1_peak"</span>, package <span class='op'>=</span> <span class='st'>"metID"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span><span class='op'>(</span>from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>ms1_peak</span>, <span class='st'>"ms1.peak.table.csv"</span><span class='op'>)</span>, 
+<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span><span class='op'>(</span>from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>ms1_peak</span>, <span class='st'>"ms1.peak.table.csv"</span><span class='op'>)</span>,
           to <span class='op'>=</span> <span class='va'>path</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span>, recursive <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='va'>ms2_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"ms2_data"</span>, package <span class='op'>=</span> <span class='st'>"metID"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span><span class='op'>(</span>from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>ms2_data</span>, <span class='st'>"QC1_MSMS_NCE25.mgf"</span><span class='op'>)</span>, 
+<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span><span class='op'>(</span>from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>ms2_data</span>, <span class='st'>"QC1_MSMS_NCE25.mgf"</span><span class='op'>)</span>,
           to <span class='op'>=</span> <span class='va'>path</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span>, recursive <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='va'>database</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"ms2_database"</span>, package <span class='op'>=</span> <span class='st'>"metID"</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span><span class='op'>(</span>from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>database</span>, <span class='st'>"msDatabase_rplc0.0.2"</span><span class='op'>)</span>, 
+<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.copy</a></span><span class='op'>(</span>from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='va'>database</span>, <span class='st'>"msDatabase_rplc0.0.2"</span><span class='op'>)</span>,
           to <span class='op'>=</span> <span class='va'>path</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span>, recursive <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='op'>}</span>

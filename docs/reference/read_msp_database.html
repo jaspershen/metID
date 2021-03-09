@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Construct in-house or public MS2 database for metID. — databaseConstruction • metID</title>
+<title>read_msp_database — read_msp_database • metID</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,8 +52,9 @@
 
 
 
-<meta property="og:title" content="Construct in-house or public MS2 database for metID. — databaseConstruction" />
-<meta property="og:description" content="Construct MS2 spectra database according to mzXML data and compound information table (csv format)." />
+<meta property="og:title" content="read_msp_database — read_msp_database" />
+<meta property="og:description" content="Read MSP data for database.
+" />
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png" />
 
 
@@ -216,87 +217,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Construct in-house or public MS2 database for metID.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/deprecated_construct_database.R'><code>R/deprecated_construct_database.R</code></a></small>
-    <div class="hidden name"><code>databaseConstruction.Rd</code></div>
+    <h1>read_msp_database</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/tools4MetaboliteIdentification.R'><code>R/tools4MetaboliteIdentification.R</code></a></small>
+    <div class="hidden name"><code>read_msp_database.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Construct MS2 spectra database according to mzXML data and compound information table (csv format).</p>
+    <p>Read MSP data for database.
+<a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>databaseConstruction</span><span class='op'>(</span>
-  path <span class='op'>=</span> <span class='st'>"."</span>,
-  version <span class='op'>=</span> <span class='st'>"0.0.1"</span>,
-  metabolite.info.name <span class='op'>=</span> <span class='st'>"metabolite.info.csv"</span>,
-  source <span class='op'>=</span> <span class='st'>"Michael Snyder Lab"</span>,
-  link <span class='op'>=</span> <span class='st'>"http://snyderlab.stanford.edu/"</span>,
-  creater <span class='op'>=</span> <span class='st'>"Xiaotao Shen"</span>,
-  email <span class='op'>=</span> <span class='st'>"shenxt1990@163.com"</span>,
-  rt <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  mz.tol <span class='op'>=</span> <span class='fl'>15</span>,
-  rt.tol <span class='op'>=</span> <span class='fl'>30</span>,
-  threads <span class='op'>=</span> <span class='fl'>3</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>read_msp_database</span><span class='op'>(</span><span class='va'>file</span>, threads <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>path</th>
-      <td><p>Work directory.</p></td>
-    </tr>
-    <tr>
-      <th>version</th>
-      <td><p>The version of you database. Default is 0.0.1.</p></td>
-    </tr>
-    <tr>
-      <th>metabolite.info.name</th>
-      <td><p>The metabolite information table name, it must be csv format.
-The demo data can be got from the `demoData` package.
-Please see https://jaspershen.github.io/metID/articles/metID.html</p></td>
-    </tr>
-    <tr>
-      <th>source</th>
-      <td><p>The source of your database.</p></td>
-    </tr>
-    <tr>
-      <th>link</th>
-      <td><p>Website link of the source.</p></td>
-    </tr>
-    <tr>
-      <th>creater</th>
-      <td><p>Creater name. For example, Xiaotao Shen.</p></td>
-    </tr>
-    <tr>
-      <th>email</th>
-      <td><p>email address.</p></td>
-    </tr>
-    <tr>
-      <th>rt</th>
-      <td><p>Do the metabolites have RT information or not?. If not, set it as FALSE.</p></td>
-    </tr>
-    <tr>
-      <th>mz.tol</th>
-      <td><p>m/z tolerance for the match between metabolites and precursor m/z of MS2 spectra.</p></td>
-    </tr>
-    <tr>
-      <th>rt.tol</th>
-      <td><p>RT tolerance for the match between metabolites and precursor m/z of MS2 spectra.</p></td>
+      <th>file</th>
+      <td><p>The vector of names of ms2 files. MS2 file must be msp format.</p></td>
     </tr>
     <tr>
       <th>threads</th>
-      <td><p>The number of threads</p></td>
+      <td><p>threads</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A databaseClass object.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>The example and demo data of this function can be found
-https://jaspershen.github.io/metID/articles/metID.html</p></div>
+    <p>Return ms2 data. This is a list.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Xiaotao Shen
