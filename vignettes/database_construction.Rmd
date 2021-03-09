@@ -111,7 +111,14 @@ test.database
 ```
 
 > Note:
-`test.database` is only a demo database (metIdentifyClass object). We will don't use it for next metabolite identification.
+`test.database` is only a demo database (metIdentifyClass object). We will don't use it for next metabolite identification. Then please save this database in you local folder, please note that the saved file name and database name must be same. For example:
+
+```{r,eval = FALSE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+save(test.database, file = "test.database")
+```
+
+> If you save the `test.database` as a different name, it will be a error when you use it.
+
 
 ## MS1 database
 

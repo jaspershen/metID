@@ -80,7 +80,7 @@ navbar:
       - text: "Brief introduction"
       - text: Brief introduction
         href: articles/metID.html
-      - text: "Database construction"
+      - text: -------
       - text: "Database construction"
       - text: Database construction
         href: articles/database_construction.html

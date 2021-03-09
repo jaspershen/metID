@@ -18,13 +18,15 @@
 # tinyTools::ms2_plot(exposureDatabase@spectra.data$Spectra.positive$CMP_6$NCE10,
 #                     exposureDatabase@spectra.data$Spectra.positive$CMP_6$NCE20)
 # 
+# temp = 
 # metID::read_mgf("C1_1.mgf")
 # 
 # result =
 #   metID::identify_metabolites(
 #     ms1.data = "ms1.peak.table.csv",
 #     ms2.data = dir(".", "mgf"),
-#     database = "exposureDatabase"
+#     database = "exposureDatabase", 
+#     rt.match.tol = 10000000
 #   )
 # 
 # 

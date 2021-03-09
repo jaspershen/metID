@@ -46,8 +46,8 @@ If you have any questions about `metID`, please don’t hesitate to email me (<s
 <i class="fa fa-twitter"></i>
 [Twitter](https://twitter.com/JasperShen1990)
 
-<i class="fa fa-map-marker-alt"></i> [M339, Alway Buidling, Cooper Lane,
-Palo Alto, CA 94304] (https://www.google.com/maps/place/Alway+Building/@37.4322345,-122.1770883,17z/data=!3m1!4b1!4m5!3m4!1s0x808fa4d335c3be37:0x9057931f3b312c29!8m2!3d37.4322345!4d-122.1748996)
+<i class="fa fa-map-marker-alt"></i> 
+[M339, Alway Buidling, Cooper Lane, Palo Alto, CA 94304](https://www.google.com/maps/place/Alway+Building/@37.4322345,-122.1770883,17z/data=!3m1!4b1!4m5!3m4!1s0x808fa4d335c3be37:0x9057931f3b312c29!8m2!3d37.4322345!4d-122.1748996)
 
 ## Citation
 
