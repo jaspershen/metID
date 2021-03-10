@@ -122,9 +122,6 @@
   </ul>
 </li>
 <li>
-  <a href="../articles/contact_us.html">Contact us</a>
-</li>
-<li>
   <a href="../articles/public_databases.html">Public databases</a>
 </li>
 <li>
@@ -213,21 +210,7 @@
 <p>First we load the MS1 peak and database from <code>metID</code> package and then put them in a <code>example</code> folder.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jaspershen/metID">metID</a></span><span class="op">)</span>
-<span class="co">#&gt; metID,</span>
-<span class="co">#&gt; More information can be found at https://jaspershen.github.io/metID/</span>
-<span class="co">#&gt; If you use metID in you publication, please cite this publication:</span>
-<span class="co">#&gt; Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics.</span>
-<span class="co">#&gt; Authors: Xiaotao Shen (shenxt1990@163.com)</span>
-<span class="co">#&gt; Maintainer: Xiaotao Shen.</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.3     ✓ purrr   0.3.4</span>
-<span class="co">#&gt; ✓ tibble  3.0.4     ✓ dplyr   1.0.2</span>
-<span class="co">#&gt; ✓ tidyr   1.1.2     ✓ stringr 1.4.0</span>
-<span class="co">#&gt; ✓ readr   1.4.0     ✓ forcats 0.5.0</span>
-<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
-<span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
-<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">##create a folder named as example</span>
 <span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"."</span>, <span class="st">"example"</span><span class="op">)</span>

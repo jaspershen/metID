@@ -21,7 +21,7 @@
 #' @importFrom ggplot2 element_line element_text
 #' @importFrom MSnbase readMSData
 #' @importFrom ProtGenerics spectra
-#' @importFrom tinyTools ms2Match
+#' @importFrom tinyTools ms2Match get_os
 #' @importFrom stats lm loess predict
 #' @importFrom plotly ggplotly
 #' @import lifecycle

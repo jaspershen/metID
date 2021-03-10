@@ -61,7 +61,7 @@ The in-house database in our lab were provided, with RPLC and HILIC mode RT info
 
 First we load the MS1 peak, MS2 data and database from `metID` package and then put them in a `example` folder.
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=FALSE}
 library(metID)
 library(tidyverse)
 ```
@@ -105,7 +105,7 @@ annotate_result3 <-
                        path = path, 
                        candidate.num = 3,
                        database = "msDatabase_rplc0.0.2", 
-                       threads = 1)
+                       threads = 3)
 ```
 
 > Note: You can also provide more than one MS2 data. Just provide them to `ms2.data` as a vector.
@@ -213,7 +213,7 @@ ms2plot(
   database = msDatabase_rplc0.0.2,
   which.peak = "all",
   path = file.path(path, "inhouse"), 
-  threads = 1
+  threads = 3
 )
 ```
 

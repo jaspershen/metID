@@ -65,15 +65,21 @@ metIdentification = function(
   rm(list = c("database"))
   cat("\n")
   cat(crayon::green('Identifing metabolites with MS/MS database...\n'))
+  
+  if(tinyTools::get_os() == "windows"){
+    bpparam = BiocParallel::SnowParam(workers = threads, 
+                                      progressbar = TRUE)
+  }else{
+    bpparam = BiocParallel::MulticoreParam(workers = threads, 
+                                           progressbar = TRUE)
+  }
+  
   identification.result <-
     suppressMessages(
       BiocParallel::bplapply(
         1:nrow(ms1.info),
         FUN = identifyPeak,
-        # BPPARAM = BiocParallel::SnowParam(workers = threads,
-        #                                   progressbar = TRUE),
-        BPPARAM = BiocParallel::MulticoreParam(workers = threads,
-                                               progressbar = TRUE),
+        BPPARAM = bpparam,
         ms1.info = ms1.info,
         ms2.info = ms2.info,
         spectra.info = spectra.info,

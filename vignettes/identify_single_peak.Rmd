@@ -32,7 +32,7 @@ knitr::opts_chunk$set(
 
 Some times we only want to match one peak. We can use `identify_single_peak()` function to identify single peak.
 
-```{r,eval = TRUE, warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE, warning=FALSE, message=FALSE,R.options="",cache=FALSE}
 library(metID)
 library(tidyverse)
 ```
@@ -41,7 +41,7 @@ library(tidyverse)
 
 We need the m/z, rt and MS2 information. MS2 must be a matrix with two columns: `mz` and `intensity`.
 
-```{r,eval = TRUE, warning=FALSE, message=TRUE,R.options="",cache=FALSE}
+```{r,eval = TRUE, warning=FALSE, message=FALSE,R.options="",cache=FALSE}
 mz <- 472.3032
 rt <- 772.906
 ms2 <- data.frame(

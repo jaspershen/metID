@@ -54,7 +54,7 @@ We use the demo data in `metID` package to show how to use `metID` to identify m
 
 First we load the MS1 peak and database from `metID` package and then put them in a `example` folder.
 
-```{r,eval = TRUE, warning=FALSE, message=TRUE,R.options="",cache=TRUE}
+```{r,eval = TRUE, warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 library(metID)
 library(tidyverse)
 ```

@@ -67,13 +67,13 @@ We use the demo data in `metID` package.
 First we load the MS1 peak, MS2 data and databases from `metID` package and then put them in a `example` folder.
 
 
-```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 library(metID)
 library(tidyverse)
 ```
 
 
-```{r message=FALSE, warning=FALSE, message=TRUE, cache=TRUE, R.options=""}
+```{r message=FALSE, warning=FALSE, message=FALSE, cache=TRUE, R.options=""}
 ##creat a folder nameed as example
 path <- file.path(".", "example")
 dir.create(path = path, showWarnings = FALSE)
@@ -130,7 +130,7 @@ param1 <-
     column = "rp",
     total.score.tol = 0.5,
     candidate.num = 3,
-    threads = 1,
+    threads = 3,
     database = "msDatabase_rplc0.0.2"
   )
 
@@ -142,7 +142,7 @@ param2 <- identify_metabolites_params(
   column = "rp",
   total.score.tol = 0.5,
   candidate.num = 3,
-  threads = 1,
+  threads = 3,
   database = "orbitrapDatabase0.0.1"
 )
 
@@ -154,7 +154,7 @@ param3 <- identify_metabolites_params(
   column = "rp",
   total.score.tol = 0.5,
   candidate.num = 3,
-  threads = 1,
+  threads = 3,
   database = "hmdbMS1Database0.0.1"
 )
 ```

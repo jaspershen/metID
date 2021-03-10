@@ -248,14 +248,22 @@ mzIdentify =
       return(match.idx)
     }
     
+    
+    if(tinyTools::get_os() == "windows"){
+      bpparam = BiocParallel::SnowParam(workers = threads, 
+                                        progressbar = TRUE)
+    }else{
+      bpparam = BiocParallel::MulticoreParam(workers = threads, 
+                                        progressbar = TRUE)
+    }
+    
     match.result <-
       BiocParallel::bplapply(
         1:nrow(ms1.data),
         FUN = temp.fun,
         # BPPARAM = BiocParallel::SnowParam(workers = threads,
         #                                   progressbar = TRUE),
-        BPPARAM = BiocParallel::MulticoreParam(workers = threads,
-                                               progressbar = TRUE),
+        BPPARAM = bpparam,
         ms1.data = ms1.data,
         ms1.match.ppm = ms1.match.ppm,
         rt.match.tol = rt.match.tol,

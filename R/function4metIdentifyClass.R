@@ -713,13 +713,18 @@ ms2plot = function(object,
         })
     }
     
+    if(tinyTools::get_os() == "windows"){
+      bpparam = BiocParallel::SnowParam(workers = threads, 
+                                        progressbar = TRUE)
+    }else{
+      bpparam = BiocParallel::MulticoreParam(workers = threads, 
+                                             progressbar = TRUE)
+    }    
+    
     BiocParallel::bplapply(
       X = anno.idx,
       FUN = temp.fun,
-      # BPPARAM = BiocParallel::SnowParam(workers = threads,
-      #                                   progressbar = TRUE),
-      BPPARAM = BiocParallel::MulticoreParam(workers = threads,
-                                             progressbar = TRUE),
+      BPPARAM = bpparam,
       identification.result = identification.result,
       ms2.info = object@ms2.info,
       match.result = object@match.result,
