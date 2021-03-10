@@ -109,6 +109,15 @@ mzIdentify =
       )
     }
     
+    # ##debug
+    # for(i in 1:nrow(ms1.data)){
+    #   cat(i, " ")
+    #   result = temp.fun(idx = i, ms1.data = ms1.data,
+    #                     ms1.match.ppm = ms1.match.ppm,
+    #                     rt.match.tol = rt.match.tol,
+    #                     database = database,
+    #                     adduct.table = adduct.table, candidate.num = candidate.num)
+    # }
     
     temp.fun <- function(idx,
                          ms1.data,
@@ -154,8 +163,9 @@ mzIdentify =
       
       if (nrow(database) == 0)
         return(NA)
-      
-      spectra.mz <- apply(adduct.table, 1, function(x) {
+
+      spectra.mz <- purrr::map(as.data.frame(t(adduct.table)), 
+                               function(x) {
         temp.n <-
           stringr::str_extract(string = as.character(x[1]), pattern = "[0-9]{1}M")
         temp.n <-
@@ -166,7 +176,21 @@ mzIdentify =
           ))
         temp.n[is.na(temp.n)] <- 1
         as.numeric(x[2]) + temp.n * as.numeric(database$mz)
-      })
+      }) %>% 
+        do.call(cbind, .)
+      
+      # spectra.mz <- apply(adduct.table, 1, function(x) {
+      #   temp.n <-
+      #     stringr::str_extract(string = as.character(x[1]), pattern = "[0-9]{1}M")
+      #   temp.n <-
+      #     as.numeric(stringr::str_replace(
+      #       string = temp.n,
+      #       pattern = "M",
+      #       replacement = ""
+      #     ))
+      #   temp.n[is.na(temp.n)] <- 1
+      #   as.numeric(x[2]) + temp.n * as.numeric(database$mz)
+      # })
       
       colnames(spectra.mz) <- adduct.table[, 1]
       rownames(spectra.mz) <- database$Lab.ID
@@ -257,12 +281,13 @@ mzIdentify =
                                         progressbar = TRUE)
     }
     
+    
+    
+    
     match.result <-
       BiocParallel::bplapply(
         1:nrow(ms1.data),
         FUN = temp.fun,
-        # BPPARAM = BiocParallel::SnowParam(workers = threads,
-        #                                   progressbar = TRUE),
         BPPARAM = bpparam,
         ms1.data = ms1.data,
         ms1.match.ppm = ms1.match.ppm,

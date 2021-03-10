@@ -38,7 +38,7 @@
 
 metID_logo <- function() {
   cat(crayon::green("Thank you for using metID!\n"))
-  cat(crayon::green("Version 0.9.0 (20210226)\n"))
+  cat(crayon::green("Version 0.9.1 (20210309)\n"))
   cat(
     crayon::green(
       "More information can be found at https://jaspershen.github.io/metID/\n"
