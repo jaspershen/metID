@@ -26,7 +26,7 @@
 #' @param path Work directory.
 #' @param total.score.tol Total score tolerance. The total score are refering to MS-DIAL.
 #' @param candidate.num The number of candidate.
-#' @param database MS2 database name.
+#' @param database MS2 database name or MS database.
 #' @param threads Number of threads
 #' @return A metIdentifyClass object.
 #' @importFrom crayon yellow green red bgRed
@@ -84,7 +84,7 @@
 #     column = "rp",
 #     path = ".",
 #     candidate.num = 3,
-#     database = "fiehn_hilic_database0.0.1",
+#     database = msDatabase_hilic0.0.2,
 #     threads = 2
 #   )
 
@@ -139,10 +139,12 @@ identify_metabolites = function(
     }
   }
 
-  if (!all(database %in% file)) {
-    stop("Database is not in this directory, please check it.\n")
+  if(class(database) != "databaseClass"){
+    if (!all(database %in% file)) {
+      stop("Database is not in this directory, please check it.\n")
+    }  
   }
-
+  
   if (is.null(ms2.data)) {
     cat(crayon::yellow("You don't provide MS2 data, so only use mz and/or RT for matching.\n"))
     mzIdentify(

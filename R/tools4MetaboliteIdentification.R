@@ -1365,7 +1365,6 @@ readMGF = function(file){
 
 
 read_mgf = function(file){
-  # browser()
   pbapply::pboptions(style = 1)
   cat(crayon::green("Reading MS2 data...\n"))
   # mgf.data.list <- pbapply::pblapply(file, ListMGF)

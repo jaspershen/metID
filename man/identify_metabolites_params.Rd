@@ -64,7 +64,7 @@ identify_metabolites_params(
 
 \item{candidate.num}{The number of candidate.}
 
-\item{database}{MS2 database name.}
+\item{database}{MS2 database name or MS2 database.}
 
 \item{threads}{Number of threads}
 }

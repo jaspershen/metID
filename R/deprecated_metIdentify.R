@@ -25,7 +25,7 @@
 #' @param path Work directory.
 #' @param total.score.tol Total score tolerance. The total score are refering to MS-DIAL.
 #' @param candidate.num The number of candidate.
-#' @param database MS2 database name.
+#' @param database MS2 database name or MS2 database.
 #' @param threads Number of threads
 #' @param silence.deprecated Silenc the deprecated information or not.
 #' @return A metIdentifyClass object.
@@ -96,6 +96,7 @@ metIdentify = function(
   threads = 3,
   silence.deprecated = FALSE
 ) {
+  
   if(!silence.deprecated){
     cat(crayon::yellow(
       "`metIdentify()` is deprecated, use `identify_metabolites()`."
@@ -130,15 +131,22 @@ metIdentify = function(
     }
   }
   
-  if (!all(database %in% file)) {
-    stop("Database is not in this directory, please check it.\n")
+  if(class(database) != "databaseClass"){
+    if (!all(database %in% file)) {
+      stop("Database is not in this directory, please check it.\n")
+    }  
   }
   
   #load MS2 database
-  database.name <- database
-  load(file.path(path, database.name))
-  database <- get(database.name)
-  
+  if(class(database) != "databaseClass"){
+    database.name <- database
+    load(file.path(path, database.name))
+    database <- get(database.name) 
+  }else{
+    database.name = paste(database@database.info$Source, 
+                          database@database.info$Version, sep = "_")
+  }
+
   if (class(database) != "databaseClass") {
     stop("database must be databaseClass object\n")
   }

@@ -101,6 +101,39 @@
 #' result[[3]]
 #' }
 
+# tinyTools::setwd_project()
+# setwd("example")
+# param1 <-
+# identify_metabolites_params(
+#   ms1.match.ppm = 15,
+#   rt.match.tol = 15,
+#   polarity = "positive",
+#   ce = "all",
+#   column = "rp",
+#   total.score.tol = 0.5,
+#   candidate.num = 3,
+#   threads = 3,
+#   database = "msDatabase_rplc0.0.2"
+# )
+#
+# param2 <- identify_metabolites_params(
+#   ms1.match.ppm = 15,
+#   rt.match.tol = 15,
+#   polarity = "positive",
+#   ce = "all",
+#   column = "rp",
+#   total.score.tol = 0.5,
+#   candidate.num = 3,
+#   threads = 3,
+#   database = "orbitrapDatabase0.0.1"
+# )
+#
+# identify_metabolite_all(
+#   ms1.data = "ms1.peak.table.csv",
+#   ms2.data = "QC1_MSMS_NCE25.mgf",
+#   parameter.list = c(param1, param2)
+# )
+
 identify_metabolite_all = function(ms1.data,
                                    ms2.data,
                                    parameter.list,
@@ -216,12 +249,39 @@ identify_metabolite_all = function(ms1.data,
          compress = "xz")
   }
   
+  database_class =
+    purrr::map(parameter.list, function(x) {
+      class(x$database)
+    }) %>%
+    unlist()
+  
   database.name <-
     unlist(lapply(parameter.list, function(x) {
-      x$database
+      if (class(x$database) != "databaseClass") {
+        x$database
+      } else{
+        paste(x$database@database.info$Source,
+              x$database@database.info$Version,
+              sep = "_")
+      }
     }))
   
-  if (!all(database.name %in% dir(old.path))) {
+  ##check databases with same names
+  database.name = make.unique(names = database.name, sep = "_")
+  
+  ##output database information to intermediate_data path
+  database_info =
+    data.frame(database.name,
+               database_class,
+               parameter = 1:length(database.name))
+  
+  write.csv(
+    database_info,
+    file = file.path(intermediate_path, "database_info.csv"),
+    row.names = FALSE
+  )
+  
+  if (!all(database.name[database_class != "databaseClass"] %in% dir(old.path))) {
     stop(
       "The database: ",
       paste(database.name[!database.name %in% dir(old.path)],  collapse = ", "),
@@ -253,11 +313,16 @@ identify_metabolite_all = function(ms1.data,
       next()
     }
     
-    temp_database <-
-      load(file.path(old.path, parameter.list[[i]]$database))
-    
-    temp_database <-
-      get(temp_database)
+    if (class(parameter.list[[i]]$database) == "databaseClass") {
+      temp_database =
+        parameter.list[[i]]$database
+    } else{
+      temp_database <-
+        load(file.path(old.path, parameter.list[[i]]$database))
+      
+      temp_database <-
+        get(temp_database)
+    }
     
     if (length(temp_database@spectra.data) == 0) {
       rm(list = parameter.list[[i]]$database)
@@ -334,7 +399,7 @@ identify_metabolite_all = function(ms1.data,
 #' @param ms2.match.weight The weight of MS2 match for total score calculation.
 #' @param total.score.tol Total score tolerance. The total score are refering to MS-DIAL.
 #' @param candidate.num The number of candidate.
-#' @param database MS2 database name.
+#' @param database MS2 database name or MS2 database.
 #' @param threads Number of threads
 #' @return A metIdentifyClass object.
 #' @export
@@ -374,9 +439,9 @@ identify_metabolites_params = function(ms1.ms2.match.mz.tol = 25,
                                        total.score.tol = 0.5,
                                        candidate.num = 3,
                                        database,
-                                       threads = 3){
+                                       threads = 3) {
   if (missing(database)) {
-    stop("The database name must be provided.\n")
+    stop("The database or database name must be provided.\n")
   }
   # if(class(database) != "metIdentifyClass"){
   #   stop("database must be metIdentifyClass object\n")

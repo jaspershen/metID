@@ -7,6 +7,13 @@
 [![Dependencies](https://tinyverse.netlify.com/badge/metID)](https://cran.r-project.org/package=metID)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
+## News
+
+* [Version 0.9.2 2021-03-12](https://jaspershen.github.io/metID/articles/Version0_9_2.html)
+* More News [click here](https://jaspershen.github.io/metID/news/index.html).
+
+-------
+
 ## About
 
 `metID` is a R packge which is used for metabolite identification based

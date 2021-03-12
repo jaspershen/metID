@@ -11,7 +11,7 @@
 #' @param column "hilic" (HILIC column) or "rp" (reverse phase).
 #' @param path Work directory.
 #' @param candidate.num The number of candidates.
-#' @param database MS1 database name.
+#' @param database MS1 database name or MS1 database.
 #' @param threads Number of threads
 #' @param silence.deprecated Silenc the deprecated information or not.
 #' @return A mzIdentifyClass or metIdentifyClass object.
@@ -55,14 +55,21 @@ mzIdentify =
       stop("MS1 data is not in the directory, please check it.\n")
     }
     
-    if (!all(database %in% file)) {
-      stop("Database is not in this directory, please check it.\n")
+    if(class(database) != "databaseClass"){
+      if (!all(database %in% file)) {
+        stop("Database is not in this directory, please check it.\n")
+      }  
     }
     
     #load database
-    database.name <- database
-    load(file.path(path, database.name))
-    database <- get(database.name)
+    if(class(database) != "databaseClass"){
+      database.name <- database
+      load(file.path(path, database.name))
+      database <- get(database.name) 
+    }else{
+      database.name = paste(database@database.info$Source, 
+                            database@database.info$Version, sep = "_")
+    }
     # if(class(database) != "data.frame"){
     #   stop("The database must be HMDB.metabolite.data provided.\n")
     # }
@@ -280,9 +287,6 @@ mzIdentify =
       bpparam = BiocParallel::MulticoreParam(workers = threads, 
                                         progressbar = TRUE)
     }
-    
-    
-    
     
     match.result <-
       BiocParallel::bplapply(

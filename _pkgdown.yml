@@ -117,8 +117,8 @@ navbar:
       text: News
       menu:
       - text: "Blog posts"
-      - text: "Version 0.4.0"
-        href: articles/metID.html
+      - text: "Version 0.9.2"
+        href: articles/Version0_9_2.html
       - text: "------------------"
       - text: "Change log"
         href: news/index.html

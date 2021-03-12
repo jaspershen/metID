@@ -33,7 +33,7 @@ mzIdentify(
 
 \item{candidate.num}{The number of candidates.}
 
-\item{database}{MS1 database name.}
+\item{database}{MS1 database name or MS1 database.}
 
 \item{threads}{Number of threads}
 

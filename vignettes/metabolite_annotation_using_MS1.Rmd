@@ -92,7 +92,7 @@ annotate_result1 <-
                        path = path, 
                        candidate.num = 3,
                        database = "msDatabase_rplc0.0.2", 
-                       threads = 1)
+                       threads = 5)
 ```
 
 > Note: because here we only want to use m/z for metabolite identification, so please set `rt.match.tol` (second) > 10,000, for example '1000000' here, so the RT will not be used for filtering.
@@ -111,7 +111,7 @@ Other parameters:
 
 * `candidate.num`: The candidate number for each peak.
 
-* `database`: The database name.
+* `database`: The database name or database.
 
 * `threads`: How many threads you want to use.
 
@@ -120,6 +120,52 @@ The return result `annotate_result1` is a `metIdentifyClass` object, you can dir
 
 ```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
 annotate_result1
+```
+
+**Note:** 
+
+> now we can also provide "databaseClass" object for "database" argument. For example: we load the database first.
+
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+load(file.path(path, "msDatabase_rplc0.0.2"))
+```
+
+```{r,eval = TRUE,warning=FALSE, message=TRUE,R.options="",cache=TRUE}
+msDatabase_rplc0.0.2
+```
+
+> Then we can directory provide this database to `identify_metabolites()`:
+
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+annotate_result2 <- 
+  identify_metabolites(ms1.data = "ms1.peak.table.csv", 
+                       ms1.match.ppm = 15, 
+                       rt.match.tol = 1000000, 
+                       polarity = "positive", 
+                       column = "rp", 
+                       path = path, 
+                       candidate.num = 3,
+                       database = msDatabase_rplc0.0.2, 
+                       threads = 5)
+```
+
+> But what should be noticed is that it have different name for database in the final result:
+
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+annotate_result1@database
+```
+
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+annotate_result2@database
+```
+
+> It is because that if you give the `databaseClass`, so `identify_metabolites` can know the name of database, if just use the `source` and `version` as the name for database.
+
+```{r,eval = TRUE,warning=FALSE, message=FALSE,R.options="",cache=TRUE}
+paste(msDatabase_rplc0.0.2@database.info$Source,
+      msDatabase_rplc0.0.2@database.info$Version, 
+      sep = "_")
+
 ```
 
 ### Only use m/z and RT for metabolite identification
@@ -136,7 +182,7 @@ annotate_result2 <-
                        path = path, 
                        candidate.num = 3,
                        database = "msDatabase_rplc0.0.2", 
-                       threads = 1)
+                       threads = 5)
 ```
 
 ## Get detailed annotation information

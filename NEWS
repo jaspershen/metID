@@ -52,3 +52,8 @@ Version 0.5.0 (20210226)
 --------------
 o Fix small bugs.
 o get_identification_table_all().
+
+Version 0.9.2 (20210311)
+--------------
+o Fix small bugs.
+o For argument database in identify_metabolites() now users can also set it as the "databaseClass" object.
