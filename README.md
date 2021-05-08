@@ -9,6 +9,7 @@
 
 ## News
 
+* [Version 1.0.0 2021-05-08](https://jaspershen.github.io/metID/news/index.html)
 * [Version 0.9.2 2021-03-12](https://jaspershen.github.io/metID/articles/Version0_9_2.html)
 * More News [click here](https://jaspershen.github.io/metID/news/index.html).
 

@@ -337,7 +337,7 @@ mzIdentify =
         candidate.num = candidate.num,
         database = database.name,
         threads = threads,
-        version = "0.9.0"
+        version = "1.0.0"
       )
       
       return.result@identification.result <-

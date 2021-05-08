@@ -57,3 +57,7 @@ Version 0.9.2 (20210311)
 --------------
 o Fix small bugs.
 o For argument database in identify_metabolites() now users can also set it as the "databaseClass" object.
+
+Version 1.0.0 (20210508)
+--------------
+o Release for public.

@@ -30,7 +30,7 @@ knitr::opts_chunk$set(
 
 ***
 
-## **In-house $MS^2$2 databases from [Michael Snyder lab](http://med.stanford.edu/snyderlab.html)**
+## **In-house $MS^2$ databases from [Michael Snyder lab](http://med.stanford.edu/snyderlab.html)**
 
 ### 1. Michael Snyder HILIC databases
 
@@ -82,11 +82,11 @@ knitr::opts_chunk$set(
 
 * <i class="fa fa-download"></i> [Download here](https://www.shenxt.info/ms2_data/fiehn_hilic_database0.0.1)
 
-### 6. Exposome database
+<!-- ### 6. Exposome database -->
 
-* <i class="fa fa-info"></i> Some chemical exposome database
+<!-- * <i class="fa fa-info"></i> Some chemical exposome database -->
 
-* <i class="fa fa-download"></i> [Download here](https://www.shenxt.info/ms2_data/exposureDatabase)
+<!-- * <i class="fa fa-download"></i> [Download here](https://www.shenxt.info/ms2_data/exposureDatabase) -->
 
 > If you need this database, please contact shenxt@stanford.edu.
 
@@ -113,19 +113,19 @@ knitr::opts_chunk$set(
 
 * <i class="fa fa-download"></i> [Download here](https://www.shenxt.info/ms2_data/drugbankMS1Database5.1.8)
 
-### 4. [Foodb database](https://foodb.ca/downloads)
+<!-- ### 4. [Foodb database](https://foodb.ca/downloads) -->
 
-* <i class="fa fa-info"></i> Foodb MS1 database.
+<!-- * <i class="fa fa-info"></i> Foodb MS1 database. -->
 
-* <i class="fa fa-download"></i> [Download here](https://www.shenxt.info/ms2_data/hmdbMS1Database0.0.1)
+<!-- * <i class="fa fa-download"></i> [Download here](https://www.shenxt.info/ms2_data/hmdbMS1Database0.0.1) -->
 
-### 5. [T3DB database](http://www.t3db.ca/downloads)
+### 4. [T3DB database](http://www.t3db.ca/downloads)
 
 * <i class="fa fa-info"></i> T3DB MS1 database.
 
 * <i class="fa fa-download"></i> [Download here](https://www.shenxt.info/ms2_data/t3dbMS1Database_1.0)
 
-### 6. [Blood exposome database](https://bloodexposome.org/#/download)
+### 5. [Blood exposome database](https://bloodexposome.org/#/download)
 
 * <i class="fa fa-info"></i> Blood exposome MS1 database.
 

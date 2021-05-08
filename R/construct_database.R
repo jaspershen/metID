@@ -26,6 +26,21 @@
 #' https://jaspershen.github.io/metID/articles/metID.html
 #' @export
 
+
+# database0.0.1 <- construct_database(
+#   path = ".",
+#   version = "0.0.1",
+#   metabolite.info.name = "metabolite.info.csv",
+#   creater = "dumine",
+#   email = "dumine@zju.edu.cn",
+#   rt = FALSE,
+#   mz.tol = 15,
+#   rt.tol = 30,
+#   threads = 5
+# )
+
+
+
 construct_database = function(path = ".",
                               version = "0.0.1",
                               metabolite.info.name = "metabolite.info.csv",

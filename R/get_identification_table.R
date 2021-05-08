@@ -176,6 +176,7 @@ get_identification_table = function(...,
       
       identification.table <-
         as.data.frame(do.call(rbind, identification.table))
+      
       identification.table$mz <-
         identification.table$mz %>%
         stringr::str_trim(side = 'both') %>%

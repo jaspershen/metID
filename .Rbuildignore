@@ -37,3 +37,6 @@ man/figures
 manuscript
 ^\.github$
 ^\.git$
+code_manuscript
+database_construction_code
+other_files

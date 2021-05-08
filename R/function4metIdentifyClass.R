@@ -78,7 +78,7 @@ setClass(
     candidate.num = 3,
     database = "HMDB",
     threads = 0,
-    version = "0.9.0"
+    version = "1.0.0"
   )
 )
 
@@ -378,7 +378,7 @@ get_iden_info = function(
     object@match.result$MS2.spectra.name[match(which.peak, object@match.result$MS1.peak.name)],
     names(identification.result)
   ))) {
-    cat(crayon::green("The peak hsa no identification result.\n"))
+    cat(crayon::green("The peak has no identification result.\n"))
     return(NULL)
   }
   
@@ -489,13 +489,13 @@ ms2plot = function(object,
       object@match.result$MS2.spectra.name[match(which.peak,
                                                  object@match.result$MS1.peak.name)]
     if (is.na(ms2.spectra.name)) {
-      cat(crayon::red(which.peak, "hsa no MS2 spectrum.\n"))
+      cat(crayon::red(which.peak, "has no MS2 spectrum.\n"))
       return()
     }
     temp.idx <-
       which(names(identification.result) == ms2.spectra.name)
     if (length(temp.idx) == 0) {
-      cat(crayon::red(which.peak, "hsa no identification.\n"))
+      cat(crayon::red(which.peak, "has no identification.\n"))
       return()
     }
     matched.info <- identification.result[[temp.idx]]

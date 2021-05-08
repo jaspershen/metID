@@ -649,7 +649,7 @@ getIdenInfo = function(object,
     object@match.result$MS2.spectra.name[match(which.peak, object@match.result$MS1.peak.name)],
     names(identification.result)
   ))) {
-    cat(crayon::green("The peak hsa no identification result.\n"))
+    cat(crayon::green("The peak has no identification result.\n"))
     return()
   }
   
