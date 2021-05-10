@@ -61,10 +61,10 @@ If you have any questions about `metID`, please don’t hesitate to email me (<s
 
 If you use `metID` in you publication, please cite this publication:
 
-X. Shen, R. Wang, X. Xiong, Y. Yin, Y. Cai, Z. Ma, N. Liu, and Z.-J.
-Zhu\* (Corresponding Author), Metabolic Reaction Network-based Recursive
-Metabolite Annotation for Untargeted Metabolomics, Nature
-Communications, 2019, 10: 1516.  
-[Web Link](https://www.nature.com/articles/s41467-019-09550-x).
+Xiaotao Shen, Si Wu, Liang Liang, Songjie Chen,  View ORCID ProfileKevin Contrepois, Zheng-Jiang Zhu\*, Michael Snyder\* (Corresponding Author)
+
+metID: A R package for automatable compound annotation for LC−MS-based data
+
+doi: [https://doi.org/10.1101/2021.05.08.443258](doi: https://doi.org/10.1101/2021.05.08.443258)
 
 Thanks very much!
