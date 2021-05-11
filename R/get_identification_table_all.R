@@ -56,10 +56,14 @@ get_identification_table_all =
         c(database, level)
       }) %>%
       do.call(rbind, .) %>%
-      as.data.frame() %>%
+      as.data.frame()
+
+    colnames(database_level)[1:2] = c("database", "level")
+    database_level =
+      database_level %>% 
       tibble::rownames_to_column(var = "name")
     
-    colnames(database_level)[2:3] = c("database", "level")
+    database_level$level[is.na(database_level$level)] = 5
     
     ####annotation table level 1
     if (any(database_level$level == 1)) {

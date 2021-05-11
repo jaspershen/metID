@@ -62,3 +62,7 @@
 ## Version 1.0.0 (20210508)
 --------------
 * Release for public.
+
+## Version 1.0.1 (20210511)
+--------------
+* Fix small bug in get_identification_table_all().
