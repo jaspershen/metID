@@ -111,7 +111,7 @@ mzIdentify =
     } else{
       cat(
         crayon::yellow(
-          "You set rt.match.tol < 10,000, so if the metabolites have RT,  RTs will be used for matching\n"
+          "You set rt.match.tol < 10,000, so if the compounds have RT,  RTs will be used for matching\n"
         )
       )
     }

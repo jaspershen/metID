@@ -42,15 +42,17 @@ Secondly, please organize your standard information as a table, and output it in
 
 From column 1 to 11, the columns are "Lab.ID", "Compound.name", "mz", "RT", "CAS.ID", "HMDB.ID", "KEGG.ID", "Formula", "mz.pos", "mz.neg", "Submitter", respectively. It is OK if you have other information for the standards. As the demo data show, there are other additional information, namely "Family", "Sub.pathway" and "Note".
 
-- mz: Accurate mass of compound.
+- Lab.ID: No duplicated. 
+
+- mz: Accurate mass of compounds.
 
 - RT: Retention time, unit is second.
 
-- mz.pos: Mass to change ratio of compound in positive mode, for example, M+H. You can set it as NA.
+- mz.pos: Mass to change ratio of compound in positive mode, for example, M+H. **You can set it as NA**.
 
-- mz.neg: Mass to change ratio of compound in negative mode, for example, M-H. You can set it as NA.
+- mz.neg: Mass to change ratio of compound in negative mode, for example, M-H. **You can set it as NA**.
 
-- Submitter: The name of person or organization.
+- Submitter: The name of person or organization. **You can set it as NA**.
 
 ![](../man/figures/compound_information.PNG)
 

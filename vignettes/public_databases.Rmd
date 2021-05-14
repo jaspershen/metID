@@ -40,7 +40,7 @@ knitr::opts_chunk$set(
 
 > If you need this database, please contact shenxt@stanford.edu
 
-### 2. Michael Snyder HILIC databases
+### 2. Michael Snyder RPLC databases
 
 * <i class="fa fa-info"></i> Professor Michael Snyder's lab. More than 1,000 metabolites.
 
