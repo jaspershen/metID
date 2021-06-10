@@ -178,7 +178,7 @@ construct_database = function(path = ".",
         if (!is.na(temp.submitter) &
             length(grep(temp.submitter, temp.match.result.pos[, 9])) > 0) {
           temp.match.result.pos <-
-            temp.match.result.pos[grep(temp.submitter, temp.match.result.pos[, 9]), ]
+            temp.match.result.pos[grep(temp.submitter, temp.match.result.pos[, 9]),]
         }
         
         if (nrow(temp.match.result.pos) == 0) {
@@ -254,7 +254,7 @@ construct_database = function(path = ".",
         if (!is.na(temp.submitter) &
             length(grep(temp.submitter, temp.match.result.neg[, 9])) > 0) {
           temp.match.result.neg <-
-            temp.match.result.neg[grep(temp.submitter, temp.match.result.neg[, 9]), ]
+            temp.match.result.neg[grep(temp.submitter, temp.match.result.neg[, 9]),]
         }
         
         if (nrow(temp.match.result.neg) == 0) {

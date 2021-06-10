@@ -61,6 +61,18 @@ globalVariables(
     "Lib.mz",
     "Lib.intensity",
     "extenstion",
-    "Identification"
+    "Identification",
+    "Name",
+    "ExactMass",
+    "DB#",
+    "Formula",
+    "mz",
+    "RT",
+    "mz.pos",
+    "mz.neg",
+    "Submitter",
+    "Family",
+    "Sub.pathway",
+    "Note"
   )
 )

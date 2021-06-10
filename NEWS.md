@@ -66,3 +66,7 @@
 ## Version 1.0.1 (20210511)
 --------------
 * Fix small bug in get_identification_table_all().
+
+## Version 1.0.2 (20210610)
+--------------
+* Add functions for constructing mona and massbank databases.

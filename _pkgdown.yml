@@ -81,13 +81,13 @@ navbar:
       - text: Brief introduction
         href: articles/metID.html
       - text: -------
-      - text: "In-house database construction"
-      - text: Database construction
+      - text: "In-house and public database construction using metID"
+      - text: In-house database construction
         href: articles/database_construction.html
+      - text: Public database construction
+        href: articles/public_database_construction.html
       - text: Correct retention times in database according to internal standards
         href: articles/rt_correction.html
-      - text: Public databases in metID
-        href: articles/public_databases.html
       - text: -------
       - text: "Metabolite identification"
       - text: Metabolite identification using MS1 database

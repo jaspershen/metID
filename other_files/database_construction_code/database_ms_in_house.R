@@ -1711,9 +1711,9 @@
 # 
 # ######msDatabase_rplc0.0.3
 # tinyTools::setwd_project()
-# setwd("all_ms2_database/mike_in_house/")
+# setwd("other_files/all_ms2_database/mike_in_house/")
 # load("msDatabase_rplc0.0.2")
-# msDatabase_rplc_0.0.3 = 
+# msDatabase_rplc_0.0.3 =
 #   msDatabase_rplc0.0.2
 # 
 # msDatabase_rplc_0.0.3@database.info$Source = "msDatabase_rplc"
@@ -1725,8 +1725,8 @@
 # 
 # library(tidyverse)
 # 
-# # hmdb_id2 = 
-# #   msDatabase_rplc_0.0.3@spectra.info$Compound.name %>% 
+# # hmdb_id2 =
+# #   msDatabase_rplc_0.0.3@spectra.info$Compound.name %>%
 # #   purrr::map(function(x){
 # #     metflow2::transID(
 # #       query = x,
@@ -1734,15 +1734,15 @@
 # #       to = "Human Metabolome Database",
 # #       top = 1
 # #     )
-# #   }) %>% 
-# #   do.call(rbind, .) %>% 
+# #   }) %>%
+# #   do.call(rbind, .) %>%
 # #   as.data.frame()
-# # 
+# #
 # # save(hmdb_id2, file = "hmdb_id2")
 # load("hmdb_id2")
 # 
-# # kegg_id2 = 
-# #   msDatabase_rplc_0.0.3@spectra.info$Compound.name %>% 
+# # kegg_id2 =
+# #   msDatabase_rplc_0.0.3@spectra.info$Compound.name %>%
 # #   purrr::map(function(x){
 # #     metflow2::transID(
 # #       query = x,
@@ -1750,19 +1750,18 @@
 # #       to = "KEGG",
 # #       top = 1
 # #     )
-# #   }) %>% 
-# #   do.call(rbind, .) %>% 
+# #   }) %>%
+# #   do.call(rbind, .) %>%
 # #   as.data.frame()
-# # 
+# #
 # # save(kegg_id2, file = "kegg_id2")
 # load("kegg_id2")
-# 
 # 
 # ###rename compound name
 # spectra.info = msDatabase_rplc_0.0.3@spectra.info
 # 
-# spectra.info$Compound.name[which(stringr::str_detect(spectra.info$Compound.name, pattern = "\\([0-9]{1,2}\\)"))] = 
-# spectra.info$Compound.name[which(stringr::str_detect(spectra.info$Compound.name, pattern = "\\([0-9]{1,2}\\)"))] %>% 
+# spectra.info$Compound.name[which(stringr::str_detect(spectra.info$Compound.name, pattern = "\\([0-9]{1,2}\\)"))] =
+# spectra.info$Compound.name[which(stringr::str_detect(spectra.info$Compound.name, pattern = "\\([0-9]{1,2}\\)"))] %>%
 # stringr::str_replace("\\([0-9]{1}\\)", "")
 # 
 # View(spectra.info)
@@ -1770,7 +1769,7 @@
 # 
 # 
 # 
-# check_hmdb_kegg_id = 
+# check_hmdb_kegg_id =
 #   data.frame(Lab.ID = msDatabase_rplc_0.0.3@spectra.info$Lab.ID,
 #              name = msDatabase_rplc_0.0.3@spectra.info$Compound.name,
 #              kegg_id1 = msDatabase_rplc_0.0.3@spectra.info$KEGG.ID,
@@ -1782,17 +1781,4 @@
 # check_hmdb_kegg_id$check = NA
 # 
 # write.csv(check_hmdb_kegg_id, "check_hmdb_kegg_id.csv", row.names = FALSE)
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
+

@@ -32,6 +32,8 @@ Imports:
     BiocParallel,
     crayon,
     dplyr,
+    future,
+    furrr,
     ggplot2,
     pbapply,
     methods,

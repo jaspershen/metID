@@ -6,7 +6,7 @@
 #' @return A ASCII log of metID
 #' @importFrom magrittr %>%
 #' @importFrom crayon red yellow green bgRed
-#' @importFrom stringr str_detect str_extract str_extract_all 
+#' @importFrom stringr str_detect str_extract str_extract_all
 #' @importFrom stringr str_replace_all str_replace str_trim str_c str_count
 #' @importFrom readr cols read_csv
 #' @importFrom pbapply pblapply pboptions
@@ -24,6 +24,8 @@
 #' @importFrom tinyTools ms2Match get_os
 #' @importFrom stats lm loess predict
 #' @importFrom plotly ggplotly
+#' @importFrom future plan multisession 
+#' @importFrom furrr future_map2 future_map
 #' @import lifecycle
 #' @import RColorBrewer
 #' @import utils
@@ -33,12 +35,12 @@
 #' @import grDevices
 #' @import utils
 #' @export
-#' @examples 
+#' @examples
 #' metID_logo()
 
 metID_logo <- function() {
   cat(crayon::green("Thank you for using metID!\n"))
-  cat(crayon::green("Version 1.0.1 (20210511)\n"))
+  cat(crayon::green("Version 1.0.2 (20210610)\n"))
   cat(
     crayon::green(
       "More information can be found at https://jaspershen.github.io/metID/\n"

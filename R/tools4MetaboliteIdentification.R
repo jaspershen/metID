@@ -835,18 +835,20 @@ read_msp_database = function(file,
 }
 
 
-#---------------------------------------------------------------------------
-# @title readMSP_MoNA
-# @description Read MSP data from MoNA.
-# \lifecycle{experimental}
-# @author Xiaotao Shen
-# \email{shenxt1990@@163.com}
-# @param file The vector of names of ms2 files. MS2 file must be msp. The msp data must from MoNA.
-# @return Return ms2 data. This is a list.
-# @export
-#
+#' ---------------------------------------------------------------------------
+#' @title readMSP_MoNA
+#' @description Read MSP data from MoNA.
+#' \lifecycle{experimental}
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@163.com}
+#' @param file The vector of names of ms2 files. MS2 file must be msp. The msp data must from MoNA.
+#' @return Return ms2 data. This is a list.
+#' @export
 
 readMSP_MoNA = function(file){
+  cat(crayon::yellow(
+    "`readMSP_MoNA()` is deprecated, use `read_msp_mona()`.\n"
+  ))  
   cat(crayon::green("Reading MSP data...\n"))
   msp.data <- readr::read_lines(file)
   n.null <- which(msp.data == '')
@@ -947,6 +949,146 @@ readMSP_MoNA = function(file){
   info.spec <- info.spec
 }
 
+
+
+
+
+
+
+
+#' ---------------------------------------------------------------------------
+#' @title read_msp_mona
+#' @description Read MSP data from MoNA.
+#' \lifecycle{experimental}
+#' @author Xiaotao Shen
+#' \email{shenxt1990@@163.com}
+#' @param file The vector of names of ms2 files. MS2 file must be msp. The msp data must from MoNA.
+#' @param threads The number of threads
+#' @return Return ms2 data. This is a list.
+#' @export
+
+read_msp_mona = function(file,
+                         threads = 5){
+  
+  cat(crayon::green("Reading MSP data...\n"))
+  msp.data <- readr::read_lines(file, progress = TRUE)
+  n.null <- which(msp.data == '')
+  temp.idx1 <- c(1, n.null[-length(n.null)])
+  temp.idx2 <- n.null - 1
+  
+  future::plan(strategy = future::multisession, workers = threads)
+  
+  temp.idx = 
+  furrr::future_map2(
+    .x = temp.idx1,
+    .y = temp.idx2,
+    .f = function(x, y) {
+  c(x, y)    
+    }
+  )
+  
+  rm(list = c("temp.idx1", "temp.idx2"))
+  gc(verbose = FALSE)
+  
+  
+  ##remove the idx which idx1 == idx2
+  remain_idx = 
+  purrr::map(temp.idx, function(idx) {
+  if(idx[1] == idx[2]){
+    return(FALSE)
+  }else{
+    return(TRUE)
+  }  
+  }) %>% 
+    unlist() %>% 
+    which()
+  
+  temp.idx <- temp.idx[remain_idx]
+  
+  # pbapply::pboptions(style = 1)
+  # fix bug
+  # for(idx in 1:length(temp.idx)){
+  # cat(idx, " ")
+  # idx <- temp.idx[[idx]]
+  
+  cat(crayon::yellow("Transforming...\n"))
+  
+  info.spec = 
+    info.spec <- pbapply::pblapply(temp.idx, function(idx) {
+    if (idx[1] == idx[2]){
+      return(NULL)
+    }
+    temp.msp.data <- msp.data[idx[1]:idx[2]]
+    temp.msp.data <- temp.msp.data[temp.msp.data != ""]
+    info.idx <- grep("[A-Za-z]", temp.msp.data)
+    temp.info <- temp.msp.data[info.idx]
+    temp.info <-
+      stringr::str_split(string = temp.info,
+                         pattern = ":",
+                         n = 2)
+    temp.info <- do.call(rbind, temp.info)
+    temp.info <- data.frame(temp.info,
+                            stringsAsFactors = FALSE)
+    temp.info[, 2] <-
+      stringr::str_trim(temp.info[, 2], side = "both")
+    temp.info[, 1] <-
+      stringr::str_trim(temp.info[, 1], side = "both")
+    colnames(temp.info) <- rownames(temp.info) <- NULL
+    #combine synons
+    if (length(grep("Synon", temp.info[, 1])) > 1) {
+      Synon <-
+        stringr::str_c(temp.info[stringr::str_which(string = temp.info[, 1], pattern = "Synon"), 2,
+                                 drop = TRUE], collapse = ";")
+      temp.info[which(temp.info[, 1] == "Synon")[1], 2] <- Synon
+      temp.info <- temp.info[!duplicated(temp.info[, 1]), ]
+      
+    }
+    
+    rownames(temp.info) <- temp.info[, 1]
+    temp.info <- temp.info[, -1, drop = FALSE]
+    temp.spec <- temp.msp.data[-info.idx]
+    
+    if (length(temp.spec) != 0) {
+      if (length(grep(" ", temp.spec[1])) == 1) {
+        temp.spec <- strsplit(temp.spec, split = ' ')
+      }
+      
+      if (length(grep("\t", temp.spec[1])) == 1) {
+        temp.spec <- strsplit(x = temp.spec, split = "\t")
+      }
+      
+      temp.spec <- do.call(rbind, temp.spec)
+      temp.spec <- data.frame(temp.spec,
+                              stringsAsFactors = FALSE)
+      colnames(temp.spec) <- c('mz', 'intensity')
+      rownames(temp.spec) <- NULL
+      temp.spec$mz <- as.numeric(as.character(temp.spec$mz))
+      temp.spec$intensity <- as.numeric(temp.spec$intensity)
+      temp.spec <- temp.spec[temp.spec$intensity != 0, ]
+    } else{
+      temp.spec <- NULL
+    }
+    
+    list('info' = temp.info,
+         'spec' = temp.spec)
+      
+  })
+  
+  rm(list = c("msp.data", "temp.idx"))
+  gc()
+  ##remove NULL
+  info.spec <- info.spec[!unlist(lapply(info.spec, is.null))]
+  
+  remove.idx <-
+    which(unlist(lapply(info.spec, function(x)
+      is.null(x[[2]]))))
+  if (length(remove.idx) > 0) {
+    info.spec <- info.spec[-remove.idx]
+  }
+  rm(list = c("remove.idx"))
+  gc()
+  info.spec <- info.spec
+}
 
 
 
