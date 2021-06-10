@@ -10,6 +10,12 @@
     <loc>https://jaspershen.github.io/metID//reference/construct_database.html</loc>
   </url>
   <url>
+    <loc>https://jaspershen.github.io/metID//reference/construct_massbank_database.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID//reference/construct_mona_database.html</loc>
+  </url>
+  <url>
     <loc>https://jaspershen.github.io/metID//reference/correct_database_rt.html</loc>
   </url>
   <url>
@@ -88,6 +94,9 @@
     <loc>https://jaspershen.github.io/metID//reference/identify_metabolites_params.html</loc>
   </url>
   <url>
+    <loc>https://jaspershen.github.io/metID//reference/identify_ms2_only.html</loc>
+  </url>
+  <url>
     <loc>https://jaspershen.github.io/metID//reference/identify_single_peak.html</loc>
   </url>
   <url>
@@ -130,6 +139,9 @@
     <loc>https://jaspershen.github.io/metID//reference/readMSP.html</loc>
   </url>
   <url>
+    <loc>https://jaspershen.github.io/metID//reference/readMSP_MoNA.html</loc>
+  </url>
+  <url>
     <loc>https://jaspershen.github.io/metID//reference/readMZXML.html</loc>
   </url>
   <url>
@@ -140,6 +152,9 @@
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//reference/read_msp_database.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID//reference/read_msp_mona.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//reference/rp.neg.html</loc>
@@ -185,6 +200,9 @@
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//articles/other_tools.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID//articles/public_database_construction.html</loc>
   </url>
   <url>
     <loc>https://jaspershen.github.io/metID//articles/public_databases.html</loc>

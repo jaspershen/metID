@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get parameters from a metIdentifyClass object — getParams • metID</title>
+<title>Construct public MS2 database from MoNA with msp format. — construct_mona_database • metID</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,9 +52,8 @@
 
 
 
-<meta property="og:title" content="Get parameters from a metIdentifyClass object — getParams" />
-<meta property="og:description" content="Get parameters from a metIdentifyClass object.
-" />
+<meta property="og:title" content="Construct public MS2 database from MoNA with msp format. — construct_mona_database" />
+<meta property="og:description" content="Construct MS2 spectra database according to mzXML data and compound information table (csv format)." />
 <meta property="og:image" content="https://jaspershen.github.io/metID/logo.png" />
 
 
@@ -214,58 +213,85 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get parameters from a metIdentifyClass object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/deprecated_functions.R'><code>R/deprecated_functions.R</code></a></small>
-    <div class="hidden name"><code>getParams.Rd</code></div>
+    <h1>Construct public MS2 database from MoNA with msp format.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/construct_mona_database.R'><code>R/construct_mona_database.R</code></a></small>
+    <div class="hidden name"><code>construct_mona_database.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get parameters from a metIdentifyClass object.
-<a href='https://lifecycle.r-lib.org/articles/stages.html#deprecated'><img src='figures/lifecycle-deprecated.svg' alt='[Deprecated]' /></a></p>
+    <p>Construct MS2 spectra database according to mzXML data and compound information table (csv format).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>getParams</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>construct_mona_database</span><span class='op'>(</span>
+  <span class='va'>file</span>,
+  only.remain.ms2 <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  path <span class='op'>=</span> <span class='st'>"."</span>,
+  version <span class='op'>=</span> <span class='st'>"0.0.1"</span>,
+  source <span class='op'>=</span> <span class='st'>"MoNA"</span>,
+  link <span class='op'>=</span> <span class='st'>"https://mona.fiehnlab.ucdavis.edu/"</span>,
+  creater <span class='op'>=</span> <span class='st'>"Xiaotao Shen"</span>,
+  email <span class='op'>=</span> <span class='st'>"shenxt1990@163.com"</span>,
+  rt <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  threads <span class='op'>=</span> <span class='fl'>5</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>A metIdentifyClass object.</p></td>
+      <th>file</th>
+      <td><p>The file name of MassBank or MoNA database (mgf format).</p></td>
+    </tr>
+    <tr>
+      <th>only.remain.ms2</th>
+      <td><p>Only remain the metabolites with MS2 spectra?</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>Work directory.</p></td>
+    </tr>
+    <tr>
+      <th>version</th>
+      <td><p>The version of you database. Default is 0.0.1.</p></td>
+    </tr>
+    <tr>
+      <th>source</th>
+      <td><p>The source of your database.</p></td>
+    </tr>
+    <tr>
+      <th>link</th>
+      <td><p>Website link of the source.</p></td>
+    </tr>
+    <tr>
+      <th>creater</th>
+      <td><p>Creater name. For example, Xiaotao Shen.</p></td>
+    </tr>
+    <tr>
+      <th>email</th>
+      <td><p>email address.</p></td>
+    </tr>
+    <tr>
+      <th>rt</th>
+      <td><p>Do the metabolites have RT information or not?. If not, set it as FALSE.</p></td>
+    </tr>
+    <tr>
+      <th>threads</th>
+      <td><p>The number of threads</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame contains all the parameters of this metIdentifiyClass object.</p>
+    <p>A databaseClass object.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>The example and demo data of this function can be found
+https://jaspershen.github.io/metID/articles/metID.html</p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Xiaotao Shen
 <a href='mailto:shenxt1990@163.com'>shenxt1990@163.com</a></p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"annotate_result"</span>, package <span class='op'>=</span> <span class='st'>"metID"</span><span class='op'>)</span>
-<span class='fu'>getParams</span><span class='op'>(</span><span class='va'>annotate_result</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #BBBB00;'>`getParams()` is deprecated, use `get_parameters_metID()`.</span><span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 17 x 3</span><span>
-#&gt;    Parameter          Meaning                                   Value           
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> ms1.ms2.match.mz.… MS1 features &amp; MS spectra matching mz to… 25              
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> ms1.ms2.match.rt.… MS1 features &amp; MS spectra matching RT to… 10              
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> ms1.match.ppm      MS1 match tolerance (ppm)                 15              
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> ms2.match.ppm      MS2 fragment match tolerance (ppm)        30              
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> ms2.match.tol      MS2 match tolerance                       0.5             
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> rt.match.tol       RT match tolerance (s)                    30              
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> polarity           Polarity                                  positive        
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> ce                 Collision energy                          all             
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> column             Column                                    rp              
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> ms1.match.weight   MS1 match weight                          0.25            
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> rt.match.weight    RT match weight                           0.25            
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> ms2.match.weight   MS2 match weight                          0.5             
-#&gt; </span><span style='color: #BCBCBC;'>13</span><span> path               Work directory                            ./example       
-#&gt; </span><span style='color: #BCBCBC;'>14</span><span> total.score.tol    Total score tolerance                     0.5             
-#&gt; </span><span style='color: #BCBCBC;'>15</span><span> candidate.num      Candidate number                          3               
-#&gt; </span><span style='color: #BCBCBC;'>16</span><span> database           MS2 database                              msDatabase_rplc…
-#&gt; </span><span style='color: #BCBCBC;'>17</span><span> threads            Thread number                             2               </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

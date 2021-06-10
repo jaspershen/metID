@@ -70,15 +70,15 @@
       <a href="../articles/metID.html">Brief introduction</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">In-house database construction</li>
+    <li class="dropdown-header">In-house and public database construction using metID</li>
     <li>
-      <a href="../articles/database_construction.html">Database construction</a>
+      <a href="../articles/database_construction.html">In-house database construction</a>
+    </li>
+    <li>
+      <a href="../articles/public_database_construction.html">Public database construction</a>
     </li>
     <li>
       <a href="../articles/rt_correction.html">Correct retention times in database according to internal standards</a>
-    </li>
-    <li>
-      <a href="../articles/public_databases.html">Public databases in metID</a>
     </li>
     <li class="divider">
     <li class="dropdown-header">Metabolite identification</li>
@@ -167,7 +167,7 @@
                         <h4 class="author">Xiaotao Shen (<a href="https://www.shenxt.info/" class="uri">https://www.shenxt.info/</a>)</h4>
                                     <h4 class="author">Si Wu</h4>
             <address class="author_afil">
-      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2021-05-11</h4>
+      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2021-06-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jaspershen/metID/blob/master/vignettes/database_construction.Rmd"><code>vignettes/database_construction.Rmd</code></a></small>
       <div class="hidden name"><code>database_construction.Rmd</code></div>
@@ -192,11 +192,12 @@
 <p>Secondly, please organize your standard information as a table, and output it in a csv or xlsx format. The format of standard information can refer to our demo data in <code>demoData</code> package.</p>
 <p>From column 1 to 11, the columns are “Lab.ID”, “Compound.name”, “mz”, “RT”, “CAS.ID”, “HMDB.ID”, “KEGG.ID”, “Formula”, “mz.pos”, “mz.neg”, “Submitter”, respectively. It is OK if you have other information for the standards. As the demo data show, there are other additional information, namely “Family”, “Sub.pathway” and “Note”.</p>
 <ul>
-<li><p>mz: Accurate mass of compound.</p></li>
+<li><p>Lab.ID: No duplicated.</p></li>
+<li><p>mz: Accurate mass of compounds.</p></li>
 <li><p>RT: Retention time, unit is second.</p></li>
-<li><p>mz.pos: Mass to change ratio of compound in positive mode, for example, M+H. You can set it as NA.</p></li>
-<li><p>mz.neg: Mass to change ratio of compound in negative mode, for example, M-H. You can set it as NA.</p></li>
-<li><p>Submitter: The name of person or organization.</p></li>
+<li><p>mz.pos: Mass to change ratio of compound in positive mode, for example, M+H. <strong>You can set it as NA</strong>.</p></li>
+<li><p>mz.neg: Mass to change ratio of compound in negative mode, for example, M-H. <strong>You can set it as NA</strong>.</p></li>
+<li><p>Submitter: The name of person or organization. <strong>You can set it as NA</strong>.</p></li>
 </ul>
 <p><img src="../man/figures/compound_information.PNG"></p>
 <p>Then create a folder and put your mzXML format datasets (positive mode in ‘POS’ folder and negative mode in ‘NEG’ folder) and compound information in it. The mzXML file should have the collision energy in the name of each file. For example, <code>test_NCE25.mzXML</code>.</p>
