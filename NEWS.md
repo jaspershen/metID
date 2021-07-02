@@ -70,3 +70,7 @@
 ## Version 1.0.2 (20210610)
 --------------
 * Add functions for constructing mona and massbank databases.
+
+## Version 1.1.0 (20210702)
+--------------
+* Add functions output metID database to msp/mgf.

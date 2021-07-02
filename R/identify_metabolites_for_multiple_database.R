@@ -167,7 +167,7 @@ identify_metabolite_all = function(ms1.data,
     
     if (temp.ms2.type %in% c("mzXML", "mzML")) {
       ms2.data <-
-        readMZXML(file = file.path(old.path, ms2.data.name),
+        read_mzxml(file = file.path(old.path, ms2.data.name),
                   threads = threads)
     } else{
       ms2.data <- lapply(ms2.data.name, function(temp.ms2.data) {

@@ -97,7 +97,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metID</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">1.0.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">1.1.0</span>
       </span>
     </div>
 
@@ -127,6 +127,9 @@
     </li>
     <li>
       <a href="../articles/public_database_construction.html">Public database construction</a>
+    </li>
+    <li>
+      <a href="../articles/output_database.html">Output metID database to mgf/msp for other tools</a>
     </li>
     <li>
       <a href="../articles/rt_correction.html">Correct retention times in database according to internal standards</a>
@@ -215,7 +218,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>read_msp</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/tools4MetaboliteIdentification.R'><code>R/tools4MetaboliteIdentification.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jaspershen/metID/blob/master/R/read_write_msp.R'><code>R/read_write_msp.R</code></a></small>
     <div class="hidden name"><code>read_msp.Rd</code></div>
     </div>
 
@@ -224,7 +227,7 @@
 <a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_msp</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>read_msp</span><span class='op'>(</span><span class='va'>file</span>, threads <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -232,6 +235,10 @@
     <tr>
       <th>file</th>
       <td><p>The vector of names of ms2 files. MS2 file must be msp format.</p></td>
+    </tr>
+    <tr>
+      <th>threads</th>
+      <td><p>threads number.</p></td>
     </tr>
     </table>
 

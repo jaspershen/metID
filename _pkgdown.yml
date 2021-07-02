@@ -86,6 +86,8 @@ navbar:
         href: articles/database_construction.html
       - text: Public database construction
         href: articles/public_database_construction.html
+      - text: Output metID database to mgf/msp for other tools
+        href: articles/output_database.html
       - text: Correct retention times in database according to internal standards
         href: articles/rt_correction.html
       - text: -------

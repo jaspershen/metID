@@ -73,6 +73,9 @@ globalVariables(
     "Submitter",
     "Family",
     "Sub.pathway",
-    "Note"
+    "Note",
+    "V1",
+    "V2",
+    "intensity"
   )
 )
