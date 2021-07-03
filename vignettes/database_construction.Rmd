@@ -30,6 +30,8 @@ knitr::opts_chunk$set(
 
 If you have in-house standards which have been acquired with MS2 spectra data, then you can construct the in-house MS2 spectra databases using the `metID` package. 
 
+There are no specific requirements on how to run the LC/MS data for users. As the in-house database construction in metID is used for users to get the in-house databases for themselves (including m/z, retention time and MS/MS spectra of metabolites, for level 1 annotation (Sumner et al., 2007)), so the users just need to run the standards using the same column, LC-gradient, and MS settings with  their real samples in the lab
+
 ## **Data preparation**
 
 Firstly, please transform your raw standard MS data (positive and negative modes) to mzXML format using [ProteoWizard](http://proteowizard.sourceforge.net/). The parameter setting is shown in the figure below:
