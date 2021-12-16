@@ -48,7 +48,7 @@ Imports:
     lifecycle,
     tibble,
     magrittr,
-    tinytools,
+    tinyTools,
     purrr,
     plyr,
     MSnbase,
@@ -70,4 +70,4 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
 Remotes: 
-    tidymass/tinytools
+    jaspershen/tinyTools

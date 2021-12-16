@@ -70,7 +70,7 @@
 #
 #
 #
-# tinytools::setwd_project()
+# tinyTools::setwd_project()
 # setwd("example/")
 # annotate_result3 <-
 #   identify_metabolites(

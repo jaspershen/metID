@@ -280,7 +280,7 @@ mzIdentify =
     }
     
     
-    if(tinytools::get_os() == "windows"){
+    if(tinyTools::get_os() == "windows"){
       bpparam = BiocParallel::SnowParam(workers = threads, 
                                         progressbar = TRUE)
     }else{
