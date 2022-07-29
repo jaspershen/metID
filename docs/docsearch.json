@@ -2,21 +2,21 @@
   "index_name": "metid",
   "start_urls": [
     {
-      "url": "https://jaspershen.github.io/metID//index.html",
+      "url": "https://jaspershen.github.io/metID/index.html",
       "selectors_key": "homepage",
       "tags": [
         "homepage"
       ]
     },
     {
-      "url": "https://jaspershen.github.io/metID//reference",
+      "url": "https://jaspershen.github.io/metID/reference",
       "selectors_key": "reference",
       "tags": [
         "reference"
       ]
     },
     {
-      "url": "https://jaspershen.github.io/metID//articles",
+      "url": "https://jaspershen.github.io/metID/articles",
       "selectors_key": "articles",
       "tags": [
         "articles"
@@ -30,7 +30,7 @@
     "/articles/index.html"
   ],
   "sitemap_urls": [
-    "https://jaspershen.github.io/metID//sitemap.xml"
+    "https://jaspershen.github.io/metID/sitemap.xml"
   ],
   "selectors": {
     "homepage": {

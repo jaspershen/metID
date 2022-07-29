@@ -1,249 +1,285 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jaspershen.github.io/metID//index.html</loc>
+    <loc>https://jaspershen.github.io/metID/404.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/annotate_result.html</loc>
+    <loc>https://jaspershen.github.io/metID/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/construct_database.html</loc>
+    <loc>https://jaspershen.github.io/metID/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/construct_massbank_database.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/Version0_9_2.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/construct_mona_database.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/contact_us.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/correct_database_rt.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/database_construction.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/databaseClass-class.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/identify_single_peak.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/databaseConstruction.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/filterIden.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/metID.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/filter_adducts.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS1.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/filter_identification.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS2.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/getIdenInfo.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/multiple_databases.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/getIdentificationTable.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/other_tools.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/getIdentificationTable2.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/output_database.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/getMS2spectrum.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/public_database_construction.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/getMS2spectrum2Object.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/public_databases.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/getParams.html</loc>
+    <loc>https://jaspershen.github.io/metID/articles/rt_correction.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/getParams2.html</loc>
+    <loc>https://jaspershen.github.io/metID/authors.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/get_iden_info.html</loc>
+    <loc>https://jaspershen.github.io/metID/index.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/get_identification_table.html</loc>
+    <loc>https://jaspershen.github.io/metID/news/index.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/get_identification_table_all.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/annotate_result.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/get_ms2_spectrum.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/construct_database.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/get_ms2_spectrum_from_object.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/construct_massbank_database.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/get_parameters.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/construct_mona_database.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/get_parameters_metID.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/correct_database_rt.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/hilic.neg.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/databaseClass-class.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/hilic.pos.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/databaseConstruction.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/identifyPeak.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/filterIden.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/identify_metabolite_all.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/filter_adducts.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/identify_metabolites.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/filter_identification.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/identify_metabolites_params.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/getIdenInfo.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/identify_ms2_only.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/getIdentificationTable.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/identify_single_peak.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/getIdentificationTable2.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/metID.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/getMS2spectrum.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/metID_logo.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/getMS2spectrum2Object.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/metIdentify.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/getParams.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/metIdentify4all.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/getParams2.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/metIdentifyClass-class.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/get_iden_info.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/metIdentifyParam.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/get_identification_table.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/ms2plot.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/get_identification_table_all.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/msDatabase_hilic0.0.2.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/get_ms2_spectrum.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/msDatabase_rplc0.0.2.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/get_ms2_spectrum_from_object.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/mzIdentify.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/get_parameters.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/mzIdentifyParam.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/get_parameters_metID.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/readMGF.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/hilic.neg.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/readMSP.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/hilic.pos.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/readMSP_MoNA.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/identifyPeak.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/readMZXML.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/identifySinglePeak.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/read_mgf.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/identify_metabolite_all.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/read_mgf_experiment.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/identify_metabolites.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/read_mgf_gnps.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/identify_metabolites_params.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/read_mgf_mona.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/identify_ms2_only.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/read_msp.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/identify_single_peak.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/read_msp_database.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/read_msp_gnps.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/metID.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/read_msp_mona.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/metID_logo.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/read_mzxml.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/metIdentify.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/rp.neg.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/metIdentify2.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/rp.pos.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/metIdentify4all.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/trans2newStyle.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/metIdentifyClass-class.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/trans_to_new_style.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/metIdentifyParam.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/whichHasIden.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/ms2plot.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/which_has_identification.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/msDatabase_hilic0.0.1.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/write_mgf_gnps.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/msDatabase_hilic0.0.2.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/write_mgf_massbank.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/msDatabase_rplc0.0.1.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/write_mgf_mona.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/msDatabase_rplc0.0.2.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/write_msp_gnps.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/mzIdentify.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/write_msp_massbank.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/mzIdentifyParam.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//reference/write_msp_mona.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/readMGF.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/Version0_9_2.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/readMSP.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/contact_us.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/readMSP_MoNA.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/database_construction.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/readMZXML.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/identify_single_peak.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/read_mgf.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/metID.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/read_mgf_experiment.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/metabolite_annotation_using_MS1.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/read_mgf_gnps.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/metabolite_annotation_using_MS2.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/read_mgf_mona.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/multiple_databases.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/read_msp.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/other_tools.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/read_msp_database.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/output_database.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/read_msp_gnps.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/public_database_construction.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/read_msp_mona.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/public_databases.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/read_mzxml.html</loc>
   </url>
   <url>
-    <loc>https://jaspershen.github.io/metID//articles/rt_correction.html</loc>
+    <loc>https://jaspershen.github.io/metID/reference/rp.neg.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID/reference/rp.pos.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID/reference/rtCor4database.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID/reference/trans2newStyle.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID/reference/trans_to_new_style.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID/reference/whichHasIden.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID/reference/which_has_identification.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID/reference/write_mgf_gnps.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID/reference/write_mgf_massbank.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID/reference/write_mgf_mona.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID/reference/write_msp_gnps.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID/reference/write_msp_massbank.html</loc>
+  </url>
+  <url>
+    <loc>https://jaspershen.github.io/metID/reference/write_msp_mona.html</loc>
   </url>
 </urlset>

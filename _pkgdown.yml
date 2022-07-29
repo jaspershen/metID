@@ -23,49 +23,6 @@ template:
     ganalytics: UA-000000-01
 
 reference:
-  - title: Database construction
-    desc: Construct in-house or public MS2 spectra database.
-    contents:
-    - databaseConstruction
-    - rtCor4database
-    - get_ms2_spectrum
-    
-  - title: Metabolite identification
-    desc: Metabolite identification based on MS1 and MS2 databases.
-    contents:
-    - which_has_identification
-    - trans_to_new_style
-    - ms2plot
-    - identify_single_peak
-    - identify_metabolites_params
-    - identify_metabolites
-    - identify_metabolites_all
-    - get_parameters
-    - get_ms2_spectrum_from_object
-    - get_identification_table
-    - get_identification_table_all
-    - get_iden_info
-    - filter_identification
-    
-  - title: Data
-    desc: Some data embed in metID
-    contents:
-    - hilic.pos
-    - hilic.neg
-    - rp.pos
-    - rp.neg
-    - msDatabase_rplc0.0.2
-    - msDatabase_hilic0.0.2
-    - annotate_result
-
-  - title: Other functions
-    desc: Other usefull functions in metID
-    contents:
-    - readMGF
-    - read_mgf
-    - readMSP
-    - readMZXML
-    - metID
 
 navbar:
   title: "sparklyr" 

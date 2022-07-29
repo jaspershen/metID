@@ -40,7 +40,4 @@ https://jaspershen.github.io/metID/articles/metID.html
 \author{
 Xiaotao Shen
 \email{shenxt1990@163.com}
-
-Xiaotao Shen
-\email{shenxt1990@163.com}
 }

@@ -7,6 +7,10 @@
 [![Dependencies](https://tinyverse.netlify.com/badge/metID)](https://cran.r-project.org/package=metID)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
+## Important announcement
+
+The `metID` package is deprecated, please use the new version of it, [`metid`](https://metid.tidymass.org/). More information can be found here: https://www.tidymass.org/
+
 ## News
 
 * [Version 1.0.0 2021-05-08](https://jaspershen.github.io/metID/news/index.html)

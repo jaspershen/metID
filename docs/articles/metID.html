@@ -34,6 +34,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -46,20 +48,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">metID</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Under development">1.1.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Help documents
      
     <span class="caret"></span>
@@ -70,7 +66,8 @@
       <a href="../articles/metID.html">Brief introduction</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">In-house and public database construction using metID</li>
+    </li>
+<li class="dropdown-header">In-house and public database construction using metID</li>
     <li>
       <a href="../articles/database_construction.html">In-house database construction</a>
     </li>
@@ -84,7 +81,8 @@
       <a href="../articles/rt_correction.html">Correct retention times in database according to internal standards</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Metabolite identification</li>
+    </li>
+<li class="dropdown-header">Metabolite identification</li>
     <li>
       <a href="../articles/metabolite_annotation_using_MS1.html">Metabolite identification using MS1 database</a>
     </li>
@@ -98,17 +96,18 @@
       <a href="../articles/identify_single_peak.html">Identify single peak</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Others</li>
+    </li>
+<li class="dropdown-header">Others</li>
     <li>
       <a href="../articles/other_tools.html">Other usefull tools</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/">Test</a>
+      <a href="https://www.tidyverse.org/blog/2018/12/readxl-1-2-0/" class="external-link">Test</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     News
      
     <span class="caret"></span>
@@ -119,7 +118,8 @@
       <a href="../articles/Version0_9_2.html">Version 0.9.2</a>
     </li>
     <li class="divider">
-    <li>
+    </li>
+<li>
       <a href="../news/index.html">Change log</a>
     </li>
   </ul>
@@ -127,22 +127,16 @@
 <li>
   <a href="../articles/public_databases.html">Public databases</a>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="../articles/metID.html">Get started</a>
-</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/jaspershen/metID/">
+  <a href="https://github.com/jaspershen/metID/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/JasperShen1990">
+  <a href="https://twitter.com/JasperShen1990" class="external-link">
     <span class="fab fa-twitter fa-lg"></span>
      
   </a>
@@ -163,16 +157,19 @@
 
       
 
-      </header><script src="metID_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Brief introduction of metID</h1>
-                        <h4 class="author">Xiaotao Shen PhD (<a href="https://www.shenxt.info/" class="uri">https://www.shenxt.info/</a>)</h4>
-                                    <h4 class="author">Si Wu PhD</h4>
+                        <h4 data-toc-skip class="author">Xiaotao Shen
+PhD (<a href="https://www.shenxt.info/" class="external-link uri">https://www.shenxt.info/</a>)</h4>
+                                    <h4 data-toc-skip class="author">Si
+Wu PhD</h4>
             <address class="author_afil">
-      School of Medicine, Stanford University<br><h4 class="date">Created on 2020-03-28 and updated on 2021-07-03</h4>
+      School of Medicine, Stanford University<br><h4 data-toc-skip class="date">Created on 2020-03-28 and
+updated on 2022-07-29</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/jaspershen/metID/blob/master/vignettes/metID.Rmd"><code>vignettes/metID.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/jaspershen/metID/blob/HEAD/vignettes/metID.Rmd" class="external-link"><code>vignettes/metID.Rmd</code></a></small>
       <div class="hidden name"><code>metID.Rmd</code></div>
 
     </address>
@@ -181,54 +178,71 @@
     
     
 <hr>
-<div id="introduction-installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#introduction-installation" class="anchor"></a><strong>Introduction &amp; Installation</strong>
+<div class="section level2">
+<h2 id="introduction-installation">
+<strong>Introduction &amp; Installation</strong><a class="anchor" aria-label="anchor" href="#introduction-installation"></a>
 </h2>
 <hr>
-<p><em>metID</em> is a R package which can be used for in-house (MS2) database construction, and metabolite identification based on in-house and public MS1/MS2 database.</p>
-<p><img src="../man/figures/Figure_1.png" align="middle" alt="" width="100%"></p>
-<p>Please install it via <a href="https://github.com/jaspershen/metID">github</a>.</p>
+<p><em>metID</em> is a R package which can be used for in-house (MS2)
+database construction, and metabolite identification based on in-house
+and public MS1/MS2 database.</p>
+<p><img src="../reference/figures/Figure_1.png" align="middle" alt="" width="100%"></p>
+<p>Please install it via <a href="https://github.com/jaspershen/metID" class="external-link">github</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
-<span class="op">}</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"jaspershen/metID"</span><span class="op">)</span></code></pre></div>
-<p>All the demo data for <code>metID</code> are from <code>demoData</code>, so please install it first.</p>
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"jaspershen/metID"</span><span class="op">)</span></span></code></pre></div>
+<p>All the demo data for <code>metID</code> are from
+<code>demoData</code>, so please install it first.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"jaspershen/demoData"</span><span class="op">)</span></code></pre></div>
-<p><code>metID</code> is a part of <code>tidymass</code>, so you can also install it by installing <a href="https://jaspershen.github.io/tidymass/index.html"><code>tidymass</code></a>.</p>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"jaspershen/demoData"</span><span class="op">)</span></span></code></pre></div>
+<p><code>metID</code> is a part of <code>tidymass</code>, so you can
+also install it by installing <a href="https://jaspershen.github.io/tidymass/index.html" class="external-link"><code>tidymass</code></a>.</p>
 </div>
-<div id="database-construction" class="section level2">
-<h2 class="hasAnchor">
-<a href="#database-construction" class="anchor"></a><strong>Database construction</strong>
+<div class="section level2">
+<h2 id="database-construction">
+<strong>Database construction</strong><a class="anchor" aria-label="anchor" href="#database-construction"></a>
 </h2>
 <hr>
-<p>Please refer to this article: <a href="https://jaspershen.github.io/metID/articles/database_construction.html">Construct in-house MS2 datbase using metID</a> for database construction.</p>
+<p>Please refer to this article: <a href="https://jaspershen.github.io/metID/articles/database_construction.html">Construct
+in-house MS2 datbase using metID</a> for database construction.</p>
 </div>
-<div id="public-databases" class="section level2">
-<h2 class="hasAnchor">
-<a href="#public-databases" class="anchor"></a><strong>Public databases</strong>
+<div class="section level2">
+<h2 id="public-databases">
+<strong>Public databases</strong><a class="anchor" aria-label="anchor" href="#public-databases"></a>
 </h2>
-<p>We have provide some public databases and our in-house databases, so if you want to use them, please refer this article, <a href="https://jaspershen.github.io/metID/articles/public_databases.html">Database provided for <code>metID</code></a>.</p>
+<p>We have provide some public databases and our in-house databases, so
+if you want to use them, please refer this article, <a href="https://jaspershen.github.io/metID/articles/public_databases.html">Database
+provided for <code>metID</code></a>.</p>
 </div>
-<div id="metabolite-identification" class="section level2">
-<h2 class="hasAnchor">
-<a href="#metabolite-identification" class="anchor"></a><strong>Metabolite identification</strong>
+<div class="section level2">
+<h2 id="metabolite-identification">
+<strong>Metabolite identification</strong><a class="anchor" aria-label="anchor" href="#metabolite-identification"></a>
 </h2>
-<p>If you want to identify metabolite without MS2 spectra, please refer to this article, <a href="https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS1.html">Annotate metabolites according to MS1 database using metID</a>.</p>
+<p>If you want to identify metabolite without MS2 spectra, please refer
+to this article, <a href="https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS1.html">Annotate
+metabolites according to MS1 database using metID</a>.</p>
 <hr>
-<p>If you want to identify metabolite with MS2 spectra, please refer to this article, <a href="https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS2.html">Annotate metabolites according to MS2 database using metID</a>.</p>
+<p>If you want to identify metabolite with MS2 spectra, please refer to
+this article, <a href="https://jaspershen.github.io/metID/articles/metabolite_annotation_using_MS2.html">Annotate
+metabolites according to MS2 database using metID</a>.</p>
 <hr>
-<p>If you want to identify a peak table with multiple databases, please refer to this article, <a href="https://jaspershen.github.io/metID/articles/multiple_databases.html">Identify peak tables with multiple databases</a>.</p>
+<p>If you want to identify a peak table with multiple databases, please
+refer to this article, <a href="https://jaspershen.github.io/metID/articles/multiple_databases.html">Identify
+peak tables with multiple databases</a>.</p>
 <hr>
-<p>If you just want to identify single peak, please refer to this article: <a href="https://jaspershen.github.io/metID/articles/identify_single_peak.html">Identify single peak with metID</a>.</p>
+<p>If you just want to identify single peak, please refer to this
+article: <a href="https://jaspershen.github.io/metID/articles/identify_single_peak.html">Identify
+single peak with metID</a>.</p>
 </div>
-<div id="other-tools" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-tools" class="anchor"></a><strong>Other tools</strong>
+<div class="section level2">
+<h2 id="other-tools">
+<strong>Other tools</strong><a class="anchor" aria-label="anchor" href="#other-tools"></a>
 </h2>
-<p><code>metID</code> package also has some useful tools, please refer to this article, <a href="https://jaspershen.github.io/metID/articles/other_tools.html">Other tools in metID</a></p>
+<p><code>metID</code> package also has some useful tools, please refer
+to this article, <a href="https://jaspershen.github.io/metID/articles/other_tools.html">Other
+tools in metID</a></p>
 </div>
   </div>
 
@@ -243,11 +257,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Xiaotao Shen, Si Wu.</p>
+  <p></p>
+<p>Developed by Xiaotao Shen, Si Wu.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
